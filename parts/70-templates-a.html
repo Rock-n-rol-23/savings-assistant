@@ -1,0 +1,263 @@
+<!-- ===== Screens: Старт ===== -->
+<template data-screen="st-home" data-tab="home" data-bg="home" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
+<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="7215"></span><span class="kop">,40</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">958 <span style="opacity:.7">бонусов</span></div></div>
+<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
+<div class="card ai">
+ <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Помощник</span><span class="badge ai" style="margin-left:auto">Новое</span></div>
+ <div class="t2" style="margin-top:4px">Можно откладывать около 5 000 ₽ в месяц без ущерба для расходов</div>
+ <div class="sub">Доходы стабильны 3 месяца, свободный остаток к зарплате в среднем 6 800 ₽</div>
+ <div style="display:flex;gap:10px;margin-top:8px"><div class="btn sm" style="flex:1" data-go="st-goal">Начать копить</div><div class="btn sm g" style="flex:1" data-go="st-how">Как посчитали?</div></div>
+</div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div><div class="sub">Пока нет накоплений. Первый счёт можно открыть за минуту.</div><div class="grn hl" data-go="st-goal">Открыть первый</div></div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">История</span><span class="chip d" style="margin-left:auto;height:36px;font-size:14px">Ещё <svg class="ic"><use href="#i-chev-r"/></svg></span></div>
+ <div class="rw"><div class="ico sm" style="background:#2E7D32;color:#fff"><svg class="ic"><use href="#i-cart"/></svg></div><div><div class="rt" style="font-size:17px">Пятёрочка</div><div class="rs">Сегодня · Супермаркеты</div></div><div class="rm"><b>−1 240 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-arrow-rc"/></svg></div><div><div class="rt" style="font-size:17px">Зачисление зарплаты</div><div class="rs">10 октября</div></div><div class="rm"><b class="grn">+62 000 ₽</b></div></div>
+</div>
+</template>
+
+<template data-screen="st-how" data-base="st-home">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Как мы это посчитали</div>
+ <div class="kv"><span class="k">Доходы за 3 месяца</span><span class="v">62 000 ₽ в месяц, стабильно</span></div>
+ <div class="kv"><span class="k">Обязательные платежи</span><span class="v">41 500 ₽ в месяц</span></div>
+ <div class="kv"><span class="k">Остаток к зарплате</span><span class="v">в среднем 6 800 ₽</span></div>
+ <div class="hr"></div>
+ <div class="sub">Рекомендуем 5 000 ₽: с запасом 1 800 ₽ на непредвиденное. Это расчёт по вашим операциям, а не прогноз.</div>
+ <div class="btn" data-go="st-goal">Понятно, начать копить</div>
+ <div class="btn g" data-back>Не сейчас</div>
+</div>
+</template>
+
+<template data-screen="st-goal">
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Цель</span></div>
+<div class="lt" style="margin-top:6px">На что копим?</div>
+<div class="chips"><span class="chip on" data-select="goal"><svg class="ic"><use href="#i-umbrella"/></svg>Подушка безопасности</span><span class="chip d" data-select="goal"><svg class="ic"><use href="#i-plane"/></svg>Отпуск</span><span class="chip d" data-select="goal">Своя цель</span></div>
+<div class="card"><div class="fl">Сумма цели</div><div class="money m36">60 000 ₽</div><div class="sub">Два месяца ваших обычных расходов</div></div>
+<div class="card ai2"><div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Сколько откладывать</span></div>
+ <div class="seg"><span class="on" data-select="amt" data-set="goal-date|К октябрю 2027">5 000 ₽</span><span data-select="amt" data-set="goal-date|К апрелю 2028">3 000 ₽</span><span data-select="amt" data-set="goal-date|К августу 2027">7 500 ₽</span></div>
+ <div class="t2" data-id="goal-date">К октябрю 2027</div><div class="sub">Нажмите на сумму: срок пересчитается. Переводы только на ваш счёт.</div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="st-auto">Дальше</div></div>
+</template>
+
+<template data-screen="st-auto">
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автонакопления</span></div>
+<div class="lt" style="margin-top:6px">Пусть деньги копятся сами</div>
+<div class="card" style="gap:0" data-sum="auto" data-goal="60000">
+ <div class="sw" data-toggle data-gain="1200"><div><div class="st2">Округление покупок до 100 ₽</div><div class="ss">≈ 1 200 ₽ в месяц по вашим тратам</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="5000"><div><div class="st2">1 250 ₽ каждую пятницу</div><div class="ss">5 000 ₽ в месяц</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="6200"><div><div class="st2">10% от зарплаты в день зачисления</div><div class="ss">6 200 ₽ в месяц</div></div><div class="tg off"></div></div>
+</div>
+<div class="card ok"><div class="hl" data-id="auto-sum">Итого ≈ 6 200 ₽ в месяц</div><div class="sub grn" data-id="auto-date">Цель 60 000 ₽ будет к июлю 2027, раньше плана</div></div>
+<div class="fn" style="padding:0 6px">Правила можно выключить в любой момент. Переводы идут только на ваш накопительный счёт.</div>
+<div class="cta-wrap nt"><div class="btn" data-go="st-confirm">Открыть накопительный счёт</div></div>
+</template>
+
+<template data-screen="st-confirm" data-base="st-auto">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Открыть накопительный счёт</div>
+ <div class="kv"><span class="k">Ставка</span><span class="v">до 13% с надбавками</span></div>
+ <div class="kv"><span class="k">Первый перевод</span><span class="v">1 250 ₽, пт 17 октября</span></div>
+ <div class="kv"><span class="k">Округления</span><span class="v">включены</span></div>
+ <div class="kv"><span class="k">Цель</span><span class="v">Подушка · 60 000 ₽</span></div>
+ <div class="kv"><span class="k">Комиссия</span><span class="v">0 ₽</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="st-done" data-faceid>Подтвердить</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<template data-screen="st-done">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Счёт открыт</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Первые 1 250 ₽ переведём в пятницу, 17 октября. Помощник напомнит, если план начнёт отставать.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="st-home2">На главный</div><div class="btn ghost" data-go="st-sav">Посмотреть счёт</div></div>
+</template>
+
+<template data-screen="st-home2" data-tab="home" data-bg="home" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
+<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="9840"></span><span class="kop">,15</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">1 104 <span style="opacity:.7">бонуса</span></div></div>
+<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
+<div class="card" data-go="st-goal-detail">
+ <div style="display:flex;align-items:center;gap:10px"><div class="ico sm grn"><svg class="ic"><use href="#i-umbrella"/></svg></div><span class="t2">Подушка безопасности</span><span class="badge up" style="margin-left:auto">26%</span></div>
+ <div style="display:flex;align-items:baseline;gap:8px;margin-top:4px"><span class="money m28">15 600 ₽</span><span class="sub">из 60 000 ₽</span></div>
+ <div class="pb"><i style="width:26%"></i></div>
+ <div class="sub">С опережением на 1 100 ₽ · следующий перевод в пятницу</div>
+ <div class="hr"></div>
+ <div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">В этом месяце отложили на 400 ₽ больше плана. Так цель будет к июню.</div></div>
+</div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">История</span><span class="chip d" style="margin-left:auto;height:36px;font-size:14px">Ещё <svg class="ic"><use href="#i-chev-r"/></svg></span></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt" style="font-size:17px">Автонакопление</div><div class="rs">Пятница · на накопительный ••4412</div></div><div class="rm"><b>1 250 ₽</b></div></div>
+ <div class="rw"><div class="ico sm" style="background:#2E7D32;color:#fff"><svg class="ic"><use href="#i-cart"/></svg></div><div><div class="rt" style="font-size:17px">Пятёрочка</div><div class="rs">Вчера · округление 37 ₽ в копилку</div></div><div class="rm"><b>−963 ₽</b></div></div>
+</div>
+</template>
+
+<template data-screen="st-sav" data-tab="sav" data-bg="glow" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-sliders"/></svg></div></div>
+<div style="padding:10px 0 4px"><div class="sub">Всего средств</div><div class="money m36"><span data-count="15600"></span><span class="kop">,00</span> ₽</div></div>
+<div class="grid2">
+ <div class="card sm"><div class="mini-bars"><i style="height:10%"></i><i style="height:34%"></i><i style="height:52%"></i><i style="height:70%"></i><i style="height:86%"></i><i class="on" style="height:100%"></i></div><div class="sub">Динамика баланса за 3 месяца</div><div class="hl">+15 600 ₽</div></div>
+ <div style="display:flex;flex-direction:column;gap:12px"><div class="card sm" style="flex:1"><div class="sub">Доход в октябре</div><div class="hl">+52,30 ₽</div><span class="badge up">↗ 13%</span></div><div class="card sm" style="flex:1"><div class="sub">Переводы в октябре</div><div class="hl">5 000 ₽</div></div></div>
+</div>
+<div class="card">
+ <div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><div class="ibtn" style="margin-left:auto;background:#2C2C2E"><svg class="ic"><use href="#i-plus"/></svg></div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">15 600,00 ₽</div><div class="rs">Накопительный счёт ••4412</div></div><div class="rm">13%</div></div>
+ <div class="rw"><div class="ico grn"><svg class="ic"><use href="#i-umbrella"/></svg></div><div><div class="rt">Подушка безопасности</div><div class="rs">26% · к июлю 2027</div></div><div class="rm">60 000 ₽</div></div>
+</div>
+</template>
+
+<!-- ===== Screens: Накопитель ===== -->
+<template data-screen="sv-home" data-tab="home" data-bg="home" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
+<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="12400"></span><span class="kop">,80</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">2 340 <span style="opacity:.7">бонусов</span></div></div>
+<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">200 000,00 ₽</div><div class="rs">СберВклад ••3310 · до 14.04.2027</div></div><div class="rm">12,2%</div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">100 000,00 ₽</div><div class="rs">Накопительный счёт ••4412</div></div><div class="rm">11,25%</div></div>
+</div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">История</span><span class="chip d" style="margin-left:auto;height:36px;font-size:14px">Ещё <svg class="ic"><use href="#i-chev-r"/></svg></span></div>
+ <div class="rw"><div class="ico sm" style="background:#B8440F;color:#fff"><svg class="ic"><use href="#i-cart"/></svg></div><div><div class="rt" style="font-size:17px">Яндекс Лавка</div><div class="rs">Сегодня · Продукты</div></div><div class="rm"><b>−2 214 ₽</b></div></div>
+</div>
+</template>
+
+<template data-screen="sv-shop" data-tab="sav" data-bg="glow" data-scroll>
+<div class="nav-t"><div class="back" data-go="sv-home"><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Вклады и счета</span></div>
+<div class="card ai">
+ <div style="display:flex;align-items:center;gap:12px"><div class="ai-dot lg"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><div class="hl">Помощник подберёт вклад</div><div class="sub">Скажите, сколько, на сколько и что важно</div></div></div>
+ <div class="srch" style="background:rgba(255,255,255,.1);height:52px" data-go="sv-ask"><span style="flex:1">Напишите или скажите…</span><svg class="ic" style="color:#C9B8FF"><use href="#i-mic"/></svg></div>
+ <div class="chips"><span class="chip ai" data-go="sv-ask">300 000 на полгода</span><span class="chip ai" data-go="sv-ask">Что выгоднее?</span><span class="chip ai" data-go="sv-ask">Нужен доступ к деньгам</span></div>
+</div>
+<div class="card prem" style="min-height:230px"><div class="t2">Лучший %</div><div class="mut" style="font-size:15px">От 100 000 ₽, от 1 месяца</div><div class="spacer"></div><div class="money m36" style="font-size:40px">До 13,6%</div><div style="font-size:15px;font-weight:500">Выгодная ставка без лишних условий</div></div>
+<div class="card" style="min-height:150px"><div class="t2">СберВклад</div><div class="sub">От 1 000 ₽, от 1 месяца</div><div class="spacer"></div><div class="money m28">До 12,2%</div></div>
+<div class="card" style="min-height:150px"><div class="t2">Накопительный счёт</div><div class="sub">Любая сумма, любой срок</div><div class="spacer"></div><div class="money m28">До 13%</div><div class="sub">Пользуйтесь деньгами каждый день и получайте доход</div></div>
+</template>
+
+<template data-screen="sv-ask" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Помощник</span><div class="ibtn" style="background:#1C1C1E"><svg class="ic"><use href="#i-dots"/></svg></div></div>
+<div class="quote me">Хочу положить 300 000 на полгода, но тысяч 100 могут понадобиться</div>
+<div class="ans" data-hide="1100"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><div class="typing"><i></i><i></i><i></i></div><div class="fn">считаю по тарифам банка и собираю экран</div></div></div>
+<div class="sk" data-hide="1100"><i class="h96"></i><i class="h96"></i><i class="w60"></i></div>
+<div class="ans" data-reveal="1100"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Есть два честных варианта. Разница 500 ₽ за полгода, зато во втором 100 000 ₽ остаются доступны в любой день.</div></div>
+<div class="opt" data-reveal="1150" data-select="opt"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Один вклад на 6 месяцев</div><div class="os">12,2% · деньги недоступны до 14 апреля · при досрочном снятии ставка 0,01%</div></div><div class="ov"><b>+18 300 ₽</b><span>за 6 мес</span></div></div>
+<div class="opt sel" data-reveal="1250" data-select="opt"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вклад 200 000 ₽ + накопительный 100 000 ₽</div><div class="os">12,2% и 11,25% · 100 000 ₽ доступны в любой день</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+17 800 ₽</b><span>за 6 мес</span></div></div>
+<div class="btn ghost" data-go="sv-why" data-reveal="1350">Почему так?</div>
+<div class="fn" style="text-align:center" data-reveal="1350">Ставки из тарифов банка на сегодня. Расчёт сделан калькулятором банка.</div>
+<div class="cta-wrap nt" style="margin-top:4px" data-reveal="1400"><div class="btn" data-go="sv-open">Открыть оба</div></div>
+</template>
+
+<template data-screen="sv-why" data-base="sv-ask">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Почему разбить выгоднее для вас</div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Досрочное закрытие вклада обнуляет проценты: сняв 100 000 ₽ через 3 месяца, вы потеряли бы 9 100 ₽.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Накопительный счёт даёт доступ в любой день и 11,25% на остаток.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Цена гибкости: 500 ₽ за полгода. Если деньги точно не понадобятся, выгоднее один вклад.</span></div>
+ <div class="btn" data-back>Понятно</div>
+</div>
+</template>
+
+<template data-screen="sv-open" data-bg="glow" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">СберВклад</span></div>
+<div style="display:flex;gap:28px;padding:8px 6px 0"><div><div class="money m36">12,2%</div><div class="sub">Ставка</div></div><div><div class="money m36" data-id="inc-v">+12 200 ₽</div><div class="sub">Доход к 14 апреля 2027</div></div></div>
+<div style="padding:0 6px"><span class="badge ai lg"><svg class="ic" style="width:16px;height:16px"><use href="#i-sparkle"/></svg> Условия подобраны помощником</span></div>
+<div class="card">
+ <div style="display:flex;align-items:center"><span class="t2">Настройте условия</span><span class="vio" style="margin-left:auto;font-size:16px">О вкладе</span></div>
+ <div class="field"><div class="fx"><div class="fl">Сумма</div><div class="fv" data-id="amt-v">200 000 ₽</div></div></div>
+ <div class="chips"><span class="chip d" data-amt="100000">100 000</span><span class="chip on" data-amt="200000">200 000</span><span class="chip d" data-amt="300000">300 000</span><span class="chip d" data-amt="500000">500 000</span></div>
+ <div class="field"><div class="fx"><div class="fl">Срок</div><div class="fv">6 месяцев</div></div><svg class="ic mut"><use href="#i-chev-d"/></svg></div>
+ <div class="sub">Выберите опции</div>
+ <div class="chips"><span class="chip">Без пополнения и снятия <svg class="ic"><use href="#i-chev-d"/></svg></span><span class="chip">Доход в конце срока <svg class="ic"><use href="#i-chev-d"/></svg></span></div>
+</div>
+<div class="card sm"><div class="rw" style="padding:4px 0"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">Накопительный счёт</div><div class="rs">100 000 ₽ · до 13% · откроем вместе</div></div><div class="ck" style="margin-left:auto"><svg class="ic"><use href="#i-check"/></svg></div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sv-confirm" data-id="amt-cta">Открыть на 300 000 ₽</div></div>
+</template>
+
+<template data-screen="sv-confirm" data-base="sv-open">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Подтвердите открытие</div>
+ <div class="kv"><span class="k">Вклад 6 месяцев</span><span class="v">200 000 ₽ · 12,2%</span></div>
+ <div class="kv"><span class="k">Накопительный счёт</span><span class="v">100 000 ₽ · до 13%</span></div>
+ <div class="kv"><span class="k">Откуда</span><span class="v">Карта ••7215</span></div>
+ <div class="kv"><span class="k">Доход за 6 месяцев</span><span class="v grn">+17 800 ₽</span></div>
+ <div class="kv"><span class="k">Комиссия</span><span class="v">0 ₽</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="sv-done" data-faceid>Подтвердить</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<template data-screen="sv-done">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Готово</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Вклад и накопительный счёт открыты. 14 апреля 2027 помощник предложит, что делать дальше: продлить, переложить или снять.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sv-sav">К накоплениям</div><div class="btn ghost" data-go="sv-push">Промотать 6 месяцев</div></div>
+</template>
+
+<template data-screen="sv-sav" data-tab="sav" data-bg="glow" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-sliders"/></svg></div></div>
+<div style="padding:10px 0 4px"><div class="sub">Всего средств</div><div class="money m36"><span data-count="312400"></span><span class="kop">,80</span> ₽</div></div>
+<div class="grid2">
+ <div class="card sm"><div class="mini-bars"><i style="height:12%"></i><i style="height:12%"></i><i style="height:14%"></i><i style="height:12%"></i><i style="height:13%"></i><i class="on" style="height:100%"></i></div><div class="sub">Динамика баланса в октябре</div><div class="hl">+300 000 ₽</div></div>
+ <div style="display:flex;flex-direction:column;gap:12px"><div class="card sm" style="flex:1"><div class="sub">Доход в октябре</div><div class="hl">+1 486,30 ₽</div><span class="badge up">↗ 0,48%</span></div><div class="card sm" style="flex:1"><div class="sub">Поступления</div><div class="hl">1 486,30 ₽</div></div></div>
+</div>
+<div class="card ai"><div style="display:flex;gap:12px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Вклад закрывается 14 апреля. За неделю до этого покажу три варианта, что сделать с деньгами.</div></div></div>
+<div class="card">
+ <div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><div class="ibtn" style="margin-left:auto;background:#2C2C2E"><svg class="ic"><use href="#i-plus"/></svg></div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">200 000,00 ₽</div><div class="rs">СберВклад ••3310</div></div><div class="rm">12,2%<br>до 14.04.2027</div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">100 000,00 ₽</div><div class="rs">Накопительный счёт ••4412</div></div><div class="rm">11,25%</div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-credit"/></svg></div><div><div class="rt">12 400,80 ₽</div><div class="rs">Карта ••7215</div></div><div class="rm">0%</div></div>
+</div>
+</template>
+
+<template data-screen="sv-push" data-base="sv-home">
+<div class="push" data-go="sv-maturity"><div class="app"><svg class="ic"><use href="#i-safe"/></svg></div><div style="flex:1"><div class="pt">Сбербанк Онлайн <span>сейчас</span></div><div class="px">Вклад 200 000 ₽ закрывается 14 апреля. Помощник подготовил три варианта, что сделать с деньгами.</div></div></div>
+</template>
+
+<template data-screen="sv-maturity" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Закрытие вклада</span></div>
+<div class="lt" style="margin-top:6px">Вклад закрывается 14 апреля</div>
+<div class="sub">212 200 ₽ с процентами. Что сделать с деньгами?</div>
+<div class="opt" data-select="mat"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Продлить автоматически</div><div class="os">Ставка пролонгации 10,9% · ещё 6 месяцев</div></div><div class="ov"><b>+11 560 ₽</b><span>за 6 мес</span></div></div>
+<div class="opt sel" data-select="mat"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Новый вклад на 6 месяцев</div><div class="os">12,2% · вы не снимали деньги 6 месяцев, а 100 000 ₽ на накопительном остаются доступны</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+12 940 ₽</b><span>за 6 мес</span></div></div>
+<div class="opt" data-select="mat"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">На накопительный счёт</div><div class="os">11,25% · доступ в любой день</div></div><div class="ov"><b>+11 940 ₽</b><span>за 6 мес</span></div></div>
+<div class="fn" style="padding:0 6px">Если ничего не выбрать, вклад продлится автоматически по ставке 10,9%.</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sv-confirm2">Выбрать: новый вклад</div></div>
+</template>
+
+<template data-screen="sv-confirm2" data-base="sv-maturity">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Подтвердите переоткрытие</div>
+ <div class="kv"><span class="k">Сумма</span><span class="v">212 200 ₽</span></div>
+ <div class="kv"><span class="k">Новый вклад</span><span class="v">6 месяцев · 12,2%</span></div>
+ <div class="kv"><span class="k">Когда</span><span class="v">14 апреля, автоматически</span></div>
+ <div class="kv"><span class="k">Отменить можно</span><span class="v">до 13 апреля</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="sv-done2" data-faceid>Подтвердить</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<template data-screen="sv-done2">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Запланировано</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">14 апреля деньги перейдут в новый вклад автоматически. Напомним за день, отменить можно в один тап.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sv-home">На главный</div></div>
+</template>

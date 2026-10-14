@@ -1,0 +1,77 @@
+<section class="s alt" id="entry">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Точки входа</div><h2 class="t">Помощник везде, где у клиента деньги, а не в отдельном чате</h2><p class="lead">Одна память и одна политика клиента во всех точках. Контекст не теряется между экраном продукта, пушем и диалогом.</p></div>
+  <div class="grid g3">
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-home"/></svg><h3 style="margin-top:10px">Главный экран</h3><p>Карточка помощника как обычный виджет: одна подсказка с цифрой, «Как посчитали?», прогресс цели. Для осторожных: крупный текст и «Ничего не менять».</p><span class="pill nat" style="margin-top:10px">этап 1</span></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-chart"/></svg><h3 style="margin-top:10px">Накопления</h3><p>Для «Старта» подсказка «с чего начать», для «Капитала» портфель: эффективность размещения, структура, лестница вкладов, план действий.</p><span class="pill nat" style="margin-top:10px">этапы 2–3</span></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-safe"/></svg><h3 style="margin-top:10px">Витрина и карточка продукта</h3><p>Запрос в свободной форме рядом с продуктами, genUI-сравнение, предзаполненный экран открытия. В карточке счёта: надбавки и автонакопления как предложения.</p><span class="pill nat" style="margin-top:10px">этап 1</span></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-bell"/></svg><h3 style="margin-top:10px">Пуши и события</h3><p>Закрытие вклада за 7 дней, зарплата, спящий остаток выше резерва, изменение ставок, достижение цели. Каждое событие открывает готовый сценарий, а не чат.</p><span class="pill nat" style="margin-top:10px">этап 2</span></div>
+   <div class="c"><svg class="ic" style="color:var(--ai);width:28px;height:28px"><use href="#i-mic"/></svg><h3 style="margin-top:10px">Ассистент и голос</h3><p>Свободный вопрос текстом или голосом из шапки приложения. Ответ приходит в тот же нативный экран, что и из витрины, с теми же цифрами.</p><span class="pill nat" style="margin-top:10px">этап 1</span></div>
+   <div class="c ai"><svg class="ic" style="color:var(--ai);width:28px;height:28px"><use href="#i-link"/></svg><h3 style="margin-top:10px">Внешний агент через MCP</h3><p>Собственный ассистент клиента читает портфель, получает расчёты банка и предлагает действия. Исполнение только через подтверждение в Сбербанк Онлайн.</p><span class="pill ai" style="margin-top:10px">этап 4</span></div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="arch">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Архитектура</div><h2 class="t">genUI + native: модель собирает экран, приложение его рисует и исполняет</h2><p class="lead">Две технологии живут вместе: генеративная сборка интерфейса из каталога нативных компонентов и детерминированное исполнение в существующих флоу Сбербанк Онлайн.</p></div>
+  <div class="pipe">
+   <div class="p"><span class="k">1 · вход</span><b>Запрос или событие</b><span>Текст, голос, пуш, тап по карточке, запрос внешнего агента</span></div>
+   <div class="p nat"><span class="k">2 · харнес</span><b>Контекст и политики</b><span>Портфель, политика клиента, уровень автономии, инструменты по скоупам</span></div>
+   <div class="p ai"><span class="k">3 · LLM</span><b>Модель рассуждает</b><span>GigaChat по умолчанию; маршрутизация моделей; своя LLM клиента через MCP</span></div>
+   <div class="p ai"><span class="k">4 · genUI</span><b>Схема экрана</b><span>JSON из каталога компонентов: карточка, сравнение, слайдер, график, кнопка</span></div>
+   <div class="p nat"><span class="k">5 · валидатор</span><b>Проверка схемы</b><span>Только разрешённые компоненты и поля, цифры только из инструментов, лимиты длины</span></div>
+   <div class="p nat"><span class="k">6 · SDUI</span><b>Нативный рендер</b><span>Компоненты дизайн-системы банка: доступность, тёмная тема, производительность</span></div>
+   <div class="p nat"><span class="k">7 · исполнение</span><b>Подтверждение</b><span>Существующие флоу открытия и перевода, Face ID, журнал</span></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+   <div class="c ai"><span class="pill ai">genAI</span><h3 style="margin-top:12px">Понимает, собирает, объясняет</h3><p>Разбор запроса в свободной форме, выбор компонентов и их параметров, формулировки «почему», упрощение текста для осторожных, перевод слов клиента в политику автопилота.</p></div>
+   <div class="c"><span class="pill nat">Нативный СБОЛ</span><h3 style="margin-top:12px">Считает, показывает, исполняет</h3><p>Ставки и условия из тарифов, калькулятор дохода, движок ребалансировки, экраны открытия и перевода, подтверждение, журнал. Модель не считает и не придумывает цифры.</p></div>
+   <div class="c"><span class="pill trust">Fallback</span><h3 style="margin-top:12px">Работает и без модели</h3><p>При недоступности LLM и для клиентов, отключивших AI, все сценарии работают на правилах и нативных экранах: подбор по фильтрам, напоминания о сроках, правила L2.</p></div>
+  </div>
+ </div>
+</section>
+
+<section class="s alt" id="engine">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Движок ребалансировки</div><h2 class="t">Максимум дохода при ограничениях клиента, детерминированно</h2><p class="lead">Периметр: вклады, накопительные и текущие счета банка. Движок воспроизводим и объясним, LLM только переводит его выход на язык клиента.</p></div>
+  <div class="grid g3">
+   <div class="c"><h3>Цель</h3><p>Максимизировать ожидаемый чистый доход сбережений клиента на его горизонте. Выход: ранжированный список действий, у каждого выгода в рублях, «почему» одной фразой и «что будет, если не делать».</p></div>
+   <div class="c"><h3>Ограничения</h3><p>Ликвидный резерв; цели и их даты; штрафы за досрочное закрытие (не ломать вклад, если потеря больше выигрыша); условия продуктов и надбавки; налог на процентный доход; список «не трогать»; минимальная выгода; лимит операций.</p></div>
+   <div class="c"><h3>Триггеры</h3><p>Спящий остаток выше резерва; закрытие вклада через 7 дней; изменение ставок; зарплата; достижение цели; новая политика клиента; запрос внешнего агента через MCP.</p></div>
+  </div>
+  <div class="c" style="margin-top:18px" id="calc">
+   <h3>Попробуйте: политика клиента меняет план</h3>
+   <p style="margin-bottom:16px">Пример портфеля «Капитал»: 2 450 000 ₽, из них 400 000 ₽ на карте под 0%, 450 000 ₽ на накопительном под 11,25%, вклады на 1 600 000 ₽, включая 400 000 ₽ под 7,5% с закрытием 15 декабря.</p>
+   <div class="calc">
+    <div class="ctrl">
+     <label><b>Ликвидный резерв на карте: <span id="c-reserve-v">150 000 ₽</span></b><input type="range" id="c-reserve" min="0" max="400000" step="10000" value="150000"></label>
+     <div class="sw"><span>Не трогать вклад ••8708 (7,5%, до 15 декабря)</span><input type="checkbox" id="c-block"></div>
+     <div class="sw"><span>Надбавка за покупки +1,5% на накопительном</span><input type="checkbox" id="c-bonus" checked></div>
+     <label><b>Минимальная выгода предложения</b><select id="c-thr" style="font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)"><option value="0">показывать всё</option><option value="500" selected>от 500 ₽ в месяц</option><option value="2000">от 2 000 ₽ в месяц</option></select></label>
+    </div>
+    <div class="out">
+     <div id="c-acts"></div>
+     <div class="o" style="border:none;align-items:center"><span>Итого выгода</span><span class="tot" id="c-total"></span></div>
+     <div class="o"><span>Эффективность размещения</span><b id="c-eff"></b></div>
+     <div style="font-size:13px;color:var(--ink3);margin-top:6px">До плана</div><div class="alloc" id="c-before"></div>
+     <div style="font-size:13px;color:var(--ink3);margin-top:8px">После плана</div><div class="alloc" id="c-after"></div>
+     <div class="legend"><span><i style="background:var(--c-idle)"></i>На картах, 0%</span><span><i style="background:var(--c-sav)"></i>Накопительные</span><span><i style="background:var(--c-dep)"></i>Вклады</span></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="skills">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Скиллы помощника</div><h2 class="t">Что помощник умеет на каждом этапе</h2></div>
+  <div class="tbl-wrap"><table class="tbl">
+   <tr><th style="width:18%">Этап</th><th style="width:36%">Скиллы</th><th style="width:30%">Данные и инструменты</th><th>Автономия</th></tr>
+   <tr><td><b>Консультант</b><br>2027 · H1</td><td>Объяснить условия простым языком · подобрать продукт под запрос · сравнить варианты с цифрами · рассчитать доход к дате · ответить про надбавки и опции · предзаполнить экран открытия</td><td>Каталог продуктов и ставок, калькулятор дохода, каталог genUI-компонентов v1</td><td>L0–L1</td></tr>
+   <tr><td><b>Планировщик</b><br>2027 · H2</td><td>Анализ доходов и расходов · цели и план накоплений · правила автонакоплений · «спящие деньги» · сценарий закрытия вклада · прогноз остатков на 3 месяца · налог на проценты</td><td>История операций, остатки, цели, автонакопления, события (закрытие, зарплата), внутренний MCP</td><td>L1</td></tr>
+   <tr><td><b>Управляющий</b><br>2028</td><td>Эффективность размещения · ребалансировка по политике · лестница вкладов · переразмещение при закрытии · оптимизация надбавок · еженедельный отчёт · журнал с объяснениями</td><td>Движок ребалансировки, политика клиента, пакетное подтверждение, отложенные действия</td><td>L1–L3</td></tr>
+   <tr><td><b>Открытая платформа</b><br>2029</td><td>Внешний агент клиента через MCP · доверенное лицо · семейные цели · навыки партнёров в харнесе · перенос политики между агентами</td><td>Внешний MCP «Сбережения», OAuth-скоупы, маршрутизация моделей, реестр агентов</td><td>Свой: L0–L3 · внешний: L0–L1</td></tr>
+  </table></div>
+ </div>
+</section>

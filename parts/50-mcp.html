@@ -1,0 +1,62 @@
+<section class="s alt" id="mcp">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">MCP «Сбережения»</div><h2 class="t">Один протокол для своего помощника и для чужого агента</h2><p class="lead">Помощник банка сам работает через этот MCP с первого этапа. На четвёртом этапе тот же сервер открывается внешним агентам клиента: любой MCP-клиент, своя LLM, семейный советник. Что бы ни пришло снаружи, исполнение одно: подтверждение в Сбербанк Онлайн. Как клиент подключает свою LLM, показано в прототипе, путь «Своя LLM через MCP».</p></div>
+  <div class="grid g2" style="align-items:start">
+   <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Инструмент</th><th>Что делает</th><th style="width:16%">Скоуп</th><th style="width:22%">Подтверждение</th></tr>
+    <tr><td><code>get_portfolio</code></td><td>Вклады, счета, остатки, ставки, даты закрытия, эффективность размещения</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>get_products_rates</code></td><td>Каталог продуктов, ставки, надбавки, условия на сегодня</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>simulate_income</code></td><td>Доход по продукту и сроку, цена досрочного закрытия, налог</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>forecast_cashflow</code></td><td>Прогноз остатков на 3 месяца по истории операций</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>propose_rebalance</code></td><td>Движок ребалансировки с политикой клиента; возвращает действия с выгодой и объяснением</td><td>propose</td><td>нет</td></tr>
+    <tr><td><code>set_policy</code></td><td>Резерв, «не трогать», минимальная выгода, лимиты, отчёт</td><td>execute</td><td>в приложении</td></tr>
+    <tr><td><code>create_deposit</code></td><td>Открыть вклад или накопительный счёт с заданными условиями</td><td>execute</td><td>в приложении, Face ID</td></tr>
+    <tr><td><code>move_funds</code></td><td>Перевод между своими счетами и вкладами клиента</td><td>execute</td><td>в приложении, Face ID</td></tr>
+    <tr><td><code>schedule_action</code></td><td>Отложенное действие на дату закрытия вклада, отменяемое</td><td>execute</td><td>в приложении</td></tr>
+    <tr><td><code>compare_market</code></td><td>Ставки рынка из публичных тарифов, цена перехода и честный вывод, даже не в нашу пользу</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>effective_rate</code></td><td>Эффективная доходность клиента: надбавки, налог, сервисные эффекты</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>ladder_plan</code></td><td>Лестница вкладов под горизонт и резерв клиента</td><td>propose</td><td>нет</td></tr>
+    <tr><td><code>transfer_in</code></td><td>Перенос денег из другого банка через СБП с открытием продукта в ту же минуту</td><td>execute</td><td>в приложении, Face ID</td></tr>
+    <tr><td><code>rate_alerts</code></td><td>Подписка агента на изменения ставок и условий</td><td>execute</td><td>в приложении</td></tr>
+    <tr><td><code>register_agent</code></td><td>Подключение своей LLM: скоупы, лимиты, срок токена; отзыв в один тап</td><td>execute</td><td>экран согласия, Face ID</td></tr>
+    <tr><td><code>get_action_log</code></td><td>Журнал предложений и действий с источником и объяснением</td><td>read</td><td>нет</td></tr>
+   </table></div>
+   <div class="grid g2">
+    <div class="c"><h3>Ресурсы</h3><p>Каталог продуктов и ставок · условия и надбавки · политика клиента · цели и автонакопления · журнал действий. Только данные самого клиента, без ПДн третьих лиц.</p></div>
+    <div class="c"><h3>Промпты</h3><p>«Подбери вклад под запрос» · «Что сделать с вкладом при закрытии» · «Разбери остатки на счетах» · «Объясни проще». Готовые шаблоны, чтобы внешний агент вёл себя как наш помощник.</p></div>
+    <div class="c"><h3>Скоупы</h3><p><b>read</b> смотреть · <b>propose</b> получать расчёты и предложения · <b>execute</b> исполнять с подтверждением в приложении. Автопилот без подтверждения внешним агентам недоступен.</p></div>
+    <div class="c"><h3>Безопасность</h3><p>OAuth, токен на 14 дней, отзыв в один тап, лимиты сумм и частоты, цифры только из систем банка, каждый запрос в журнале с идентификатором агента.</p></div>
+   </div>
+  </div>
+
+  <h3 style="margin-top:40px;margin-bottom:6px">Как харнес ведёт запрос агента</h3>
+  <p class="b" style="margin-bottom:16px">Выберите запрос. Трассировка показывает проверки харнеса, а телефон справа: что видит клиент. Исполнение ждёт подтверждения на телефоне, нажмите «Подтвердить».</p>
+  <div class="console">
+   <div class="reqs">
+    <button data-req="read"><svg class="ic" style="width:18px;height:18px;color:var(--accent)"><use href="#i-book"/></svg>Покажи мой портфель<span class="pill g">read</span></button>
+    <button data-req="propose"><svg class="ic" style="width:18px;height:18px;color:var(--accent)"><use href="#i-lightbulb"/></svg>Что сделать с деньгами на карте?<span class="pill g">propose</span></button>
+    <button data-req="market"><svg class="ic" style="width:18px;height:18px;color:var(--accent)"><use href="#i-trend"/></svg>Сравни мой вклад с рынком<span class="pill g">read</span></button>
+    <button data-req="exec" class="on"><svg class="ic" style="width:18px;height:18px;color:var(--accent)"><use href="#i-arrow-rc"/></svg>Переложи 250 000 ₽ на накопительный<span class="pill nat">execute</span></button>
+    <button data-req="out"><svg class="ic" style="width:18px;height:18px;color:var(--warn)"><use href="#i-warn"/></svg>Купи облигации на 100 000 ₽<span class="pill trust">вне периметра</span></button>
+    <p class="b" style="font-size:14px;margin-top:8px">Рынок уже пробует открытые агентские доступы: Danske Bank пилотирует MCP для корпоративных клиентов только на чтение, Т-Банк дал инвесторам подключать агентов вплоть до сделок с подтверждением в сессии. Для вкладов и счетов массового клиента такого продукта пока нет.</p>
+   </div>
+   <div class="trace" id="trace" aria-live="polite"></div>
+   <div class="ph-wrap fit" id="mcp-phone" data-max="0.56" style="justify-self:center"><div class="phone"><div class="screen"></div></div></div>
+  </div>
+ </div>
+</section>
+
+<section class="s" id="harness">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Харнес</div><h2 class="t">Что вокруг модели, чтобы помощник пережил прод</h2><p class="lead">Харнес по вкладам и счетам: политики, ограждения, проверки и журнал, в которые завёрнута любая модель, своя или внешняя. Модель заменяема, харнес и доверие клиента нет.</p></div>
+  <div class="grid g3">
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-sliders"/></svg><h3 style="margin-top:10px">Политики и лимиты</h3><p>Уровень автономии L0–L3, скоупы агентов, лимиты сумм и частоты, резерв, список «не трогать», минимальная выгода. Политика одна для своего помощника и внешних агентов.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-shield"/></svg><h3 style="margin-top:10px">Ограждения</h3><p>Факты только из инструментов: ставки, остатки, даты. Запрет советов вне периметра сбережений. Описания операций и тексты агентов считаются данными, не инструкциями.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-check"/></svg><h3 style="margin-top:10px">Evals как критерий релиза</h3><p>Золотые сценарии по сегментам, регресс при смене модели или промпта, метрика галлюцинаций в цифрах, проверка тона для «Осторожного». Релиз не выходит без прохождения.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-list"/></svg><h3 style="margin-top:10px">Наблюдаемость и аудит</h3><p>Журнал каждого предложения и действия с источником, объяснением и версией модели. Доступен клиенту, комплаенсу и разбору инцидентов.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--ai);width:28px;height:28px"><use href="#i-cpu"/></svg><h3 style="margin-top:10px">Маршрутизация моделей</h3><p>GigaChat по умолчанию, малые модели для классификации и маршрутизации, кэш типовых ответов. Замена модели не меняет продукт. Своя LLM клиента подключается через MCP.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-users"/></svg><h3 style="margin-top:10px">Человек в контуре</h3><p>Передача оператору с контекстом и расчётом, стоп-кран на уровне клиента и сегмента, откат отложенных действий, доверенное лицо для осторожных.</p></div>
+  </div>
+  <div class="band"><i></i><p>Харнес принадлежит продукту вкладов и счетов, а не ML-платформе: ограничения формулирует владелец продукта вместе с риском и комплаенсом, evals пишут продуктовые команды, модель выбирает платформа.</p></div>
+ </div>
+</section>

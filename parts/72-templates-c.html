@@ -1,0 +1,208 @@
+<!-- ===== v2 screens: goal detail, market, transfer, report, voice, BYO-LLM ===== -->
+<template data-screen="st-goal-detail" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Подушка безопасности</span><div class="ibtn" style="background:#1C1C1E"><svg class="ic"><use href="#i-dots"/></svg></div></div>
+<div style="text-align:center;padding:4px 0 0"><div class="ico grn" style="width:84px;height:84px;border-radius:26px;margin:0 auto 12px"><svg class="ic" style="width:40px;height:40px"><use href="#i-umbrella"/></svg></div><div class="money m44"><span data-count="15600"></span> ₽</div><div class="sub">из 60 000 ₽ · 26% · <span data-id="gd-date">к июлю 2027</span></div></div>
+<div class="card"><div class="pb"><i style="width:26%"></i></div><div class="kv"><span class="k">Отложено за 3 месяца</span><span class="v grn">+15 600 ₽</span></div><div class="kv"><span class="k">Доход по счёту</span><span class="v">+312 ₽</span></div><div class="kv"><span class="k">Опережение плана</span><span class="v">1 100 ₽</span></div></div>
+<div class="card"><div class="t2">По неделям</div><div class="wk"><i style="height:35%"></i><i style="height:52%"></i><i style="height:48%"></i><i style="height:70%"></i><i style="height:64%"></i><i style="height:82%"></i><i style="height:78%"></i><i style="height:91%"></i><i style="height:88%"></i><i style="height:97%"></i><i style="height:94%"></i><i class="on" style="height:100%"></i></div><div class="wk-l"><span>август</span><span>сентябрь</span><span>октябрь</span></div></div>
+<div class="card ai" data-sum="goal" style="gap:0">
+ <div style="display:flex;gap:10px;align-items:center;padding-bottom:6px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Ускорить цель</span><span class="sub" style="margin-left:auto">включите и посмотрите дату</span></div>
+ <div class="sw" data-toggle data-months="1"><div><div class="st2">Округлять до 500 ₽</div><div class="ss">+1 100 ₽ в месяц · на месяц раньше</div></div><div class="tg off"></div></div>
+ <div class="sw" data-toggle data-months="2"><div><div class="st2">Бонусы с карты в цель</div><div class="ss">≈ 1 900 ₽ в месяц · на два месяца раньше</div></div><div class="tg off"></div></div>
+ <div class="sw" data-toggle data-months="1"><div><div class="st2">Проценты по счёту в цель</div><div class="ss">Доход не тратится, а копится</div></div><div class="tg off"></div></div>
+</div>
+</template>
+
+<template data-screen="cap-market" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки на рынке</span></div>
+<div class="sub" style="padding:0 4px">Помощник сравнивает честно: голую ставку конкурента с вашей эффективной ставкой и ценой перехода.</div>
+<div class="card"><div class="cmp">
+ <div class="r2"><div class="lab"><span>Другой банк · вклад 6 месяцев</span><b>14,0%</b></div><div class="bar"><i class="oth" style="width:82%"></i></div></div>
+ <div class="r2"><div class="lab"><span>У нас · 12,2% + надбавки + сервис</span><b class="grn">14,9%</b></div><div class="bar"><i class="base" style="width:71.8%"></i><i class="add" style="width:11.8%"></i><i class="svc" style="width:4.1%"></i></div></div>
+ <div class="legend2"><span><i style="background:#21A038"></i>ставка 12,2%</span><span><i style="background:#4CD964"></i>надбавки +2,0%</span><span><i style="background:#8F6BFF"></i>автопилот и лестница +0,7%</span></div>
+</div></div>
+<div class="card"><div class="hl">Что даёт сервис, кроме ставки</div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Надбавка за покупки +1,5% и за зарплату на карту +0,5%: уже в расчёте</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Автопилот не даёт деньгам простаивать между вкладами: ≈ +0,4% в год</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Лестница: доступ к части денег каждые 3 месяца без потери ставки: ≈ +0,3%</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Ваш агент через MCP видит этот расчёт и может проверить его сам</span></div>
+</div>
+<div class="card" style="gap:6px"><div class="hl">Если перенести 400 000 ₽ к конкуренту</div>
+ <div class="kv"><span class="k">Голая ставка выше на 1,8 п.п.</span><span class="v grn">+7 200 ₽ в год</span></div>
+ <div class="kv"><span class="k">Досрочное закрытие ••8708</span><span class="v" style="color:#F0B35B">−3 200 ₽</span></div>
+ <div class="kv"><span class="k">2 дня без дохода при переводе</span><span class="v" style="color:#F0B35B">−160 ₽</span></div>
+ <div class="kv"><span class="k">Наши надбавки и сервис</span><span class="v" style="color:#F0B35B">−10 800 ₽</span></div>
+ <div class="hr"></div>
+ <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 6 960 ₽ больше</span></div>
+ <div class="fn">Честно: если не выполнять условие по покупкам картой (15 000 ₽ в месяц), наша ставка 13,4% и конкурент выгоднее на 2 400 ₽ в год.</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Остаться и включить надбавки</div><div class="btn g" data-go="cap-transfer">Перенести деньги из другого банка</div></div>
+</template>
+
+<template data-screen="cap-transfer" data-base="cap-market">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Перенести из другого банка</div>
+ <div class="kv"><span class="k">Сумма</span><span class="v">500 000 ₽</span></div>
+ <div class="kv"><span class="k">Откуда</span><span class="v">вклад в другом банке, закрывается 20 окт</span></div>
+ <div class="kv"><span class="k">Как</span><span class="v">СБП, без комиссии, за минуту</span></div>
+ <div class="kv"><span class="k">Куда</span><span class="v">вклад 6 мес · 12,2% + надбавки</span></div>
+ <div class="kv"><span class="k">Когда</span><span class="v">20 октября, автоматически</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="cap-tdone" data-faceid>Подтвердить</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<template data-screen="cap-tdone">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Запланировано</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">20 октября деньги придут через СБП, и в ту же минуту откроем вклад под 12,2% с надбавками. Ни дня простоя.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">К плану помощника</div><div class="btn ghost" data-go="cap-sav">К накоплениям</div></div>
+</template>
+
+<template data-screen="cap-report" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Отчёт за неделю</span></div>
+<div class="card ai2"><div class="fl" style="color:#C9B8FF">6–12 октября</div><div class="money m36">+<span data-count="3560"></span> ₽</div><div class="sub" style="color:#D1D1D6">заработали за неделю · эффективность 94%</div></div>
+<div class="card"><div class="t2">Доход по дням</div><div class="wk" style="height:96px"><i style="height:62%"></i><i style="height:64%"></i><i style="height:66%"></i><i style="height:90%"></i><i style="height:92%"></i><i style="height:94%"></i><i class="on" style="height:100%"></i></div><div class="wk-l"><span>пн</span><span>вт</span><span>ср</span><span>чт</span><span>пт</span><span>сб</span><span>вс</span></div><div class="sub">С четверга работают ещё 250 000 ₽: доход в день вырос с 480 до 620 ₽</div></div>
+<div class="card" style="gap:0">
+ <div class="jrn"><div class="jd">чт</div><div><div class="jt">250 000 ₽ → накопительный ••9106</div><div class="js">Подтверждено вами · +2 340 ₽/мес</div></div><div class="jv grn">сделано</div></div>
+ <div class="jrn"><div class="jd">чт</div><div><div class="jt">Надбавка за покупки включена</div><div class="js">Условие: 15 000 ₽ покупок, выполнено 9 400 ₽</div></div><div class="jv">в работе</div></div>
+ <div class="jrn"><div class="jd">15 дек</div><div><div class="jt">Переоткрыть вклад ••8708</div><div class="js">Запланировано · напомним 14 декабря</div></div><div class="jv mut">ждёт</div></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Следующая неделя: делать ничего не нужно. Автопилот следит за ставками и закрытием ••8708.</div></div></div>
+</template>
+
+<template data-screen="care-voice" data-cls="care">
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Спросить голосом</span></div>
+<div class="mic-big"><svg class="ic"><use href="#i-mic"/></svg></div>
+<div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+<div class="big-tx" style="text-align:center;color:#D1D1D6;padding:0 10px">«Куда лучше положить сто двадцать тысяч?»</div>
+<div class="card" data-reveal="1300"><div class="big-ok">На накопительный счёт</div><div class="big-tx mut">Будут приносить около 1 100 ₽ в месяц. Деньги остаются доступны в любой день. Переложить?</div><div class="btn big" data-go="care-confirm">Да, переложить</div><div class="btn g big" data-back>Нет</div></div>
+</template>
+
+<!-- BYO-LLM -->
+<template data-screen="byo-settings" data-scroll>
+<div class="nav-t"><div class="back" data-go="cap-home"><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Агенты и MCP</span></div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ai-dot lg"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><div class="rt">Помощник банка</div><div class="rs">Встроенный · автопилот L3 · отчёт по понедельникам</div></div><span class="badge up" style="margin-left:auto">Активен</span></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-cpu"/></svg></div><div><div class="rt">Мой ассистент</div><div class="rs">Не подключён</div></div><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div>
+</div>
+<div class="card ai"><div class="hl">Подключите свою LLM</div><div class="sub" style="color:#D1D1D6">Claude, ChatGPT, GigaChat или своя модель будут видеть ваши сбережения и предлагать действия через MCP банка. Исполнение только с вашим подтверждением.</div><div class="btn" data-go="byo-pick">Подключить</div></div>
+<div class="card sm"><div class="fn">MCP: открытый протокол, через который ассистент получает данные и инструменты банка по вашему разрешению. Пароль и карта агенту не передаются.</div></div>
+</template>
+
+<template data-screen="byo-pick" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Свой ассистент</span></div>
+<div class="lt" style="margin-top:6px">Какой ассистент подключить?</div>
+<div class="pick on" data-select="llm"><div class="lg" style="background:#2F2A3A;color:#F2C9A8">C</div><div><div class="pt">Claude</div><div class="ps">MCP-клиент: Desktop, Code, мобильное приложение</div></div><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div></div>
+<div class="pick" data-select="llm"><div class="lg" style="background:#1F2D2A;color:#9BE2C3">G</div><div><div class="pt">ChatGPT</div><div class="ps">Коннектор MCP в настройках</div></div><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div></div>
+<div class="pick" data-select="llm"><div class="lg" style="background:#2B1F5A;color:#C9B8FF">Gi</div><div><div class="pt">GigaChat</div><div class="ps">Тот же протокол, та же кнопка подтверждения</div></div><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div></div>
+<div class="pick" data-select="llm"><div class="lg" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-cpu"/></svg></div><div><div class="pt">Своя модель</div><div class="ps">Любой MCP-клиент или собственный агент</div></div><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div></div>
+<div class="pick" data-select="llm"><div class="lg" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="pt">Локальная LLM</div><div class="ps">Модель на вашем компьютере, данные не уходят в облако</div></div><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="byo-scopes">Дальше</div></div>
+</template>
+
+<template data-screen="byo-scopes" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Доступ</span></div>
+<div class="lt" style="margin-top:6px">Что разрешить ассистенту</div>
+<div class="card" style="gap:0">
+ <div class="scope" data-toggle><div class="ico"><svg class="ic"><use href="#i-book"/></svg></div><div><div class="st2">Смотреть</div><div class="ss">Портфель, ставки, даты закрытия, история операций</div></div><div class="tg"></div></div>
+ <div class="scope" data-toggle><div class="ico"><svg class="ic"><use href="#i-lightbulb"/></svg></div><div><div class="st2">Предлагать</div><div class="ss">Расчёты движком банка: доход, цена перехода, план ребалансировки</div></div><div class="tg"></div></div>
+ <div class="scope" data-toggle><div class="ico"><svg class="ic"><use href="#i-faceid"/></svg></div><div><div class="st2">Исполнять с подтверждением</div><div class="ss">Каждое действие через Face ID в этом приложении</div></div><div class="tg off"></div></div>
+ <div class="scope" data-toggle data-locked><div class="ico" style="opacity:.5"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="st2 mut">Автопилот без подтверждения</div><div class="ss">Недоступно внешним агентам</div></div><div class="tg off"></div></div>
+</div>
+<div class="card"><div class="hl">Ограничения по умолчанию</div><div class="chips"><span class="chip d">до 300 000 ₽ за операцию</span><span class="chip d">3 операции в неделю</span><span class="chip d">доступ 14 дней</span><span class="chip d">только мои счета</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="byo-consent">Продолжить</div></div>
+</template>
+
+<template data-screen="byo-consent" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Согласие</span></div>
+<div class="consent-ico"><div class="lg" style="background:#2F2A3A;color:#F2C9A8">C</div><div class="lnk"></div><div class="lg" style="background:#15301E;color:#4CD964"><svg class="ic" style="width:34px;height:34px"><use href="#i-safe"/></svg></div></div>
+<div class="t1" style="text-align:center;padding:0 8px">Разрешить «Мой ассистент» доступ к вашим сбережениям?</div>
+<div class="card">
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Смотреть портфель, ставки и историю операций</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Получать расчёты движка банка и предлагать действия</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Исполнять только после вашего подтверждения Face ID в приложении</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Доступ 14 дней, отзыв в любой момент, все запросы в журнале</span></div>
+</div>
+<div class="fn" style="text-align:center;padding:0 10px">Агент никогда не получает пароль или данные карты, только токен с выбранными правами.</div>
+<div class="cta-wrap nt"><div class="btn" data-go="byo-done" data-faceid>Разрешить</div><div class="btn g" data-back>Отмена</div></div>
+</template>
+
+<template data-screen="byo-done" data-scroll>
+<div class="done-ic" style="margin-top:14px"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Подключено</div>
+<div class="sub" style="text-align:center;padding:0 14px">Добавьте сервер в своём ассистенте: Настройки → Коннекторы → MCP. Отсканируйте код или скопируйте адрес.</div>
+<div class="qr"></div>
+<div class="endpoint">mcp.bank.example/savings<svg class="ic"><use href="#i-link"/></svg></div>
+<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Права</span><span class="v">смотреть · предлагать</span></div><div class="kv"><span class="k">Действует до</span><span class="v">28 октября</span></div><div class="kv"><span class="k">Отозвать</span><span class="v vio">в один тап</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="byo-chat">Проверить связь</div><div class="btn ghost" data-go="ext-access">Доступ агентов</div></div>
+</template>
+
+<template data-screen="byo-chat" data-cls="light">
+<div class="xchat">
+ <div class="xh"><div class="ai-dot lg" style="background:linear-gradient(135deg,#6C47FF,#2B1F5A)"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><b>Мой ассистент</b><div class="sub">MCP «Сбережения» · подключено</div></div></div>
+ <div class="me">Сравни мой вклад с рынком. Стоит ли переносить деньги в другой банк?</div>
+ <div class="bot"><div class="tools"><span class="tool"><svg class="ic"><use href="#i-check"/></svg>get_portfolio</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>compare_market</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>effective_rate</span></div>
+  <div>Другой банк даёт <b>14,0%</b>. У вас 12,2% плюс надбавки, итого <b>14,9%</b> эффективных. Переносить не стоит: при переходе потеряете 3 200 ₽ процентов и два дня дохода.</div>
+  <div>Чтобы эффективная ставка держалась, нужно включить надбавку за покупки. Сделать это? Банк попросит подтверждение в своём приложении.</div>
+  <div class="xbtn" data-go="byo-confirm">Да, включить надбавку</div><div class="xbtn l">Покажи расчёт</div></div>
+ <div class="inp">Сообщение…<svg class="ic"><use href="#i-mic"/></svg></div>
+</div>
+</template>
+
+<template data-screen="byo-confirm" data-base="cap-home">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="t2">Запрос от «Мой ассистент»</span></div>
+ <div class="kv"><span class="k">Действие</span><span class="v">включить надбавку за покупки</span></div>
+ <div class="kv"><span class="k">Условие</span><span class="v">15 000 ₽ покупок картой в месяц</span></div>
+ <div class="kv"><span class="k">Эффект</span><span class="v grn">+1,5% к ставке накопительного</span></div>
+ <div class="kv"><span class="k">Проверки харнеса</span><span class="v">периметр ✓ · политика ✓ · лимиты ✓</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="byo-finish" data-faceid>Подтвердить</div>
+ <div class="btn g" data-back>Отклонить</div>
+</div>
+</template>
+
+<template data-screen="byo-finish">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Готово</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Надбавка включена. Агент получил результат через MCP и продолжит следить за ставками. Всё, что он делает, видно в журнале.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="ext-access">Доступ агентов</div></div>
+</template>
+
+<!-- segment screens: cautious mode across money stages -->
+<template data-screen="seg-start-care" data-tab="home" data-bg="home" data-cls="care" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-phone"/></svg></div></div>
+<div style="text-align:center;padding:26px 0 18px"><div class="sub" style="font-size:18px">На карте</div><div class="money m44"><span data-count="7215"></span><span class="kop">,40</span> ₽</div></div>
+<div class="card">
+ <div class="big-ok">Можно откладывать 5 000 ₽ в месяц</div>
+ <div class="big-tx mut">Доходы стабильны три месяца, к зарплате остаётся в среднем 6 800 ₽. Отложим на подушку безопасности?</div>
+ <div class="btn" data-go="st-goal">Начать копить</div>
+ <div class="btn g">Не сейчас</div>
+ <div style="display:flex;gap:10px;justify-content:center;margin-top:4px"><span class="chip d" data-go="st-how"><svg class="ic"><use href="#i-info"/></svg>Как посчитали</span><span class="chip d" data-go="care-human"><svg class="ic"><use href="#i-phone"/></svg>Позвонить</span></div>
+</div>
+<div class="card ok"><div style="display:flex;gap:12px;align-items:center"><svg class="ic grn" style="width:30px;height:30px"><use href="#i-shield"/></svg><div class="bd" style="font-size:19px">Деньги двигаются только после вашего подтверждения</div></div></div>
+</template>
+
+<template data-screen="seg-cap-care" data-tab="home" data-bg="home" data-cls="care" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-phone"/></svg></div></div>
+<div style="text-align:center;padding:26px 0 18px"><div class="sub" style="font-size:18px">Все сбережения</div><div class="money m44"><span data-count="2450000"></span> ₽</div></div>
+<div class="card">
+ <div class="big-ok">67% ваших денег работают по ставке</div>
+ <div class="big-tx mut">400 000 ₽ лежат на карте без дохода. Если переложить 250 000 ₽ на накопительный счёт, доход вырастет на 2 340 ₽ в месяц. Резерв 150 000 ₽ останется на карте.</div>
+ <div class="btn" data-go="cap-plan">Показать, что сделать</div>
+ <div class="btn g">Ничего не менять</div>
+ <div style="display:flex;gap:10px;justify-content:center;margin-top:4px"><span class="chip d" data-go="care-voice"><svg class="ic"><use href="#i-mic"/></svg>Спросить голосом</span><span class="chip d" data-go="care-human"><svg class="ic"><use href="#i-phone"/></svg>Позвонить</span></div>
+</div>
+<div class="card" style="flex-direction:row;align-items:center;gap:14px"><div class="ico grn"><svg class="ic"><use href="#i-users"/></svg></div><div><div class="rt">Доверенное лицо</div><div class="rs" style="font-size:16px">Дочь видит подсказки и может помочь решить</div></div><div class="tg" style="margin-left:auto"></div></div>
+</template>

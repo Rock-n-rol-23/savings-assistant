@@ -1,0 +1,47 @@
+<section class="s" id="edge">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Сервис сильнее ставки</div><h2 class="t">Как выигрывать, когда у конкурента ставка выше</h2><p class="lead">Агент клиента найдёт лучшую голую ставку за секунду: это неизбежно. Ответ не в том, чтобы её прятать, а в том, чтобы у нас сравнивали эффективную доходность и цену перехода, причём честно, чтобы агенту клиента было выгодно работать через наш MCP, а не в обход.</p></div>
+  <div class="edge">
+   <div class="c" id="edge-calc">
+    <h3>Попробуйте: эффективная ставка против голой</h3>
+    <p style="margin-bottom:14px">Наша базовая ставка 12,2%. Передвиньте ставку конкурента и включите условия: надбавки существуют в продукте уже сегодня, сервисные эффекты оценены как эквивалент годовой доходности.</p>
+    <div class="calc" style="grid-template-columns:minmax(0,1fr)">
+     <div class="ctrl">
+      <label><b>Ставка конкурента: <span id="e-comp-v">14,0%</span></b><input type="range" id="e-comp" min="10" max="16" step="0.1" value="14"></label>
+      <div class="sw"><span>Надбавка за покупки картой: +1,5%</span><input type="checkbox" id="e-bonus" checked></div>
+      <div class="sw"><span>Зарплата на карту банка: +0,5%</span><input type="checkbox" id="e-salary" checked></div>
+      <div class="sw"><span>Бонусы экосистемы в цель: +0,8% (пример)</span><input type="checkbox" id="e-eco"></div>
+      <div class="sw"><span>Автопилот: деньги не простаивают между вкладами: ≈ +0,4%</span><input type="checkbox" id="e-auto" checked></div>
+      <div class="sw"><span>Лестница: доступ без потери ставки: ≈ +0,3%</span><input type="checkbox" id="e-ladder"></div>
+      <div class="sw"><span>У конкурента: переход в середине срока вклада: −0,9%</span><input type="checkbox" id="e-mid" checked></div>
+      <div class="sw"><span>У конкурента: два дня без дохода при переводе: −0,07%</span><input type="checkbox" id="e-gap" checked></div>
+     </div>
+     <div class="out">
+      <div class="o" style="border:none"><span>У нас, эффективная</span><b class="tot" id="e-ours" style="font-size:30px"></b></div><div class="stack" id="e-bar-ours"></div>
+      <div class="o" style="border:none;margin-top:8px"><span>У конкурента после затрат на переход</span><b class="tot" id="e-theirs" style="font-size:30px;color:var(--ink2)"></b></div><div class="stack" id="e-bar-theirs"></div>
+      <div class="legend"><span><i style="background:var(--accent)"></i>база</span><span><i style="background:#5BD67E"></i>надбавки</span><span><i style="background:var(--ai)"></i>сервис</span><span><i style="background:#8C9A92"></i>конкурент</span><span><i style="background:var(--warn)"></i>потери при переходе</span></div>
+      <div class="verdict" id="e-verdict" style="margin-top:10px"></div>
+      <p class="b" id="e-money" style="font-size:14.5px"></p>
+     </div>
+    </div>
+   </div>
+   <div class="col">
+    <div class="c"><h3>Три правила игры против голой ставки</h3><div class="list" style="margin-top:12px">
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Считать честно и первыми.</b> Помощник сам показывает ставку конкурента и цену перехода. Если конкурент выгоднее, он это говорит. Клиент, которому один раз сказали правду, не уходит из-за 0,3 п.п.</span></div>
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Продавать эффективную доходность, а не ставку.</b> Надбавки за поведение, которое выгодно банку, сервисные эффекты и отсутствие простоев складываются в цифру, с которой голой ставке трудно спорить.</span></div>
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Сделать переход к нам дешевле, чем от нас.</b> Перенос денег из другого банка через СБП с открытием вклада в ту же минуту, через свой помощник или через агента клиента по MCP.</span></div>
+    </div></div>
+    <div class="c ai"><h3>Чем MCP «Сбережения» лучше голой витрины ставок</h3><p>Агент клиента получает не таблицу ставок, а инструменты: эффективную ставку с учётом его поведения, цену перехода, прогноз остатков, лестницу, перенос через СБП и журнал. Агрегатору ставок нечего этому противопоставить: у него нет ни данных клиента, ни права действовать.</p></div>
+   </div>
+  </div>
+  <h3 style="margin:36px 0 12px">Сервисные инструменты MCP, которых нет у агрегаторов и большинства банков</h3>
+  <div class="svc-list">
+   <div class="c"><b><code>effective_rate</code></b><p>Эффективная доходность клиента с надбавками, налогом и сервисными эффектами, а не ставка из рекламы.</p></div>
+   <div class="c"><b><code>compare_market</code></b><p>Честное сравнение с рынком: голая ставка конкурента, цена перехода, вывод, даже если он не в нашу пользу.</p></div>
+   <div class="c"><b><code>transfer_in</code></b><p>Перенос денег из другого банка через СБП с открытием продукта в ту же минуту. Исполнение с подтверждением в приложении.</p></div>
+   <div class="c"><b><code>ladder_plan</code></b><p>Лестница вкладов под горизонт и резерв клиента: доступ к деньгам без потери ставки.</p></div>
+   <div class="c"><b><code>rate_alerts</code></b><p>Подписка агента на изменения ставок и условий: событие приходит агенту, решение остаётся за клиентом.</p></div>
+   <div class="c"><b><code>register_agent</code></b><p>Подключение своей LLM с OAuth-скоупами, лимитами и сроком; отзыв в один тап; журнал всех запросов.</p></div>
+  </div>
+ </div>
+</section>

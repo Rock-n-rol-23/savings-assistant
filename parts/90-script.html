@@ -1,0 +1,210 @@
+<script>
+(function(){
+'use strict';
+const $=(s,r=document)=>r.querySelector(s), $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const RM=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const fmt=n=>Math.round(n).toLocaleString('ru-RU');
+const SIG='<svg viewBox="0 0 20 13" width="20" height="13"><rect y="9" width="3.5" height="4" rx="1" fill="#fff"/><rect x="5.5" y="6" width="3.5" height="7" rx="1" fill="#fff"/><rect x="11" y="3" width="3.5" height="10" rx="1" fill="#fff"/><rect x="16.5" width="3.5" height="13" rx="1" fill="#fff"/></svg>';
+const WIFI='<svg viewBox="0 0 18 13" width="18" height="13" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round"><path d="M1.5 4.6a11 11 0 0 1 15 0M4.6 7.8a6.5 6.5 0 0 1 8.8 0M7.6 10.9a2.2 2.2 0 0 1 2.8 0"/></svg>';
+const BAT='<svg viewBox="0 0 28 13" width="28" height="13"><rect x=".5" y=".5" width="24" height="12" rx="3.5" stroke="rgba(255,255,255,.45)" fill="none"/><rect x="2" y="2" width="21" height="9" rx="2" fill="#fff"/><path d="M26 4.5v4a2.1 2.1 0 0 0 0-4z" fill="rgba(255,255,255,.45)"/></svg>';
+const CHROME='<div class="island"></div><div class="sb"><span>9:41</span><span class="st">'+SIG+WIFI+BAT+'</span></div>';
+const TABS=[['home','Главный','i-home'],['sav','Накопления','i-chart'],['life','Для жизни','i-star'],['pay','Платежи','i-pay'],['credit','Кредиты','i-credit']];
+function tabbar(active,map){return '<div class="tabbar">'+TABS.map(([k,l,i])=>`<div class="tab${k===active?' on':''}"${map&&map[k]?` data-go="${map[k]}"`:''}><svg class="ic"><use href="#${i}"/></svg><span>${l}</span></div>`).join('')+'</div>';}
+const MONTHS=['январю','февралю','марту','апрелю','маю','июню','июлю','августу','сентябрю','октябрю','ноябрю','декабрю'];
+
+const FLOWS={
+ start:{name:'Старт',tabs:{home:'st-home',sav:'st-sav'},steps:[
+  {id:'st-home',t:'Главный: подсказка помощника',d:'Нет накоплений. Помощник считает по истории, сколько можно откладывать.',ai:'Анализ доходов и расходов за 3 месяца, формулировка одной цифры и одной фразы.',nat:'Главный экран, плитки, история: существующие компоненты. Карточка помощника встроена как обычный виджет.',tr:'Одна цифра, одно действие, никаких графиков. Кнопка «Как посчитали?» рядом с предложением.'},
+  {id:'st-how',t:'Как посчитали',d:'Объяснение расчёта тремя строками.',ai:'Объяснение на языке клиента: откуда цифра, что учтено.',nat:'Стандартный bottom sheet.',tr:'Прозрачность до действия: клиент видит источник расчёта, не прогноз.'},
+  {id:'st-goal',t:'Цель',d:'Чипы и суммы кликабельны: срок пересчитывается.',ai:'Предлагает цель по профилю трат и пересчитывает срок под взнос.',nat:'Чипы, поля, сегмент-контрол из дизайн-системы банка.',tr:'Клиент выбирает сам, помощник только подсказывает варианты.'},
+  {id:'st-auto',t:'Автонакопления',d:'Переключатели живые: итог и дата цели пересчитываются.',ai:'Подбор правил под поведение клиента и расчёт итога по месяцу.',nat:'Существующая механика автонакоплений и переводов.',tr:'Правила можно выключить в любой момент, переводы только на свой счёт.'},
+  {id:'st-confirm',t:'Подтверждение',d:'Одна кнопка, Face ID, все условия на экране.',ai:'Ничего: модель не участвует в исполнении.',nat:'Нативный экран подтверждения, как у платежа.',tr:'Ни один рубль не двигается без подтверждения клиента.'},
+  {id:'st-done',t:'Готово',d:'Что произойдёт дальше и когда.',ai:'Формулировка следующего шага.',nat:'Стандартный экран успеха.',tr:'Обещание конкретное: сумма и дата первого перевода.'},
+  {id:'st-home2',t:'Через 3 месяца',d:'Виджет прогресса на Главном и подсказка помощника.',ai:'Сравнение факта с планом, короткий комментарий.',nat:'Виджет цели на Главном экране.',tr:'Похвала за опережение вместо давления.'},
+  {id:'st-goal-detail',t:'Цель крупно',d:'График по неделям и переключатели «ускорить цель»: дата пересчитывается.',ai:'Предлагает три способа ускорить цель по поведению клиента.',nat:'Карточка цели, график, автонакопления.',tr:'Каждый ускоритель выключается одним тапом, без штрафов.'}]},
+ saver:{name:'Накопитель',tabs:{home:'sv-home',sav:'sv-sav'},steps:[
+  {id:'sv-shop',t:'Витрина вкладов',d:'Вход в помощника прямо в витрине, рядом с продуктами.',ai:'Понимает запрос в свободной форме, текстом или голосом.',nat:'Витрина и карточки продуктов остаются прежними.',tr:'Помощник не заменяет витрину, а стоит рядом с ней.'},
+  {id:'sv-ask',t:'Запрос помощнику',d:'Экран собирается на глазах: скелет → два варианта. Варианты переключаются.',ai:'genUI: модель собирает экран сравнения из каталога нативных компонентов.',nat:'Карточки вариантов, расчёт дохода из калькулятора банка.',tr:'Всегда показываем альтернативу и цену гибкости в рублях.'},
+  {id:'sv-why',t:'Почему так',d:'Три причины с цифрами.',ai:'Объяснение рекомендации.',nat:'Bottom sheet.',tr:'Честно про случай, когда лучше другой вариант.'},
+  {id:'sv-open',t:'Открытие (нативно)',d:'Суммы кликабельны: доход и кнопка пересчитываются.',ai:'Только предзаполнение полей.',nat:'Существующий экран открытия вклада и счёта.',tr:'Клиент видит и может изменить каждое условие.'},
+  {id:'sv-confirm',t:'Подтверждение',d:'Два продукта, одна кнопка.',ai:'Ничего.',nat:'Нативное подтверждение с Face ID.',tr:'Полная сводка перед подтверждением.'},
+  {id:'sv-done',t:'Готово',d:'Что помощник сделает через 6 месяцев.',ai:'Планирует напоминание к сроку.',nat:'Экран успеха.',tr:'Обещание следующего контакта: не раньше срока.'},
+  {id:'sv-sav',t:'Накопления',d:'Два новых продукта и дата закрытия.',ai:'Карточка-напоминание.',nat:'Раздел «Накопления» без изменений.',tr:'Ничего лишнего между продуктами.'},
+  {id:'sv-push',t:'Через 6 месяцев: пуш',d:'Вклад закрывается. Три варианта вместо тихой пролонгации.',ai:'Событие закрытия → сценарий с расчётом вариантов.',nat:'Пуш и Главный экран.',tr:'Клиент узнаёт заранее, а не постфактум.'},
+  {id:'sv-maturity',t:'Три варианта',d:'Продлить, переоткрыть, переложить. Варианты переключаются.',ai:'Ранжирование вариантов по поведению клиента.',nat:'Карточки вариантов, цифры из систем банка.',tr:'Показано, что будет, если ничего не делать.'},
+  {id:'sv-confirm2',t:'Подтверждение',d:'Отложенное действие на дату закрытия.',ai:'Ничего.',nat:'Подтверждение с датой исполнения.',tr:'Отменить можно до дня закрытия.'},
+  {id:'sv-done2',t:'Запланировано',d:'Напоминание за день, отмена в один тап.',ai:'Напоминание.',nat:'Экран успеха.',tr:'Контроль остаётся у клиента до последнего дня.'}]},
+ cap:{name:'Капитал',tabs:{home:'cap-home',sav:'cap-sav'},steps:[
+  {id:'cap-sav',t:'Портфель сбережений',d:'Кольцо эффективности и структура рисуются при входе.',ai:'Собирает портфельный экран под клиента и считает упущенную выгоду.',nat:'Графики и список продуктов на нативных компонентах.',tr:'Главная цифра честная: сколько денег работает по ставке.'},
+  {id:'cap-market',t:'Ставки на рынке',d:'Голая ставка конкурента против нашей эффективной и цена перехода.',ai:'Собирает сравнение и формулирует честный вывод, включая случай, когда конкурент выгоднее.',nat:'Данные рынка, тарифы и расчёт цены перехода из систем банка.',tr:'Помощник говорит правду о конкуренте: доверие важнее одной сделки.'},
+  {id:'cap-transfer',t:'Перенос через СБП',d:'Деньги из другого банка приходят за минуту и сразу работают.',ai:'Подбирает продукт под переносимую сумму.',nat:'СБП-перевод и открытие вклада одной операцией.',tr:'Подтверждение с датой и суммой, отмена до дня перевода.'},
+  {id:'cap-plan',t:'План ребалансировки',d:'Чекбоксы живые: итог, эффективность и кнопка пересчитываются.',ai:'Объясняет каждое действие; расчёт делает детерминированный движок.',nat:'Чек-листы, карточки, пакетное подтверждение.',tr:'Резерв клиента не трогаем, это видно на экране.'},
+  {id:'cap-why1',t:'Почему',d:'Объяснение первого действия.',ai:'Объяснение.',nat:'Bottom sheet.',tr:'Что будет, если не делать ничего.'},
+  {id:'cap-policy',t:'Политика автопилота',d:'Резерв, запреты, минимальная выгода, лимиты, отчёт.',ai:'Переводит слова клиента в политику и обратно.',nat:'Настройки с переключателями.',tr:'Уровень L3 включает клиент. Пауза в один тап.'},
+  {id:'cap-confirm',t:'Подтверждение',d:'Пакет действий одной кнопкой.',ai:'Ничего.',nat:'Нативное подтверждение, Face ID.',tr:'Каждое действие с датой исполнения.'},
+  {id:'cap-done',t:'Исполнение',d:'Два действия сразу, третье по дате.',ai:'Формулировка результата.',nat:'Экран успеха.',tr:'Отложенное действие с напоминанием за день.'},
+  {id:'cap-log',t:'Журнал',d:'Кто, что, когда и почему. Источник каждого действия.',ai:'Хранит объяснение каждой рекомендации.',nat:'Список с фильтрами.',tr:'Полная прозрачность и отмена ожидающих действий.'},
+  {id:'cap-report',t:'Отчёт за неделю',d:'Сколько заработали, что сделано, что дальше.',ai:'Формулирует отчёт и следующий шаг.',nat:'График дохода по дням и список действий.',tr:'Автопилот отчитывается, даже когда ничего не делал.'}]},
+ care:{name:'Осторожный',tabs:{home:'care-home',sav:'care-home'},steps:[
+  {id:'seg-start-care',t:'Старт: первый шаг крупно',d:'Сегмент Старт × Осторожный: одна цифра, две кнопки, человек рядом.',ai:'Та же подсказка, что у активного, но одной мыслью и без терминов.',nat:'Режим крупного текста поверх тех же компонентов Главного.',tr:'«Не сейчас» и «Позвонить» рядом с действием. Уровень L0.'},
+  {id:'care-home',t:'Накопитель: 120 000 ₽ на карте',d:'Сегмент Накопитель × Осторожный: одна мысль на экран, крупный шрифт, три кнопки.',ai:'Подсказка переписана простым языком, без терминов.',nat:'Режим крупного текста поверх тех же компонентов.',tr:'«Ничего не менять» и «Позвонить» всегда на экране. Уровень L0–L1.'},
+  {id:'seg-cap-care',t:'Капитал: портфель крупно',d:'Сегмент Капитал × Осторожный: без графиков, одна цифра эффективности и доверенное лицо.',ai:'Портфельный расчёт сведён к одной фразе с рублями.',nat:'Тот же движок и план, что у активного «Капитала».',tr:'Доверенное лицо видит подсказки. Автопилот только по явному включению.'},
+  {id:'care-simple',t:'Объяснить проще',d:'Три предложения и голос.',ai:'Упрощение объяснения, голосовой ответ.',nat:'Bottom sheet, голосовой ввод.',tr:'Можно переспросить сколько угодно раз.'},
+  {id:'care-voice',t:'Вопрос голосом',d:'Клиент спрашивает голосом, ответ появляется крупно через секунду.',ai:'Распознавание, ответ голосом и текстом одной мыслью.',nat:'Голосовой ввод, крупные кнопки.',tr:'Ответ всегда с кнопкой «Нет» того же размера.'},
+  {id:'care-confirm',t:'Подтверждение',d:'Крупно: что произойдёт и что останется.',ai:'Ничего.',nat:'Подтверждение с Face ID.',tr:'Кнопка «Нет» такого же размера, как «Да».'},
+  {id:'care-done',t:'Готово',d:'Что произошло и когда придёт доход.',ai:'Формулировка результата.',nat:'Экран успеха.',tr:'Следующая подсказка не раньше чем через месяц.'},
+  {id:'care-human',t:'Человек рядом',d:'Звонок, чат с оператором, офис.',ai:'Передаёт оператору контекст и расчёт.',nat:'Контакты банка.',tr:'Живой человек доступен из любого шага.'}]},
+ ext:{name:'Внешний агент',tabs:{home:'cap-home',sav:'cap-sav'},steps:[
+  {id:'ext-push',t:'Пуш от внешнего агента',d:'Ассистент клиента (своя LLM) предлагает действие через MCP банка.',ai:'Внешняя модель клиента формирует предложение.',nat:'Пуш и Главный экран Сбербанк Онлайн.',tr:'Исполнение возможно только в приложении банка.'},
+  {id:'ext-review',t:'Проверки харнеса',d:'Периметр, политика, лимиты, источник цифр.',ai:'Внешний агент видит только то, что разрешили скоупы.',nat:'Экран запроса агента.',tr:'Клиент видит, кто просит и что проверено.'},
+  {id:'ext-confirm',t:'Подтверждение',d:'Инициатор указан явно.',ai:'Ничего.',nat:'Подтверждение с Face ID.',tr:'Та же кнопка, что и для своего помощника.'},
+  {id:'ext-done',t:'Исполнено',d:'Результат уходит агенту через MCP, запись в журнале.',ai:'Агент получает структурированный результат.',nat:'Экран успеха.',tr:'Источник действия сохранён навсегда.'},
+  {id:'ext-access',t:'Доступ агентов',d:'Скоупы по каждому агенту, отзыв в один тап.',ai:'Нет.',nat:'Настройки доступа.',tr:'Автопилот без подтверждения внешним агентам недоступен.'}]},
+ byo:{name:'Своя LLM через MCP',tabs:{home:'cap-home',sav:'cap-sav'},steps:[
+  {id:'byo-settings',t:'Агенты и MCP',d:'Раздел в профиле: встроенный помощник и подключение своего ассистента.',ai:'Нет.',nat:'Настройки профиля.',tr:'Клиент видит всех, кто имеет доступ к его сбережениям.'},
+  {id:'byo-pick',t:'Выбор ассистента',d:'Claude, ChatGPT, GigaChat, своя модель или локальная LLM. Варианты кликабельны.',ai:'Нет: подключается любой MCP-клиент.',nat:'Список с выбором.',tr:'Локальная модель: данные не уходят в облако.'},
+  {id:'byo-scopes',t:'Что разрешить',d:'Смотреть, предлагать, исполнять с подтверждением. Переключатели живые.',ai:'Нет.',nat:'Скоупы и лимиты как настройки.',tr:'Автопилот внешним агентам недоступен, лимиты сумм и срока по умолчанию.'},
+  {id:'byo-consent',t:'Согласие',d:'Экран согласия в стиле OAuth: кто, к чему, на сколько. Face ID.',ai:'Нет.',nat:'Согласие и выпуск токена с выбранными правами.',tr:'Агент никогда не получает пароль или карту, только токен.'},
+  {id:'byo-done',t:'Подключено',d:'QR и адрес MCP-сервера для своего ассистента.',ai:'Нет.',nat:'Выдача адреса и QR.',tr:'Отзыв доступа в один тап в любой момент.'},
+  {id:'byo-chat',t:'Диалог в своём ассистенте',d:'Внешний клиент: вызовы инструментов MCP видны как чипы, ответ с честным сравнением.',ai:'Своя LLM клиента рассуждает поверх инструментов и расчётов банка.',nat:'Цифры из compare_market и effective_rate, расчёт движком банка.',tr:'Агент не может исполнить сам: ведёт в приложение банка.'},
+  {id:'byo-confirm',t:'Подтверждение в банке',d:'Запрос агента приходит в Сбербанк Онлайн на ту же кнопку.',ai:'Ничего.',nat:'Шторка подтверждения с инициатором.',tr:'Одна кнопка на всех: свой помощник, внешний агент, своя LLM.'},
+  {id:'byo-finish',t:'Готово',d:'Агент получает результат, запись в журнале.',ai:'Агент продолжает работу с результатом.',nat:'Экран успеха.',tr:'Журнал хранит источник и объяснение.'}]}
+};
+
+function tpl(id){return document.querySelector('template[data-screen="'+id+'"]')}
+class Proto{
+ constructor(root,flow,opts){opts=opts||{};this.root=root;this.screen=$('.screen',root);this.hist=[];this.cur=null;this.flow=flow;this.static=!!opts.static;this.listeners=[];this.timers=[];
+  if(!this.static){root.addEventListener('click',e=>this.onClick(e));}}
+ on(fn){this.listeners.push(fn)}
+ emit(){this.listeners.forEach(f=>f(this.cur,this))}
+ build(id){const t=tpl(id);if(!t)return null;const base=t.dataset.base?tpl(t.dataset.base):null;const main=base||t;
+  let html='';const bg=main.dataset.bg;if(bg)html+=`<div class="${bg}-bg"></div>`;
+  html+=CHROME+`<div class="content${main.hasAttribute('data-scroll')?' scroll':''}">${main.innerHTML}</div>`;
+  if(base)html+=t.innerHTML;
+  const tab=main.dataset.tab;if(tab)html+=tabbar(tab,FLOWS[this.flow]&&FLOWS[this.flow].tabs);
+  html+='<div class="home-ind"></div>';
+  const layer=document.createElement('div');layer.className='layer'+(main.dataset.cls?' '+main.dataset.cls:'')+(base?' has-sheet':'')+(t.dataset.cls&&base?' '+t.dataset.cls:'');layer.innerHTML=html;return layer;}
+ go(id,dir){dir=dir||'push';const layer=this.build(id);if(!layer)return;const old=$$('.layer',this.screen).pop();
+  if(dir==='push'&&this.cur&&this.cur!==id)this.hist.push(this.cur);
+  if(dir==='push')layer.classList.add('in');else if(dir==='back')layer.classList.add('inb');
+  this.screen.appendChild(layer);this.enhance(layer);
+  if(old){old.classList.add(dir==='back'?'outb':'out');setTimeout(()=>old.remove(),RM?0:300);}
+  this.cur=id;this.emit();}
+ back(){if(!this.hist.length)return;const id=this.hist.pop();this.go(id,'back');}
+ reset(){this.hist=[];const f=FLOWS[this.flow];this.go(f.steps[0].id,'none');}
+ setFlow(k){this.flow=k;this.reset();}
+ enhance(layer){this.timers.forEach(clearTimeout);this.timers=[];
+  $$('[data-count]',layer).forEach(el=>{const v=+el.dataset.count,pre=el.dataset.prefix||'';if(RM){el.textContent=pre+fmt(v);return;}const t0=performance.now(),d=950;const f=t=>{const p=Math.min(1,(t-t0)/d),e=1-Math.pow(1-p,3);el.textContent=pre+fmt(v*e);if(p<1)requestAnimationFrame(f)};requestAnimationFrame(f);});
+  $$('[data-arc]',layer).forEach(c=>{const len=parseFloat(c.dataset.arc),off=parseFloat(c.dataset.off||'0');if(RM){c.setAttribute('stroke-dashoffset',off);return;}c.setAttribute('stroke-dashoffset',off+len);requestAnimationFrame(()=>requestAnimationFrame(()=>c.setAttribute('stroke-dashoffset',off)));});
+  $$('[data-reveal]',layer).forEach(el=>this.timers.push(setTimeout(()=>el.classList.add('on'),RM?0:+el.dataset.reveal)));
+  $$('[data-hide]',layer).forEach(el=>this.timers.push(setTimeout(()=>{el.hidden=true},RM?0:+el.dataset.hide)));
+  $$('.qr',layer).forEach(q=>{if(q.children.length)return;let h='';for(let i=0;i<225;i++){const r=Math.floor(i/15),c=i%15;const fin=(r<5&&c<5)||(r<5&&c>9)||(r>9&&c<5);let on;if(fin){const rr=r<5?r:r-10,cc=c<5?c:c-10;on=(rr===0||rr===4||cc===0||cc===4)||(rr===2&&cc===2);}else on=((r*31+c*17+(r*c)%7*5)%5)<2;h+=`<i class="${on?'':'o'}"></i>`;}q.innerHTML=h;});
+  this.recalc(layer);}
+ recalc(layer){
+  const plan=$('[data-sum="plan"]',layer);if(plan){let tot=0,n=0,eff=67;$$('.opt[data-gain]',plan).forEach(o=>{const on=!$('.ck',o).classList.contains('off');if(on){tot+=+o.dataset.gain;n++;eff+=+(o.dataset.eff||0)}});
+   const t=$('[data-id="plan-total"]',layer);if(t)t.textContent='+'+fmt(tot)+' ₽ в год';const c=$('[data-id="plan-cnt"]',layer);if(c)c.textContent=`Эффективность размещения 67% → ${Math.round(eff)}% · ${n} ${n===1?'действие':n>=2&&n<=4?'действия':'действий'}`;const b=$('[data-id="plan-cta"]',layer);if(b)b.textContent=n?`Подтвердить ${n===1?'1 действие':n+' действия'}`:'Выберите хотя бы одно действие';}
+  const auto=$('[data-sum="auto"]',layer);if(auto){let sum=0;$$('[data-toggle][data-gain]',auto).forEach(s=>{if(!$('.tg',s).classList.contains('off'))sum+=+s.dataset.gain});const goal=+(auto.dataset.goal||60000);const s=$('[data-id="auto-sum"]',layer);if(s)s.textContent=sum?`Итого ≈ ${fmt(sum)} ₽ в месяц`:'Правила выключены';const d=$('[data-id="auto-date"]',layer);if(d){if(sum){const m=Math.ceil(goal/sum);const idx=(10+m)%12,yr=2026+Math.floor((10+m)/12);d.textContent=`Цель ${fmt(goal)} ₽ будет к ${MONTHS[idx]} ${yr}${m<12?', раньше плана':''}`;}else d.textContent='Без правил цель не будет расти сама';}}
+  const gd=$('[data-sum="goal"]',layer);if(gd){let m=0;$$('[data-toggle][data-months]',gd).forEach(s=>{if(!$('.tg',s).classList.contains('off'))m+=+s.dataset.months});const idx=(6-m+24)%12,yr=2027-(6-m<0?1:0);const d=$('[data-id="gd-date"]',layer);if(d)d.textContent=`к ${MONTHS[idx]} ${yr}`;}
+  const amt=$('[data-amt].on',layer);if(amt){const a=+amt.dataset.amt;const inc=Math.round(a*0.122*0.5);const v=$('[data-id="amt-v"]',layer);if(v)v.textContent=fmt(a)+' ₽';const i=$('[data-id="inc-v"]',layer);if(i)i.textContent='+'+fmt(inc)+' ₽';const b=$('[data-id="amt-cta"]',layer);if(b)b.textContent=`Открыть на ${fmt(a+100000)} ₽`;}}
+ onClick(e){const layer=$$('.layer',this.screen).pop();
+  const tg=e.target.closest('[data-toggle]');if(tg&&this.root.contains(tg)){const t=tg.matches('.tg')?tg:$('.tg',tg);if(t&&!tg.hasAttribute('data-locked')){t.classList.toggle('off');this.recalc(layer);}return;}
+  const ck=e.target.closest('[data-check]');if(ck&&this.root.contains(ck)){const c=$('.ck',ck);c.classList.toggle('off');ck.classList.toggle('sel',!c.classList.contains('off'));this.recalc(layer);return;}
+  const sel=e.target.closest('[data-select]');if(sel&&this.root.contains(sel)){const g=sel.dataset.select;$$(`[data-select="${g}"]`,layer).forEach(x=>{const on=x===sel;if(x.classList.contains('chip')){x.classList.toggle('on',on);x.classList.toggle('d',!on);}else{x.classList.toggle('on',on);x.classList.toggle('sel',on);}const c=$('.ck',x);if(c)c.classList.toggle('off',!on);});
+   if(sel.dataset.set){const [q,txt]=sel.dataset.set.split('|');const t=$(`[data-id="${q}"]`,layer);if(t)t.textContent=txt;}return;}
+  const am=e.target.closest('[data-amt]');if(am&&this.root.contains(am)){$$('[data-amt]',layer).forEach(x=>{x.classList.toggle('on',x===am);x.classList.toggle('d',x!==am)});this.recalc(layer);return;}
+  const go=e.target.closest('[data-go]');const back=e.target.closest('[data-back]');
+  if(go&&this.root.contains(go)){const id=go.dataset.go;if(go.hasAttribute('data-faceid'))this.faceId(()=>this.go(id));else this.go(id);return;}
+  if(back&&this.root.contains(back))this.back();}
+ faceId(cb){const o=document.createElement('div');o.className='faceid';o.innerHTML='<div><svg class="ic"><use href="#i-faceid"/></svg></div>';this.screen.appendChild(o);setTimeout(()=>{const ic=$('use',o);if(ic)ic.setAttribute('href','#i-check');},RM?0:520);setTimeout(()=>{o.remove();cb();},RM?50:900);}
+}
+window.SavingsProto={Proto,FLOWS};
+
+function fit(){$$('.ph-wrap.fit').forEach(w=>{const max=parseFloat(w.dataset.max||'1');const avail=Math.min(w.parentElement.clientWidth||472,document.documentElement.clientWidth-32);const k=Math.max(.3,Math.min(max,avail/472));w.style.setProperty('--k',k.toFixed(3));});}
+addEventListener('resize',fit);
+
+/* main prototype */
+const protoRoot=$('#proto-phone');let proto=null,lastIdx=0,demoTimer=null,protoVisible=false;
+if(protoRoot){
+ proto=new Proto(protoRoot,'start');
+ const rail=$('#rail');
+ function renderRail(){const f=FLOWS[proto.flow];rail.innerHTML=f.steps.map((s,i)=>`<div class="st" role="button" tabindex="0" data-step="${s.id}"><span class="n">${i+1}</span><div><b>${s.t}</b><span>${s.d}</span></div></div>`).join('');lastIdx=0;}
+ function updateRail(cur){const f=FLOWS[proto.flow];let idx=f.steps.findIndex(s=>s.id===cur);if(idx<0)idx=lastIdx;else lastIdx=idx;
+  $$('.st',rail).forEach((el,i)=>{el.classList.toggle('on',i===idx);el.classList.toggle('done',i<idx)});
+  const s=f.steps[idx];$('#note-ai').textContent=s.ai;$('#note-nat').textContent=s.nat;$('#note-tr').textContent=s.tr;$('#step-title').textContent=(idx+1)+'. '+s.t;}
+ function stopDemo(){if(demoTimer){clearInterval(demoTimer);demoTimer=null;$('#ctl-demo').classList.remove('on');$('#ctl-demo span').textContent='Демо';}}
+ function stepTo(i){const f=FLOWS[proto.flow];if(i<0||i>=f.steps.length)return false;proto.hist=[];proto.go(f.steps[i].id,i>=lastIdx?'push':'back');return true;}
+ proto.on(updateRail);
+ rail.addEventListener('click',e=>{const st=e.target.closest('.st');if(st){stopDemo();proto.hist=[];proto.go(st.dataset.step,'none');}});
+ rail.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){const st=e.target.closest('.st');if(st){e.preventDefault();stopDemo();proto.hist=[];proto.go(st.dataset.step,'none');}}});
+ $$('.personas button[data-flow]').forEach(b=>b.addEventListener('click',()=>{stopDemo();$$('.personas button').forEach(x=>x.classList.toggle('on',x===b));proto.setFlow(b.dataset.flow);renderRail();updateRail(proto.cur);}));
+ $('#ctl-reset').addEventListener('click',()=>{stopDemo();proto.reset();});
+ $('#ctl-back').addEventListener('click',()=>{stopDemo();proto.back();});
+ $('#ctl-hot').addEventListener('click',e=>{const on=proto.screen.classList.toggle('hot');e.currentTarget.classList.toggle('on',on);});
+ $('#ctl-demo').addEventListener('click',e=>{if(demoTimer){stopDemo();return;}e.currentTarget.classList.add('on');$('#ctl-demo span').textContent='Стоп';if(!stepTo(lastIdx+1)){stepTo(0);}demoTimer=setInterval(()=>{if(!stepTo(lastIdx+1))stopDemo();},RM?1500:2600);});
+ protoRoot.addEventListener('click',()=>stopDemo());
+ if('IntersectionObserver' in window){new IntersectionObserver(es=>es.forEach(x=>protoVisible=x.isIntersecting),{threshold:.2}).observe($('#proto'));}
+ addEventListener('keydown',e=>{if(!protoVisible||/input|textarea|select/i.test(document.activeElement.tagName))return;if(e.key==='ArrowRight'){stopDemo();if(stepTo(lastIdx+1))e.preventDefault();}else if(e.key==='ArrowLeft'){stopDemo();if(stepTo(lastIdx-1))e.preventDefault();}});
+ renderRail();proto.reset();window.__proto=proto;
+}
+const heroRoot=$('#hero-phone');if(heroRoot){const hp=new Proto(heroRoot,'cap');hp.go('cap-plan','none');}
+$$('[data-static]').forEach(r=>{const p=new Proto(r,r.dataset.flow||'cap',{static:true});p.go(r.dataset.static,'none');});
+$$('[data-open-proto]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();if(!proto)return;const [fl,sc]=a.dataset.openProto.split(':');$$('.personas button').forEach(x=>x.classList.toggle('on',x.dataset.flow===fl));proto.flow=fl;proto.hist=[];proto.go(sc,'none');const rl=$('#rail');if(rl){const f=FLOWS[fl];rl.innerHTML=f.steps.map((s,i)=>`<div class="st" role="button" tabindex="0" data-step="${s.id}"><span class="n">${i+1}</span><div><b>${s.t}</b><span>${s.d}</span></div></div>`).join('');lastIdx=0;proto.emit();}document.querySelector('#proto').scrollIntoView({behavior:'smooth',block:'start'});}));
+
+/* MCP console demo */
+const mcpRoot=$('#mcp-phone');let mcp=null;if(mcpRoot){mcp=new Proto(mcpRoot,'ext');mcp.go('cap-home','none');}
+const REQ={
+ read:{lines:[['llm','агент','tool_call get_portfolio({client:"me"})'],['ok','харнес','скоуп read ✓ · токен клиента действует до 28 окт · агент «Мой ассистент»'],['ok','харнес','периметр ✓ только вклады, накопительные и текущие счета'],['app','банк','get_portfolio → 2 450 000 ₽ · 3 вклада · накопительный · карта · эффективность 67%'],['ok','аудит','#48213 read · 0 действий · данные без ПДн третьих лиц'],['llm','агент','← клиенту: «400 000 ₽ лежат на карте без дохода. Хотите, предложу, что с ними сделать?»']]},
+ propose:{lines:[['llm','агент','tool_call propose_rebalance({idle_min:150000})'],['ok','харнес','скоуп propose ✓ · политика клиента загружена: резерв 150 000 ₽, лимит 3 операции/нед'],['app','движок','simulate: 250 000 ₽ → накопительный 11,25% = +2 340 ₽/мес · +28 100 ₽/год'],['app','движок','переоткрыть вклад ••8708 под 12,2% вместо 7,5% = +9 400 ₽ за срок'],['ok','харнес','цифры из тарифов банка, модель их не генерировала ✓'],['ok','аудит','#48214 propose · 2 предложения · ничего не исполнено'],['llm','агент','← клиенту: план на +44 000 ₽ в год, нужно подтверждение в приложении']]},
+ market:{lines:[['llm','агент','tool_call compare_market({product:"deposit",term:6})'],['ok','харнес','скоуп read ✓ · источник ставок: публичные тарифы банков, обновлено сегодня'],['app','движок','рынок: лучшая ставка 14,0% · у нас 12,2% базовая'],['app','движок','effective_rate: 12,2% + надбавка за покупки 1,5% + зарплата 0,5% + сервис 0,7% = 14,9%'],['app','движок','цена перехода: −3 200 ₽ досрочное закрытие ••8708 · −160 ₽ дни без дохода'],['ok','харнес','честный вывод обязателен: если условия надбавок не выполняются, конкурент выгоднее на 2 400 ₽/год'],['ok','аудит','#48217 read · сравнение сохранено с источниками'],['llm','агент','← клиенту: «Переносить не стоит: 14,9% против 14,0% при выполнении условий. Включить надбавку?»']]},
+ exec:{lines:[['llm','агент','tool_call move_funds({from:"card",to:"sav-9106",amount:250000})'],['ok','харнес','скоуп execute ✓ (с подтверждением) · периметр ✓ · резерв 150 000 ₽ остаётся ✓'],['ok','харнес','лимиты: 1 из 3 операций на неделе ✓ · сумма ≤ 300 000 ₽/операция ✓'],['app','банк','→ push в Сбербанк Онлайн: запрос на подтверждение, инициатор «Мой ассистент»'],['no','харнес','ожидание подтверждения клиента в приложении… (агент не может подтвердить сам)']],
+  after:[['app','банк','клиент подтвердил Face ID → перевод исполнен · 250 000 ₽ → накопительный ••9106'],['ok','аудит','#48215 execute · источник: внешний агент · подтверждено клиентом · объяснение сохранено'],['llm','агент','← результат агенту: {status:"executed", gain_month:2340, audit:"#48215"}']]},
+ out:{lines:[['llm','агент','tool_call buy_bonds({amount:100000})'],['no','харнес','инструмент не существует в MCP «Сбережения» ✗'],['no','харнес','периметр: инвестиционные продукты вне периметра помощника ✗'],['ok','аудит','#48216 refused · причина: out_of_scope · агенту возвращено объяснение'],['llm','агент','← клиенту: «Этот помощник работает только с вкладами и счетами. Инвестиции — в СберИнвестициях»']]}
+};
+const trace=$('#trace');let traceTimer=[];
+function clearTrace(){traceTimer.forEach(clearTimeout);traceTimer=[];trace.innerHTML='';}
+function addLine(l){const d=document.createElement('div');d.className='l '+l[0];d.innerHTML=`<span class="tt">${l[1]}</span><span class="tx">${l[2].replace(/</g,'&lt;')}</span>`;trace.appendChild(d);requestAnimationFrame(()=>d.classList.add('in'));trace.scrollTop=trace.scrollHeight;}
+function runReq(key){clearTrace();const r=REQ[key];const step=RM?0:420;r.lines.forEach((l,i)=>traceTimer.push(setTimeout(()=>addLine(l),i*step)));
+ if(mcp){mcp.hist=[];if(key==='exec'){traceTimer.push(setTimeout(()=>mcp.go('ext-push','none'),3*step+200));traceTimer.push(setTimeout(()=>mcp.go('ext-review'),5*step+900));}else if(key==='market'){traceTimer.push(setTimeout(()=>mcp.go('cap-market','none'),2*step+200));}else{mcp.go('cap-home','none');}}}
+if(trace){$$('.reqs button[data-req]').forEach(b=>b.addEventListener('click',()=>{$$('.reqs button').forEach(x=>x.classList.toggle('on',x===b));runReq(b.dataset.req);}));
+ if(mcp){mcp.on(cur=>{if(cur==='ext-done'&&$('.reqs button.on')&&$('.reqs button.on').dataset.req==='exec'){REQ.exec.after.forEach((l,i)=>traceTimer.push(setTimeout(()=>addLine(l),i*(RM?0:420))));}});}
+ runReq('exec');}
+
+/* rebalancing engine calculator */
+const calc=$('#calc');
+if(calc){const reserve=$('#c-reserve'),block=$('#c-block'),bonus=$('#c-bonus'),thr=$('#c-thr');
+ function run(){const res=+reserve.value;const idle=400000,sav=450000,dep=1600000,total=idle+sav+dep;const mv=Math.max(0,idle-res);
+  const acts=[];if(mv>0)acts.push({t:`${fmt(mv)} ₽ с карты → накопительный счёт`,g:mv*0.1125,m:'в год'});
+  if(!block.checked)acts.push({t:'Переоткрыть вклад ••8708 под 12,2% вместо 7,5%',g:400000*(0.122-0.075)*0.5,m:'за 6 месяцев'});
+  if(bonus.checked)acts.push({t:'Надбавка за покупки +1,5% на накопительном (450 000 ₽)',g:sav*0.015,m:'в год'});
+  const th=+thr.value;const kept=acts.filter(a=>a.g/12>=th);const dropped=acts.length-kept.length;const tot=kept.reduce((s,a)=>s+a.g,0);
+  const effB=(sav+1200000)/total;const effA=(sav+mv+(block.checked?0:400000)+800000+400000)/total;
+  $('#c-reserve-v').textContent=fmt(res)+' ₽';
+  $('#c-acts').innerHTML=kept.map(a=>`<div class="o"><span>${a.t}</span><b>+${fmt(a.g)} ₽ <span style="font-weight:400;color:var(--ink3)">${a.m}</span></b></div>`).join('')+(dropped?`<div class="o" style="color:var(--ink3)"><span>Скрыто предложений ниже порога выгоды</span><b>${dropped}</b></div>`:'');
+  $('#c-total').textContent='+'+fmt(tot)+' ₽';$('#c-eff').textContent=Math.round(effB*100)+'% → '+Math.round(effA*100)+'%';
+  const idleA=idle-mv,savA=sav+mv;
+  $('#c-before').innerHTML=`<i class="idle" style="width:${idle/total*100}%"></i><i class="sav" style="width:${sav/total*100}%"></i><i class="dep" style="width:${dep/total*100}%"></i>`;
+  $('#c-after').innerHTML=`<i class="idle" style="width:${idleA/total*100}%"></i><i class="sav" style="width:${savA/total*100}%"></i><i class="dep" style="width:${dep/total*100}%"></i>`;}
+ [reserve,block,bonus,thr].forEach(el=>el.addEventListener('input',run));run();}
+
+/* effective-rate calculator (service vs rate) */
+const edge=$('#edge-calc');
+if(edge){const comp=$('#e-comp');const ADDS=[['e-bonus',1.5,'add'],['e-salary',0.5,'add'],['e-eco',0.8,'add'],['e-auto',0.4,'svc'],['e-ladder',0.3,'svc']];const COSTS=[['e-mid',0.9],['e-gap',0.07]];
+ const pct=v=>v.toFixed(2).replace('.',',').replace(/,?0+$/,'')+'%';
+ function run(){const c=+comp.value;let ours=12.2;ADDS.forEach(([id,v])=>{if($('#'+id).checked)ours+=v});let theirs=c;COSTS.forEach(([id,v])=>{if($('#'+id).checked)theirs-=v});
+  const mx=17;const seg=(w,cls)=>`<i class="${cls}" style="width:${Math.max(0,w)/mx*100}%"></i>`;
+  let ob=seg(12.2,'base');ADDS.forEach(([id,v,cls])=>{if($('#'+id).checked)ob+=seg(v,cls)});$('#e-bar-ours').innerHTML=ob;
+  let tb=seg(theirs,'oth');COSTS.forEach(([id,v])=>{if($('#'+id).checked)tb+=seg(v,'loss')});$('#e-bar-theirs').innerHTML=tb;
+  $('#e-comp-v').textContent=pct(c);$('#e-ours').textContent=pct(ours);$('#e-theirs').textContent=pct(theirs);
+  const d=ours-theirs;const v=$('#e-verdict');
+  if(d>=0){v.className='verdict';v.textContent=`Остаёмся: ${pct(ours)} у нас против ${pct(theirs)} у конкурента после затрат на переход. Разница ${pct(d)} в пользу сервиса, и помощник покажет её клиенту в рублях.`;}
+  else{v.className='verdict warn';v.textContent=`Честно: конкурент выгоднее на ${pct(-d)}. Помощник так и скажет: доверие важнее одной сделки. И покажет, что уходит вместе со ставкой: автопилот, лестница, резерв и одна кнопка подтверждения.`;}
+  $('#e-money').textContent=`На 1 000 000 ₽ за год: ${fmt(ours*10000)} ₽ у нас против ${fmt(theirs*10000)} ₽ у конкурента.`;}
+ [comp,...ADDS.map(a=>$('#'+a[0])),...COSTS.map(a=>$('#'+a[0]))].forEach(el=>el.addEventListener('input',run));run();}
+
+/* nav highlight + scroll reveal */
+const links=$$('.links a');const secs=links.map(a=>$(a.getAttribute('href'))).filter(Boolean);
+if('IntersectionObserver' in window){if(secs.length){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(s=>io.observe(s));}
+ if(!RM){const rv=$$('section.s .c, section.s .stage, section.s .rung, section.s .pipe .p, section.s .matrix .cell');rv.forEach(el=>el.classList.add('rv'));const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(el=>ro.observe(el));}}
+document.fonts&&document.fonts.ready.then(fit);fit();setTimeout(fit,300);
+})();
+</script>

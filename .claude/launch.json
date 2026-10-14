@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "deck",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["-m", "http.server", "8791", "--bind", "127.0.0.1", "--directory", "/Users/sergeyshtarkov/Projects/deposit-assistant-strategy"],
+      "port": 8791
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+<section class="s" id="proto">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Кликабельный прототип</div><h2 class="t">Клиентские пути в Сбербанк Онлайн</h2><p class="lead">Выберите сегмент и пройдите путь: нажимайте кнопки на телефоне или шаги справа. Переключатели, чекбоксы и суммы живые: итоги пересчитываются. Каждое движение денег заканчивается одним и тем же нативным экраном подтверждения с Face ID, и это верно для своего помощника, внешнего агента и вашей собственной LLM.</p></div>
+  <div class="personas" role="tablist">
+   <button class="on" data-flow="start"><i></i>Старт: нет накоплений</button>
+   <button data-flow="saver"><i></i>Накопитель: есть сумма</button>
+   <button data-flow="cap"><i></i>Капитал: портфель вкладов</button>
+   <button data-flow="care"><i></i>Осторожный: низкое доверие, 60+</button>
+   <button data-flow="ext"><i></i>Внешний агент через MCP</button>
+   <button data-flow="byo"><i></i>Своя LLM через MCP</button>
+  </div>
+  <div class="proto">
+   <div class="stage-wrap">
+    <div class="ph-wrap fit" id="proto-phone" data-max="0.92"><div class="phone"><div class="screen"></div></div></div>
+    <div class="ctl"><button id="ctl-demo" class="demo"><svg class="ic" style="width:16px;height:16px"><use href="#i-play"/></svg><span>Демо</span></button><button id="ctl-back"><svg class="ic" style="width:16px;height:16px"><use href="#i-chev-l"/></svg>Назад</button><button id="ctl-reset"><svg class="ic" style="width:16px;height:16px"><use href="#i-repeat"/></svg>Сначала</button><button id="ctl-hot"><svg class="ic" style="width:16px;height:16px"><use href="#i-target"/></svg>Кликабельные зоны</button></div>
+    <div class="hint">Экраны прокручиваются внутри телефона, таббар работает. Стрелки ← → листают шаги, «Демо» проходит путь сам.</div>
+   </div>
+   <div>
+    <h3 id="step-title" style="margin-bottom:10px">1. Шаг</h3>
+    <div class="rail" id="rail"></div>
+    <div class="notes">
+     <div class="note"><span class="pill ai">genAI</span><p id="note-ai"></p></div>
+     <div class="note"><span class="pill nat">Нативный Сбербанк Онлайн</span><p id="note-nat"></p></div>
+     <div class="note"><span class="pill trust">Доверие</span><p id="note-tr"></p></div>
+    </div>
+   </div>
+  </div>
+ </div>
+</section>
