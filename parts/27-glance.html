@@ -1,6 +1,6 @@
 <section class="s alt" id="glance">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Дизайн для тех, кто не читает</div><h2 class="t">Экран должен работать, даже если прочитали только цифру и кнопку</h2><p class="lead">Большинство клиентов не изучают условия и не хотят думать о сбережениях. Поэтому у каждого экрана помощника есть слой взгляда: одна цифра, одна фраза, одна кнопка. Всё остальное доступно по тапу, но не обязательно. Восемь правил ниже применены ко всем путям прототипа, а два экрана показаны «было и стало».</p></div>
+  <div class="hd"><div class="eyebrow">Дизайн для тех, кто не читает</div><h2 class="t">Экран должен работать, даже если прочитали только цифру и кнопку</h2><p class="lead">Большинство клиентов не изучают условия и не хотят думать о сбережениях. Поэтому у каждого экрана помощника есть слой взгляда: одна цифра, одна фраза, одна кнопка. Всё остальное доступно по тапу, но не обязательно. Восемь правил ниже применены ко всем путям прототипа, а на четырёх экранах под ними видно, как они работают.</p></div>
   <div class="grid g4">
    <div class="c"><div class="num">1</div><h3>Цифра крупнее текста</h3><p>Сначала результат в рублях, потом одна строка смысла. «5 000 ₽ в месяц», а не абзац про доходы и расходы.</p></div>
    <div class="c"><div class="num">2</div><h3>Три тапа до результата</h3><p>Увидел, понял, подтвердил. Путь «Старт» сокращён с четырёх экранов до трёх: цель, сумма и правила на одном экране с готовыми значениями.</p></div>
@@ -11,16 +11,13 @@
    <div class="c"><div class="num">7</div><h3>Подробности по тапу</h3><p>Разбор цифр, условия и сравнение живут в шторке «Как посчитали?». На экране остаётся вывод и кнопка.</p></div>
    <div class="c"><div class="num">8</div><h3>Один ритуал подтверждения</h3><p>Шторка с крупной суммой, «откуда → куда», эффектом в рублях и Face ID одинакова для всех путей и для внешних агентов.</p></div>
   </div>
-  <h3 style="margin:44px 0 14px">Было и стало</h3>
-  <div class="ba">
-   <div class="c">
-    <div class="pair"><div><span class="lab">Было</span><div class="ph-wrap" style="--k:.4" data-static="was-st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div></div><div><span class="lab ok">Стало</span><div class="ph-wrap" style="--k:.4" data-static="st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div></div></div>
-    <p><b>Главный, сегмент «Старт».</b> Было: предложение абзацем, цифра внутри текста, два объяснения подряд. Стало: «5 000 ₽ в месяц» крупно, одна строка смысла, две кнопки. Чтобы принять решение, достаточно прочитать четыре слова. Дальше один экран плана вместо двух и шторка подтверждения.</p>
-   </div>
-   <div class="c">
-    <div class="pair"><div><span class="lab">Было</span><div class="ph-wrap" style="--k:.4" data-static="was-cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div></div><div><span class="lab ok">Стало</span><div class="ph-wrap" style="--k:.4" data-static="cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div></div></div>
-    <p><b>Ставки на рынке, сегмент «Капитал».</b> Было: два графика, список из четырёх пунктов и таблица из шести строк на одном экране. Стало: вывод первой строкой «Остаться выгоднее на 6 960 ₽ в год», два столбика, кнопка. Таблица и честная оговорка про конкурента переехали в «Как посчитали?» и никуда не делись.</p>
-   </div>
+  <h3 style="margin:44px 0 4px">Новый дизайн на четырёх экранах</h3>
+  <p class="b" style="margin-bottom:14px">Цифра, строка смысла, кнопка. Всё остальное по тапу. Каждый экран открывается в прототипе, цифры на нём живые.</p>
+  <div class="phones" style="margin-top:0;justify-content:center">
+   <div><div class="ph-wrap" style="--k:.42" data-static="st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Главный, «Старт»</b>«5 000 ₽ в месяц» крупно, одна строка смысла, две кнопки. Чтобы решить, достаточно прочитать четыре слова</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="st-plan" data-flow="start"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>План одним экраном</b>Цель, сумма и правила уже выбраны. Итог и дата пересчитываются, менять ничего не обязательно</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="sv-maturity" data-flow="saver"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Закрытие вклада</b>Лучший вариант первый и отмечен, кнопка с выгодой. Рядом «Решу позже, напомните»</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Ставки на рынке</b>Не ставка против ставки, а рубли за год по всем деньгам. Вывод первой строкой, таблица в шторке «Как посчитали?»</div></div>
   </div>
   <div class="grid g2" style="margin-top:22px;align-items:start">
    <div class="c"><h3>Три тапа до результата</h3><p style="margin-bottom:12px">Сколько раз нужно нажать от первого экрана до подтверждения, если ничего не менять. Face ID не считаем. Проверяется в прототипе: кнопка «Демо» идёт тем же путём.</p>

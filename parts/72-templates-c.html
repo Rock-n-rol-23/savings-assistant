@@ -14,15 +14,21 @@
 
 <template data-screen="cap-market" data-scroll>
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки на рынке</span></div>
-<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод помощника</div><div class="big-ok">Остаться выгоднее на 6 960 ₽ в год</div><div class="bd mut">Если включить +1,5% за покупки картой. Без этого конкурент выгоднее на 2 400 ₽, и мы это скажем.</div></div>
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод помощника</div><div class="big-ok">С помощником на 54 110 ₽ в год больше</div><div class="bd mut">Даже при 14% у конкурента против наших 12,2%. Ставка там выше на один вклад, а утечки у вас на все деньги.</div></div>
 <div class="card"><div class="cmp">
- <div class="r2"><div class="lab"><span>У нас, с надбавками и сервисом</span><b class="grn">14,9%</b></div><div class="bar"><i class="base" style="width:71.8%"></i><i class="add" style="width:11.8%"></i><i class="svc" style="width:4.1%"></i></div></div>
- <div class="r2"><div class="lab"><span>Другой банк, вклад 6 месяцев</span><b>14,0%</b></div><div class="bar"><i class="oth" style="width:82%"></i></div></div>
- <div class="legend2"><span><i style="background:#21A038"></i>ставка 12,2%</span><span><i style="background:#4CD964"></i>надбавки +2,0%</span><span><i style="background:#8F6BFF"></i>автопилот +0,7%</span></div>
+ <div class="r2"><div class="lab"><span>Перенести вклады под 14%, после цены перехода</span><b>+25 440 ₽</b></div><div class="bar"><i class="oth" style="width:32%"></i></div></div>
+ <div class="r2"><div class="lab"><span>Остаться и закрыть утечки</span><b class="grn">+79 550 ₽</b></div><div class="bar"><i class="base" style="width:56.6%"></i><i class="add" style="width:23.6%"></i><i class="svc" style="width:19.8%"></i></div></div>
+ <div class="legend2"><span><i style="background:#21A038"></i>спящие деньги 45 000</span><span><i style="background:#4CD964"></i>продление 18 800</span><span><i style="background:#8F6BFF"></i>простои, условия, налог 15 750</span></div>
 </div></div>
+<div class="card" style="gap:6px"><div class="hl">Что закроет помощник за год</div>
+ <div class="kv"><span class="k">400 000 ₽ с карты на счёт</span><span class="v grn">+45 000 ₽</span></div>
+ <div class="kv"><span class="k">Вклад не продлится под 7,5%</span><span class="v grn">+18 800 ₽</span></div>
+ <div class="kv"><span class="k">Без простоев и сгоревших процентов</span><span class="v grn">+9 600 ₽</span></div>
+ <div class="kv"><span class="k">Условие надбавки и налог</span><span class="v grn">+6 150 ₽</span></div>
+</div>
 <div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="cap-market-how"><svg class="ic"><use href="#i-info"/></svg>Как посчитали?</span></div>
-<div class="fnl">Ставки конкурентов из публичных тарифов, обновлено сегодня</div>
-<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Остаться и включить +1,5%</div><div class="btn g" data-go="cap-transfer">Перенести к нам из другого банка</div></div>
+<div class="fnl">Честно: если все деньги уже работают и вы не пропускаете закрытия, конкурент выгоднее на 25 440 ₽ в год</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Закрыть утечки: план на неделю</div><div class="btn g" data-go="cap-transfer">Перенести к нам из другого банка</div></div>
 </template>
 
 <template data-screen="cap-transfer" data-base="cap-market">
@@ -135,11 +141,11 @@
 <template data-screen="byo-chat" data-cls="light">
 <div class="xchat">
  <div class="xh"><div class="ai-dot lg" style="background:linear-gradient(135deg,#6C47FF,#2B1F5A)"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><b>Мой ассистент</b><div class="sub">MCP «Сбережения» · подключено</div></div></div>
- <div class="me">Сравни мой вклад с рынком. Стоит ли переносить деньги в другой банк?</div>
- <div class="bot"><div class="tools"><span class="tool"><svg class="ic"><use href="#i-check"/></svg>get_portfolio</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>compare_market</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>effective_rate</span></div>
-  <div>Другой банк даёт <b>14,0%</b>. У вас 12,2% плюс надбавки, итого <b>14,9%</b> эффективных. Переносить не стоит: при переходе потеряете 3 200 ₽ процентов и два дня дохода.</div>
-  <div>Чтобы эффективная ставка держалась, нужно включить надбавку за покупки. Сделать это? Банк попросит подтверждение в своём приложении.</div>
-  <div class="xbtn" data-go="byo-confirm">Да, включить надбавку</div><div class="xbtn l">Покажи расчёт</div></div>
+ <div class="me">В другом банке дают 14%. Стоит переносить вклады?</div>
+ <div class="bot"><div class="tools"><span class="tool"><svg class="ic"><use href="#i-check"/></svg>get_portfolio</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>compare_market</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>find_leaks</span></div>
+  <div>Там <b>14,0%</b> против 12,2%: это +28 800 ₽ в год на ваших вкладах. Но 400 000 ₽ лежат на карте без дохода, а вклад ••8708 продлевается под 7,5%: вы теряете <b>63 800 ₽</b> в год, и ставка тут ни при чём.</div>
+  <div>Закрыть утечки выгоднее, чем переходить: +79 550 ₽ против +25 440 ₽ с учётом цены перехода. Начать с перевода 400 000 ₽ на накопительный? Банк попросит подтверждение в своём приложении.</div>
+  <div class="xbtn" data-go="byo-confirm">Да, перевести 400 000 ₽</div><div class="xbtn l">Покажи расчёт</div></div>
  <div class="inp">Сообщение…<svg class="ic"><use href="#i-mic"/></svg></div>
 </div>
 </template>
@@ -149,12 +155,13 @@
 <div class="sheet">
  <div class="grab"></div>
  <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Запрос от «Мой ассистент»</span></div>
- <div class="shero"><div class="money">+1,5% <span class="to">к ставке накопительного</span></div><div class="fx">включить надбавку за покупки картой</div></div>
- <div class="kv"><span class="k">Условие</span><span class="v">15 000 ₽ покупок картой в месяц</span></div>
+ <div class="shero"><div class="money">400 000 ₽ <span class="to">→ накопительный</span></div><div class="fx">+45 000 ₽ в год · доступ в любой день</div></div>
+ <div class="kv"><span class="k">Откуда</span><span class="v">Карта ••7215</span></div>
+ <div class="kv"><span class="k">Останется на карте</span><span class="v">150 000 ₽ · ваш запас</span></div>
  <div class="kv"><span class="k">Проверки харнеса</span><span class="v">периметр ✓ · политика ✓ · лимиты ✓</span></div>
  <div class="hr"></div>
  <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
- <div class="btn" data-go="byo-finish" data-faceid>Включить надбавку</div>
+ <div class="btn" data-go="byo-finish" data-faceid>Перевести 400 000 ₽</div>
  <div class="btn g" data-back>Отклонить</div>
 </div>
 </template>
@@ -163,7 +170,7 @@
 <div class="spacer"></div>
 <div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
 <div class="t1" style="text-align:center">Готово</div>
-<div class="bd mut" style="text-align:center;padding:0 16px">Надбавка включена. Агент получил результат через MCP и продолжит следить за ставками. Всё, что он делает, видно в журнале.</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">400 000 ₽ работают на накопительном счёте. Агент получил результат через MCP и продолжит следить за утечками. Всё, что он делает, видно в журнале.</div>
 <div class="spacer"></div>
 <div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="ext-access">Доступ агентов</div></div>
 </template>

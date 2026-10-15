@@ -1,46 +1,4 @@
-<!-- ===== v3 screens: before/after for the glance section, skills catalog, proactive communications ===== -->
-<!-- "Было" копии для раздела «Дизайн для тех, кто не читает» -->
-<template data-screen="was-st-home" data-tab="home" data-bg="home" data-scroll>
-<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
-<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="7215"></span><span class="kop">,40</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">958 <span style="opacity:.7">бонусов</span></div></div>
-<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
-<div class="card ai">
- <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Помощник</span><span class="badge ai" style="margin-left:auto">Новое</span></div>
- <div class="t2" style="margin-top:4px">Можно откладывать около 5 000 ₽ в месяц без ущерба для расходов</div>
- <div class="sub">Доходы стабильны 3 месяца, свободный остаток к зарплате в среднем 6 800 ₽</div>
- <div style="display:flex;gap:10px;margin-top:8px"><div class="btn sm" style="flex:1" data-go="st-plan">Начать копить</div><div class="btn sm g" style="flex:1" data-go="st-how">Как посчитали?</div></div>
-</div>
-<div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div><div class="sub">Пока нет накоплений. Первый счёт можно открыть за минуту.</div><div class="grn hl" data-go="st-plan">Открыть первый</div></div>
-<div class="card"><div style="display:flex;align-items:center"><span class="t2">История</span><span class="chip d" style="margin-left:auto;height:36px;font-size:14px">Ещё <svg class="ic"><use href="#i-chev-r"/></svg></span></div>
- <div class="rw"><div class="ico sm" style="background:#2E7D32;color:#fff"><svg class="ic"><use href="#i-cart"/></svg></div><div><div class="rt" style="font-size:17px">Пятёрочка</div><div class="rs">Сегодня · Супермаркеты</div></div><div class="rm"><b>−1 240 ₽</b></div></div>
- <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-arrow-rc"/></svg></div><div><div class="rt" style="font-size:17px">Зачисление зарплаты</div><div class="rs">10 октября</div></div><div class="rm"><b class="grn">+62 000 ₽</b></div></div>
-</div>
-</template>
-<template data-screen="was-cap-market" data-scroll>
-<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки на рынке</span></div>
-<div class="sub" style="padding:0 4px">Помощник сравнивает честно: голую ставку конкурента с вашей эффективной ставкой и ценой перехода.</div>
-<div class="card"><div class="cmp">
- <div class="r2"><div class="lab"><span>Другой банк · вклад 6 месяцев</span><b>14,0%</b></div><div class="bar"><i class="oth" style="width:82%"></i></div></div>
- <div class="r2"><div class="lab"><span>У нас · 12,2% + надбавки + сервис</span><b class="grn">14,9%</b></div><div class="bar"><i class="base" style="width:71.8%"></i><i class="add" style="width:11.8%"></i><i class="svc" style="width:4.1%"></i></div></div>
- <div class="legend2"><span><i style="background:#21A038"></i>ставка 12,2%</span><span><i style="background:#4CD964"></i>надбавки +2,0%</span><span><i style="background:#8F6BFF"></i>автопилот и лестница +0,7%</span></div>
-</div></div>
-<div class="card"><div class="hl">Что даёт сервис, кроме ставки</div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Надбавка за покупки +1,5% и за зарплату на карту +0,5%: уже в расчёте</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Автопилот не даёт деньгам простаивать между вкладами: ≈ +0,4% в год</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Лестница: доступ к части денег каждые 3 месяца без потери ставки: ≈ +0,3%</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Ваш агент через MCP видит этот расчёт и может проверить его сам</span></div>
-</div>
-<div class="card" style="gap:6px"><div class="hl">Если перенести 400 000 ₽ к конкуренту</div>
- <div class="kv"><span class="k">Голая ставка выше на 1,8 п.п.</span><span class="v grn">+7 200 ₽ в год</span></div>
- <div class="kv"><span class="k">Досрочное закрытие ••8708</span><span class="v" style="color:#F0B35B">−3 200 ₽</span></div>
- <div class="kv"><span class="k">2 дня без дохода при переводе</span><span class="v" style="color:#F0B35B">−160 ₽</span></div>
- <div class="kv"><span class="k">Наши надбавки и сервис</span><span class="v" style="color:#F0B35B">−10 800 ₽</span></div>
- <div class="hr"></div>
- <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 6 960 ₽ больше</span></div>
- <div class="fn">Честно: если не выполнять условие по покупкам картой (15 000 ₽ в месяц), наша ставка 13,4% и конкурент выгоднее на 2 400 ₽ в год.</div>
-</div>
-<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Остаться и включить надбавки</div><div class="btn g" data-go="cap-transfer">Перенести деньги из другого банка</div></div>
-</template>
+<!-- ===== v3 screens: glance layer, skills catalog, proactive communications ===== -->
 
 <!-- ===== Screens: слой взгляда ===== -->
 <template data-screen="st-plan" data-scroll>
@@ -67,14 +25,19 @@
 <div class="scrim" data-back></div>
 <div class="sheet">
  <div class="grab"></div>
- <div class="t2">Если перенести 400 000 ₽ к конкуренту</div>
- <div class="kv"><span class="k">Голая ставка выше на 1,8 п.п.</span><span class="v grn">+7 200 ₽ в год</span></div>
- <div class="kv"><span class="k">Досрочное закрытие ••8708</span><span class="v" style="color:#F0B35B">−3 200 ₽</span></div>
- <div class="kv"><span class="k">2 дня без дохода при переводе</span><span class="v" style="color:#F0B35B">−160 ₽</span></div>
- <div class="kv"><span class="k">Наши надбавки и автопилот</span><span class="v" style="color:#F0B35B">−10 800 ₽</span></div>
+ <div class="t2">Ставка против утечек, за год</div>
+ <div class="kv"><span class="k">14% вместо 12,2% на 1 600 000 ₽ вкладов</span><span class="v">+28 800 ₽</span></div>
+ <div class="kv"><span class="k">Переход: досрочное закрытие ••8708 и 2 дня без дохода</span><span class="v" style="color:#F0B35B">−3 360 ₽</span></div>
  <div class="hr"></div>
- <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 6 960 ₽ больше</span></div>
- <div class="fn">Честно: без 15 000 ₽ покупок картой в месяц наша ставка 13,4%, и конкурент выгоднее на 2 400 ₽ в год. Ваш агент через MCP может проверить этот расчёт сам.</div>
+ <div class="kv"><span class="k">400 000 ₽ на карте под 0%</span><span class="v grn">45 000 ₽</span></div>
+ <div class="kv"><span class="k">Продление 400 000 ₽ под 7,5%</span><span class="v grn">18 800 ₽</span></div>
+ <div class="kv"><span class="k">12 дней простоя между вкладами</span><span class="v grn">6 400 ₽</span></div>
+ <div class="kv"><span class="k">Досрочное закрытие ради 50 000 ₽</span><span class="v grn">3 200 ₽</span></div>
+ <div class="kv"><span class="k">Условие надбавки, 4 месяца</span><span class="v grn">2 250 ₽</span></div>
+ <div class="kv"><span class="k">Налог, перенос выплаты</span><span class="v grn">3 900 ₽</span></div>
+ <div class="hr"></div>
+ <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 54 110 ₽ больше</span></div>
+ <div class="fn">Эффективную ставку с надбавками показывают все банки. Мы считаем рубли, которые теряются между продуктами. Ваш агент через MCP может проверить расчёт сам: find_leaks.</div>
  <div class="btn" data-back>Понятно</div>
 </div>
 </template>
@@ -442,4 +405,30 @@
 <div class="card" style="gap:0"><div class="sw"><div><div class="st2">Тихие часы</div><div class="ss">Ничего, кроме безопасности</div></div><div class="hl">22:00–9:00</div></div></div>
 <div class="btn g" data-go="pro-home">Не беспокоить месяц</div>
 <div class="fnl">В каждом сообщении есть «Реже» и «Не напоминать про это». Без вашего подтверждения ничего не меняется.</div>
+</template>
+
+<!-- ===== Screens: сервис сильнее ставки ===== -->
+<template data-screen="edge-ask" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Помощник</span></div>
+<div class="quote me">В другом банке дают 14%. Перейти?</div>
+<div class="ans"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Там выше на 1,8 п.п.: это +28 800 ₽ в год на всех ваших вкладах. Но 400 000 ₽ лежат на карте без дохода, а вклад ••8708 продлевается под 7,5%. Это теряет 63 800 ₽ в год, и ставка тут ни при чём.</div></div>
+<div class="opt sel" data-select="eg" data-set="eg-cta|Закрыть утечки: +79 550 ₽ в год"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Остаться и закрыть утечки</div><div class="os">Деньги с карты на счёт, вклад не продлевать под 7,5%, без простоев</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+79 550 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="eg" data-set="eg-cta|Перенести под 14%: +25 440 ₽ в год"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Перенести вклады под 14%</div><div class="os">Минус 3 360 ₽ за переход. Утечки останутся с вами</div></div><div class="ov"><b>+25 440 ₽</b><span>в год</span></div></div>
+<div class="ans"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Если всё же решите перейти, помогу сделать это без потерь: в день закрытия и без простоя. Так тоже честно.</div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="cap-market"><svg class="ic"><use href="#i-info"/></svg>Показать сравнение</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="eg-cta">Закрыть утечки: +79 550 ₽ в год</div></div>
+</template>
+<template data-screen="edge-year" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Итог года</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Октябрь 2026 — октябрь 2027</div><div class="money m36">+79 550 ₽ <span class="u">сверх ставки</span></div><div class="bd">столько помощник принёс, закрывая утечки. Проценты по вкладам и счетам: ещё 225 000 ₽.</div></div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Деньги не лежали без дохода</div><div class="rs">400 000 ₽ ушли на счёт в октябре</div></div><div class="rm"><b class="grn">+45 000 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Вклад не продлился под 7,5%</div><div class="rs">Переоткрыт под 12,2% 15 декабря</div></div><div class="rm"><b class="grn">+18 800 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Ни дня простоя</div><div class="rs">3 закрытия, 0 дней ожидания</div></div><div class="rm"><b class="grn">+6 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Ни одного досрочного закрытия</div><div class="rs">50 000 ₽ взяли со счёта, а не со вклада</div></div><div class="rm"><b class="grn">+3 200 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Условие надбавки: 12 из 12 месяцев</div><div class="rs">Напомнили дважды, оба раза успели</div></div><div class="rm"><b class="grn">+2 250 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Налог меньше</div><div class="rs">Выплата по вкладу ••1234 перенесена на январь</div></div><div class="rm"><b class="grn">+3 900 ₽</b></div></div>
+</div>
+<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Деньги работали</span><span class="v">362 дня из 365</span></div><div class="kv"><span class="k">Лучшая ставка рынка дала бы</span><span class="v">+28 800 ₽</span></div><div class="kv"><span class="k">Ваших решений</span><span class="v">9, каждое с Face ID</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="cap-sav">К накоплениям</div></div>
 </template>

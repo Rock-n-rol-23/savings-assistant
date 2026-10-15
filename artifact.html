@@ -594,13 +594,6 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .opt.flat{background:transparent;padding:10px 0;border-radius:0}
 .opt.flat + .opt.flat{border-top:1px solid rgba(255,255,255,.08)}
 /* deck: glance section */
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-@media (max-width:980px){.ba{grid-template-columns:minmax(0,1fr)}}
-.ba .c{display:flex;flex-direction:column;gap:14px}
-.ba .pair{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.ba .pair > div{display:flex;flex-direction:column;align-items:center;gap:8px}
-.ba .lab{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-.ba .lab.ok{color:var(--accent)}
 .tapdots{display:inline-flex;gap:5px;vertical-align:middle;margin-right:8px}
 .tapdots i{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block}
 .tapdots i.f{background:var(--ai)}
@@ -681,6 +674,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .phones > div{display:flex;flex-direction:column;align-items:center;gap:8px;max-width:100%}
 .phones .cap{font-size:13.5px;color:var(--ink2);text-align:center;max-width:220px;line-height:1.4}
 .phones .cap b{display:block;color:var(--ink)}
+.phones a.open{font-size:13.5px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
+.phones a.open:hover{text-decoration:underline}
 </style>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>
@@ -904,7 +899,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </section>
 <section class="s alt" id="glance">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Дизайн для тех, кто не читает</div><h2 class="t">Экран должен работать, даже если прочитали только цифру и кнопку</h2><p class="lead">Большинство клиентов не изучают условия и не хотят думать о сбережениях. Поэтому у каждого экрана помощника есть слой взгляда: одна цифра, одна фраза, одна кнопка. Всё остальное доступно по тапу, но не обязательно. Восемь правил ниже применены ко всем путям прототипа, а два экрана показаны «было и стало».</p></div>
+  <div class="hd"><div class="eyebrow">Дизайн для тех, кто не читает</div><h2 class="t">Экран должен работать, даже если прочитали только цифру и кнопку</h2><p class="lead">Большинство клиентов не изучают условия и не хотят думать о сбережениях. Поэтому у каждого экрана помощника есть слой взгляда: одна цифра, одна фраза, одна кнопка. Всё остальное доступно по тапу, но не обязательно. Восемь правил ниже применены ко всем путям прототипа, а на четырёх экранах под ними видно, как они работают.</p></div>
   <div class="grid g4">
    <div class="c"><div class="num">1</div><h3>Цифра крупнее текста</h3><p>Сначала результат в рублях, потом одна строка смысла. «5 000 ₽ в месяц», а не абзац про доходы и расходы.</p></div>
    <div class="c"><div class="num">2</div><h3>Три тапа до результата</h3><p>Увидел, понял, подтвердил. Путь «Старт» сокращён с четырёх экранов до трёх: цель, сумма и правила на одном экране с готовыми значениями.</p></div>
@@ -915,16 +910,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <div class="c"><div class="num">7</div><h3>Подробности по тапу</h3><p>Разбор цифр, условия и сравнение живут в шторке «Как посчитали?». На экране остаётся вывод и кнопка.</p></div>
    <div class="c"><div class="num">8</div><h3>Один ритуал подтверждения</h3><p>Шторка с крупной суммой, «откуда → куда», эффектом в рублях и Face ID одинакова для всех путей и для внешних агентов.</p></div>
   </div>
-  <h3 style="margin:44px 0 14px">Было и стало</h3>
-  <div class="ba">
-   <div class="c">
-    <div class="pair"><div><span class="lab">Было</span><div class="ph-wrap" style="--k:.4" data-static="was-st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div></div><div><span class="lab ok">Стало</span><div class="ph-wrap" style="--k:.4" data-static="st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div></div></div>
-    <p><b>Главный, сегмент «Старт».</b> Было: предложение абзацем, цифра внутри текста, два объяснения подряд. Стало: «5 000 ₽ в месяц» крупно, одна строка смысла, две кнопки. Чтобы принять решение, достаточно прочитать четыре слова. Дальше один экран плана вместо двух и шторка подтверждения.</p>
-   </div>
-   <div class="c">
-    <div class="pair"><div><span class="lab">Было</span><div class="ph-wrap" style="--k:.4" data-static="was-cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div></div><div><span class="lab ok">Стало</span><div class="ph-wrap" style="--k:.4" data-static="cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div></div></div>
-    <p><b>Ставки на рынке, сегмент «Капитал».</b> Было: два графика, список из четырёх пунктов и таблица из шести строк на одном экране. Стало: вывод первой строкой «Остаться выгоднее на 6 960 ₽ в год», два столбика, кнопка. Таблица и честная оговорка про конкурента переехали в «Как посчитали?» и никуда не делись.</p>
-   </div>
+  <h3 style="margin:44px 0 4px">Новый дизайн на четырёх экранах</h3>
+  <p class="b" style="margin-bottom:14px">Цифра, строка смысла, кнопка. Всё остальное по тапу. Каждый экран открывается в прототипе, цифры на нём живые.</p>
+  <div class="phones" style="margin-top:0;justify-content:center">
+   <div><div class="ph-wrap" style="--k:.42" data-static="st-home" data-flow="start"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Главный, «Старт»</b>«5 000 ₽ в месяц» крупно, одна строка смысла, две кнопки. Чтобы решить, достаточно прочитать четыре слова</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="st-plan" data-flow="start"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>План одним экраном</b>Цель, сумма и правила уже выбраны. Итог и дата пересчитываются, менять ничего не обязательно</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="sv-maturity" data-flow="saver"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Закрытие вклада</b>Лучший вариант первый и отмечен, кнопка с выгодой. Рядом «Решу позже, напомните»</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Ставки на рынке</b>Не ставка против ставки, а рубли за год по всем деньгам. Вывод первой строкой, таблица в шторке «Как посчитали?»</div></div>
   </div>
   <div class="grid g2" style="margin-top:22px;align-items:start">
    <div class="c"><h3>Три тапа до результата</h3><p style="margin-bottom:12px">Сколько раз нужно нажать от первого экрана до подтверждения, если ничего не менять. Face ID не считаем. Проверяется в прототипе: кнопка «Демо» идёт тем же путём.</p>
@@ -1140,26 +1132,37 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </section>
 <section class="s" id="edge">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Сервис сильнее ставки</div><h2 class="t">Как выигрывать, когда у конкурента ставка выше</h2><p class="lead">Агент клиента найдёт лучшую голую ставку за секунду: это неизбежно. Ответ не в том, чтобы её прятать, а в том, чтобы у нас сравнивали эффективную доходность и цену перехода, причём честно, чтобы агенту клиента было выгодно работать через наш MCP, а не в обход.</p></div>
-  <div class="edge">
+  <div class="hd"><div class="eyebrow">Сервис сильнее ставки</div><h2 class="t">Как выигрывать, когда у конкурента ставка выше</h2><p class="lead">Ставку сравнивают все, и эффективную с надбавками тоже: это гигиена, а не преимущество. Конкурент даёт ставку на один вклад на полгода. Помощник управляет всеми деньгами клиента весь год: не даёт им лежать без дохода, продлеваться под низкий процент, сгорать при досрочном закрытии и терять условия. Поэтому сравниваем не проценты, а рубли за год по всем деньгам клиента. И честно говорим, когда конкурент всё же выгоднее.</p></div>
+  <div class="band"><i></i><p>Разница в ставке на 1,8 п.п. стоит клиенту «Капитал» 28 800 ₽ в год. Утечки между продуктами стоят ему 79 550 ₽ в год. Помощник закрывает утечки, а не спорит со ставкой.</p></div>
+  <h3 style="margin:40px 0 10px">Шесть утечек, которые дороже разницы в ставке</h3>
+  <p class="b" style="margin-bottom:16px">Пример клиента «Капитал»: 2 450 000 ₽, из них 400 000 ₽ на карте под 0%, вклад 400 000 ₽ продлевается под 7,5%, три закрытия в год. Цифры за год. Каждую утечку закрывает конкретный скилл, а не ставка.</p>
+  <div class="grid g3">
+   <div class="c"><div class="num">45 000 ₽</div><h3>Спящие деньги</h3><p>400 000 ₽ лежат на карте под 0%, хотя запас клиента 150 000 ₽. Скилл «Спящие деньги на счёт» переводит разницу на накопительный с доступом в любой день.</p></div>
+   <div class="c"><div class="num">18 800 ₽</div><h3>Тихое продление</h3><p>Вклад 400 000 ₽ продлевается под 7,5% вместо 12,2%, потому что клиент не вспомнил о дате. Скилл «Закрытие вклада: три варианта» за 7 дней приносит готовое решение.</p></div>
+   <div class="c"><div class="num">6 400 ₽</div><h3>Простой между вкладами</h3><p>После закрытия деньги в среднем 12 дней ждут решения. Отложенное переоткрытие и перенос через СБП в ту же минуту убирают простой совсем.</p></div>
+   <div class="c"><div class="num">3 200 ₽</div><h3>Сгоревшие проценты</h3><p>Нужны 50 000 ₽, и клиент закрывает вклад раньше срока. Скилл «Откуда взять без потери» берёт их со счёта, «Вклады по очереди» не дают ситуации повториться.</p></div>
+   <div class="c"><div class="num">2 250 ₽</div><h3>Пропущенное условие</h3><p>Четыре месяца в году условие надбавки +1,5% не выполняется, потому что о нём никто не напомнил. Скилл «Надбавка: включить и успеть» напоминает за 6 дней.</p></div>
+   <div class="c"><div class="num">3 900 ₽</div><h3>Налог без планирования</h3><p>Выплата процентов попала в год с большим доходом. Скилл «Налог по вкладам» предлагает перенести дату выплаты и напоминает о сроке.</p></div>
+  </div>
+  <div class="edge" style="margin-top:22px">
    <div class="c" id="edge-calc">
-    <h3>Попробуйте: эффективная ставка против голой</h3>
-    <p style="margin-bottom:14px">Наша базовая ставка 12,2%. Передвиньте ставку конкурента и включите условия: надбавки существуют в продукте уже сегодня, сервисные эффекты оценены как эквивалент годовой доходности.</p>
+    <h3>Попробуйте: ставка против утечек</h3>
+    <p style="margin-bottom:14px">Передвиньте ставку конкурента и отметьте утечки, которые есть у клиента. Сверху то, что даёт лучшая ставка рынка без помощника, снизу то, что даёт помощник при нашей ставке 12,2%. Надбавок в расчёте нет: выигрываем без них.</p>
     <div class="calc" style="grid-template-columns:minmax(0,1fr)">
      <div class="ctrl">
-      <label><b>Ставка конкурента: <span id="e-comp-v">14,0%</span></b><input type="range" id="e-comp" min="10" max="16" step="0.1" value="14"></label>
-      <div class="sw"><span>Надбавка за покупки картой: +1,5%</span><input type="checkbox" id="e-bonus" checked></div>
-      <div class="sw"><span>Зарплата на карту банка: +0,5%</span><input type="checkbox" id="e-salary" checked></div>
-      <div class="sw"><span>Бонусы экосистемы в цель: +0,8% (пример)</span><input type="checkbox" id="e-eco"></div>
-      <div class="sw"><span>Автопилот: деньги не простаивают между вкладами: ≈ +0,4%</span><input type="checkbox" id="e-auto" checked></div>
-      <div class="sw"><span>Лестница: доступ без потери ставки: ≈ +0,3%</span><input type="checkbox" id="e-ladder"></div>
-      <div class="sw"><span>У конкурента: переход в середине срока вклада: −0,9%</span><input type="checkbox" id="e-mid" checked></div>
-      <div class="sw"><span>У конкурента: два дня без дохода при переводе: −0,07%</span><input type="checkbox" id="e-gap" checked></div>
+      <label><b>Ставка конкурента: <span id="e-comp-v">14,0%</span></b><input type="range" id="e-comp" min="10" max="18" step="0.1" value="14"></label>
+      <div class="sw"><span>Спящие деньги: 400 000 ₽ на карте под 0%</span><input type="checkbox" id="e-idle" checked></div>
+      <div class="sw"><span>Тихое продление: 400 000 ₽ под 7,5% вместо 12,2%</span><input type="checkbox" id="e-prolong" checked></div>
+      <div class="sw"><span>Простой между вкладами: 12 дней в год</span><input type="checkbox" id="e-gap" checked></div>
+      <div class="sw"><span>Одно досрочное закрытие ради 50 000 ₽</span><input type="checkbox" id="e-early" checked></div>
+      <div class="sw"><span>Условие надбавки не выполнено 4 месяца</span><input type="checkbox" id="e-bonus" checked></div>
+      <div class="sw"><span>Налог без переноса выплаты</span><input type="checkbox" id="e-tax" checked></div>
+      <div class="sw"><span>Учесть цену перехода к конкуренту: −3 360 ₽</span><input type="checkbox" id="e-switch" checked></div>
      </div>
      <div class="out">
-      <div class="o" style="border:none"><span>У нас, эффективная</span><b class="tot" id="e-ours" style="font-size:30px"></b></div><div class="stack" id="e-bar-ours"></div>
-      <div class="o" style="border:none;margin-top:8px"><span>У конкурента после затрат на переход</span><b class="tot" id="e-theirs" style="font-size:30px;color:var(--ink2)"></b></div><div class="stack" id="e-bar-theirs"></div>
-      <div class="legend"><span><i style="background:var(--accent)"></i>база</span><span><i style="background:#5BD67E"></i>надбавки</span><span><i style="background:var(--ai)"></i>сервис</span><span><i style="background:#8C9A92"></i>конкурент</span><span><i style="background:var(--warn)"></i>потери при переходе</span></div>
+      <div class="o" style="border:none"><span>Лучшая ставка рынка без помощника</span><b class="tot" id="e-theirs" style="font-size:30px;color:var(--ink2)"></b></div><div class="stack" id="e-bar-theirs"></div>
+      <div class="o" style="border:none;margin-top:8px"><span>Наши 12,2% с помощником</span><b class="tot" id="e-ours" style="font-size:30px"></b></div><div class="stack" id="e-bar-ours"></div>
+      <div class="legend" id="e-legend"></div>
       <div class="verdict" id="e-verdict" style="margin-top:10px"></div>
       <p class="b" id="e-money" style="font-size:14.5px"></p>
      </div>
@@ -1167,21 +1170,28 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    </div>
    <div class="col">
     <div class="c"><h3>Три правила игры против голой ставки</h3><div class="list" style="margin-top:12px">
-     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Считать честно и первыми.</b> Помощник сам показывает ставку конкурента и цену перехода. Если конкурент выгоднее, он это говорит. Клиент, которому один раз сказали правду, не уходит из-за 0,3 п.п.</span></div>
-     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Продавать эффективную доходность, а не ставку.</b> Надбавки за поведение, которое выгодно банку, сервисные эффекты и отсутствие простоев складываются в цифру, с которой голой ставке трудно спорить.</span></div>
-     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Сделать переход к нам дешевле, чем от нас.</b> Перенос денег из другого банка через СБП с открытием вклада в ту же минуту, через свой помощник или через агента клиента по MCP.</span></div>
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Считать по всем деньгам и за год.</b> Не «12,2% против 14%», а «79 550 ₽ против 28 800 ₽». Клиент видит рубли по всему портфелю, а не процент по одному вкладу на полгода.</span></div>
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Закрывать утечки раньше, чем клиент откроет агрегатор.</b> Спящие деньги, продления, простои и условия помощник убирает сам, проактивно. К моменту сравнения ставок разница уже меньше, чем сервис.</span></div>
+     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Говорить правду и помогать уйти без потерь.</b> Если утечек нет и ставка конкурента выше, помощник так и скажет и перенесёт деньги в день закрытия без простоя. Клиент, которому один раз сказали правду, возвращается с остатками из других банков.</span></div>
     </div></div>
-    <div class="c ai"><h3>Чем MCP «Сбережения» лучше голой витрины ставок</h3><p>Агент клиента получает не таблицу ставок, а инструменты: эффективную ставку с учётом его поведения, цену перехода, прогноз остатков, лестницу, перенос через СБП и журнал. Агрегатору ставок нечего этому противопоставить: у него нет ни данных клиента, ни права действовать.</p></div>
+    <div class="c ai"><h3>Чем MCP «Сбережения» сильнее агрегатора ставок</h3><p>Агрегатор видит таблицу ставок. Агент клиента через наш MCP получает <code>find_leaks</code>: сколько денег клиента не работает, где и почему, в рублях, и право исполнить решение с подтверждением. У агрегатора нет ни данных клиента, ни права действовать, поэтому агенту выгоднее работать через нас, а не в обход.</p></div>
    </div>
   </div>
-  <h3 style="margin:36px 0 12px">Сервисные инструменты MCP, которых нет у агрегаторов и большинства банков</h3>
+  <h3 style="margin:44px 0 6px">Как это выглядит для клиента</h3>
+  <p class="b" style="margin-bottom:16px">Три экрана: момент, когда клиент спрашивает про чужую ставку, сравнение по всем деньгам и итог года в рублях. Эффективной ставки нет ни на одном из них.</p>
+  <div class="phones" style="margin-top:0">
+   <div><div class="ph-wrap" style="--k:.46" data-static="edge-ask" data-flow="cap"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>«В другом банке 14%. Перейти?»</b>Честный ответ в рублях: сколько даст ставка и сколько теряют утечки. Остаться выгоднее, но перенос без потерь тоже предложен</div><a class="open" data-open-proto="cap:edge-ask">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.46" data-static="cap-market" data-flow="cap"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Сравнение по всем деньгам</b>Вывод первой строкой, два столбика и что закроет помощник за год. Таблица в шторке «Как посчитали?»</div><a class="open" data-open-proto="cap:cap-market">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.46" data-static="edge-year" data-flow="cap"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Итог года</b>Сколько сервис принёс сверх ставки, по пунктам и с источниками. Деньги работали 362 дня из 365</div><a class="open" data-open-proto="cap:edge-year">Открыть в прототипе →</a></div>
+  </div>
+  <h3 style="margin:44px 0 12px">Инструменты MCP, которых нет у агрегаторов и большинства банков</h3>
   <div class="svc-list">
-   <div class="c"><b><code>effective_rate</code></b><p>Эффективная доходность клиента с надбавками, налогом и сервисными эффектами, а не ставка из рекламы.</p></div>
-   <div class="c"><b><code>compare_market</code></b><p>Честное сравнение с рынком: голая ставка конкурента, цена перехода, вывод, даже если он не в нашу пользу.</p></div>
+   <div class="c"><b><code>find_leaks</code></b><p>Утечки клиента в рублях: спящие деньги, тихие продления, простои, досрочные закрытия, условия надбавок, налог. Основа любого честного сравнения.</p></div>
+   <div class="c"><b><code>compare_market</code></b><p>Сравнение с рынком по всем деньгам и за год, а не по одному вкладу: ставка конкурента, цена перехода, утечки. Вывод честный, даже не в нашу пользу.</p></div>
    <div class="c"><b><code>transfer_in</code></b><p>Перенос денег из другого банка через СБП с открытием продукта в ту же минуту. Исполнение с подтверждением в приложении.</p></div>
-   <div class="c"><b><code>ladder_plan</code></b><p>Лестница вкладов под горизонт и резерв клиента: доступ к деньгам без потери ставки.</p></div>
-   <div class="c"><b><code>rate_alerts</code></b><p>Подписка агента на изменения ставок и условий: событие приходит агенту, решение остаётся за клиентом.</p></div>
-   <div class="c"><b><code>register_agent</code></b><p>Подключение своей LLM с OAuth-скоупами, лимитами и сроком; отзыв в один тап; журнал всех запросов.</p></div>
+   <div class="c"><b><code>schedule_action</code></b><p>Отложенные действия на дату закрытия: переоткрыть, перевести, перенести. Ни дня простоя и отмена до последнего дня.</p></div>
+   <div class="c"><b><code>ladder_plan</code></b><p>Вклады по очереди под горизонт и запас клиента: доступ к деньгам без досрочных закрытий и сгоревших процентов.</p></div>
+   <div class="c"><b><code>year_statement</code></b><p>Итог года: сколько сервис принёс сверх ставки, по пунктам и с источниками. Доступен клиенту и его агенту.</p></div>
   </div>
  </div>
 </section>
@@ -1200,8 +1210,10 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
     <tr><td><code>create_deposit</code></td><td>Открыть вклад или накопительный счёт с заданными условиями</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>move_funds</code></td><td>Перевод между своими счетами и вкладами клиента</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>schedule_action</code></td><td>Отложенное действие на дату закрытия вклада, отменяемое</td><td>execute</td><td>в приложении</td></tr>
-    <tr><td><code>compare_market</code></td><td>Ставки рынка из публичных тарифов, цена перехода и честный вывод, даже не в нашу пользу</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>compare_market</code></td><td>Сравнение с рынком по всем деньгам клиента за год: ставка конкурента, цена перехода, утечки, честный вывод, даже не в нашу пользу</td><td>read</td><td>нет</td></tr>
     <tr><td><code>effective_rate</code></td><td>Эффективная доходность клиента: надбавки, налог, сервисные эффекты</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>find_leaks</code></td><td>Утечки клиента в рублях: спящие деньги, тихие продления, простои, досрочные закрытия, условия надбавок, налог</td><td>propose</td><td>нет</td></tr>
+    <tr><td><code>year_statement</code></td><td>Итог года: сколько сервис принёс сверх ставки, по пунктам и с источниками</td><td>read</td><td>нет</td></tr>
     <tr><td><code>ladder_plan</code></td><td>Лестница вкладов под горизонт и резерв клиента</td><td>propose</td><td>нет</td></tr>
     <tr><td><code>transfer_in</code></td><td>Перенос денег из другого банка через СБП с открытием продукта в ту же минуту</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>rate_alerts</code></td><td>Подписка агента на изменения ставок и условий</td><td>execute</td><td>в приложении</td></tr>
@@ -1878,15 +1890,21 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 
 <template data-screen="cap-market" data-scroll>
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки на рынке</span></div>
-<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод помощника</div><div class="big-ok">Остаться выгоднее на 6 960 ₽ в год</div><div class="bd mut">Если включить +1,5% за покупки картой. Без этого конкурент выгоднее на 2 400 ₽, и мы это скажем.</div></div>
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод помощника</div><div class="big-ok">С помощником на 54 110 ₽ в год больше</div><div class="bd mut">Даже при 14% у конкурента против наших 12,2%. Ставка там выше на один вклад, а утечки у вас на все деньги.</div></div>
 <div class="card"><div class="cmp">
- <div class="r2"><div class="lab"><span>У нас, с надбавками и сервисом</span><b class="grn">14,9%</b></div><div class="bar"><i class="base" style="width:71.8%"></i><i class="add" style="width:11.8%"></i><i class="svc" style="width:4.1%"></i></div></div>
- <div class="r2"><div class="lab"><span>Другой банк, вклад 6 месяцев</span><b>14,0%</b></div><div class="bar"><i class="oth" style="width:82%"></i></div></div>
- <div class="legend2"><span><i style="background:#21A038"></i>ставка 12,2%</span><span><i style="background:#4CD964"></i>надбавки +2,0%</span><span><i style="background:#8F6BFF"></i>автопилот +0,7%</span></div>
+ <div class="r2"><div class="lab"><span>Перенести вклады под 14%, после цены перехода</span><b>+25 440 ₽</b></div><div class="bar"><i class="oth" style="width:32%"></i></div></div>
+ <div class="r2"><div class="lab"><span>Остаться и закрыть утечки</span><b class="grn">+79 550 ₽</b></div><div class="bar"><i class="base" style="width:56.6%"></i><i class="add" style="width:23.6%"></i><i class="svc" style="width:19.8%"></i></div></div>
+ <div class="legend2"><span><i style="background:#21A038"></i>спящие деньги 45 000</span><span><i style="background:#4CD964"></i>продление 18 800</span><span><i style="background:#8F6BFF"></i>простои, условия, налог 15 750</span></div>
 </div></div>
+<div class="card" style="gap:6px"><div class="hl">Что закроет помощник за год</div>
+ <div class="kv"><span class="k">400 000 ₽ с карты на счёт</span><span class="v grn">+45 000 ₽</span></div>
+ <div class="kv"><span class="k">Вклад не продлится под 7,5%</span><span class="v grn">+18 800 ₽</span></div>
+ <div class="kv"><span class="k">Без простоев и сгоревших процентов</span><span class="v grn">+9 600 ₽</span></div>
+ <div class="kv"><span class="k">Условие надбавки и налог</span><span class="v grn">+6 150 ₽</span></div>
+</div>
 <div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="cap-market-how"><svg class="ic"><use href="#i-info"/></svg>Как посчитали?</span></div>
-<div class="fnl">Ставки конкурентов из публичных тарифов, обновлено сегодня</div>
-<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Остаться и включить +1,5%</div><div class="btn g" data-go="cap-transfer">Перенести к нам из другого банка</div></div>
+<div class="fnl">Честно: если все деньги уже работают и вы не пропускаете закрытия, конкурент выгоднее на 25 440 ₽ в год</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Закрыть утечки: план на неделю</div><div class="btn g" data-go="cap-transfer">Перенести к нам из другого банка</div></div>
 </template>
 
 <template data-screen="cap-transfer" data-base="cap-market">
@@ -1999,11 +2017,11 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <template data-screen="byo-chat" data-cls="light">
 <div class="xchat">
  <div class="xh"><div class="ai-dot lg" style="background:linear-gradient(135deg,#6C47FF,#2B1F5A)"><svg class="ic"><use href="#i-sparkle"/></svg></div><div><b>Мой ассистент</b><div class="sub">MCP «Сбережения» · подключено</div></div></div>
- <div class="me">Сравни мой вклад с рынком. Стоит ли переносить деньги в другой банк?</div>
- <div class="bot"><div class="tools"><span class="tool"><svg class="ic"><use href="#i-check"/></svg>get_portfolio</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>compare_market</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>effective_rate</span></div>
-  <div>Другой банк даёт <b>14,0%</b>. У вас 12,2% плюс надбавки, итого <b>14,9%</b> эффективных. Переносить не стоит: при переходе потеряете 3 200 ₽ процентов и два дня дохода.</div>
-  <div>Чтобы эффективная ставка держалась, нужно включить надбавку за покупки. Сделать это? Банк попросит подтверждение в своём приложении.</div>
-  <div class="xbtn" data-go="byo-confirm">Да, включить надбавку</div><div class="xbtn l">Покажи расчёт</div></div>
+ <div class="me">В другом банке дают 14%. Стоит переносить вклады?</div>
+ <div class="bot"><div class="tools"><span class="tool"><svg class="ic"><use href="#i-check"/></svg>get_portfolio</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>compare_market</span><span class="tool"><svg class="ic"><use href="#i-check"/></svg>find_leaks</span></div>
+  <div>Там <b>14,0%</b> против 12,2%: это +28 800 ₽ в год на ваших вкладах. Но 400 000 ₽ лежат на карте без дохода, а вклад ••8708 продлевается под 7,5%: вы теряете <b>63 800 ₽</b> в год, и ставка тут ни при чём.</div>
+  <div>Закрыть утечки выгоднее, чем переходить: +79 550 ₽ против +25 440 ₽ с учётом цены перехода. Начать с перевода 400 000 ₽ на накопительный? Банк попросит подтверждение в своём приложении.</div>
+  <div class="xbtn" data-go="byo-confirm">Да, перевести 400 000 ₽</div><div class="xbtn l">Покажи расчёт</div></div>
  <div class="inp">Сообщение…<svg class="ic"><use href="#i-mic"/></svg></div>
 </div>
 </template>
@@ -2013,12 +2031,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <div class="sheet">
  <div class="grab"></div>
  <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Запрос от «Мой ассистент»</span></div>
- <div class="shero"><div class="money">+1,5% <span class="to">к ставке накопительного</span></div><div class="fx">включить надбавку за покупки картой</div></div>
- <div class="kv"><span class="k">Условие</span><span class="v">15 000 ₽ покупок картой в месяц</span></div>
+ <div class="shero"><div class="money">400 000 ₽ <span class="to">→ накопительный</span></div><div class="fx">+45 000 ₽ в год · доступ в любой день</div></div>
+ <div class="kv"><span class="k">Откуда</span><span class="v">Карта ••7215</span></div>
+ <div class="kv"><span class="k">Останется на карте</span><span class="v">150 000 ₽ · ваш запас</span></div>
  <div class="kv"><span class="k">Проверки харнеса</span><span class="v">периметр ✓ · политика ✓ · лимиты ✓</span></div>
  <div class="hr"></div>
  <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
- <div class="btn" data-go="byo-finish" data-faceid>Включить надбавку</div>
+ <div class="btn" data-go="byo-finish" data-faceid>Перевести 400 000 ₽</div>
  <div class="btn g" data-back>Отклонить</div>
 </div>
 </template>
@@ -2027,7 +2046,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <div class="spacer"></div>
 <div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
 <div class="t1" style="text-align:center">Готово</div>
-<div class="bd mut" style="text-align:center;padding:0 16px">Надбавка включена. Агент получил результат через MCP и продолжит следить за ставками. Всё, что он делает, видно в журнале.</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">400 000 ₽ работают на накопительном счёте. Агент получил результат через MCP и продолжит следить за утечками. Всё, что он делает, видно в журнале.</div>
 <div class="spacer"></div>
 <div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="ext-access">Доступ агентов</div></div>
 </template>
@@ -2058,49 +2077,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </div>
 <div class="card" style="flex-direction:row;align-items:center;gap:14px"><div class="ico grn"><svg class="ic"><use href="#i-users"/></svg></div><div><div class="rt">Доверенное лицо</div><div class="rs" style="font-size:16px">Дочь видит подсказки и может помочь решить</div></div><div class="tg" style="margin-left:auto"></div></div>
 </template>
-<!-- ===== v3 screens: before/after for the glance section, skills catalog, proactive communications ===== -->
-<!-- "Было" копии для раздела «Дизайн для тех, кто не читает» -->
-<template data-screen="was-st-home" data-tab="home" data-bg="home" data-scroll>
-<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
-<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="7215"></span><span class="kop">,40</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">958 <span style="opacity:.7">бонусов</span></div></div>
-<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
-<div class="card ai">
- <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Помощник</span><span class="badge ai" style="margin-left:auto">Новое</span></div>
- <div class="t2" style="margin-top:4px">Можно откладывать около 5 000 ₽ в месяц без ущерба для расходов</div>
- <div class="sub">Доходы стабильны 3 месяца, свободный остаток к зарплате в среднем 6 800 ₽</div>
- <div style="display:flex;gap:10px;margin-top:8px"><div class="btn sm" style="flex:1" data-go="st-plan">Начать копить</div><div class="btn sm g" style="flex:1" data-go="st-how">Как посчитали?</div></div>
-</div>
-<div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div><div class="sub">Пока нет накоплений. Первый счёт можно открыть за минуту.</div><div class="grn hl" data-go="st-plan">Открыть первый</div></div>
-<div class="card"><div style="display:flex;align-items:center"><span class="t2">История</span><span class="chip d" style="margin-left:auto;height:36px;font-size:14px">Ещё <svg class="ic"><use href="#i-chev-r"/></svg></span></div>
- <div class="rw"><div class="ico sm" style="background:#2E7D32;color:#fff"><svg class="ic"><use href="#i-cart"/></svg></div><div><div class="rt" style="font-size:17px">Пятёрочка</div><div class="rs">Сегодня · Супермаркеты</div></div><div class="rm"><b>−1 240 ₽</b></div></div>
- <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-arrow-rc"/></svg></div><div><div class="rt" style="font-size:17px">Зачисление зарплаты</div><div class="rs">10 октября</div></div><div class="rm"><b class="grn">+62 000 ₽</b></div></div>
-</div>
-</template>
-<template data-screen="was-cap-market" data-scroll>
-<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки на рынке</span></div>
-<div class="sub" style="padding:0 4px">Помощник сравнивает честно: голую ставку конкурента с вашей эффективной ставкой и ценой перехода.</div>
-<div class="card"><div class="cmp">
- <div class="r2"><div class="lab"><span>Другой банк · вклад 6 месяцев</span><b>14,0%</b></div><div class="bar"><i class="oth" style="width:82%"></i></div></div>
- <div class="r2"><div class="lab"><span>У нас · 12,2% + надбавки + сервис</span><b class="grn">14,9%</b></div><div class="bar"><i class="base" style="width:71.8%"></i><i class="add" style="width:11.8%"></i><i class="svc" style="width:4.1%"></i></div></div>
- <div class="legend2"><span><i style="background:#21A038"></i>ставка 12,2%</span><span><i style="background:#4CD964"></i>надбавки +2,0%</span><span><i style="background:#8F6BFF"></i>автопилот и лестница +0,7%</span></div>
-</div></div>
-<div class="card"><div class="hl">Что даёт сервис, кроме ставки</div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Надбавка за покупки +1,5% и за зарплату на карту +0,5%: уже в расчёте</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Автопилот не даёт деньгам простаивать между вкладами: ≈ +0,4% в год</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Лестница: доступ к части денег каждые 3 месяца без потери ставки: ≈ +0,3%</span></div>
- <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Ваш агент через MCP видит этот расчёт и может проверить его сам</span></div>
-</div>
-<div class="card" style="gap:6px"><div class="hl">Если перенести 400 000 ₽ к конкуренту</div>
- <div class="kv"><span class="k">Голая ставка выше на 1,8 п.п.</span><span class="v grn">+7 200 ₽ в год</span></div>
- <div class="kv"><span class="k">Досрочное закрытие ••8708</span><span class="v" style="color:#F0B35B">−3 200 ₽</span></div>
- <div class="kv"><span class="k">2 дня без дохода при переводе</span><span class="v" style="color:#F0B35B">−160 ₽</span></div>
- <div class="kv"><span class="k">Наши надбавки и сервис</span><span class="v" style="color:#F0B35B">−10 800 ₽</span></div>
- <div class="hr"></div>
- <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 6 960 ₽ больше</span></div>
- <div class="fn">Честно: если не выполнять условие по покупкам картой (15 000 ₽ в месяц), наша ставка 13,4% и конкурент выгоднее на 2 400 ₽ в год.</div>
-</div>
-<div class="cta-wrap nt"><div class="btn" data-go="cap-plan">Остаться и включить надбавки</div><div class="btn g" data-go="cap-transfer">Перенести деньги из другого банка</div></div>
-</template>
+<!-- ===== v3 screens: glance layer, skills catalog, proactive communications ===== -->
 
 <!-- ===== Screens: слой взгляда ===== -->
 <template data-screen="st-plan" data-scroll>
@@ -2127,14 +2104,19 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <div class="scrim" data-back></div>
 <div class="sheet">
  <div class="grab"></div>
- <div class="t2">Если перенести 400 000 ₽ к конкуренту</div>
- <div class="kv"><span class="k">Голая ставка выше на 1,8 п.п.</span><span class="v grn">+7 200 ₽ в год</span></div>
- <div class="kv"><span class="k">Досрочное закрытие ••8708</span><span class="v" style="color:#F0B35B">−3 200 ₽</span></div>
- <div class="kv"><span class="k">2 дня без дохода при переводе</span><span class="v" style="color:#F0B35B">−160 ₽</span></div>
- <div class="kv"><span class="k">Наши надбавки и автопилот</span><span class="v" style="color:#F0B35B">−10 800 ₽</span></div>
+ <div class="t2">Ставка против утечек, за год</div>
+ <div class="kv"><span class="k">14% вместо 12,2% на 1 600 000 ₽ вкладов</span><span class="v">+28 800 ₽</span></div>
+ <div class="kv"><span class="k">Переход: досрочное закрытие ••8708 и 2 дня без дохода</span><span class="v" style="color:#F0B35B">−3 360 ₽</span></div>
  <div class="hr"></div>
- <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 6 960 ₽ больше</span></div>
- <div class="fn">Честно: без 15 000 ₽ покупок картой в месяц наша ставка 13,4%, и конкурент выгоднее на 2 400 ₽ в год. Ваш агент через MCP может проверить этот расчёт сам.</div>
+ <div class="kv"><span class="k">400 000 ₽ на карте под 0%</span><span class="v grn">45 000 ₽</span></div>
+ <div class="kv"><span class="k">Продление 400 000 ₽ под 7,5%</span><span class="v grn">18 800 ₽</span></div>
+ <div class="kv"><span class="k">12 дней простоя между вкладами</span><span class="v grn">6 400 ₽</span></div>
+ <div class="kv"><span class="k">Досрочное закрытие ради 50 000 ₽</span><span class="v grn">3 200 ₽</span></div>
+ <div class="kv"><span class="k">Условие надбавки, 4 месяца</span><span class="v grn">2 250 ₽</span></div>
+ <div class="kv"><span class="k">Налог, перенос выплаты</span><span class="v grn">3 900 ₽</span></div>
+ <div class="hr"></div>
+ <div class="kv"><span class="k">Итог за год</span><span class="v grn">у нас на 54 110 ₽ больше</span></div>
+ <div class="fn">Эффективную ставку с надбавками показывают все банки. Мы считаем рубли, которые теряются между продуктами. Ваш агент через MCP может проверить расчёт сам: find_leaks.</div>
  <div class="btn" data-back>Понятно</div>
 </div>
 </template>
@@ -2503,6 +2485,32 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <div class="btn g" data-go="pro-home">Не беспокоить месяц</div>
 <div class="fnl">В каждом сообщении есть «Реже» и «Не напоминать про это». Без вашего подтверждения ничего не меняется.</div>
 </template>
+
+<!-- ===== Screens: сервис сильнее ставки ===== -->
+<template data-screen="edge-ask" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Помощник</span></div>
+<div class="quote me">В другом банке дают 14%. Перейти?</div>
+<div class="ans"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Там выше на 1,8 п.п.: это +28 800 ₽ в год на всех ваших вкладах. Но 400 000 ₽ лежат на карте без дохода, а вклад ••8708 продлевается под 7,5%. Это теряет 63 800 ₽ в год, и ставка тут ни при чём.</div></div>
+<div class="opt sel" data-select="eg" data-set="eg-cta|Закрыть утечки: +79 550 ₽ в год"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Остаться и закрыть утечки</div><div class="os">Деньги с карты на счёт, вклад не продлевать под 7,5%, без простоев</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+79 550 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="eg" data-set="eg-cta|Перенести под 14%: +25 440 ₽ в год"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Перенести вклады под 14%</div><div class="os">Минус 3 360 ₽ за переход. Утечки останутся с вами</div></div><div class="ov"><b>+25 440 ₽</b><span>в год</span></div></div>
+<div class="ans"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Если всё же решите перейти, помогу сделать это без потерь: в день закрытия и без простоя. Так тоже честно.</div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="cap-market"><svg class="ic"><use href="#i-info"/></svg>Показать сравнение</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="eg-cta">Закрыть утечки: +79 550 ₽ в год</div></div>
+</template>
+<template data-screen="edge-year" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Итог года</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Октябрь 2026 — октябрь 2027</div><div class="money m36">+79 550 ₽ <span class="u">сверх ставки</span></div><div class="bd">столько помощник принёс, закрывая утечки. Проценты по вкладам и счетам: ещё 225 000 ₽.</div></div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Деньги не лежали без дохода</div><div class="rs">400 000 ₽ ушли на счёт в октябре</div></div><div class="rm"><b class="grn">+45 000 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Вклад не продлился под 7,5%</div><div class="rs">Переоткрыт под 12,2% 15 декабря</div></div><div class="rm"><b class="grn">+18 800 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Ни дня простоя</div><div class="rs">3 закрытия, 0 дней ожидания</div></div><div class="rm"><b class="grn">+6 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Ни одного досрочного закрытия</div><div class="rs">50 000 ₽ взяли со счёта, а не со вклада</div></div><div class="rm"><b class="grn">+3 200 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Условие надбавки: 12 из 12 месяцев</div><div class="rs">Напомнили дважды, оба раза успели</div></div><div class="rm"><b class="grn">+2 250 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Налог меньше</div><div class="rs">Выплата по вкладу ••1234 перенесена на январь</div></div><div class="rm"><b class="grn">+3 900 ₽</b></div></div>
+</div>
+<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Деньги работали</span><span class="v">362 дня из 365</span></div><div class="kv"><span class="k">Лучшая ставка рынка дала бы</span><span class="v">+28 800 ₽</span></div><div class="kv"><span class="k">Ваших решений</span><span class="v">9, каждое с Face ID</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="cap-sav">К накоплениям</div></div>
+</template>
 <script>
 (function(){
 'use strict';
@@ -2540,7 +2548,8 @@ const FLOWS={
   {id:'sv-done2',t:'Запланировано',d:'Напоминание за день, отмена в один тап.',ai:'Напоминание.',nat:'Экран успеха.',tr:'Контроль остаётся у клиента до последнего дня.'}]},
  cap:{name:'Капитал',tabs:{home:'cap-home',sav:'cap-sav'},steps:[
   {id:'cap-sav',t:'Портфель сбережений',d:'Кольцо эффективности и структура рисуются при входе.',ai:'Собирает портфельный экран под клиента и считает упущенную выгоду.',nat:'Графики и список продуктов на нативных компонентах.',tr:'Главная цифра честная: сколько денег работает по ставке.'},
-  {id:'cap-market',t:'Ставки на рынке',d:'Вывод первой строкой, два столбика, кнопка. Таблица с ценой перехода в «Как посчитали?».',ai:'Собирает сравнение и формулирует честный вывод, включая случай, когда конкурент выгоднее.',nat:'Данные рынка, тарифы и расчёт цены перехода из систем банка.',tr:'Помощник говорит правду о конкуренте: доверие важнее одной сделки.'},
+  {id:'edge-ask',t:'«В другом банке 14%. Перейти?»',d:'Момент сравнения. Ответ в рублях по всем деньгам, рекомендация уже выбрана, перенос без потерь тоже предложен.',ai:'Разбирает вопрос и формулирует честный ответ: что даст ставка и что теряют утечки.',nat:'Цифры из compare_market и find_leaks, расчёт движком банка.',tr:'Помощник говорит правду о конкуренте и предлагает помочь уйти без потерь.'},
+  {id:'cap-market',t:'Сравнение по всем деньгам',d:'Вывод первой строкой, два столбика и что закроет помощник за год. Таблица в «Как посчитали?».',ai:'Собирает сравнение и честный вывод, включая случай, когда конкурент выгоднее.',nat:'Ставки рынка из публичных тарифов, утечки и цена перехода из систем банка.',tr:'Эффективную ставку показывают все. Мы показываем рубли, которые теряются между продуктами.'},
   {id:'cap-transfer',t:'Перенос через СБП',d:'Деньги из другого банка приходят за минуту и сразу работают.',ai:'Подбирает продукт под переносимую сумму.',nat:'СБП-перевод и открытие вклада одной операцией.',tr:'Подтверждение с датой и суммой, отмена до дня перевода.'},
   {id:'cap-plan',t:'План на неделю',d:'Чекбоксы живые: итог, доля работающих денег и кнопка пересчитываются.',ai:'Объясняет каждое действие; расчёт делает детерминированный движок.',nat:'Чек-листы, карточки, пакетное подтверждение.',tr:'Резерв клиента не трогаем, это видно на экране.'},
   {id:'cap-why1',t:'Почему',d:'Объяснение первого действия.',ai:'Объяснение.',nat:'Bottom sheet.',tr:'Что будет, если не делать ничего.'},
@@ -2548,7 +2557,8 @@ const FLOWS={
   {id:'cap-confirm',t:'Подтверждение',d:'Пакет действий одной кнопкой.',ai:'Ничего.',nat:'Нативное подтверждение, Face ID.',tr:'Каждое действие с датой исполнения.'},
   {id:'cap-done',t:'Исполнение',d:'Два действия сразу, третье по дате.',ai:'Формулировка результата.',nat:'Экран успеха.',tr:'Отложенное действие с напоминанием за день.'},
   {id:'cap-log',t:'Журнал',d:'Кто, что, когда и почему. Источник каждого действия.',ai:'Хранит объяснение каждой рекомендации.',nat:'Список с фильтрами.',tr:'Полная прозрачность и отмена ожидающих действий.'},
-  {id:'cap-report',t:'Отчёт за неделю',d:'Сколько заработали, что сделано, что дальше.',ai:'Формулирует отчёт и следующий шаг.',nat:'График дохода по дням и список действий.',tr:'Автопилот отчитывается, даже когда ничего не делал.'}]},
+  {id:'cap-report',t:'Отчёт за неделю',d:'Сколько заработали, что сделано, что дальше.',ai:'Формулирует отчёт и следующий шаг.',nat:'График дохода по дням и список действий.',tr:'Автопилот отчитывается, даже когда ничего не делал.'},
+  {id:'edge-year',t:'Итог года: сервис в рублях',d:'Сколько помощник принёс сверх ставки, по пунктам. Лучшая ставка рынка показана рядом.',ai:'Собирает итог из журнала и объясняет каждый пункт одной строкой.',nat:'Журнал действий, расчёт движка, выписка по счетам.',tr:'Каждая цифра с источником. Ставка конкурента рядом для честности.'}]},
  care:{name:'Осторожный',tabs:{home:'care-home',sav:'care-home'},steps:[
   {id:'seg-start-care',t:'Старт: первый шаг крупно',d:'Сегмент Старт × Осторожный: одна цифра, две кнопки, человек рядом.',ai:'Та же подсказка, что у активного, но одной мыслью и без терминов.',nat:'Режим крупного текста поверх тех же компонентов Главного.',tr:'«Не сейчас» и «Позвонить» рядом с действием. Уровень L0.'},
   {id:'care-home',t:'Накопитель: 120 000 ₽ на карте',d:'Сегмент Накопитель × Осторожный: одна мысль на экран, крупный шрифт, три кнопки.',ai:'Подсказка переписана простым языком, без терминов.',nat:'Режим крупного текста поверх тех же компонентов.',tr:'«Ничего не менять» и «Позвонить» всегда на экране. Уровень L0–L1.'},
@@ -2570,8 +2580,8 @@ const FLOWS={
   {id:'byo-scopes',t:'Что разрешить',d:'Смотреть, предлагать, исполнять с подтверждением. Переключатели живые.',ai:'Нет.',nat:'Скоупы и лимиты как настройки.',tr:'Автопилот внешним агентам недоступен, лимиты сумм и срока по умолчанию.'},
   {id:'byo-consent',t:'Согласие',d:'Экран согласия в стиле OAuth: кто, к чему, на сколько. Face ID.',ai:'Нет.',nat:'Согласие и выпуск токена с выбранными правами.',tr:'Агент никогда не получает пароль или карту, только токен.'},
   {id:'byo-done',t:'Подключено',d:'QR и адрес MCP-сервера для своего ассистента.',ai:'Нет.',nat:'Выдача адреса и QR.',tr:'Отзыв доступа в один тап в любой момент.'},
-  {id:'byo-chat',t:'Диалог в своём ассистенте',d:'Внешний клиент: вызовы инструментов MCP видны как чипы, ответ с честным сравнением.',ai:'Своя LLM клиента рассуждает поверх инструментов и расчётов банка.',nat:'Цифры из compare_market и effective_rate, расчёт движком банка.',tr:'Агент не может исполнить сам: ведёт в приложение банка.'},
-  {id:'byo-confirm',t:'Подтверждение в банке',d:'Запрос агента приходит в Сбербанк Онлайн на ту же кнопку.',ai:'Ничего.',nat:'Шторка подтверждения с инициатором.',tr:'Одна кнопка на всех: свой помощник, внешний агент, своя LLM.'},
+  {id:'byo-chat',t:'Диалог в своём ассистенте',d:'Внешний клиент: вызовы инструментов MCP видны как чипы, ответ в рублях по всем деньгам, а не по ставке.',ai:'Своя LLM клиента рассуждает поверх инструментов и расчётов банка.',nat:'Цифры из compare_market и find_leaks, расчёт движком банка.',tr:'Агент не может исполнить сам: ведёт в приложение банка.'},
+  {id:'byo-confirm',t:'Подтверждение в банке',d:'Запрос агента приходит в Сбербанк Онлайн на ту же кнопку: 400 000 ₽ с карты на счёт.',ai:'Ничего.',nat:'Шторка подтверждения с инициатором.',tr:'Одна кнопка на всех: свой помощник, внешний агент, своя LLM.'},
   {id:'byo-finish',t:'Готово',d:'Агент получает результат, запись в журнале.',ai:'Агент продолжает работу с результатом.',nat:'Экран успеха.',tr:'Журнал хранит источник и объяснение.'}]},
  pro:{name:'События',tabs:{home:'pro-home',sav:'cap-sav'},steps:[
   {id:'pro-home',t:'Главный: карточка «Ближайшее»',d:'Две ближайшие даты и одна кнопка вместо ленты уведомлений.',ai:'Выбирает два события из календаря клиента и формулирует каждое одной строкой.',nat:'Виджет на Главном, те же компоненты, что у карточки помощника.',tr:'Ничего не предлагает сделать сам: только даты, суммы и вход в сценарий.'},
@@ -2679,7 +2689,7 @@ const mcpRoot=$('#mcp-phone');let mcp=null;if(mcpRoot){mcp=new Proto(mcpRoot,'ex
 const REQ={
  read:{lines:[['llm','агент','tool_call get_portfolio({client:"me"})'],['ok','харнес','скоуп read ✓ · токен клиента действует до 28 окт · агент «Мой ассистент»'],['ok','харнес','периметр ✓ только вклады, накопительные и текущие счета'],['app','банк','get_portfolio → 2 450 000 ₽ · 3 вклада · накопительный · карта · эффективность 67%'],['ok','аудит','#48213 read · 0 действий · данные без ПДн третьих лиц'],['llm','агент','← клиенту: «400 000 ₽ лежат на карте без дохода. Хотите, предложу, что с ними сделать?»']]},
  propose:{lines:[['llm','агент','tool_call propose_rebalance({idle_min:150000})'],['ok','харнес','скоуп propose ✓ · политика клиента загружена: резерв 150 000 ₽, лимит 3 операции/нед'],['app','движок','simulate: 250 000 ₽ → накопительный 11,25% = +2 340 ₽/мес · +28 100 ₽/год'],['app','движок','переоткрыть вклад ••8708 под 12,2% вместо 7,5% = +9 400 ₽ за срок'],['ok','харнес','цифры из тарифов банка, модель их не генерировала ✓'],['ok','аудит','#48214 propose · 2 предложения · ничего не исполнено'],['llm','агент','← клиенту: план на +44 000 ₽ в год, нужно подтверждение в приложении']]},
- market:{lines:[['llm','агент','tool_call compare_market({product:"deposit",term:6})'],['ok','харнес','скоуп read ✓ · источник ставок: публичные тарифы банков, обновлено сегодня'],['app','движок','рынок: лучшая ставка 14,0% · у нас 12,2% базовая'],['app','движок','effective_rate: 12,2% + надбавка за покупки 1,5% + зарплата 0,5% + сервис 0,7% = 14,9%'],['app','движок','цена перехода: −3 200 ₽ досрочное закрытие ••8708 · −160 ₽ дни без дохода'],['ok','харнес','честный вывод обязателен: если условия надбавок не выполняются, конкурент выгоднее на 2 400 ₽/год'],['ok','аудит','#48217 read · сравнение сохранено с источниками'],['llm','агент','← клиенту: «Переносить не стоит: 14,9% против 14,0% при выполнении условий. Включить надбавку?»']]},
+ market:{lines:[['llm','агент','tool_call compare_market({horizon:"year"})'],['ok','харнес','скоуп read ✓ · источник ставок: публичные тарифы банков, обновлено сегодня'],['app','движок','рынок: лучшая ставка 14,0% на 6 мес · у нас 12,2% · разница на 1 600 000 ₽ вкладов = +28 800 ₽/год'],['app','движок','find_leaks: спящие 400 000 ₽ → 45 000 ₽ · продление под 7,5% → 18 800 ₽ · простой 12 дней → 6 400 ₽ · досрочное, условие, налог → 9 350 ₽'],['app','движок','цена перехода: −3 200 ₽ досрочное закрытие ••8708 · −160 ₽ дни без дохода'],['ok','харнес','честный вывод обязателен: без утечек конкурент выгоднее на 25 440 ₽/год'],['ok','аудит','#48217 read · сравнение сохранено с источниками'],['llm','агент','← клиенту: «Переходить не нужно: утечки стоят 79 550 ₽ в год, ставка даст 28 800 ₽. Закрыть утечки?»']]},
  exec:{lines:[['llm','агент','tool_call move_funds({from:"card",to:"sav-9106",amount:250000})'],['ok','харнес','скоуп execute ✓ (с подтверждением) · периметр ✓ · резерв 150 000 ₽ остаётся ✓'],['ok','харнес','лимиты: 1 из 3 операций на неделе ✓ · сумма ≤ 300 000 ₽/операция ✓'],['app','банк','→ push в Сбербанк Онлайн: запрос на подтверждение, инициатор «Мой ассистент»'],['no','харнес','ожидание подтверждения клиента в приложении… (агент не может подтвердить сам)']],
   after:[['app','банк','клиент подтвердил Face ID → перевод исполнен · 250 000 ₽ → накопительный ••9106'],['ok','аудит','#48215 execute · источник: внешний агент · подтверждено клиентом · объяснение сохранено'],['llm','агент','← результат агенту: {status:"executed", gain_month:2340, audit:"#48215"}']]},
  out:{lines:[['llm','агент','tool_call buy_bonds({amount:100000})'],['no','харнес','инструмент не существует в MCP «Сбережения» ✗'],['no','харнес','периметр: инвестиционные продукты вне периметра помощника ✗'],['ok','аудит','#48216 refused · причина: out_of_scope · агенту возвращено объяснение'],['llm','агент','← клиенту: «Этот помощник работает только с вкладами и счетами. Инвестиции — в СберИнвестициях»']]}
@@ -2710,20 +2720,23 @@ if(calc){const reserve=$('#c-reserve'),block=$('#c-block'),bonus=$('#c-bonus'),t
   $('#c-after').innerHTML=`<i class="idle" style="width:${idleA/total*100}%"></i><i class="sav" style="width:${savA/total*100}%"></i><i class="dep" style="width:${dep/total*100}%"></i>`;}
  [reserve,block,bonus,thr].forEach(el=>el.addEventListener('input',run));run();}
 
-/* effective-rate calculator (service vs rate) */
+/* service vs rate: the best market rate without the assistant against our rate with closed leaks */
 const edge=$('#edge-calc');
-if(edge){const comp=$('#e-comp');const ADDS=[['e-bonus',1.5,'add'],['e-salary',0.5,'add'],['e-eco',0.8,'add'],['e-auto',0.4,'svc'],['e-ladder',0.3,'svc']];const COSTS=[['e-mid',0.9],['e-gap',0.07]];
- const pct=v=>v.toFixed(2).replace('.',',').replace(/,?0+$/,'')+'%';
- function run(){const c=+comp.value;let ours=12.2;ADDS.forEach(([id,v])=>{if($('#'+id).checked)ours+=v});let theirs=c;COSTS.forEach(([id,v])=>{if($('#'+id).checked)theirs-=v});
-  const mx=17;const seg=(w,cls)=>`<i class="${cls}" style="width:${Math.max(0,w)/mx*100}%"></i>`;
-  let ob=seg(12.2,'base');ADDS.forEach(([id,v,cls])=>{if($('#'+id).checked)ob+=seg(v,cls)});$('#e-bar-ours').innerHTML=ob;
-  let tb=seg(theirs,'oth');COSTS.forEach(([id,v])=>{if($('#'+id).checked)tb+=seg(v,'loss')});$('#e-bar-theirs').innerHTML=tb;
-  $('#e-comp-v').textContent=pct(c);$('#e-ours').textContent=pct(ours);$('#e-theirs').textContent=pct(theirs);
-  const d=ours-theirs;const v=$('#e-verdict');
-  if(d>=0){v.className='verdict';v.textContent=`Остаёмся: ${pct(ours)} у нас против ${pct(theirs)} у конкурента после затрат на переход. Разница ${pct(d)} в пользу сервиса, и помощник покажет её клиенту в рублях.`;}
-  else{v.className='verdict warn';v.textContent=`Честно: конкурент выгоднее на ${pct(-d)}. Помощник так и скажет: доверие важнее одной сделки. И покажет, что уходит вместе со ставкой: автопилот, лестница, резерв и одна кнопка подтверждения.`;}
-  $('#e-money').textContent=`На 1 000 000 ₽ за год: ${fmt(ours*10000)} ₽ у нас против ${fmt(theirs*10000)} ₽ у конкурента.`;}
- [comp,...ADDS.map(a=>$('#'+a[0])),...COSTS.map(a=>$('#'+a[0]))].forEach(el=>el.addEventListener('input',run));run();}
+if(edge){const comp=$('#e-comp'),sw=$('#e-switch');const DEP=1600000,TOTAL=2450000,BASE=12.2,SWITCH=3360;
+ const LEAKS=[['e-idle','спящие деньги',45000,'var(--accent)'],['e-prolong','тихое продление',18800,'#5BD67E'],['e-gap','простой между вкладами',6400,'var(--c-sav)'],['e-early','сгоревшие проценты',3200,'var(--ai)'],['e-bonus','условие надбавки',2250,'#A48BFF'],['e-tax','налог',3900,'#C9B8FF']];
+ const pct=v=>v.toFixed(1).replace('.',',')+'%';
+ function run(){const c=+comp.value;const gain=Math.max(0,c-BASE)/100*DEP;const cost=sw.checked&&c>BASE?SWITCH:0;const theirs=gain-cost;
+  const on=LEAKS.filter(l=>$('#'+l[0]).checked);const ours=on.reduce((s,l)=>s+l[2],0);
+  const mx=Math.max(gain,ours,1);const seg=(w,bg)=>`<i style="width:${Math.max(0,w)/mx*100}%;background:${bg}"></i>`;
+  $('#e-bar-theirs').innerHTML=seg(gain-cost,'#8C9A92')+(cost?seg(cost,'var(--warn)'):'');
+  $('#e-bar-ours').innerHTML=on.map(l=>seg(l[2],l[3])).join('');
+  $('#e-legend').innerHTML=`<span><i style="background:#8C9A92"></i>ставка выше на ${(Math.max(0,c-BASE)).toFixed(1).replace('.',',')} п.п.</span>`+(cost?`<span><i style="background:var(--warn)"></i>цена перехода ${fmt(cost)}</span>`:'')+on.map(l=>`<span><i style="background:${l[3]}"></i>${l[1]} ${fmt(l[2])}</span>`).join('');
+  $('#e-comp-v').textContent=pct(c);$('#e-theirs').textContent=(theirs<0?'−':'+')+fmt(Math.abs(theirs))+' ₽';$('#e-ours').textContent='+'+fmt(ours)+' ₽';
+  const d=ours-theirs;const v=$('#e-verdict');const be=BASE+(ours+(sw.checked?SWITCH:0))/DEP*100;
+  if(d>=0){v.className='verdict';v.textContent=`С помощником на ${fmt(d)} ₽ в год больше при ставке конкурента ${pct(c)}. Чтобы перебить сервис одной ставкой, конкуренту нужно ${pct(be)}.`;}
+  else{v.className='verdict warn';v.textContent=`Честно: у этого клиента утечек почти нет, и ставка конкурента выгоднее на ${fmt(-d)} ₽ в год. Помощник так и скажет и перенесёт деньги в день закрытия без простоя.`;}
+  $('#e-money').textContent=`Ставка конкурента действует на ${fmt(DEP)} ₽ вкладов и на срок вклада. Утечки считаются по всем ${fmt(TOTAL)} ₽ клиента и за весь год.`;}
+ [comp,sw,...LEAKS.map(l=>$('#'+l[0]))].forEach(el=>el.addEventListener('input',run));run();}
 
 /* skills catalog */
 const SKILLS=[
@@ -2747,7 +2760,7 @@ const SKILLS=[
  {id:'guard',g:'s',ic:'i-hand',name:'Пауза при давлении',short:'Защита от мошенников: 24 часа и 900',status:'new',screen:'sk-guard',flow:'care',trig:'Досрочное закрытие нескольких вкладов и перевод вовне за короткое время, нетипичное поведение.',does:'Останавливает и говорит прямо, сколько теряет клиент и как действуют мошенники. Даёт звонок в 900 и паузу 24 часа. Снять паузу по телефону нельзя, только в приложении после её окончания.',impr:'Потери от социальной инженерии, сохранённые вклады, доверие 60+.',tools:['Антифрод банка','Период охлаждения','Звонок 900 с контекстом'],stage:'Консультант · 2027 H1',lvl:'L0'},
  {id:'simple',g:'s',ic:'i-mic',name:'Проще и голосом',short:'Три предложения, крупно, вслух',status:'new',screen:'care-voice',flow:'care',proto:'care:care-voice',trig:'Тап «Объяснить проще», голосовой вопрос, режим «Осторожный».',does:'Переписывает любое объяснение в три простых предложения без терминов, отвечает голосом и текстом крупно. Кнопка «Нет» всегда того же размера, что «Да».',impr:'Завершённые сценарии в режиме «Осторожный», NPS 60+, звонки в 900 с просьбой объяснить.',tools:['Распознавание и синтез речи','Упрощение текста в харнесе'],stage:'Консультант · 2027 H1',lvl:'L0'},
  {id:'human',g:'s',ic:'i-phone',name:'Передать человеку с контекстом',short:'Оператор видит вопрос и расчёт',status:'new',screen:'care-human',flow:'care',proto:'care:care-human',trig:'Тап «Позвонить» из любого шага, вопрос вне документов, сомнение клиента.',does:'Соединяет с оператором или офисом и передаёт контекст: вопрос, экран, расчёт и журнал. Клиенту не нужно объяснять заново.',impr:'Время решения в 900, повторные обращения, доверие к помощнику как к входу в банк.',tools:['Передача контекста оператору','get_action_log'],stage:'Консультант · 2027 H1',lvl:'L0'},
- {id:'report',g:'s',ic:'i-list',name:'Отчёт за неделю',short:'Что сделано, сколько заработано',status:'new',screen:'cap-report',flow:'cap',proto:'cap:cap-report',trig:'Понедельник, только на уровнях L2 и L3. Выключается одним тапом.',does:'Доход по дням, список действий с источником и статусом, что будет на следующей неделе. Автопилот отчитывается, даже если ничего не делал.',impr:'Удержание на L2 и L3, доля отменённых действий, понимание, за что клиент платит доверием.',tools:['get_action_log','get_portfolio'],stage:'Управляющий · 2028',lvl:'L2–L3'},
+ {id:'report',g:'s',ic:'i-list',name:'Отчёт за неделю',short:'Что сделано, сколько заработано',status:'new',screen:'cap-report',flow:'cap',proto:'cap:cap-report',trig:'Понедельник, только на уровнях L2 и L3. Выключается одним тапом.',does:'Доход по дням, список действий с источником и статусом, что будет на следующей неделе. Автопилот отчитывается, даже если ничего не делал. Раз в год итог: сколько сервис принёс сверх ставки.',impr:'Удержание на L2 и L3, доля отменённых действий, понимание, за что клиент платит доверием.',tools:['get_action_log','get_portfolio'],stage:'Управляющий · 2028',lvl:'L2–L3'},
  {id:'trusted',g:'s',ic:'i-users',name:'Доверенное лицо',short:'Близкий видит подсказки, решает клиент',status:'new',screen:'seg-cap-care',flow:'care',proto:'care:seg-cap-care',trig:'Клиент включает в настройках или по совету оператора для режима «Осторожный».',does:'Близкий получает «только важное» и видит те же варианты, может помочь разобраться. Подтверждает действия только сам клиент. Доступ отзывается одним тапом.',impr:'Доля 60+ с активным помощником, инциденты и жалобы в сегменте, спокойствие семьи.',tools:['register_agent, семья, только чтение','get_action_log'],stage:'Открытая платформа · 2029',lvl:'L0'}
 ];
 const HOW={a:[['Данные банка','Портфель, тарифы, история операций и политика клиента через внутренний MCP.',''],['Расчёт движком','Выгода в рублях, цена альтернативы и «что будет, если не делать». Модель цифры не генерирует.','nat'],['Экран','genUI собирает экран из нативных компонентов: вывод, рекомендация уже выбрана, одна кнопка.','ai'],['Подтверждение','Нативная шторка с суммой и Face ID. Запись в журнале с источником и объяснением.','nat']],

@@ -13,8 +13,10 @@
     <tr><td><code>create_deposit</code></td><td>Открыть вклад или накопительный счёт с заданными условиями</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>move_funds</code></td><td>Перевод между своими счетами и вкладами клиента</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>schedule_action</code></td><td>Отложенное действие на дату закрытия вклада, отменяемое</td><td>execute</td><td>в приложении</td></tr>
-    <tr><td><code>compare_market</code></td><td>Ставки рынка из публичных тарифов, цена перехода и честный вывод, даже не в нашу пользу</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>compare_market</code></td><td>Сравнение с рынком по всем деньгам клиента за год: ставка конкурента, цена перехода, утечки, честный вывод, даже не в нашу пользу</td><td>read</td><td>нет</td></tr>
     <tr><td><code>effective_rate</code></td><td>Эффективная доходность клиента: надбавки, налог, сервисные эффекты</td><td>read</td><td>нет</td></tr>
+    <tr><td><code>find_leaks</code></td><td>Утечки клиента в рублях: спящие деньги, тихие продления, простои, досрочные закрытия, условия надбавок, налог</td><td>propose</td><td>нет</td></tr>
+    <tr><td><code>year_statement</code></td><td>Итог года: сколько сервис принёс сверх ставки, по пунктам и с источниками</td><td>read</td><td>нет</td></tr>
     <tr><td><code>ladder_plan</code></td><td>Лестница вкладов под горизонт и резерв клиента</td><td>propose</td><td>нет</td></tr>
     <tr><td><code>transfer_in</code></td><td>Перенос денег из другого банка через СБП с открытием продукта в ту же минуту</td><td>execute</td><td>в приложении, Face ID</td></tr>
     <tr><td><code>rate_alerts</code></td><td>Подписка агента на изменения ставок и условий</td><td>execute</td><td>в приложении</td></tr>

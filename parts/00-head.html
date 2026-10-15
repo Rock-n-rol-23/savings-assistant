@@ -594,13 +594,6 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .opt.flat{background:transparent;padding:10px 0;border-radius:0}
 .opt.flat + .opt.flat{border-top:1px solid rgba(255,255,255,.08)}
 /* deck: glance section */
-.ba{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
-@media (max-width:980px){.ba{grid-template-columns:minmax(0,1fr)}}
-.ba .c{display:flex;flex-direction:column;gap:14px}
-.ba .pair{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
-.ba .pair > div{display:flex;flex-direction:column;align-items:center;gap:8px}
-.ba .lab{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3)}
-.ba .lab.ok{color:var(--accent)}
 .tapdots{display:inline-flex;gap:5px;vertical-align:middle;margin-right:8px}
 .tapdots i{width:12px;height:12px;border-radius:50%;background:var(--accent);display:inline-block}
 .tapdots i.f{background:var(--ai)}
@@ -681,6 +674,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .phones > div{display:flex;flex-direction:column;align-items:center;gap:8px;max-width:100%}
 .phones .cap{font-size:13.5px;color:var(--ink2);text-align:center;max-width:220px;line-height:1.4}
 .phones .cap b{display:block;color:var(--ink)}
+.phones a.open{font-size:13.5px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
+.phones a.open:hover{text-decoration:underline}
 </style>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>
