@@ -676,6 +676,56 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .phones .cap b{display:block;color:var(--ink)}
 .phones a.open{font-size:13.5px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
 .phones a.open:hover{text-decoration:underline}
+
+/* ===== v4: rebalancing process, value of touches, cross-sell ===== */
+.lvls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+@media (max-width:760px){.lvls{grid-template-columns:minmax(0,1fr)}}
+.lvls button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:18px;padding:16px 18px;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;align-items:center;font-family:var(--text)}
+.lvls button b{font-family:var(--display);font-size:30px;font-weight:800;color:var(--accent);line-height:1;grid-row:span 2}
+.lvls button span{font-size:16px;font-weight:700;line-height:1.3}
+.lvls button small{font-size:13.5px;color:var(--ink2);line-height:1.4}
+.lvls button:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.lvls button.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.ev .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--bg2);color:var(--ink2);font:700 12px var(--text)}
+.ev.on .n{background:var(--accent);color:#fff}
+.ev .who{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:var(--ink3)}
+.ev .who i{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--ink3)}
+.ev .who.cl i{background:var(--ink)}.ev .who.eng i{background:var(--accent)}.ev .who.ai i{background:var(--ai)}.ev .who.auto i{background:var(--warn)}
+.prog .body a.open{font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
+.prog .body a.open:hover{text-decoration:underline}
+.calc.vcalc{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:900px){.calc.vcalc{grid-template-columns:minmax(0,1fr)}}
+.ybud{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+@media (max-width:600px){.ybud{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.ybud{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ybud .ym{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 8px 10px;display:flex;flex-direction:column;gap:5px;min-height:104px;min-width:0}
+.ybud .ym b{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.ybud .yt{font-size:12px;line-height:1.3;border-radius:8px;padding:5px 7px;background:var(--accent-soft);color:var(--accent2);display:flex;flex-direction:column;gap:1px}
+.ybud .yt small{font-size:11px;opacity:.85}
+.ybud .yt.must{background:var(--warn-soft);color:var(--warn)}
+.ybud .yt.zero{background:var(--bg2);color:var(--ink2)}
+.ybud .yt.off{background:transparent;border:1px dashed var(--line);color:var(--ink3);text-decoration:line-through}
+.ybud .yt.off small{text-decoration:none}
+.ybud .ym .q{font-size:11.5px;color:var(--ink3);margin-top:auto}
+.vtot{display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;padding-top:6px}
+.vtot b{font-family:var(--display);font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1}
+.vtot span{font-size:14.5px;color:var(--ink2)}
+.copytbl td s{color:var(--ink3)}
+.skcols{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){.skcols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.skcols{grid-template-columns:minmax(0,1fr)}}
+.skgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+@media (max-width:1100px){.skgrid{grid-template-columns:minmax(0,1fr)}}
+.skcol.x h4 i{background:var(--warn)}
+.skcol.x .skb .i{background:var(--warn-soft);color:var(--warn)}
+.skcol.x .skb:hover{border-color:color-mix(in srgb,var(--warn) 50%,var(--line))}
+.skcol.x .skb.on{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn-soft)}
+/* phone: timeline */
+.tline{display:flex;gap:6px;flex:none}
+.tline>div{flex:1;position:relative;padding-top:14px;font-size:13px;color:#8E8E93;min-width:0;line-height:1.3}
+.tline>div::before{content:"";position:absolute;left:0;right:0;top:4px;height:3px;background:#2C2C2E;border-radius:2px}
+.tline>div.on::before{background:#4CD964}
+.tline>div b{display:block;font-size:14px;color:#fff;font-weight:600}
 </style>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>

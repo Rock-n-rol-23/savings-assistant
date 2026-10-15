@@ -682,6 +682,56 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .phones .cap b{display:block;color:var(--ink)}
 .phones a.open{font-size:13.5px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
 .phones a.open:hover{text-decoration:underline}
+
+/* ===== v4: rebalancing process, value of touches, cross-sell ===== */
+.lvls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-bottom:18px}
+@media (max-width:760px){.lvls{grid-template-columns:minmax(0,1fr)}}
+.lvls button{appearance:none;text-align:left;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:18px;padding:16px 18px;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 14px;align-items:center;font-family:var(--text)}
+.lvls button b{font-family:var(--display);font-size:30px;font-weight:800;color:var(--accent);line-height:1;grid-row:span 2}
+.lvls button span{font-size:16px;font-weight:700;line-height:1.3}
+.lvls button small{font-size:13.5px;color:var(--ink2);line-height:1.4}
+.lvls button:hover{border-color:color-mix(in srgb,var(--accent) 50%,var(--line))}
+.lvls button.on{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent-soft)}
+.ev .n{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--bg2);color:var(--ink2);font:700 12px var(--text)}
+.ev.on .n{background:var(--accent);color:#fff}
+.ev .who{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;margin-top:auto;display:inline-flex;align-items:center;gap:6px;color:var(--ink3)}
+.ev .who i{width:8px;height:8px;border-radius:50%;display:inline-block;background:var(--ink3)}
+.ev .who.cl i{background:var(--ink)}.ev .who.eng i{background:var(--accent)}.ev .who.ai i{background:var(--ai)}.ev .who.auto i{background:var(--warn)}
+.prog .body a.open{font-size:14px;font-weight:700;color:var(--accent);cursor:pointer;text-decoration:none}
+.prog .body a.open:hover{text-decoration:underline}
+.calc.vcalc{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:900px){.calc.vcalc{grid-template-columns:minmax(0,1fr)}}
+.ybud{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+@media (max-width:600px){.ybud{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:480px){.ybud{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.ybud .ym{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px 8px 10px;display:flex;flex-direction:column;gap:5px;min-height:104px;min-width:0}
+.ybud .ym b{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink3)}
+.ybud .yt{font-size:12px;line-height:1.3;border-radius:8px;padding:5px 7px;background:var(--accent-soft);color:var(--accent2);display:flex;flex-direction:column;gap:1px}
+.ybud .yt small{font-size:11px;opacity:.85}
+.ybud .yt.must{background:var(--warn-soft);color:var(--warn)}
+.ybud .yt.zero{background:var(--bg2);color:var(--ink2)}
+.ybud .yt.off{background:transparent;border:1px dashed var(--line);color:var(--ink3);text-decoration:line-through}
+.ybud .yt.off small{text-decoration:none}
+.ybud .ym .q{font-size:11.5px;color:var(--ink3);margin-top:auto}
+.vtot{display:flex;gap:14px;flex-wrap:wrap;align-items:baseline;padding-top:6px}
+.vtot b{font-family:var(--display);font-size:36px;font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1}
+.vtot span{font-size:14.5px;color:var(--ink2)}
+.copytbl td s{color:var(--ink3)}
+.skcols{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:1100px){.skcols{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:700px){.skcols{grid-template-columns:minmax(0,1fr)}}
+.skgrid{grid-template-columns:minmax(0,1.3fr) minmax(0,1fr)}
+@media (max-width:1100px){.skgrid{grid-template-columns:minmax(0,1fr)}}
+.skcol.x h4 i{background:var(--warn)}
+.skcol.x .skb .i{background:var(--warn-soft);color:var(--warn)}
+.skcol.x .skb:hover{border-color:color-mix(in srgb,var(--warn) 50%,var(--line))}
+.skcol.x .skb.on{border-color:var(--warn);box-shadow:0 0 0 2px var(--warn-soft)}
+/* phone: timeline */
+.tline{display:flex;gap:6px;flex:none}
+.tline>div{flex:1;position:relative;padding-top:14px;font-size:13px;color:#8E8E93;min-width:0;line-height:1.3}
+.tline>div::before{content:"";position:absolute;left:0;right:0;top:4px;height:3px;background:#2C2C2E;border-radius:2px}
+.tline>div.on::before{background:#4CD964}
+.tline>div b{display:block;font-size:14px;color:#fff;font-weight:600}
 </style>
 </head>
 <body>
@@ -756,7 +806,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
  <div class="wrap">
   <a class="brand" href="#top"><i></i>Помощник по сбережениям</a>
   <div class="links">
-   <a href="#summary">Резюме</a><a href="#why">Почему сейчас</a><a href="#today">Сегодня</a><a href="#principles">Принципы</a><a href="#vision">Видение</a><a href="#segments">Сегменты</a><a href="#trust">Доверие</a><a href="#glance">Без чтения</a><a href="#proto">Прототип</a><a href="#entry">Точки входа</a><a href="#arch">Архитектура</a><a href="#engine">Движок</a><a href="#skills">Скиллы</a><a href="#proactive">Проактив</a><a href="#edge">Сервис vs ставка</a><a href="#mcp">MCP</a><a href="#harness">Харнес</a><a href="#roadmap">Дорожная карта</a><a href="#metrics">Метрики</a><a href="#risks">Риски</a><a href="#next">90 дней</a><a href="#refs">Референсы</a>
+   <a href="#summary">Резюме</a><a href="#why">Почему сейчас</a><a href="#today">Сегодня</a><a href="#principles">Принципы</a><a href="#vision">Видение</a><a href="#segments">Сегменты</a><a href="#trust">Доверие</a><a href="#glance">Без чтения</a><a href="#proto">Прототип</a><a href="#entry">Точки входа</a><a href="#arch">Архитектура</a><a href="#engine">Движок</a><a href="#rebalance">Ребалансировка</a><a href="#skills">Скиллы</a><a href="#proactive">Проактив</a><a href="#value">Ценность касаний</a><a href="#edge">Сервис vs ставка</a><a href="#mcp">MCP</a><a href="#harness">Харнес</a><a href="#roadmap">Дорожная карта</a><a href="#metrics">Метрики</a><a href="#risks">Риски</a><a href="#next">90 дней</a><a href="#refs">Референсы</a>
   </div>
  </div>
 </nav>
@@ -768,7 +818,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <h1 class="h" style="margin-top:14px">Помощник по сбережениям</h1>
    <p class="lead">От подбора вклада к управлению всеми сбережениями клиента. genAI думает и объясняет, нативный Сбербанк Онлайн показывает и исполняет, а о датах и дедлайнах помощник напоминает сам. Ни один рубль не двигается без подтверждения клиента в приложении. Открытый MCP и харнес делают помощника платформой: к нему можно подключить и свою LLM.</p>
    <div class="acts"><a class="btn-p" href="#proto">Открыть кликабельный прототип</a><a class="btn-s" href="#mcp">MCP и харнес</a><a class="btn-s" href="#roadmap">Дорожная карта</a></div>
-   <div class="facts"><div><b>7 путей</b>Старт, Накопитель, Капитал, Осторожный, события, внешний агент, своя LLM</div><div><b>93 экрана</b>под iPhone 18 Pro Max, живые цифры и переключатели</div><div><b>22 скилла</b>активные и сервисные, с экранами</div><div><b>3 тапа</b>до результата, без чтения</div><div><b>L0–L3</b>лестница доверия и автономии</div><div><b>MCP + харнес</b>вклады и счета как платформа</div></div>
+   <div class="facts"><div><b>8 путей</b>Старт, Накопитель, Капитал, Осторожный, ребалансировка L1–L3, события, внешний агент, своя LLM</div><div><b>144 экрана</b>под iPhone 18 Pro Max, живые цифры и переключатели</div><div><b>33 скилла</b>активные, сервисные и честные кросс-продажи</div><div><b>3 тапа</b>до результата, без чтения</div><div><b>L0–L3</b>лестница доверия и автономии</div><div><b>MCP + харнес</b>вклады и счета как платформа</div></div>
   </div>
   <div class="hero-phone">
    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">
@@ -945,12 +995,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </section>
 <section class="s" id="proto">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Кликабельный прототип</div><h2 class="t">Клиентские пути в Сбербанк Онлайн</h2><p class="lead">Выберите сегмент и пройдите путь: нажимайте кнопки на телефоне или шаги справа. Путь «События» показывает, как помощник сам напоминает и ведёт. Переключатели, чекбоксы и суммы живые: итоги пересчитываются. Каждое движение денег заканчивается одним и тем же нативным экраном подтверждения с Face ID, и это верно для своего помощника, внешнего агента и вашей собственной LLM.</p></div>
+  <div class="hd"><div class="eyebrow">Кликабельный прототип</div><h2 class="t">Клиентские пути в Сбербанк Онлайн</h2><p class="lead">Выберите сегмент и пройдите путь: нажимайте кнопки на телефоне или шаги справа. Путь «События» показывает, как помощник сам напоминает и ведёт, путь «Ребалансировка» ведёт от первого плана через правила к автопилоту. Переключатели, чекбоксы и суммы живые: итоги пересчитываются. Каждое движение денег заканчивается одним и тем же нативным экраном подтверждения с Face ID, и это верно для своего помощника, внешнего агента и вашей собственной LLM.</p></div>
   <div class="personas" role="tablist">
    <button class="on" data-flow="start"><i></i>Старт: нет накоплений</button>
    <button data-flow="saver"><i></i>Накопитель: есть сумма</button>
    <button data-flow="cap"><i></i>Капитал: портфель вкладов</button>
    <button data-flow="care"><i></i>Осторожный: низкое доверие, 60+</button>
+   <button data-flow="rb"><i></i>Ребалансировка: L1 → L3</button>
    <button data-flow="ext"><i></i>Внешний агент через MCP</button>
    <button data-flow="byo"><i></i>Своя LLM через MCP</button>
    <button data-flow="pro"><i></i>События: год с помощником</button>
@@ -1009,7 +1060,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 
 <section class="s alt" id="engine">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Движок ребалансировки</div><h2 class="t">Максимум дохода при ограничениях клиента, детерминированно</h2><p class="lead">Периметр: вклады, накопительные и текущие счета банка. Движок воспроизводим и объясним, LLM только переводит его выход на язык клиента.</p></div>
+  <div class="hd"><div class="eyebrow">Движок ребалансировки</div><h2 class="t">Максимум дохода при ограничениях клиента, детерминированно</h2><p class="lead">Периметр: вклады, накопительные и текущие счета банка. Движок воспроизводим и объясним, LLM только переводит его выход на язык клиента. <a href="#rebalance" style="font-weight:700;text-decoration:none">Как клиент проходит этот процесс на трёх уровнях доверия →</a></p></div>
   <div class="grid g3">
    <div class="c"><h3>Цель</h3><p>Максимизировать ожидаемый чистый доход сбережений клиента на его горизонте. Выход: ранжированный список действий, у каждого выгода в рублях, «почему» одной фразой и «что будет, если не делать».</p></div>
    <div class="c"><h3>Ограничения</h3><p>Ликвидный резерв; цели и их даты; штрафы за досрочное закрытие (не ломать вклад, если потеря больше выигрыша); условия продуктов и надбавки; налог на процентный доход; список «не трогать»; минимальная выгода; лимит операций.</p></div>
@@ -1038,33 +1089,113 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
  </div>
 </section>
 
+<section class="s" id="rebalance">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Процесс ребалансировки</div><h2 class="t">От слов клиента до автопилота: один процесс, три уровня доверия</h2><p class="lead">Движок считает одинаково на любом уровне. Меняется только то, сколько решений клиент оставляет себе. На L1 он подтверждает каждое действие, на L2 задаёт одно правило и получает предупреждение за день, на L3 отдаёт политику целиком и читает отчёт по понедельникам. Переход вверх помощник предлагает только после успехов, переход вниз всегда в один тап. Выберите уровень и пройдите цепочку: телефон показывает экран, карточки объясняют, кто что делает.</p></div>
+  <div class="lvls" role="tablist" id="rb-lvls">
+   <button class="on" data-lvl="l1"><b>L1</b><span>Вручную</span><small>Каждое действие подтверждает клиент. Так проходит первый план, так остаются те, кто выбрал «спрашивать всегда»</small></button>
+   <button data-lvl="l2"><b>L2</b><span>По правилам</span><small>Одно правило после трёх одинаковых подтверждений. Предупреждение за день, вернуть можно 24 часа</small></button>
+   <button data-lvl="l3"><b>L3</b><span>Автопилот</span><small>Политика целиком, отчёт по понедельникам, честная тишина и пауза в один тап</small></button>
+  </div>
+  <p class="b" id="rb-lead" style="margin-bottom:14px"></p>
+  <div class="evs" id="rb-steps"></div>
+  <div class="prog">
+   <div class="ph-wrap fit" id="rb-phone" data-max="0.6"><div class="phone"><div class="screen"></div></div></div>
+   <div class="body" id="rb-body"></div>
+  </div>
+  <h3 style="margin:48px 0 12px">Чем отличаются уровни</h3>
+  <div class="tbl-wrap"><table class="tbl">
+   <tr><th style="width:18%"></th><th>L1 · Вручную</th><th>L2 · По правилам</th><th>L3 · Автопилот</th></tr>
+   <tr><td><b>Кто решает</b></td><td>Клиент, каждое действие отдельно или пакетом</td><td>Правило клиента: одно условие, один порог</td><td>Политика клиента: запас, запреты, лимиты, порог выгоды</td></tr>
+   <tr><td><b>Когда спрашиваем</b></td><td>Всегда</td><td>За день до действия, если клиент включил предупреждение</td><td>Крупное, новое, досрочное. Остальное делаем и отчитываемся</td></tr>
+   <tr><td><b>Что можно вернуть</b></td><td>Отложенное действие до дня исполнения</td><td>Любой перевод по правилу, 24 часа</td><td>Любое действие, 24 часа. Переоткрытие вклада отменяется до дня закрытия</td></tr>
+   <tr><td><b>Как включается</b></td><td>По умолчанию для всех</td><td>Предложение после трёх одинаковых подтверждений</td><td>Предложение после трёх месяцев правила без отмен. Только явное включение</td></tr>
+   <tr><td><b>Как выключается</b></td><td>Нечего выключать</td><td>Один тап в любом сообщении о правиле</td><td>Пауза на месяц или совсем, один тап на Главном</td></tr>
+   <tr><td><b>Отчёт</b></td><td>Журнал</td><td>Пуш после действия, отчёт по понедельникам</td><td>Понедельник, даже если ничего не делал. Выключается одним тапом</td></tr>
+   <tr><td><b>Для кого</b></td><td>Все. Режим «Осторожный» всегда здесь</td><td>Клиенты с повторяющимися решениями</td><td>Только явное включение. Внешним агентам недоступен</td></tr>
+  </table></div>
+  <h3 style="margin:48px 0 12px">Что нельзя сломать на любом уровне</h3>
+  <div class="grid g3">
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-wallet"/></svg><h3 style="margin-top:10px">Запас не трогаем</h3><p>Сумма на карте, которую клиент назвал словами или которую движок посчитал по тратам. Переводим только то, что выше, и пишем это на экране.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-lock"/></svg><h3 style="margin-top:10px">Не ломаем вклад</h3><p>Досрочное закрытие только если выигрыш больше потери. Ставки выросли, а движок говорит «не стоит» и показывает почему.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-shield"/></svg><h3 style="margin-top:10px">Только свои счета</h3><p>Деньги двигаются между вкладами и счетами клиента в банке. Наружу ни рубля ни на одном уровне, ни по чьей просьбе.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-clock"/></svg><h3 style="margin-top:10px">Дата и отмена у каждого действия</h3><p>Отложенное исполняется в день закрытия и напоминает за день. Сделанное по правилу или автопилотом можно вернуть 24 часа.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-list"/></svg><h3 style="margin-top:10px">Журнал с источником</h3><p>Кто решил: клиент, правило, автопилот или внешний агент. Почему: объяснение и цифры из движка. Хранится всегда.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-chev-d"/></svg><h3 style="margin-top:10px">Вниз одним тапом</h3><p>Понизить уровень можно в любом сообщении без объяснений. Повысить помощник предлагает сам, только после успехов и не чаще раза в квартал.</p></div>
+  </div>
+  <div class="band"><i></i><p>Для клиента это звучит не как «ребалансировка», а как «план на неделю», «правило» и «автопилот». Движок один, экраны те же, разница только в том, сколько раз спрашиваем.</p></div>
+ </div>
+</section>
 <section class="s" id="skills">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Скиллы помощника</div><h2 class="t">Двадцать два навыка: одиннадцать действуют, одиннадцать помогают</h2><p class="lead">Скилл — это отдельный сценарий со своим триггером, инструментами MCP, расчётом движка и экраном. Активные скиллы заканчиваются подтверждением: двигают деньги или открывают продукты. Сервисные ничего не двигают: объясняют, считают, напоминают и защищают. Четыре скилла уже в работе, остальные предлагаем. Нажмите на скилл: справа его экран, как он работает и что улучшает.</p></div>
+  <div class="hd"><div class="eyebrow">Скиллы помощника</div><h2 class="t">Тридцать три навыка: одиннадцать действуют, одиннадцать помогают, одиннадцать продают честно</h2><p class="lead">Скилл — это отдельный сценарий со своим триггером, инструментами MCP, расчётом движка и экраном. Активные скиллы заканчиваются подтверждением: двигают деньги или открывают продукты. Сервисные ничего не двигают: объясняют, считают, напоминают и защищают. Третья группа, «Рядом со вкладом», предлагает продукты банка, которые усиливают сбережения: только с выгодой клиента в рублях на экране и честной ценой рядом. Четыре скилла уже в работе, остальные предлагаем. Нажмите на скилл: справа его экран, как он работает и что улучшает.</p></div>
   <div class="skgrid">
    <div class="skcols">
     <div class="skcol"><h4><i></i>Активные</h4><div class="sub">Открывают, переводят, планируют. Всегда через нативное подтверждение.</div><div class="sklist" id="sk-active"></div></div>
     <div class="skcol svc"><h4><i></i>Сервисные</h4><div class="sub">Объясняют, считают, напоминают, защищают. Деньги не двигают.</div><div class="sklist" id="sk-service"></div></div>
+    <div class="skcol x"><h4><i></i>Рядом со вкладом</h4><div class="sub">Продукты банка, которые усиливают сбережения. Выгода в рублях, цена честно, один в месяц.</div><div class="sklist" id="sk-cross"></div></div>
    </div>
    <div class="skd" id="sk-detail">
     <div class="ph-wrap fit" id="sk-phone" data-max="0.6"><div class="phone"><div class="screen"></div></div></div>
     <div class="body" id="sk-body"></div>
    </div>
   </div>
+
+  <h3 style="margin:48px 0 6px">Рядом со вкладом: кросс-продажи, которые помогают</h3>
+  <p class="b" style="margin-bottom:16px">Вклад и счёт редко живут одни. Рядом зарплата в другом банке, кредит под 24%, цель «квартира», ребёнок, пенсия, вопрос «а если рубль упадёт?». В каждом из этих мест у банка есть продукт, и в каждом помощник может либо продать, либо помочь. Разница в одном: помощь считается в рублях клиента и честно пишет цену. Одиннадцать таких скиллов ниже.</p>
+  <div class="tbl-wrap"><table class="tbl">
+   <tr><th style="width:17%">Скилл</th><th style="width:19%">Повод из данных</th><th style="width:18%">Выгода клиенту</th><th style="width:28%">Честная строка рядом с выгодой</th><th>Этап</th></tr>
+   <tr><td><b>Доплата от государства</b><br><span style="font-size:13px;color:var(--ink3)">программа долгосрочных сбережений</span></td><td>Деньги сверх запаса и целей на 10 лет и дольше</td><td>до +36 000 ₽ в год от государства и +13% возврат налога</td><td>Деньги до 2041 года или до 60 лет, доход фонда не гарантирован</td><td>Управляющий · 2028</td></tr>
+   <tr><td><b>Зарплата и пенсия сюда</b></td><td>Зачисления из другого банка 12-го числа</td><td>+0,6 п.п. ко всем вкладам: +9 600 ₽ в год</td><td>Надбавка снимется через два месяца без зарплаты, предупредим</td><td>Консультант · 2027 H1</td></tr>
+   <tr><td><b>Квартира: от вклада к ипотеке</b></td><td>Цель «квартира», вклад под неё закрывается к сроку покупки</td><td>Одобрение заранее, скидка 0,3 п.п., ни дня простоя взноса</td><td>Платёж 43% дохода: одобрят, но будет тесно</td><td>Управляющий · 2028</td></tr>
+   <tr><td><b>Льготный период вместо потери</b></td><td>Попытка закрыть вклад ради 50 000 ₽ при пустом счёте</td><td>0 ₽ потерь вместо −5 000 или −57 900 ₽</td><td>29,9% после 120 дней. Только с дисциплиной платежей, не для «Осторожного»</td><td>Планировщик · 2027 H2</td></tr>
+   <tr><td><b>Долг дороже вклада</b></td><td>Платёж по чужому кредиту под 24% при спящих деньгах</td><td>+25 500 ₽ в год, погасив часть, или +19 500 ₽, перенеся кредит</td><td>Банк заработает меньше на счёте клиента</td><td>Планировщик · 2027 H2</td></tr>
+   <tr><td><b>Подписка, если окупается</b></td><td>Остаток и траты, при которых надбавка окупает подписку</td><td>+2 400 ₽ в год сверх стоимости</td><td>«Не окупится», если траты упадут. Тогда не предлагаем и предупреждаем</td><td>Консультант · 2027 H1</td></tr>
+   <tr><td><b>Копить ребёнку</b></td><td>Детские траты, ребёнку 14, запрос «на учёбу»</td><td>Вклад на имя ребёнка 11,5%, карта с лимитом, общая цель</td><td>Снять до 18 лет только с разрешения опеки</td><td>Планировщик · 2027 H2</td></tr>
+   <tr><td><b>Длинные деньги в СберИнвестиции</b></td><td>600 000 ₽ сверх целей на 3 года и дольше</td><td>Передача с цифрами, вклады по очереди как вариант по умолчанию</td><td>Бумаги не выбираем, доход не обещаем, в режиме «Осторожный» не показываем</td><td>Управляющий · 2028</td></tr>
+   <tr><td><b>Налог самозанятого копится сам</b></td><td>Статус самозанятого и поступления от клиентов</td><td>Налог отложен и работает: +3 400 ₽ в год</td><td>Деньги на налог не смешиваются с вашими</td><td>Планировщик · 2027 H2</td></tr>
+   <tr><td><b>Завещательное распоряжение</b></td><td>60+, крупные вклады, распоряжения нет</td><td>Без нотариуса, бесплатно, 10 минут</td><td>Подпись лично в офисе. Пока вы живы, распоряжаетесь только вы</td><td>Планировщик · 2027 H2</td></tr>
+   <tr><td><b>Юани и золото только с причиной</b></td><td>Вопрос «а если рубль упадёт?», траты в валюте</td><td>Защита курса, если она нужна</td><td>Цена защиты −22 000 ₽ в год против рублёвого вклада</td><td>Консультант · 2027 H1</td></tr>
+  </table></div>
+  <div class="grid g3" style="margin-top:22px">
+   <div class="c"><div class="num">1</div><h3>Повод из данных, не из плана продаж</h3><p>Зарплата из другого банка, цель «квартира», платёж по чужому кредиту, самозанятость. Нет повода в данных клиента, нет предложения.</p></div>
+   <div class="c"><div class="num">2</div><h3>Выгода в рублях на экране</h3><p>Движок считает с учётом цены продукта, срока и ограничений. Если выгода отрицательная, помощник говорит «не окупится» и не предлагает.</p></div>
+   <div class="c"><div class="num">3</div><h3>Честная цена тем же шрифтом</h3><p>Деньги в программе до 2041 года, 29,9% после льготного периода, цена защиты в юанях. Ограничение рядом с выгодой, а не в сноске.</p></div>
+   <div class="c"><div class="num">4</div><h3>Один продукт в месяц</h3><p>Не больше одного кросс-предложения в месяц, в бюджете внимания. Отказ помним полгода, второй раз предлагаем только если изменились цифры.</p></div>
+   <div class="c"><div class="num">5</div><h3>Оформление в своём флоу</h3><p>Ипотека в Домклик, программа в СберНПФ, бумаги у брокера. Помощник передаёт контекст и предзаполняет, подтверждение всегда в нативном экране продукта.</p></div>
+   <div class="c"><div class="num">6</div><h3>Против интереса банка, если так честно</h3><p>«Долг дороже вклада» уменьшает остаток на счёте, «подписка не окупится» теряет продажу. Именно такие экраны делают голос помощника продающим.</p></div>
+  </div>
+  <div class="grid g2" style="margin-top:18px">
+   <div class="c"><h3>Чего не делаем никогда</h3><div class="list" style="margin-top:12px">
+    <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не называем страхование и инвестиции вкладом. Инвестиционное и накопительное страхование жизни помощник не предлагает вообще.</span></div>
+    <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не предлагаем кредитные продукты и инвестиции в режиме «Осторожный» и клиентам без дисциплины платежей.</span></div>
+    <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не продаём то, что не можем посчитать в рублях для этого клиента.</span></div>
+    <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не пишем «акция», «только сегодня», «успейте» и не ставим восклицательные знаки.</span></div>
+    <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не маскируем кросс-продажу под событие и не возвращаемся с ней раньше, чем через полгода после отказа.</span></div>
+   </div></div>
+   <div class="c"><h3>Что это даёт банку</h3><div class="list" style="margin-top:12px">
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Длинные пассивы:</b> программа долгосрочных сбережений и детские вклады живут годами и не уходят к агрегатору в день закрытия.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Зарплатные и пенсионные клиенты:</b> ежемесячные зачисления, из которых помощник строит правила и автопилот.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Ипотека и рефинансирование по делу:</b> клиент приходит с взносом и историей, а не с баннера.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Меньше досрочных закрытий:</b> льготный период и «откуда взять» сохраняют вклады до срока.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Метрика не «продуктов на клиента»,</b> а принятые предложения с положительной выгодой для клиента и ноль жалоб на навязывание.</span></div>
+   </div></div>
+  </div>
+
   <h3 style="margin:48px 0 12px">Скиллы по этапам</h3>
   <div class="tbl-wrap"><table class="tbl">
-   <tr><th style="width:16%">Этап</th><th style="width:30%">Активные</th><th style="width:30%">Сервисные</th><th style="width:14%">Данные и инструменты</th><th>Автономия</th></tr>
-   <tr><td><b>Консультант</b><br>2027 · H1</td><td>Открыть вклад или счёт · Разложить сумму по продуктам · Надбавка: включить и успеть</td><td>Ответить по продукту (RAG по базе знаний IDP) · Как посчитали · Справка за минуту · Проще и голосом · Передать человеку · Пауза при давлении</td><td>Каталог продуктов и ставок, калькулятор дохода, база знаний, антифрод, genUI v1</td><td>L0–L1</td></tr>
-   <tr><td><b>Планировщик</b><br>2027 · H2</td><td>Копить автоматически · Спящие деньги на счёт · Закрытие вклада: три варианта · Пополнить вклад · Откуда взять без потери</td><td>Налог по вкладам, включая другие банки · Хватит ли до зарплаты · Календарь и напоминания · проактивные события</td><td>История операций, прогноз остатков, события, календарь телефона, внутренний MCP</td><td>L1–L2</td></tr>
-   <tr><td><b>Управляющий</b><br>2028</td><td>План на неделю и автопилот · Вклады по очереди · Перенести из другого банка</td><td>Отчёт за неделю · журнал с объяснениями</td><td>Движок ребалансировки, политика клиента, пакетное и отложенное подтверждение</td><td>L1–L3</td></tr>
-   <tr><td><b>Открытая платформа</b><br>2029</td><td>Те же активные скиллы для агента клиента через MCP: предлагает агент, подтверждает клиент</td><td>Доверенное лицо · семейные цели · события для агента через <code>rate_alerts</code></td><td>Внешний MCP «Сбережения», OAuth-скоупы, реестр агентов</td><td>Свой: L0–L3 · внешний: L0–L1</td></tr>
+   <tr><th style="width:13%">Этап</th><th style="width:22%">Активные</th><th style="width:22%">Сервисные</th><th style="width:20%">Рядом со вкладом</th><th style="width:13%">Данные и инструменты</th><th>Автономия</th></tr>
+   <tr><td><b>Консультант</b><br>2027 · H1</td><td>Открыть вклад или счёт · Разложить сумму по продуктам · Надбавка: включить и успеть</td><td>Ответить по продукту (RAG по базе знаний IDP) · Как посчитали · Справка за минуту · Проще и голосом · Передать человеку · Пауза при давлении</td><td>Зарплата и пенсия сюда · Подписка, если окупается · Юани и золото только с причиной</td><td>Каталог продуктов и ставок, калькулятор дохода, база знаний, антифрод, genUI v1</td><td>L0–L1</td></tr>
+   <tr><td><b>Планировщик</b><br>2027 · H2</td><td>Копить автоматически · Спящие деньги на счёт · Закрытие вклада: три варианта · Пополнить вклад · Откуда взять без потери</td><td>Налог по вкладам, включая другие банки · Хватит ли до зарплаты · Календарь и напоминания · проактивные события</td><td>Льготный период вместо потери · Долг дороже вклада · Копить ребёнку · Налог самозанятого · Завещательное распоряжение</td><td>История операций, прогноз остатков, кредитная история с согласия, события, календарь телефона, внутренний MCP</td><td>L1–L2</td></tr>
+   <tr><td><b>Управляющий</b><br>2028</td><td>План на неделю и автопилот · Вклады по очереди · Перенести из другого банка</td><td>Отчёт за неделю · журнал с объяснениями</td><td>Доплата от государства · Квартира: от вклада к ипотеке · Длинные деньги в СберИнвестиции</td><td>Движок ребалансировки, политика клиента, калькуляторы ипотеки и программы, пакетное и отложенное подтверждение</td><td>L1–L3</td></tr>
+   <tr><td><b>Открытая платформа</b><br>2029</td><td>Те же активные скиллы для агента клиента через MCP: предлагает агент, подтверждает клиент</td><td>Доверенное лицо · семейные цели · события для агента через <code>rate_alerts</code></td><td>Те же предложения агенту клиента через <code>offers</code>: с выгодой, ценой и теми же запретами</td><td>Внешний MCP «Сбережения», OAuth-скоупы, реестр агентов</td><td>Свой: L0–L3 · внешний: L0–L1</td></tr>
   </table></div>
-  <div class="band"><i></i><p>Правило для любого нового скилла: триггер из систем банка, цифры из движка, один экран с выводом, «Как посчитали?» и «Не сейчас» рядом, подтверждение только нативное. Скилл, который в это не укладывается, в прод не выходит.</p></div>
+  <div class="band"><i></i><p>Правило для любого нового скилла: триггер из систем банка, цифры из движка, один экран с выводом, «Как посчитали?» и «Не сейчас» рядом, подтверждение только нативное. Для кросс-продажи добавляется одно: честная цена тем же шрифтом, что и выгода. Скилл, который в это не укладывается, в прод не выходит.</p></div>
  </div>
 </section>
 <section class="s alt" id="proactive">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Проактивные коммуникации</div><h2 class="t">Помощник не ждёт, пока клиент вспомнит. Он напоминает и ведёт</h2><p class="lead">Клиент не помнит дату закрытия вклада, не следит за условием надбавки и не знает, что осенью придёт налог. Помощник знает это из систем банка и выходит на связь сам: заранее, с готовым решением и одной кнопкой. С разрешения клиента события попадают в календарь телефона, а напоминания приходят за день. Между событиями помощник молчит.</p></div>
+  <div class="hd"><div class="eyebrow">Проактивные коммуникации · ритм и разрешения</div><h2 class="t">Помощник не ждёт, пока клиент вспомнит. Он напоминает и ведёт</h2><p class="lead">Клиент не помнит дату закрытия вклада, не следит за условием надбавки и не знает, что осенью придёт налог. Помощник знает это из систем банка и выходит на связь сам: заранее, с готовым решением и одной кнопкой. С разрешения клиента события попадают в календарь телефона, а напоминания приходят за день. Между событиями помощник молчит. <a href="#value" style="font-weight:700;text-decoration:none">Как каждое касание окупается в рублях →</a></p></div>
   <div class="grid g3">
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-cal"/></svg><h3 style="margin-top:10px">Событие, а не рассылка</h3><p>Каждое сообщение привязано к дате или факту: закрытие, выплата, дедлайн условия, зарплата, достижение цели. Маркетинговых пушей у помощника нет.</p></div>
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-clock"/></svg><h3 style="margin-top:10px">Заранее и с готовым решением</h3><p>За 7 дней до закрытия вклада, за 6 дней до дедлайна надбавки, за день до любого автодействия. Пуш открывает экран с вариантами, а не чат.</p></div>
@@ -1125,6 +1256,100 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
     <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не отправляем маркетинг от имени помощника: его голос только для событий клиента.</span></div>
    </div></div>
   </div>
+ </div>
+</section>
+<section class="s" id="value">
+ <div class="wrap">
+  <div class="hd"><div class="eyebrow">Проактивные коммуникации · максимум ценности</div><h2 class="t">Каждое касание должно приносить рубли. Иначе это спам</h2><p class="lead">Внимание клиента ограничено: три-четыре сообщения в месяц он ещё читает, дальше начинает отписываться. Поэтому помощник считает ценность сообщения до отправки, в рублях для клиента, и пишет только когда она выше порога. События одной недели складывает в одно решение, цену молчания пишет последней строкой, а всё, что принёс, показывает счётчиком на Главном. Раздел выше про то, как не надоесть. Этот про то, как окупить каждое касание.</p></div>
+  <div class="grid g3">
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-coins"/></svg><h3 style="margin-top:10px">Ценность до отправки</h3><p>У каждого события есть ожидаемая выгода в рублях из движка: что клиент получит, если отреагирует. Ниже порога сообщения нет. Порог по умолчанию 500 ₽ в год, задаёт его клиент.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-target"/></svg><h3 style="margin-top:10px">Бюджет внимания</h3><p>Клиент выбирает, сколько предложений в месяц готов получать. Движок ранжирует события по ценности и отправляет только лучшие. Закрытия вкладов, автодействия и безопасность вне бюджета.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-layers"/></svg><h3 style="margin-top:10px">Одно решение на касание</h3><p>Три события одной недели становятся одним планом с одним Face ID. Три пуша за три дня сжигают внимание, один план с тремя галочками его бережёт и собирает больше рублей.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-warn"/></svg><h3 style="margin-top:10px">Цена молчания</h3><p>Последняя строка каждого предложения: сколько клиент теряет, если ничего не сделает. Без «срочно» и таймеров, просто цифра. Она же превращает отказ в осознанный выбор, а не в забывчивость.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-clock"/></svg><h3 style="margin-top:10px">Лучший момент</h3><p>Предложение о деньгах приходит, когда деньги есть: после зарплаты, не в тяжёлую неделю по прогнозу остатка, вечером и не в тихие часы. Один и тот же текст в правильный день читают вдвое чаще.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-trend"/></svg><h3 style="margin-top:10px">Счётчик ценности</h3><p>«Помощник принёс +31 900 ₽ с октября» на Главном. Каждое принятое предложение добавляет к счётчику, каждый отказ честно показан со своей ценой. Клиент видит, за что платит вниманием.</p></div>
+  </div>
+
+  <h3 style="margin:48px 0 6px">Попробуйте: бюджет внимания</h3>
+  <p class="b" style="margin-bottom:16px">Год клиента «Капитал»: 18 событий, из них 10 с ценностью в рублях на 79 550 ₽ в год, те самые утечки из раздела «Сервис против ставки». Задайте лимит предложений в месяц, включите объединение событий недели и порог ценности. Движок покажет, что отправит, о чём промолчит и сколько рублей соберёт. Закрытия вкладов, напоминание перед автодействием и подсказка в момент досрочного закрытия идут всегда и в лимит не считаются.</p>
+  <div class="c" id="val-calc">
+   <div class="calc vcalc">
+    <div class="ctrl">
+     <label><b>Предложений в месяц, не больше</b><div class="ctl" style="justify-content:flex-start;margin-top:4px"><button class="vb-n on" data-n="1">Одно</button><button class="vb-n" data-n="2">Два</button><button class="vb-n" data-n="4">Четыре</button></div></label>
+     <div class="sw"><span>Объединять события одной недели в один план, до трёх действий</span><input type="checkbox" id="v-merge"></div>
+     <div class="sw"><span>Отправлять приятное без решения: «проценты пришли», «цель собрана»</span><input type="checkbox" id="v-nice"></div>
+     <label><b>Ценность касания от</b><select id="v-thr" style="font:inherit;padding:8px 10px;border-radius:10px;border:1px solid var(--line);background:var(--surface);color:var(--ink)"><option value="500" selected>500 ₽ в год</option><option value="2000">2 000 ₽ в год</option><option value="0">любая</option></select></label>
+     <div class="vtot"><b id="v-got"></b><span id="v-pct"></span></div>
+     <div class="o" style="display:flex;justify-content:space-between;padding:8px 0;border-top:1px solid var(--line);font-size:15px;color:var(--ink2)"><span>Сообщений за год</span><b id="v-msgs" style="color:var(--ink)"></b></div>
+     <div class="verdict" id="v-verdict"></div>
+     <p class="b" id="v-drop" style="font-size:14.5px"></p>
+    </div>
+    <div class="out">
+     <div style="font-size:13px;color:var(--ink3)">Октябрь 2026 — сентябрь 2027. Оранжевое идёт всегда, зелёное прошло отбор, серое без цифры, пунктир промолчали</div>
+     <div class="ybud" id="v-grid"></div>
+    </div>
+   </div>
+  </div>
+
+  <h3 style="margin:48px 0 12px">Ценность каждого касания</h3>
+  <div class="tbl-wrap"><table class="tbl">
+   <tr><th style="width:19%">Касание</th><th style="width:13%">Клиенту, ₽ в год</th><th style="width:20%">Банку</th><th style="width:18%">Цена молчания</th><th style="width:16%">Когда</th><th>В бюджете</th></tr>
+   <tr><td><b>Спящие деньги на счёт</b></td><td>28 100 + 16 900</td><td>Остаток, который иначе уйдёт к агрегатору ставок, остаётся в банке</td><td>−2 340 ₽ за каждый месяц молчания</td><td>Остаток выше запаса две недели</td><td>Да</td></tr>
+   <tr><td><b>Закрытие вклада: три варианта</b></td><td>18 800</td><td>Удержание 400 000 ₽ в момент самого высокого оттока</td><td>Продление под 7,5%: −9 400 ₽ за срок</td><td>За 7 дней</td><td>Нет, всегда</td></tr>
+   <tr><td><b>Перенос из другого банка без простоя</b></td><td>6 400</td><td>Приток 500 000 ₽ в день закрытия чужого вклада</td><td>12 дней простоя: −6 400 ₽</td><td>Дата из календаря клиента</td><td>Да</td></tr>
+   <tr><td><b>Налог: перенести выплату</b></td><td>3 900</td><td>Данные о вкладах в других банках, доверие</td><td>−3 900 ₽ и осенний сюрприз</td><td>1 марта</td><td>Да</td></tr>
+   <tr><td><b>Откуда взять без потери</b></td><td>3 200</td><td>Вклад 400 000 ₽ не закрыт досрочно</td><td>−3 200 ₽ сгоревших процентов</td><td>Момент досрочного закрытия</td><td>Нет, в потоке</td></tr>
+   <tr><td><b>Надбавка под угрозой</b></td><td>560 за напоминание</td><td>Активность по карте банка</td><td>−560 ₽ за месяц</td><td>За 6 дней до конца месяца</td><td>Да, выпадает первым</td></tr>
+   <tr><td><b>Автодействие завтра</b></td><td>0</td><td>Доверие к правилам и автопилоту</td><td>Ошибка без шанса отменить</td><td>За день</td><td>Нет, всегда</td></tr>
+   <tr><td><b>Проценты пришли, цель собрана</b></td><td>0</td><td>Ощущение, что деньги работают</td><td>Нет</td><td>В день события</td><td>Только если клиент включил</td></tr>
+   <tr><td><b>Деньги в опасности</b></td><td>Всё</td><td>Всё</td><td>Потеря вклада</td><td>Немедленно</td><td>Нет, нельзя выключить</td></tr>
+  </table></div>
+
+  <h3 style="margin:48px 0 6px">Копирайт от ценности</h3>
+  <p class="b" style="margin-bottom:16px">Одно и то же событие, два текста. Слева как пишут банки, справа как пишет помощник: цифра клиента первой, последствие бездействия, одно решение. Оба пуша кликабельны и ведут на один экран.</p>
+  <div class="phones" style="margin-top:0">
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-push-a" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Как обычно</b>Название продукта, дата как в документе, «ознакомьтесь». Ценности в тексте нет, решения тоже</div></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-push" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>От ценности</b>«+9 400 ₽, если…», что будет иначе, «один тап». Чтобы решить, достаточно первых трёх слов</div></div>
+  </div>
+  <div class="grid g3" style="margin-top:18px">
+   <div class="c"><div class="num">1</div><h3>Цифра клиента первой</h3><p>Не «вклад закрывается», а «+9 400 ₽, если». Рубли клиента, не название продукта и не ставка. Если цифры нет, сообщения нет.</p></div>
+   <div class="c"><div class="num">2</div><h3>Последствие одной строкой</h3><p>«Иначе продлится под 7,5%». Что потеряет, если промолчит. Без восклицательных знаков, таймеров и слова «срочно».</p></div>
+   <div class="c"><div class="num">3</div><h3>Одно решение</h3><p>Лучший вариант уже выбран, кнопка одна, «Не сейчас» рядом. Подробности по тапу на экране, а не в пуше.</p></div>
+  </div>
+  <div class="tbl-wrap" style="margin-top:18px"><table class="tbl copytbl">
+   <tr><th style="width:16%">Событие</th><th style="width:38%">Как пишут обычно</th><th>Как пишет помощник</th></tr>
+   <tr><td><b>Спящие деньги</b></td><td><s>У вас есть свободные средства. Откройте накопительный счёт с выгодной ставкой</s></td><td>250 000 ₽ лежат без дохода: +2 340 ₽ в месяц, если переложить. Месяц молчания стоит столько же</td></tr>
+   <tr><td><b>Надбавка</b></td><td><s>Не забудьте выполнить условия программы лояльности до конца месяца!</s></td><td>Осталось 5 600 ₽ покупок до 31 октября, иначе ставка 11,25% вместо 12,75%: −560 ₽</td></tr>
+   <tr><td><b>Ставки выросли</b></td><td><s>Банк повысил ставки по вкладам! Успейте открыть вклад на выгодных условиях</s></td><td>Ставки выросли, но ваш вклад переоткрывать не стоит: сгорит 57 900 ₽. Переоткрою 14 марта, в день закрытия</td></tr>
+   <tr><td><b>Налог</b></td><td><s>Напоминаем о необходимости уплаты НДФЛ с процентного дохода до 01.12</s></td><td>Налог по вкладам ≈ 8 450 ₽ до 1 декабря. Перенос выплаты по ••1234 на январь сэкономит 3 900 ₽</td></tr>
+   <tr><td><b>Зарплата</b></td><td><s>Специальное предложение для зарплатных клиентов</s></td><td>Зарплата пришла. Пополнить вклад на 50 000 ₽, пока действует 11,8%? +1 100 ₽ к закрытию</td></tr>
+  </table></div>
+
+  <h3 style="margin:48px 0 6px">Что видит клиент</h3>
+  <p class="b" style="margin-bottom:14px">Четыре экрана, где ценность касания становится интерфейсом: одно предложение на неделю, три события в одном решении, счётчик принесённого и бюджет внимания в настройках. Галочки и переключатели живые.</p>
+  <div class="phones" style="margin-top:0">
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-home" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Одно предложение на неделю</b>«+2 340 ₽ в месяц ждут одного решения», цена молчания и счётчик «с октября»</div><a class="open" data-open-proto="pro:val-home">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-merge" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Три события, одно решение</b>Спящие деньги, перенос из другого банка и надбавка в одном плане с одним Face ID</div><a class="open" data-open-proto="pro:val-merge">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-ledger" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Сколько принёс помощник</b>Каждое касание с рублями, отказ клиента со своей ценой, «промолчал 14 раз»</div><a class="open" data-open-proto="pro:val-ledger">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-budget" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Бюджет внимания</b>Сколько предложений в месяц и что это даст за год. Закрытия и безопасность не считаются</div><a class="open" data-open-proto="pro:val-budget">Открыть в прототипе →</a></div>
+  </div>
+
+  <div class="grid g2" style="margin-top:22px">
+   <div class="c"><h3>Что измеряем</h3><div class="list" style="margin-top:12px">
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Ценность на касание:</b> рубли клиента, собранные одним сообщением. Цель: не меньше 2 000 ₽ в среднем, вместе с обязательными.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Доля собранной ценности:</b> сколько из возможного за год клиент получил. У «Капитала» 91% при одном сообщении в месяц и 100% с объединением событий.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Конверсия касание → решение до даты</b> и доля решений в один тап, без правок.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Цена молчания по сегменту:</b> рубли, которые клиенты теряют из-за событий, о которых мы промолчали. Главный аргумент при выборе порога.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>«Реже», отписки, жалобы:</b> порог пересмотра события. Один пуш без цифры стоит дороже трёх с цифрой.</span></div>
+   </div></div>
+   <div class="c"><h3>Что получает банк</h3><div class="list" style="margin-top:12px">
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Удержание в момент закрытия:</b> касание с тремя вариантами приходит раньше, чем клиент откроет агрегатор ставок.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Приток из других банков:</b> календарь клиента знает даты закрытия чужих вкладов. Перенос в день закрытия без простоя выгоден обеим сторонам.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Внимание не выжжено маркетингом:</b> голос помощника читают, потому что в нём всегда цифра клиента. Это актив, который рассылки тратят, а помощник копит.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Данные для следующего шага:</b> отказ с ценой говорит о клиенте больше, чем согласие. Порог и бюджет становятся сегментацией без анкет.</span></div>
+   </div></div>
+  </div>
+  <div class="band"><i></i><p>Помощник, который промолчал 14 раз из 21, зарабатывает право быть прочитанным в оставшиеся семь. Бюджет внимания и порог ценности задаёт клиент, закрытия и безопасность в бюджет не входят.</p></div>
  </div>
 </section>
 <section class="s" id="edge">
@@ -1644,7 +1869,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <template data-screen="cap-plan" data-scroll>
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">План помощника</span><div class="ibtn" style="background:#1C1C1E" data-go="cap-policy"><svg class="ic"><use href="#i-gear"/></svg></div></div>
 <div class="card ai2" data-sum-head><div class="fl" style="color:#C9B8FF">Эта неделя · снимите галочку, итог пересчитается</div><div class="money m36" data-id="plan-total">+44 000 ₽ в год</div><div class="sub" style="color:#D1D1D6" data-id="plan-cnt">Работают по ставке 67% → 94% денег · 3 действия</div></div>
-<div data-sum="plan" style="display:contents"><div class="opt" data-check data-gain="28100" data-eff="10.2"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">250 000 ₽ с карты → накопительный</div><div class="os">Лежат без дохода 3 месяца · доступ в любой день · <span class="vio" data-go="cap-why1">почему</span></div></div><div class="ov"><b>+28 100 ₽</b><span>в год</span></div></div>
+<div data-sum="plan" style="display:contents"><div class="opt" data-check data-gain="28100" data-eff="10.2"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">250 000 ₽ с карты → накопительный</div><div class="os">Лежат без дохода 3 месяца · доступ в любой день · <span class="vio" data-go="cap-why1">почему</span> · <span class="vio" data-go="rb-edit">изменить</span></div></div><div class="ov"><b>+28 100 ₽</b><span>в год</span></div></div>
 <div class="opt" data-check data-gain="9400" data-eff="16.3"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Переоткрыть вклад ••8708 под 12,2%</div><div class="os">Вместо продления под 7,5% · 15 декабря</div></div><div class="ov"><b>+9 400 ₽</b><span>за срок</span></div></div>
 <div class="opt" data-check data-gain="6750" data-eff="0.5"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Включить +1,5% за покупки картой</div><div class="os">К ставке накопительного · покупки от 15 000 ₽ в месяц</div></div><div class="ov"><b>+6 750 ₽</b><span>в год</span></div></div></div>
 <div class="card sm"><div class="rw" style="padding:2px 0"><div class="ico sm"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="rt" style="font-size:17px">Не трогаем: 150 000 ₽ на карте</div><div class="rs">Ваш запас на карте</div></div><span class="vio" style="margin-left:auto;font-size:15px" data-go="cap-policy">Изменить</span></div></div>
@@ -2508,6 +2733,619 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 <div class="card sm" style="gap:4px"><div class="kv"><span class="k">Деньги работали</span><span class="v">362 дня из 365</span></div><div class="kv"><span class="k">Лучшая ставка рынка дала бы</span><span class="v">+28 800 ₽</span></div><div class="kv"><span class="k">Ваших решений</span><span class="v">9, каждое с Face ID</span></div></div>
 <div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="cap-sav">К накоплениям</div></div>
 </template>
+
+<!-- ===== v4 screens: rebalancing as a process (L1 manual, L2 rules, L3 autopilot) ===== -->
+
+<!-- L1: политика словами -->
+<template data-screen="rb-words" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">План помощника</span></div>
+<div data-sum="words" style="display:contents">
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Перед первым планом</div><div class="t1">Как вам удобно с деньгами?</div><div class="bd" style="color:#D1D1D6">Выберите фразы, которые про вас. Я переведу их в правила, а вы проверите.</div></div>
+<div class="chips" style="padding:0 2px">
+ <span class="chip on" data-multi="reserve"><svg class="ic"><use href="#i-wallet"/></svg>150 тысяч всегда под рукой</span>
+ <span class="chip on" data-multi="flat"><svg class="ic"><use href="#i-lock"/></svg>Вклад на квартиру не трогать</span>
+ <span class="chip d" data-multi="small"><svg class="ic"><use href="#i-eye-off"/></svg>Мелочь не предлагать</span>
+ <span class="chip d" data-multi="ask"><svg class="ic"><use href="#i-hand"/></svg>Спрашивать перед каждым шагом</span>
+ <span class="chip d" data-multi="long"><svg class="ic"><use href="#i-clock"/></svg>Деньги могут понадобиться летом</span>
+</div>
+<div class="card" style="gap:0">
+ <div class="hl" style="padding-bottom:4px">Правила, как я вас понял</div>
+ <div class="sw" data-rule="reserve"><div><div class="st2">Запас на карте 150 000 ₽</div><div class="ss">Никогда не трогаем. Переводим только то, что выше</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="flat"><div><div class="st2">Не трогать вклад ••1234</div><div class="ss">Цель «квартира» · 400 000 ₽ до 2 июля</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="small" hidden><div><div class="st2">Предлагать от 500 ₽ в месяц</div><div class="ss">Меньше не показываем</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="ask" hidden><div><div class="st2">Каждое действие с подтверждением</div><div class="ss">Правил и автопилота не предлагаем</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="long" hidden><div><div class="st2">Горизонт до июня</div><div class="ss">Вклады не длиннее 8 месяцев, часть денег на счёте</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="none" hidden><div><div class="st2">Пока без правил</div><div class="ss">Запас посчитаю по вашим тратам: около 150 000 ₽</div></div></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="sub" style="color:#D1D1D6">Правила можно изменить словами в любой момент. План считает движок банка, я только перевожу.</div></div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="words-cta">Собрать план по 2 правилам</div><div class="btn g" data-go="cap-plan">Собрать без правил</div></div>
+</template>
+
+<!-- L1: правка действия -->
+<template data-screen="rb-edit" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Первое действие</span></div>
+<div data-sum="edit" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">С карты, где лежат 400 000 ₽</div><div class="money m36" data-id="ed-gain">+28 100 ₽ <span class="u">в год</span></div><div class="sub" style="color:#D1D1D6" data-id="ed-sub">250 000 ₽ → накопительный счёт · на карте останется 150 000 ₽</div></div>
+<div class="card" style="gap:10px"><div class="hl">Сколько переложить</div>
+ <div class="seg"><span data-select="ramt" data-val="150000">150 000 ₽</span><span class="on" data-select="ramt" data-val="250000">250 000 ₽</span><span data-select="ramt" data-val="300000">300 000 ₽</span></div>
+ <div class="fn" data-id="ed-left">На карте останется 150 000 ₽: ваш запас</div></div>
+<div class="hl" style="padding:0 4px">Куда</div>
+<div class="opt sel on" data-select="ralt" data-rate="0.1125" data-name="накопительный счёт"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Накопительный счёт · 11,25%</div><div class="os">Доступ в любой день, без комиссии. С надбавкой за покупки 12,75%</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b data-id="ed-g1">+28 100 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="ralt" data-rate="0.124" data-name="вклад на 3 месяца"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вклад на 3 месяца · 12,4%</div><div class="os">Без доступа до 15 января. Если снять раньше, проценты сгорят</div></div><div class="ov"><b data-id="ed-g2">+31 000 ₽</b><span>в год</span></div></div>
+<div class="fnl" data-id="ed-note">Разница 2 900 ₽ в год: столько стоит доступ к деньгам в любой день</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="ed-cta">Сохранить: 250 000 ₽ на накопительный счёт</div><div class="btn g" data-back>Оставить как было</div></div>
+</template>
+
+<!-- L1: что изменится -->
+<template data-screen="rb-preview" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Что изменится</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">После трёх действий</div><div class="money m36">94% <span class="u">денег работают</span></div><div class="sub" style="color:#D1D1D6">сейчас 67% · +44 000 ₽ в год · запас 150 000 ₽ не трогаем</div></div>
+<div class="card" style="gap:12px">
+ <div><div class="kv" style="margin-bottom:6px"><span class="k">Сейчас</span><span class="v">2 450 000 ₽</span></div><div class="split"><i style="width:16.3%;background:#B8842A"></i><i style="width:18.4%;background:#3590D0"></i><i style="width:65.3%;background:#239A48"></i></div></div>
+ <div><div class="kv" style="margin-bottom:6px"><span class="k">После</span><span class="v">2 450 000 ₽</span></div><div class="split"><i style="width:6.1%;background:#B8842A"></i><i style="width:28.6%;background:#3590D0"></i><i style="width:65.3%;background:#239A48"></i></div></div>
+ <div class="legend2"><span><i style="background:#B8842A"></i>на карте, 0%</span><span><i style="background:#3590D0"></i>накопительный</span><span><i style="background:#239A48"></i>вклады</span></div>
+</div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-credit"/></svg></div><div><div class="rt" style="font-size:17px">Карта ••7215</div><div class="rs">400 000 → 150 000 ₽ · ваш запас</div></div><div class="rm">0%</div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-coins"/></svg></div><div><div class="rt" style="font-size:17px">Накопительный ••9106</div><div class="rs">450 000 → 700 000 ₽ · с 1 ноября 12,75%</div></div><div class="rm"><b class="grn">+2 900 ₽/мес</b></div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt" style="font-size:17px">Вклад ••8708</div><div class="rs">400 000 ₽ · 15 декабря переоткроем под 12,2%</div></div><div class="rm"><b class="grn">+9 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="rt" style="font-size:17px">Вклады ••5520 и ••1234</div><div class="rs">Не трогаем: ставка выше рынка и цель «квартира»</div></div><div class="rm mut">без изменений</div></div>
+</div>
+<div class="card sm" style="gap:8px"><div class="hl">Когда</div><div class="tline"><div class="on"><b>Сегодня</b><span>250 000 ₽ на счёт</span></div><div class="on"><b>1 ноября</b><span>надбавка +1,5%</span></div><div><b>15 декабря</b><span>вклад под 12,2%</span></div></div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="rb-how"><svg class="ic"><use href="#i-info"/></svg>Как посчитали?</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-confirm">Подтвердить 3 действия</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+<template data-screen="rb-how" data-base="rb-preview">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Как посчитали</div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>250 000 ₽ × 11,25% накопительного = 28 100 ₽ в год. Ставка из тарифов банка на сегодня.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Вклад ••8708: 12,2% вместо 7,5% на 400 000 ₽ за 6 месяцев = 9 400 ₽. Если ставка 15 декабря будет другой, пересчитаем и спросим.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Надбавка +1,5% на 450 000 ₽ = 6 750 ₽ в год при покупках от 15 000 ₽ в месяц. Обычно вы тратите 42 000 ₽.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Доля работающих денег: было 1 650 000 из 2 450 000 (67%), станет 2 300 000 (94%). Запас 150 000 ₽ работать не должен: он для жизни.</span></div>
+ <div class="btn" data-back>Понятно</div>
+</div>
+</template>
+<template data-screen="rb-confirm" data-base="rb-preview">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">+44 000 ₽ <span class="to">в год</span></div><div class="to">3 действия · два сегодня, одно 15 декабря</div></div>
+ <div class="kv"><span class="k">250 000 ₽ → накопительный</span><span class="v">сегодня</span></div>
+ <div class="kv"><span class="k">+1,5% за покупки картой</span><span class="v">с 1 ноября</span></div>
+ <div class="kv"><span class="k">Вклад ••8708 → 12,2%</span><span class="v">15 декабря</span></div>
+ <div class="kv"><span class="k">Комиссии</span><span class="v">0 ₽</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="cap-done" data-faceid>Подтвердить 3 действия</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<!-- L1: за день до отложенного действия -->
+<template data-screen="rb-tomorrow" data-base="cap-home">
+<div class="push" data-go="rb-pending"><div class="app"><svg class="ic"><use href="#i-safe"/></svg></div><div style="flex:1"><div class="pt">Сбербанк Онлайн <span>14 дек, 10:00</span></div><div class="px">Завтра в 9:00 переоткроем вклад ••8708 под 12,2% вместо 7,5%: +9 400 ₽ за полгода. Отменить можно до 23:59.</div></div></div>
+</template>
+<template data-screen="rb-pending" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Запланировано</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Завтра, 15 декабря в 9:00</div><div class="money m36">400 000 ₽ <span class="u">→ вклад 12,2%</span></div><div class="sub" style="color:#D1D1D6">вместо продления под 7,5% · +9 400 ₽ за 6 месяцев</div></div>
+<div class="card" style="gap:6px">
+ <div class="kv"><span class="k">Вы подтвердили</span><span class="v">8 октября, Face ID</span></div>
+ <div class="kv"><span class="k">Ставка сегодня</span><span class="v grn">12,2%, не изменилась</span></div>
+ <div class="kv"><span class="k">Проценты за старый срок</span><span class="v">+15 000 ₽, придут завтра</span></div>
+ <div class="kv"><span class="k">Отменить можно</span><span class="v">до 23:59 сегодня</span></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Если завтра ставка окажется ниже 12,2%, не переоткрою, а спрошу вас. Так договаривались.</div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Всё верно, оставить</div><div class="btn g" data-go="rb-cancel">Отменить действие</div></div>
+</template>
+<template data-screen="rb-cancel" data-base="rb-pending">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Отменить <span class="to">переоткрытие?</span></div><div class="to">Вклад продлится под 7,5% на тех же условиях. Разница за полгода: 9 400 ₽. Вернуться к плану можно в любой день, пока вклад открыт.</div></div>
+ <div class="opt sel on" data-select="cnl" data-set="cnl-cta|Отменить, напомнить через месяц"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Отменить, напомнить через месяц</div><div class="os">15 января предложу варианты снова</div></div></div>
+ <div class="opt" data-select="cnl" data-set="cnl-cta|Отменить и не предлагать"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Отменить и не предлагать</div><div class="os">Вклад ••8708 попадёт в список «не трогать»</div></div></div>
+ <div class="btn" data-go="rb-cancelled" data-id="cnl-cta">Отменить, напомнить через месяц</div>
+ <div class="btn g" data-back>Оставить план</div>
+</div>
+</template>
+<template data-screen="rb-cancelled">
+<div class="spacer"></div>
+<div class="done-ic" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-x"/></svg></div>
+<div class="t1" style="text-align:center">Отменено. Ничего не изменилось</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Вклад ••8708 продлится 15 декабря под 7,5%. 15 января предложу варианты снова. Запись в журнале: «отменено вами».</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="cap-home">На главный</div></div>
+</template>
+
+<!-- L2: предложение правила -->
+<template data-screen="rb-rule-offer" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Помощник</span></div>
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Три раза подряд вы подтвердили одно и то же</div><div class="t1">Сделать это правилом?</div><div class="bd" style="color:#D1D1D6">Всё, что выше 150 000 ₽ на карте, переводить на накопительный счёт. Предупрежу за день, вы сможете отменить. Вернуть деньги на карту можно всегда.</div></div>
+<div class="card" style="gap:0">
+ <div class="jrn"><div class="jd">8 окт</div><div><div class="jt">250 000 ₽ → накопительный</div><div class="js">Подтверждено вами · Face ID</div></div><div class="jv grn">+2 340 ₽/мес</div></div>
+ <div class="jrn"><div class="jd">12 ноя</div><div><div class="jt">90 000 ₽ → накопительный</div><div class="js">После зарплаты · подтверждено вами</div></div><div class="jv grn">+840 ₽/мес</div></div>
+ <div class="jrn"><div class="jd">11 дек</div><div><div class="jt">110 000 ₽ → накопительный</div><div class="js">После зарплаты · подтверждено вами</div></div><div class="jv grn">+1 030 ₽/мес</div></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="kv"><span class="k">Без правила</span><span class="v">деньги ждут вас 9 дней в среднем</span></div><div class="kv"><span class="k">Цена ожидания за год</span><span class="v" style="color:#F0B35B">≈ 5 000 ₽</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-rule-set">Настроить правило</div><div class="btn g" data-go="cap-home">Не сейчас, спрашивайте</div></div>
+</template>
+
+<!-- L2: правило -->
+<template data-screen="rb-rule-set" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Правило</span></div>
+<div data-sum="rule" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Правило одной фразой</div><div class="t2" data-id="rl-say">Всё выше 150 000 ₽ на карте → на накопительный, раз в неделю</div><div class="sub" style="color:#D1D1D6" data-id="rl-now">Сегодня перевёл бы 250 000 ₽ · +2 340 ₽ в месяц</div></div>
+<div class="card" style="gap:10px"><div class="hl">Запас на карте</div>
+ <div class="seg"><span data-select="rthr" data-val="100000">100 000 ₽</span><span class="on" data-select="rthr" data-val="150000">150 000 ₽</span><span data-select="rthr" data-val="200000">200 000 ₽</span></div>
+ <div class="fn" data-id="rl-thr">По вашим тратам хватит до зарплаты с запасом. Проверяю каждый раз перед переводом</div></div>
+<div class="card" style="gap:10px"><div class="hl">Когда проверять</div>
+ <div class="seg"><span class="on" data-select="rwhen" data-when="раз в неделю">По пятницам</span><span data-select="rwhen" data-when="в день зарплаты">В день зарплаты</span><span data-select="rwhen" data-when="каждый день">Каждый день</span></div></div>
+<div class="card" style="gap:0">
+ <div class="sw"><div><div class="st2">Не больше за раз</div><div class="ss">Крупнее спрошу отдельно</div></div><div class="hl">300 000 ₽</div></div>
+ <div class="sw" data-toggle><div><div class="st2">Предупреждать за день</div><div class="ss">Пуш с кнопкой «Отменить»</div></div><div class="tg"></div></div>
+ <div class="sw"><div><div class="st2">Вернуть на карту</div><div class="ss">Всегда, в один тап, без комиссии. Это не настройка</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-rule-confirm">Включить правило</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+<template data-screen="rb-rule-confirm" data-base="rb-rule-set">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Правило <span class="to">· уровень L2</span></div><div class="fx">Всё выше 150 000 ₽ на карте → накопительный ••9106</div><div class="to">Проверка по пятницам, предупреждение за день, не больше 300 000 ₽ за раз. Остальное по-прежнему спрашиваю.</div></div>
+ <div class="kv"><span class="k">Первый перевод</span><span class="v">в пятницу, 250 000 ₽</span></div>
+ <div class="kv"><span class="k">Выключить</span><span class="v">в один тап, в любой момент</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-rule-on" data-faceid>Включить правило</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+<template data-screen="rb-rule-on">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Правило работает</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Проверю карту в пятницу и предупрежу за день перед переводом. В журнале такие записи отмечены «по правилу». Первый отчёт в понедельник.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
+
+<!-- L2: правило сработало -->
+<template data-screen="rb-rule-push" data-base="cap-home">
+<div class="push" data-go="rb-rule-did"><div class="app ai"><svg class="ic"><use href="#i-sparkle"/></svg></div><div style="flex:1"><div class="pt">Помощник <span>9:00</span></div><div class="px">По вашему правилу: 120 000 ₽ с карты → накопительный, +1 125 ₽ в месяц. На карте 150 000 ₽. Вернуть можно до завтра.</div></div></div>
+</template>
+<template data-screen="rb-rule-did" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">По правилу</span></div>
+<div class="card ok" style="gap:4px"><div class="fl" style="color:#8FD3A4">Сегодня в 9:00 · правило «запас 150 000 ₽»</div><div class="money m36">120 000 ₽ <span class="u">→ накопительный</span></div><div class="bd mut">+1 125 ₽ в месяц. На карте осталось 150 000 ₽, ваш запас.</div></div>
+<div class="card" style="gap:6px">
+ <div class="kv"><span class="k">Почему сейчас</span><span class="v">зарплата 12 января</span></div>
+ <div class="kv"><span class="k">Проверил до зарплаты</span><span class="v grn">хватит, минимум 31 000 ₽</span></div>
+ <div class="kv"><span class="k">Предупреждал</span><span class="v">вчера в 10:00</span></div>
+ <div class="kv"><span class="k">Вернуть на карту</span><span class="v">в любой день, без комиссии</span></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">За три месяца правило перевело 360 000 ₽ и принесло 4 300 ₽. Если переводы мешают, скажите «реже» или «спрашивать».</div></div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="rb-rule-set"><svg class="ic"><use href="#i-sliders"/></svg>Изменить правило</span><span class="chip d" data-go="cap-log"><svg class="ic"><use href="#i-list"/></svg>Журнал</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn g" data-go="rb-undo">Вернуть на карту</div></div>
+</template>
+<template data-screen="rb-undo" data-base="rb-rule-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">120 000 ₽ <span class="to">→ обратно на карту</span></div><div class="to">Придут сразу, без комиссии. Проценты за эти дни останутся вашими.</div></div>
+ <div class="opt sel on" data-select="und" data-set="und-cta|Вернуть, правило оставить"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вернуть, правило оставить</div><div class="os">В следующий раз спрошу перед переводом</div></div></div>
+ <div class="opt" data-select="und" data-set="und-cta|Вернуть и выключить правило"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вернуть и выключить правило</div><div class="os">Вернёмся к подтверждению каждого действия</div></div></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-undone" data-faceid data-id="und-cta">Вернуть, правило оставить</div>
+ <div class="btn g" data-back>Оставить на счёте</div>
+</div>
+</template>
+<template data-screen="rb-undone">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Деньги снова на карте</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Запись в журнале: «отменено вами». В следующий раз спрошу заранее, а не после.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
+
+<!-- L3: предложение автопилота -->
+<template data-screen="rb-auto-offer" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автопилот</span></div>
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Правило работает 3 месяца без отмен</div><div class="t1">Включить автопилот?</div><div class="bd" style="color:#D1D1D6">Буду сам делать то, что сейчас предлагаю: переводы, переоткрытия, надбавки. По вашим правилам, с отчётом по понедельникам. Крупное и необычное по-прежнему спрашиваю.</div></div>
+<div class="card" style="gap:0">
+ <div class="hl" style="padding-bottom:6px">Ваши правила, уже заполнены</div>
+ <div class="sw"><div><div class="st2">Запас на карте</div><div class="ss">Не трогаем никогда</div></div><div class="hl">150 000 ₽</div></div>
+ <div class="sw"><div><div class="st2">Не трогать</div><div class="ss">Вклад ••1234 · цель «квартира»</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Без вопроса</div><div class="ss">До 300 000 ₽ и не больше 3 действий в неделю</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Спрашивать</div><div class="ss">Новые продукты, суммы крупнее, досрочные закрытия</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Отчёт</div><div class="ss">Понедельник, 10:00 · что сделано и сколько заработано</div></div><span class="vio" data-go="cap-policy">Изменить</span></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Что автопилот не делает никогда</div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не выводит деньги за пределы ваших счетов в банке</span></div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не закрывает вклад раньше срока, если потеря больше выигрыша</span></div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не продолжает после паузы или слова «стоп» голосом и в чате</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-auto-confirm">Включить автопилот</div><div class="btn g" data-go="cap-home">Остаться на правилах</div></div>
+</template>
+<template data-screen="rb-auto-confirm" data-base="rb-auto-offer">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Автопилот <span class="to">· уровень L3</span></div><div class="fx">Действует по вашим правилам, отчёт по понедельникам</div><div class="to">Запас 150 000 ₽, ••1234 не трогаем, до 300 000 ₽ и 3 действий в неделю без вопроса. Любое действие можно вернуть за 24 часа.</div></div>
+ <div class="kv"><span class="k">Пауза</span><span class="v">в один тап на Главном</span></div>
+ <div class="kv"><span class="k">Первый отчёт</span><span class="v">понедельник, 19 января</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-auto-on" data-faceid>Включить автопилот</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+<template data-screen="rb-auto-on">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Автопилот включён</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Первый отчёт в понедельник. Пауза в один тап на Главном. Всё, что сделаю, можно вернуть за 24 часа.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-policy">Посмотреть правила</div></div>
+</template>
+
+<!-- L3: тихая неделя -->
+<template data-screen="rb-quiet" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Эта неделя</span></div>
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Понедельник, 19 января</div><div class="big-ok">Менять ничего не нужно</div><div class="bd mut">94% денег работают по ставке. Проверил четыре вещи, всё в порядке. Следующая проверка 26 января.</div></div>
+<div class="card" style="gap:0">
+ <div class="sw"><div><div class="st2">Остаток на карте</div><div class="ss">162 000 ₽ · выше запаса на 12 000, перевод дал бы 110 ₽ в месяц: меньше порога</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Ставки</div><div class="ss">Не изменились · ваши вклады не ниже рынка</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Закрытия</div><div class="ss">Ближайшее 14 марта, ••5520 · варианты предложу 7 марта</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Условие надбавки</div><div class="ss">Выполнено: 15 400 из 15 000 ₽</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Заработано за неделю: +4 110 ₽. Тишина тоже результат: чем меньше движений, тем меньше поводов для ошибок.</div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn g" data-go="rb-quiet-off">Не присылать, когда нечего менять</div></div>
+</template>
+<template data-screen="rb-quiet-off" data-base="rb-quiet">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Тихие недели</div>
+ <div class="opt sel on" data-select="qo" data-set="qo-cta|Писать только когда что-то сделал"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Писать только когда что-то сделал</div><div class="os">Тихие недели останутся в журнале, без пуша</div></div></div>
+ <div class="opt" data-select="qo" data-set="qo-cta|Писать раз в месяц"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Раз в месяц</div><div class="os">Один итог: сколько заработано и что проверял</div></div></div>
+ <div class="fnl">О закрытиях, автодействиях и опасности пишу всегда, это не отчёт</div>
+ <div class="btn" data-go="cap-home" data-id="qo-cta">Писать только когда что-то сделал</div>
+ <div class="btn g" data-back>Оставить как есть</div>
+</div>
+</template>
+
+<!-- L3: ставки выросли, честный отказ -->
+<template data-screen="rb-rate" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки выросли</span></div>
+<div data-sum="rate" style="display:contents">
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод автопилота</div><div class="big-ok">Вклад ••5520 оставляем как есть</div><div class="bd mut">Переоткрыть под новую ставку сейчас невыгодно: сгорят проценты за 7 месяцев. Переоткрою 14 марта, в день закрытия, если ставка останется выше.</div></div>
+<div class="card" style="gap:10px"><div class="hl">Если ставка по новым вкладам</div>
+ <div class="seg"><span class="on" data-select="rr" data-val="13.1">13,1%</span><span data-select="rr" data-val="14">14,0%</span><span data-select="rr" data-val="15">15,0%</span></div>
+ <div class="kv"><span class="k">Выигрыш до 14 марта</span><span class="v grn" data-id="rr-gain">+2 300 ₽</span></div>
+ <div class="kv"><span class="k">Сгорят проценты за 7 месяцев</span><span class="v" style="color:#F0B35B">−57 900 ₽</span></div>
+ <div class="kv"><span class="k">Итог, если переоткрыть сейчас</span><span class="v" style="color:#F0B35B" data-id="rr-net">−55 600 ₽</span></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Что сделаю вместо этого</div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>14 марта переоткрою 800 000 ₽ под лучшую ставку дня, без простоя</span></div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Новые деньги уже идут на счёт с надбавкой 12,75%, это выше вашего вклада</span></div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Напомню 7 марта с вариантами, решать будете вы</span></div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Понятно</div><div class="btn g" data-go="cap-market">Сравнить по всем деньгам</div></div>
+</template>
+
+<!-- L3: автопилот сделал -->
+<template data-screen="rb-auto-push" data-base="cap-home">
+<div class="push" data-go="rb-auto-did"><div class="app ai"><svg class="ic"><use href="#i-sparkle"/></svg></div><div style="flex:1"><div class="pt">Автопилот <span>15 дек, 9:05</span></div><div class="px">Сделал 2 действия по вашим правилам: вклад ••8708 под 12,2% (+9 400 ₽) и 90 000 ₽ на счёт (+840 ₽ в месяц). Вернуть второе можно до завтра.</div></div></div>
+</template>
+<template data-screen="rb-auto-did" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автопилот</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">15 декабря · по вашим правилам</div><div class="money m36">2 действия <span class="u">без вопросов</span></div><div class="sub" style="color:#D1D1D6">+9 400 ₽ за полгода · +840 ₽ в месяц · запас 150 000 ₽ на месте</div></div>
+<div class="card" style="gap:0">
+ <div class="jrn"><div class="jd">9:00</div><div><div class="jt">Вклад ••8708 переоткрыт под 12,2%</div><div class="js">Вместо продления под 7,5% · предупреждал вчера</div></div><div class="jv grn">+9 400 ₽</div></div>
+ <div class="jrn"><div class="jd">9:02</div><div><div class="jt">90 000 ₽ → накопительный ••9106</div><div class="js">Остаток выше запаса после зарплаты · <span class="vio" data-go="rb-undo2">вернуть</span></div></div><div class="jv grn">+840 ₽/мес</div></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Не стал делать</div><div class="chk"><svg class="ic" style="color:#8E8E93"><use href="#i-minus"/></svg><span>Переоткрывать ••5520 под 13,1%: потеря больше выигрыша</span></div><div class="chk"><svg class="ic" style="color:#8E8E93"><use href="#i-minus"/></svg><span>Трогать ••1234: он в списке «не трогать»</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-report">Отчёт за неделю</div><div class="btn g" data-go="rb-pause">Пауза автопилота</div></div>
+</template>
+<template data-screen="rb-undo2" data-base="rb-auto-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">90 000 ₽ <span class="to">→ обратно на карту</span></div><div class="to">Придут сразу, без комиссии. Автопилот запомнит: после зарплаты спрашивать.</div></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-undone" data-faceid>Вернуть 90 000 ₽</div>
+ <div class="btn g" data-back>Оставить на счёте</div>
+</div>
+</template>
+<template data-screen="rb-pause" data-base="rb-auto-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Пауза автопилота</div>
+ <div class="opt sel on" data-select="pz" data-set="pz-cta|Пауза на месяц"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">На месяц</div><div class="os">До 15 января. Напомню и спрошу, включать ли снова</div></div></div>
+ <div class="opt" data-select="pz" data-set="pz-cta|Пауза, пока не включу"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Пока сам не включу</div><div class="os">Вернёмся к подтверждению каждого действия</div></div></div>
+ <div class="opt" data-select="pz" data-set="pz-cta|Выключить автопилот"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Выключить совсем</div><div class="os">Правила и запас сохраню, предлагать буду как раньше</div></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Оставить напоминания о датах</div><div class="ss">Закрытия вкладов и варианты к ним</div></div><div class="tg"></div></div>
+ <div class="btn" data-go="rb-paused" data-id="pz-cta">Пауза на месяц</div>
+ <div class="btn g" data-back>Не нужно</div>
+</div>
+</template>
+<template data-screen="rb-paused">
+<div class="spacer"></div>
+<div class="done-ic" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-pause"/></svg></div>
+<div class="t1" style="text-align:center">Автопилот на паузе до 15 января</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Ничего не делаю сам: только напоминаю о датах и предлагаю варианты. Включить снова можно в один тап на Главном.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
+
+<!-- ===== v4 screens: value of every touch ===== -->
+<template data-screen="val-push-a" data-base="cap-home">
+<div class="push" data-go="sv-maturity"><div class="app"><svg class="ic"><use href="#i-safe"/></svg></div><div style="flex:1"><div class="pt">Сбербанк Онлайн <span>сейчас</span></div><div class="px">Уважаемый клиент! Срок вашего вклада ••8708 истекает 15.12.2026. Ознакомьтесь с условиями пролонгации в приложении.</div></div></div>
+</template>
+<template data-screen="val-push" data-base="cap-home">
+<div class="push" data-go="sv-maturity"><div class="app"><svg class="ic"><use href="#i-safe"/></svg></div><div style="flex:1"><div class="pt">Сбербанк Онлайн <span>сейчас</span></div><div class="px">+9 400 ₽, если до 15 декабря выбрать, куда положить 400 000 ₽. Иначе вклад продлится под 7,5%. Лучший вариант уже выбран: один тап.</div></div></div>
+</template>
+
+<template data-screen="val-home" data-tab="home" data-bg="home" data-scroll>
+<div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
+<div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="400000"></span><span class="kop">,00</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">14 920 <span style="opacity:.7">бонусов</span></div></div>
+<div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
+<div class="card ai" style="gap:6px">
+ <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">На этой неделе</span><span class="badge" style="margin-left:auto;background:#15301E;color:#4CD964" data-go="val-ledger">+31 900 ₽ с октября</span></div>
+ <div class="money m36" style="margin-top:4px">+2 340 ₽ <span class="u">в месяц</span></div>
+ <div class="bd" style="color:#E5E5EA">ждут одного решения: 250 000 ₽ лежат на карте без дохода</div>
+ <div style="display:flex;gap:10px;margin-top:8px"><div class="btn sm" style="flex:1" data-go="cap-plan">Решить за минуту</div><div class="btn sm g" style="flex:1" data-go="val-ledger">Сколько принёс</div></div>
+ <div class="fn" style="margin-top:2px">Месяц молчания стоит столько же: −2 340 ₽. Больше на этой неделе ничего не предлагаю.</div>
+</div>
+<div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">800 000,00 ₽</div><div class="rs">Лучший % ••5520 · до 14.03.2027</div></div><div class="rm">12,4%</div></div>
+ <div class="rw"><div class="ico"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt">450 000,00 ₽</div><div class="rs">Накопительный счёт ••9106</div></div><div class="rm">11,25%</div></div>
+</div>
+</template>
+
+<template data-screen="val-ledger" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Сколько принёс помощник</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">С 8 октября · 5 месяцев</div><div class="money m36">+<span data-count="31900"></span> ₽ <span class="u">сверх ставки</span></div><div class="sub" style="color:#D1D1D6">7 касаний, 5 ваших решений · проценты по вкладам и счетам: ещё 94 000 ₽</div></div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">250 000 ₽ не лежали без дохода</div><div class="rs">8 октября · ваше решение за один тап</div></div><div class="rm"><b class="grn">+11 700 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Вклад не продлился под 7,5%</div><div class="rs">15 декабря · переоткрыт под 12,2%</div></div><div class="rm"><b class="grn">+9 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Деньги из другого банка без простоя</div><div class="rs">20 октября · перенос в день закрытия</div></div><div class="rm"><b class="grn">+6 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Условие надбавки: 5 из 5 месяцев</div><div class="rs">Напомнил дважды, оба раза успели</div></div><div class="rm"><b class="grn">+4 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-minus"/></svg></div><div><div class="rt" style="font-size:17px">Пополнить вклад после зарплаты</div><div class="rs">12 января · вы сказали «не сейчас»</div></div><div class="rm mut">−1 100 ₽</div></div>
+</div>
+<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Касаний за 5 месяцев</span><span class="v">7, каждое с цифрой</span></div><div class="kv"><span class="k">Промолчал</span><span class="v">14 раз, когда менять было нечего</span></div><div class="kv"><span class="k">Если бы молчал всегда</span><span class="v" style="color:#F0B35B">−31 900 ₽</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="val-budget">Сколько сообщений получать</div></div>
+</template>
+
+<template data-screen="val-merge" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Эта неделя</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Три события на одной неделе · одно решение</div><div class="money m36" data-id="mg-total">+35 060 ₽ <span class="u">за год</span></div><div class="sub" style="color:#D1D1D6" data-id="mg-cnt">Одно сообщение вместо трёх · 3 действия</div></div>
+<div data-sum="merge" style="display:contents">
+<div class="opt" data-check data-gain="28100"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">250 000 ₽ с карты → накопительный</div><div class="os">Лежат без дохода с июля · доступ в любой день</div></div><div class="ov"><b>+28 100 ₽</b><span>в год</span></div></div>
+<div class="opt" data-check data-gain="6400"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вклад в другом банке закрывается 20 октября</div><div class="os">Перенести к нам через СБП в ту же минуту, без простоя</div></div><div class="ov"><b>+6 400 ₽</b><span>в год</span></div></div>
+<div class="opt" data-check data-gain="560"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Успеть с надбавкой до 31 октября</div><div class="os">Осталось 5 600 ₽ покупок · напомню 29-го, только если нужно</div></div><div class="ov"><b>+560 ₽</b><span>за ноябрь</span></div></div>
+</div>
+<div class="fnl">Четвёртое событие недели, проценты за сентябрь +4 160 ₽, не требует решения и ждёт в Накоплениях</div>
+<div class="cta-wrap nt"><div class="btn" data-go="val-merge-confirm" data-id="mg-cta">Подтвердить 3 действия</div><div class="btn g" data-go="cap-home">Не сейчас</div></div>
+</template>
+<template data-screen="val-merge-confirm" data-base="val-merge">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">+35 060 ₽ <span class="to">за год</span></div><div class="to">3 действия · одно сегодня, одно 20 октября, одно напоминание</div></div>
+ <div class="kv"><span class="k">250 000 ₽ → накопительный</span><span class="v">сегодня</span></div>
+ <div class="kv"><span class="k">500 000 ₽ из другого банка → вклад 12,2%</span><span class="v">20 октября</span></div>
+ <div class="kv"><span class="k">Напоминание о надбавке</span><span class="v">29 октября, если нужно</span></div>
+ <div class="kv"><span class="k">Комиссии</span><span class="v">0 ₽</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="val-merge-done" data-faceid>Подтвердить 3 действия</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+<template data-screen="val-merge-done">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Готово: одно решение, три дела</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Перевод на счёт сделан. Перенос из другого банка запланирован на 20 октября, отменить можно до 19-го. О надбавке напомню 29-го, только если условие не выполнится само.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="val-ledger">Сколько принёс помощник</div><div class="btn ghost" data-go="cap-home">На главный</div></div>
+</template>
+
+<template data-screen="val-budget" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Сколько сообщений</span></div>
+<div data-sum="vbud" style="display:contents">
+<div class="card" style="gap:10px"><div class="hl">Предложений в месяц, не больше</div>
+ <div class="seg"><span class="on" data-select="vb" data-val="1">Одно</span><span data-select="vb" data-val="2">Два</span><span data-select="vb" data-val="4">Четыре</span></div></div>
+<div class="card ok" style="gap:4px"><div class="fl" style="color:#8FD3A4">Что это даст за год</div><div class="big-ok" data-id="vb-v">Соберу все 79 550 ₽</div><div class="bd mut" data-id="vb-d">10 сообщений за год, 5 из них обязательные. Три события октября уложу в одно сообщение.</div></div>
+<div class="card" style="gap:0">
+ <div class="sw"><div><div class="st2">Закрытия вкладов</div><div class="ss">Всегда, за 7 дней · в лимит не считаются</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Перед автодействием</div><div class="ss">Всегда, за день</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-toggle data-merge><div><div class="st2">Объединять события недели</div><div class="ss">Одно сообщение, одно решение, до 3 действий</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-nice><div><div class="st2">Приятное без решения</div><div class="ss">«Проценты пришли», «цель собрана»</div></div><div class="tg off"></div></div>
+</div>
+</div>
+<div class="fnl">Деньги в опасности: всегда и сразу, это выключить нельзя</div>
+<div class="cta-wrap nt"><div class="btn" data-back>Сохранить</div></div>
+</template>
+
+<!-- ===== v4 screens: cross-sell that helps (products next to deposits and accounts) ===== -->
+<template data-screen="sk-pds" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Доплата от государства</span></div>
+<div data-sum="pds" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Программа долгосрочных сбережений</div><div class="money m36" data-id="pds-state">+36 000 ₽ <span class="u">в год от государства</span></div><div class="sub" style="color:#D1D1D6" data-id="pds-sub">если откладывать 72 000 ₽ в год · ещё +9 360 ₽ вернёт налоговая</div></div>
+<div class="card" style="gap:10px"><div class="hl">Сколько откладывать в год</div>
+ <div class="seg"><span data-select="pdsc" data-val="36000">36 000 ₽</span><span class="on" data-select="pdsc" data-val="72000">72 000 ₽</span><span data-select="pdsc" data-val="144000">144 000 ₽</span></div>
+ <div class="kv"><span class="k">Доплата государства, 10 лет</span><span class="v grn" data-id="pds-s">+36 000 ₽ в год</span></div>
+ <div class="kv"><span class="k">Возврат налога, 13%</span><span class="v grn" data-id="pds-t">+9 360 ₽ в год</span></div>
+ <div class="kv"><span class="k">Доход фонда</span><span class="v">по итогам года, без гарантии</span></div>
+ <div class="fn" data-id="pds-note">При вашем доходе государство добавляет рубль на каждые два ваших, но не больше 36 000 ₽ в год</div></div>
+<div class="card alertc" style="gap:6px"><div class="hl">Честно про ограничения</div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-warn"/></svg><span>Деньги до 2041 года или до 60 лет. Раньше: без доплаты и возврата налога, кроме дорогого лечения и потери кормильца</span></div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-warn"/></svg><span>Это не вклад: доход фонда не фиксирован. Защита государства до 2,8 млн ₽</span></div></div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Подходит для денег, которые точно не понадобятся до пенсии. У вас это около 72 000 ₽ в год сверх запаса и целей. Накопительную пенсию тоже можно перевести сюда.</div></div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-pds-confirm" data-id="pds-cta">Открыть программу: 6 000 ₽ в месяц</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+<template data-screen="sk-pds-confirm" data-base="sk-pds">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">6 000 ₽ <span class="to">в месяц → программа</span></div><div class="fx">+36 000 ₽ от государства и +9 360 ₽ налога в год</div><div class="to">Деньги до 2041 года или до 60 лет. Фонд СберНПФ, под надзором Банка России, защита до 2,8 млн ₽.</div></div>
+ <div class="kv"><span class="k">Откуда</span><span class="v">накопительный ••9106, 5-го числа</span></div>
+ <div class="kv"><span class="k">Возврат налога</span><span class="v">подам заявление за вас в марте</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="sk-done" data-faceid>Открыть программу</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<template data-screen="sk-salary" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Зарплата в Сбер</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Вижу зарплату из другого банка 12-го числа</div><div class="money m36">+9 600 ₽ <span class="u">в год</span></div><div class="sub" style="color:#D1D1D6">если зарплата будет приходить сюда: +0,6 п.п. к ставкам по вкладам на 1 600 000 ₽</div></div>
+<div class="card" style="gap:6px"><div class="hl">Что изменится</div>
+ <div class="kv"><span class="k">Вклады 12,2% → 12,8%</span><span class="v grn">+9 600 ₽ в год</span></div>
+ <div class="kv"><span class="k">Обслуживание карты</span><span class="v grn">0 ₽ вместо 150 ₽ в месяц</span></div>
+ <div class="kv"><span class="k">Переводы в другие банки</span><span class="v">без комиссии до 100 000 ₽</span></div>
+ <div class="kv"><span class="k">Что нужно от вас</span><span class="v">одно заявление, из приложения</span></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Заявление работодателю заполню сам, вы подпишете. Надбавка со следующего зачисления. Если зарплата перестанет приходить, надбавка снимется через два месяца, предупрежу заранее.</div></div></div>
+<div class="fnl">Для пенсии то же самое: заявление в Социальный фонд из приложения и надбавка по вкладу для пенсионеров</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done">Подать заявление работодателю</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-mortgage" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Цель «Квартира»</span></div>
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Первый взнос 1 200 000 ₽</div><div class="money m36">К июлю 2027 <span class="u">будет собран</span></div><div class="pb"><i style="width:68%"></i></div><div class="sub" style="color:#D1D1D6">820 000 из 1 200 000 ₽ · вклад ••1234 закрывается 2 июля, остальное копится на счёте</div></div>
+<div class="card" style="gap:0">
+ <div class="hl" style="padding-bottom:6px">Что сделать заранее</div>
+ <div class="sw" data-toggle><div><div class="st2">Одобрение ипотеки в июне</div><div class="ss">Действует 90 дней, ни к чему не обязывает. Скидка 0,3 п.п. тем, у кого здесь вклад и зарплата</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Проверить льготные программы</div><div class="ss">Семейная и ИТ-ипотека по вашим данным, недостающее спрошу</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Не продлевать ••1234 в июле</div><div class="ss">Деньги на счёт за 2 дня до сделки, без простоя</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Безопасная сделка</div><div class="ss">Продавец получит деньги только после регистрации</div></div><div class="tg off"></div></div>
+</div>
+<div class="card sm"><div class="bd">Платёж при нынешних ставках: около 51 000 ₽ в месяц, 43% вашего дохода. Банк одобрит, но будет тесно. Если собрать 1 500 000 ₽ к сентябрю, платёж 47 000 ₽. Считал калькулятором ипотеки, не угадывал.</div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done">Запланировать: напомнить 1 июня</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-ccard" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Нужны 50 000 ₽</span></div>
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Проверил ваши счета</div><div class="big-ok">Вклад закрывать не нужно</div><div class="bd mut">На накопительном 12 000 ₽, вклады до марта. Досрочное закрытие ••5520 сожжёт 57 900 ₽ процентов.</div></div>
+<div class="opt sel on" data-select="cc" data-set="cc-cta|Взять 50 000 ₽ с кредитной карты"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Кредитная карта, 120 дней без процентов</div><div class="os">Вернуть до 8 февраля с двух зарплат. Стоимость 0 ₽, если вовремя</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>0 ₽</b><span>потерь</span></div></div>
+<div class="opt" data-select="cc" data-set="cc-cta|Снять со вклада ••8708 досрочно"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Снять со вклада ••8708 досрочно</div><div class="os">Сгорят проценты за 2 месяца</div></div><div class="ov"><b style="color:#F0B35B">−5 000 ₽</b><span>потерь</span></div></div>
+<div class="opt" data-select="cc" data-set="cc-cta|Закрыть вклад ••5520 досрочно"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Закрыть вклад ••5520 досрочно</div><div class="os">Сгорят проценты за 7 месяцев</div></div><div class="ov"><b style="color:#F0B35B">−57 900 ₽</b><span>потерь</span></div></div>
+<div class="card alertc sm"><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-warn"/></svg><span>Если не вернуть за 120 дней, ставка 29,9%: дороже любого вклада. Предлагаю, потому что вы 14 месяцев платите по карте вовремя. В режиме «Осторожный» этот вариант не показываем.</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="cc-cta">Взять 50 000 ₽ с кредитной карты</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-debt" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Кредит и вклад</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Вижу платёж по кредиту в другом банке: 24% годовых</div><div class="money m36">+25 500 ₽ <span class="u">в год</span></div><div class="sub" style="color:#D1D1D6">если погасить 200 000 ₽ из спящих денег, а не держать их под 11,25%</div></div>
+<div class="opt sel on" data-select="db" data-set="db-cta|Погасить 200 000 ₽ досрочно"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Погасить 200 000 ₽ досрочно</div><div class="os">Из 400 000 ₽ на карте, запас 150 000 ₽ остаётся. Платёж снизится почти вдвое</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+25 500 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="db" data-set="db-cta|Перенести кредит к нам под 17,9%"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Перенести остаток 320 000 ₽ к нам</div><div class="os">Под 17,9% вместо 24%, тот же срок. Одно заявление</div></div><div class="ov"><b>+19 500 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="db" data-set="db-cta|Погасить 200 000 ₽ и перенести остаток"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">И то и другое</div><div class="os">200 000 ₽ погасить, остаток 120 000 ₽ перенести</div></div><div class="ov"><b>+32 800 ₽</b><span>в год</span></div></div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Банк заработает меньше на вашем счёте. Но долг под 24% дороже любого вклада, и молчать об этом было бы нечестно.</div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="db-cta">Погасить 200 000 ₽ досрочно</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-prime" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Подписка</span></div>
+<div data-sum="prime" style="display:contents">
+<div class="card ok" style="gap:6px" data-id="pr-card"><div class="fl" style="color:#8FD3A4">Посчитал по вашим тратам за 3 месяца</div><div class="big-ok" data-id="pr-verdict">Подписка окупится: +2 400 ₽ в год</div><div class="bd mut" data-id="pr-sub">Надбавка к счёту и бонусы дают 7 200 ₽, подписка стоит 4 788 ₽</div></div>
+<div class="card" style="gap:0">
+ <div class="sw" data-toggle data-gain="4500"><div><div class="st2">+1 п.п. к накопительному</div><div class="ss">На 450 000 ₽ · 4 500 ₽ в год</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="2700"><div><div class="st2">Бонусы по вашим тратам</div><div class="ss">42 000 ₽ в месяц картой · около 2 700 ₽ в год</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="1200"><div><div class="st2">Сервисы подписки</div><div class="ss">Доставка, музыка, кино · считаем, только если пользуетесь</div></div><div class="tg off"></div></div>
+ <div class="sw"><div><div class="st2">Стоимость подписки</div><div class="ss">399 ₽ в месяц</div></div><div class="hl" style="color:#F0B35B">−4 788 ₽</div></div>
+</div>
+<div class="fnl">Если траты упадут или на счёте станет меньше 250 000 ₽, предупрежу, что подписка перестала окупаться</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="pr-cta">Подключить подписку</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-kids" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ребёнку</span></div>
+<div data-sum="kids" data-goal="250000" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Цель «Учёба» · 250 000 ₽ к сентябрю 2031</div><div class="money m36" data-id="kd-sum">≈ 5 000 ₽ в месяц</div><div class="sub" style="color:#D1D1D6" data-id="kd-date">Соберём к январю 2031, раньше плана</div></div>
+<div class="card" style="gap:0">
+ <div class="sw" data-toggle data-gain="3000"><div><div class="st2">Вклад на имя ребёнка · 11,5%</div><div class="ss">3 000 ₽ в месяц · деньги его, снять до 18 лет только с разрешения опеки</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="2000"><div><div class="st2">Бабушка и дедушка пополняют</div><div class="ss">Ссылка для пополнения · около 2 000 ₽ в месяц, по их словам</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle data-gain="0"><div><div class="st2">Детская карта с лимитом</div><div class="ss">1 500 ₽ в неделю, уведомления вам, сдача копится на вклад</div></div><div class="tg"></div></div>
+</div>
+<div class="card sm"><div class="bd">Вклад ребёнка защищён и от ваших импульсов: это единственный вклад, который помощник никогда не предложит трогать.</div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="kd-cta">Открыть вклад ребёнку и карту</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-invest" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Деньги на 3 года и дольше</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Сверх запаса и целей</div><div class="money m36">600 000 ₽ <span class="u">не понадобятся 3 года</span></div><div class="sub" style="color:#D1D1D6">по вашим словам и истории. Вклады дают 12,2% на год, дальше ставка неизвестна</div></div>
+<div class="opt sel on" data-select="inv" data-set="inv-cta|Вклады по очереди на 600 000 ₽"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Оставить во вкладах по очереди</div><div class="os">Три вклада, доступ каждые 4 месяца, ставка известна. Переоткрытие по рынку</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>+68 400 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="inv" data-set="inv-cta|Передать в СберИнвестиции с моими цифрами"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Часть в облигации через СберИнвестиции</div><div class="os">Доход фиксируется на 3 года, но цена бумаг меняется. Другой риск и другой сервис</div></div><div class="ov"><b>?</b><span>считает брокер</span></div></div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Я не выбираю бумаги и не обещаю доход. Могу передать в СберИнвестиции ваши цифры: сумму, срок, запас. Там объяснят риски и покажут варианты.</div></div></div>
+<div class="fnl">В режиме «Осторожный» этот экран не показываем</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="inv-cta">Вклады по очереди на 600 000 ₽</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-selfemp" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Самозанятость</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Поступления от клиентов: 156 000 ₽ в октябре</div><div class="money m36">6 240 ₽ <span class="u">налог уже отложен</span></div><div class="sub" style="color:#D1D1D6">4% с каждого поступления уходят на отдельный счёт и работают под 11,25% до 28 ноября</div></div>
+<div class="card" style="gap:0">
+ <div class="sw" data-toggle><div><div class="st2">Откладывать налог автоматически</div><div class="ss">4% от физлиц, 6% от компаний · в день поступления</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Платить налог 28-го</div><div class="ss">Из отложенного, по уведомлению из «Мой налог»</div></div><div class="tg"></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Остальное на накопительный</div><div class="ss">Всё выше запаса, по правилу</div></div><div class="tg off"></div></div>
+</div>
+<div class="card sm"><div class="bd">Деньги на налог не смешиваются с вашими. За год проценты с «налогового» счёта дают около 3 400 ₽: мелочь, но раньше она лежала под 0%.</div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done">Включить</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+
+<template data-screen="sk-will" data-cls="care" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ваши вклады</span></div>
+<div class="card">
+ <div class="big-ok">Кому достанутся ваши вклады, если что</div>
+ <div class="big-tx mut">Можно указать прямо в банке: бесплатно, за 10 минут, без нотариуса. Изменить можно в любой момент.</div>
+ <div class="btn" data-go="sk-will-who">Указать человека</div>
+ <div class="btn g" data-back>Не сейчас</div>
+ <div style="display:flex;gap:10px;justify-content:center;margin-top:4px"><span class="chip d" data-go="sk-will-simple"><svg class="ic"><use href="#i-info"/></svg>Объяснить проще</span><span class="chip d" data-go="care-human"><svg class="ic"><use href="#i-phone"/></svg>Позвонить</span></div>
+</div>
+<div class="card ok"><div style="display:flex;gap:12px;align-items:center"><svg class="ic grn" style="width:30px;height:30px"><use href="#i-shield"/></svg><div class="bd" style="font-size:19px">Пока вы живы, деньгами распоряжаетесь только вы. Это не доверенность</div></div></div>
+</template>
+<template data-screen="sk-will-simple" data-base="sk-will" data-cls="care">
+<div class="scrim" data-back></div>
+<div class="sheet" style="gap:18px">
+ <div class="grab"></div>
+ <div class="big-tx">1. Вы говорите банку, кому отдать ваши вклады после вас.</div>
+ <div class="big-tx">2. Это бесплатно и без нотариуса. Один документ в офисе.</div>
+ <div class="big-tx">3. Пока вы живы, всё остаётся вашим. Передумать можно в любой день.</div>
+ <div class="btn big" data-go="sk-will-who">Указать человека</div>
+ <div class="btn g big" data-back>Назад</div>
+</div>
+</template>
+<template data-screen="sk-will-who" data-cls="care" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Кому</span></div>
+<div class="opt sel on" data-select="wl" data-set="wl-cta|Оформить на Анну"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Анна, дочь</div><div class="os">Ваше доверенное лицо в приложении</div></div></div>
+<div class="opt" data-select="wl" data-set="wl-cta|Оформить на двоих поровну"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Анна и Михаил, поровну</div><div class="os">Дочь и сын</div></div></div>
+<div class="opt" data-select="wl" data-set="wl-cta|Указать другого человека"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Другой человек</div><div class="os">Понадобятся его имя и дата рождения</div></div></div>
+<div class="card ok"><div class="big-tx mut">Распоряжение действует на все ваши вклады и счета в банке. Подписать нужно лично в офисе: запишу вас на удобное время, документ будет готов.</div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-will-done" data-id="wl-cta">Оформить на Анну</div><div class="btn g" data-back>Назад</div></div>
+</template>
+<template data-screen="sk-will-done" data-cls="care">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-cal"/></svg></div>
+<div class="t1" style="text-align:center">Среда, 22 октября в 11:00</div>
+<div class="big-tx mut" style="text-align:center;padding:0 16px">Офис на Ленина, 5. Документ подготовим, с собой только паспорт. Анне об этом не сообщаем, если вы не попросите.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="care-home">Хорошо</div><div class="btn ghost" data-back>Другое время</div></div>
+</template>
+
+<template data-screen="sk-fx" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Юани и золото</span></div>
+<div class="quote me">А если рубль упадёт? Может, часть в валюту?</div>
+<div class="ans"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="tx">Можно, но честно: вклад в юанях даёт 3,2% против 12,2% в рублях, золото процентов не приносит, а покупается с разницей цен около 2%. Это защита от курса, а не доход. Имеет смысл, если есть траты в валюте или вы готовы к тому, что через год сумма в рублях окажется меньше.</div></div>
+<div class="opt sel on" data-select="fx" data-set="fx-cta|Оставить всё в рублях"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Оставить всё в рублях</div><div class="os">Трат в валюте у вас нет, горизонт до 12 месяцев</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b>12,2%</b><span>известно заранее</span></div></div>
+<div class="opt" data-select="fx" data-set="fx-cta|10% в юани: вклад под 3,2%"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">10% в юани · вклад 3,2%</div><div class="os">245 000 ₽ → около 20 400 ¥ · проценты в юанях, курс не угадываем</div></div><div class="ov"><b style="color:#F0B35B">−22 000 ₽</b><span>цена защиты в год</span></div></div>
+<div class="opt" data-select="fx" data-set="fx-cta|5% в золото"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">5% в золото · счёт в граммах</div><div class="os">122 000 ₽ ≈ 14 г · без процентов, разница цен около 2%</div></div><div class="ov"><b style="color:#F0B35B">−17 300 ₽</b><span>цена защиты в год</span></div></div>
+<div class="fnl">Цена защиты: сколько недополучите за год против рублёвого вклада, если курс не изменится</div>
+<div class="cta-wrap nt"><div class="btn" data-go="sk-done" data-id="fx-cta">Оставить всё в рублях</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
 <script>
 (function(){
 'use strict';
@@ -2592,9 +3430,49 @@ const FLOWS={
   {id:'sk-bonus',t:'Надбавка: успеть до конца месяца',d:'Прогресс условия в рублях и разница дохода.',ai:'Прогноз по обычным тратам: выполнится ли условие само.',nat:'Прогресс-бар и расчёт из карточки счёта.',tr:'Напоминание только по желанию, «Понятно» рядом.'},
   {id:'pro-push-tax',t:'Пуш: налоговый дайджест',d:'1 марта: доход за год, налог и срок.',ai:'Собирает доход по всем вкладам и считает налог.',nat:'Пуш с переходом на расчёт.',tr:'Предупреждаем за девять месяцев до срока и предлагаем добавить вклады других банков.'},
   {id:'sk-tax',t:'Налог по вкладам',d:'Переключатель «вклад в другом банке» живой: налог пересчитывается.',ai:'Объясняет лимит и законные способы уменьшить налог.',nat:'Расчёт по правилам Налогового кодекса, данные банка и ручной ввод клиента.',tr:'Налог считает ФНС, помощник только предупреждает и объясняет.'},
-  {id:'pro-settings',t:'Как напоминать',d:'Частота, каналы, тихие часы, «не беспокоить месяц». Сегмент-контрол живой.',ai:'Переводит выбор клиента в правила коммуникаций.',nat:'Настройки уведомлений.',tr:'Каждое сообщение можно выключить в один тап, безопасность нельзя.'}]}
+  {id:'pro-settings',t:'Как напоминать',d:'Частота, каналы, тихие часы, «не беспокоить месяц». Сегмент-контрол живой.',ai:'Переводит выбор клиента в правила коммуникаций.',nat:'Настройки уведомлений.',tr:'Каждое сообщение можно выключить в один тап, безопасность нельзя.'},
+  {id:'val-home',t:'Одно предложение на неделю',d:'«+2 340 ₽ в месяц ждут одного решения». Цена молчания последней строкой, счётчик «с октября» рядом.',ai:'Выбирает одно самое ценное событие недели и формулирует цену молчания одной фразой.',nat:'Виджет на Главном, те же компоненты, что у карточки помощника.',tr:'Ничего, кроме одного предложения. Цена молчания написана честно, без давления.'},
+  {id:'val-merge',t:'Три события, одно решение',d:'Спящие деньги, закрытие вклада в другом банке и надбавка в одном плане. Галочки живые.',ai:'Объединяет события недели в один пакет и один текст.',nat:'Чек-лист и пакетное подтверждение, как в плане на неделю.',tr:'Одно касание вместо трёх. Отказ от любого пункта не ломает остальные.'},
+  {id:'val-ledger',t:'Сколько принёс помощник',d:'Счётчик ценности: каждое касание с рублями, отказ клиента со своей ценой, «промолчал 14 раз».',ai:'Собирает ценность из журнала и объясняет каждую строку.',nat:'Журнал действий, расчёт движка.',tr:'Отказы клиента тоже в списке, с ценой и без упрёков.'},
+  {id:'val-budget',t:'Сколько сообщений получать',d:'Клиент задаёт бюджет внимания, помощник показывает, сколько ценности соберёт за год. Сегмент и переключатели живые.',ai:'Переводит бюджет в правила отбора событий.',nat:'Настройки уведомлений.',tr:'Закрытия, автодействия и безопасность в бюджет не входят и не выключаются.'}]}
 };
 
+
+/* rebalancing as a process: three autonomy levels, one chain of screens each */
+const RB={
+ l1:{lead:'L1, вручную. Клиент подтверждает каждое действие: так проходит первый план, и так остаются те, кто выбрал «спрашивать перед каждым шагом». Десять шагов от слов клиента до журнала.',steps:[
+  {id:'rb-words',t:'Политика словами',who:'ai',say:'«Как вам удобно с деньгами?» Клиент выбирает фразы, помощник на глазах переводит их в правила. Фразы кликабельны.',cl:'Нажимает две-три фразы или пропускает: план соберётся и без правил.',eng:'Проверяет правила на выполнимость: запас 150 000 ₽ против обычных трат, вклад ••1234 в список «не трогать».',ai:'Переводит фразы в политику и обратно, формулирует каждое правило одной строкой.',tr:'Правила видны и редактируются словами. Ничего не исполняется.'},
+  {id:'cap-plan',t:'План на неделю',who:'eng',say:'Три действия с выгодой в рублях. Галочки живые: итог, доля работающих денег и кнопка пересчитываются.',cl:'Снимает галочку с того, что не нравится, или просто жмёт кнопку.',eng:'Собирает пакет действий под политику: резерв, запреты, минимальная выгода, лимит операций.',ai:'Объясняет каждое действие одной фразой: «лежат без дохода 3 месяца».',tr:'Запас клиента на экране, его не трогаем. «Почему» у каждого действия.'},
+  {id:'rb-edit',t:'Правка действия',who:'cl',say:'Сумму и место можно изменить: 150, 250 или 300 тысяч, счёт с доступом или вклад без доступа. Цена гибкости в рублях.',cl:'Выбирает сумму и куда. Видит, сколько стоит доступ к деньгам в любой день.',eng:'Пересчитывает выгоду по тарифам и честно предупреждает, если запас станет меньше нужного.',ai:'Нет: экран нативный, цифры из движка.',tr:'Клиент может нарушить своё правило, но его предупредят. Запрета нет, есть честность.'},
+  {id:'rb-preview',t:'Что изменится',who:'eng',say:'Деньги до и после одной полосой, что случится с каждым продуктом и когда. Запас остаётся на месте.',cl:'Смотрит и подтверждает. Или «не сейчас».',eng:'Структура до и после, даты исполнения, эффект по каждому продукту.',ai:'Нет.',tr:'Ничего не скрыто: видно, что не трогаем и почему.'},
+  {id:'rb-confirm',t:'Подтверждение',who:'cl',say:'Одна шторка на три действия: сумма, «откуда → куда», даты, Face ID.',cl:'Face ID один раз на весь пакет.',eng:'Создаёт два действия сегодня и одно отложенное на 15 декабря.',ai:'Нет.',tr:'Та же шторка, что у платежа и у внешних агентов. Ни один рубль без неё.'},
+  {id:'cap-done',t:'Исполнено',who:'eng',say:'Два действия сделаны сразу, третье ждёт даты. Напомним за день.',cl:'Ничего.',eng:'Исполняет через существующие флоу перевода и настройки, пишет в журнал с источником.',ai:'Формулирует результат.',tr:'Отложенное действие с напоминанием за день и отменой.'},
+  {id:'rb-tomorrow',t:'За день до действия',who:'eng',say:'Пуш 14 декабря: завтра переоткроем вклад под 12,2%. Отменить можно до 23:59.',cl:'Может ничего не делать: всё произойдёт как договаривались.',eng:'Проверяет, что ставка не изменилась. Если изменилась, не исполняет, а спрашивает.',ai:'Текст пуша: что, когда, сколько, как отменить.',tr:'Контроль остаётся у клиента до последнего дня.'},
+  {id:'rb-pending',t:'Проверить или отменить',who:'cl',say:'Что произойдёт завтра, кто и когда подтвердил, что будет, если отменить.',cl:'Оставляет или отменяет. Отмена без объяснений.',eng:'Показывает актуальную ставку и проценты, которые придут завтра.',ai:'Напоминает договорённость: «если ставка ниже, спрошу вас».',tr:'Отмена в один тап, цена отмены в рублях, без давления.'},
+  {id:'rb-cancel',t:'Отмена действия',who:'cl',say:'Шторка отмены: напомнить через месяц или больше не предлагать. Во втором случае вклад попадёт в «не трогать».',cl:'Выбирает, что делать с этим вкладом дальше.',eng:'Снимает отложенное действие, пишет в журнал «отменено клиентом».',ai:'Нет.',tr:'Отказ не ломает остальное и не требует объяснений.'},
+  {id:'cap-log',t:'Журнал',who:'eng',say:'Кто, что, когда и почему. Источник каждого действия: вы, помощник, правило или внешний агент.',cl:'Смотрит, фильтрует, отменяет ожидающие действия.',eng:'Хранит каждое действие с цифрами расчёта и статусом.',ai:'Хранит объяснение каждой рекомендации.',tr:'Полная прозрачность. Отменить можно всё, что ещё не исполнено.'}]},
+ l2:{lead:'L2, по правилам. После трёх одинаковых подтверждений помощник предлагает правило. Исполняет сам, предупреждает за день, вернуть можно всегда. Восемь шагов.',steps:[
+  {id:'rb-rule-offer',t:'Предложение правила',who:'ai',say:'Три раза подряд клиент подтвердил одно и то же. Помощник предлагает сделать это правилом и показывает цену ожидания.',cl:'Соглашается настроить или остаётся на подтверждениях.',eng:'Нашёл повторяющееся решение в журнале, посчитал, сколько стоит ожидание в рублях.',ai:'Формулирует правило одной фразой и объясняет, что изменится.',tr:'Повышение уровня только после успехов. Отказ ничего не меняет.'},
+  {id:'rb-rule-set',t:'Правило: порог и лимит',who:'cl',say:'Запас, когда проверять, не больше за раз, предупреждать за день. Фраза правила и первый перевод пересчитываются.',cl:'Двигает порог и видит, что перевёл бы сегодня.',eng:'Проверяет порог против трат: предупреждает, если впритык.',ai:'Пишет правило словами, как его понял.',tr:'«Вернуть на карту» нельзя выключить: это гарантия, а не настройка.'},
+  {id:'rb-rule-confirm',t:'Подтверждение правила',who:'cl',path:false,say:'Шторка с правилом и первым переводом. Face ID.',cl:'Face ID.',eng:'Включает правило уровня L2 с лимитами.',ai:'Нет.',tr:'Выключить в один тап в любой момент. Записано в журнале.'},
+  {id:'rb-rule-on',t:'Правило работает',who:'eng',path:false,say:'Что будет происходить и когда. Первый отчёт в понедельник.',cl:'Ничего.',eng:'Ставит проверку по пятницам и предупреждение за день.',ai:'Формулирует обещание одной фразой.',tr:'Обещание конкретное: день, сумма, способ отмены.'},
+  {id:'rb-rule-push',t:'Сделал по правилу',who:'auto',path:false,say:'Пуш после действия: сколько, куда, что осталось на карте, как вернуть.',cl:'Может ничего не делать.',eng:'Исполнил перевод по правилу, проверив запас и прогноз до зарплаты.',ai:'Текст пуша: цифра, последствие, выход.',tr:'Предупреждал за день. Вернуть можно до завтра в один тап.'},
+  {id:'rb-rule-did',t:'Что сделано и почему',who:'eng',say:'Почему сейчас, что проверил до зарплаты, когда предупреждал, итог правила за три месяца.',cl:'«Хорошо» или «Вернуть на карту». Или изменить правило.',eng:'Прогноз остатка до зарплаты, лимиты, запись в журнал «по правилу».',ai:'Сводка правила за три месяца и подсказка «реже».',tr:'Каждое автодействие объяснено и обратимо.'},
+  {id:'rb-undo',t:'Вернуть как было',who:'cl',say:'Деньги обратно на карту сразу и без комиссии. Правило оставить или выключить.',cl:'Возвращает и решает судьбу правила.',eng:'Обратный перевод, проценты за эти дни остаются клиенту.',ai:'Нет.',tr:'Откат за 24 часа у любого действия по правилу. После отката помощник спрашивает заранее.'},
+  {id:'cap-report',t:'Отчёт за неделю',who:'eng',path:false,say:'Сколько заработали, что сделано по правилу, что дальше.',cl:'Читает одну цифру.',eng:'Доход по дням и список действий с источником.',ai:'Формулирует итог и следующий шаг.',tr:'Отчитывается, даже если ничего не делал.'}]},
+ l3:{lead:'L3, автопилот. Политика целиком: резерв, запреты, лимиты, порог выгоды. Автопилот действует сам, отчитывается по понедельникам, честно молчит, когда менять нечего, и честно отказывается, когда ставка выросла, а ломать вклад невыгодно. Десять шагов.',steps:[
+  {id:'rb-auto-offer',t:'Предложение автопилота',who:'ai',say:'Правило работает три месяца без отмен. Помощник предлагает автопилот: правила уже заполнены, список «никогда» рядом.',cl:'Включает или остаётся на правилах.',eng:'Собирает политику из истории: запас, запреты, лимиты.',ai:'Объясняет, что изменится и что никогда не произойдёт.',tr:'Только по явному включению. Внешним агентам недоступен.'},
+  {id:'rb-auto-confirm',t:'Подтверждение',who:'cl',path:false,say:'Шторка с политикой целиком и первым отчётом. Face ID.',cl:'Face ID.',eng:'Включает уровень L3 с лимитами политики.',ai:'Нет.',tr:'Пауза в один тап на Главном, откат 24 часа.'},
+  {id:'rb-auto-on',t:'Автопилот включён',who:'eng',path:false,say:'Первый отчёт в понедельник, пауза на Главном, откат 24 часа.',cl:'Ничего.',eng:'Запускает еженедельную проверку портфеля.',ai:'Формулирует обещание.',tr:'Три гарантии на одном экране.'},
+  {id:'rb-quiet',t:'Неделя без изменений',who:'auto',say:'«Менять ничего не нужно». Четыре проверки, всё в порядке, следующая через неделю.',cl:'Читает одну строку или не читает. Может выключить такие отчёты.',eng:'Проверил остаток, ставки, закрытия и условие надбавки: ничего выше порога выгоды.',ai:'Пишет отчёт о тишине одной мыслью: тишина тоже результат.',tr:'Автопилот отчитывается, даже когда ничего не делал. Выключается в один тап.'},
+  {id:'rb-rate',t:'Ставки выросли: честный отказ',who:'eng',say:'Ставки по новым вкладам выше, но переоткрывать невыгодно: сгорят проценты за 7 месяцев. Переключатель ставки показывает, что ответ не меняется.',cl:'Двигает ставку и видит итог. Решать ничего не нужно.',eng:'Сравнивает выигрыш до закрытия с потерей процентов. Ставит отложенное переоткрытие на 14 марта.',ai:'Объясняет отказ и что сделает вместо этого.',tr:'Движок не ломает вклад, если потеря больше выигрыша. Ни по чьей просьбе.'},
+  {id:'rb-auto-push',t:'Автопилот сделал',who:'auto',say:'Пуш после действий: сколько действий, сколько принесли, как вернуть.',cl:'Может ничего не делать.',eng:'Исполнил два действия в лимитах политики.',ai:'Текст пуша: две цифры и выход.',tr:'Вернуть можно до завтра в один тап.'},
+  {id:'rb-auto-did',t:'Сделано и не сделано',who:'auto',say:'Два действия с объяснением и кнопкой «вернуть». Отдельно то, что автопилот не стал делать и почему.',cl:'Проверяет, возвращает при желании, ставит паузу.',eng:'Исполнил в лимитах политики, проверил запас, записал источник «автопилот».',ai:'Объясняет сделанное и несделанное одной строкой каждое.',tr:'Несделанное показано так же честно, как сделанное.'},
+  {id:'rb-pause',t:'Пауза в один тап',who:'cl',say:'На месяц, пока не включу, или выключить совсем. Напоминания о датах можно оставить.',cl:'Выбирает срок паузы.',eng:'Останавливает автодействия, напоминания о датах остаются.',ai:'Нет.',tr:'Понижение уровня мгновенное и без вопросов. Повышение только по явному включению.'},
+  {id:'cap-report',t:'Отчёт за неделю',who:'eng',say:'Сколько заработали, что сделано, что дальше. Автопилот отчитывается, даже когда ничего не делал.',cl:'Читает одну цифру.',eng:'Доход по дням и список действий с источником и статусом.',ai:'Формулирует отчёт и следующий шаг.',tr:'Каждая строка с источником.'},
+  {id:'edge-year',t:'Итог года',who:'eng',say:'Сколько автопилот принёс сверх ставки, по пунктам и с источниками. Ставка конкурента рядом.',cl:'Видит, за что платил доверием.',eng:'Собирает итог из журнала и выписки.',ai:'Объясняет каждый пункт одной строкой.',tr:'Каждая цифра с источником. Ставка конкурента рядом для честности.'}]}
+};
+FLOWS.rb={name:'Ребалансировка',tabs:{home:'cap-home',sav:'cap-sav'},steps:[].concat(RB.l1.steps,RB.l2.steps,RB.l3.steps).filter(s=>s.path!==false).map(s=>({id:s.id,t:s.t,d:s.say,ai:s.ai,nat:s.eng,tr:s.tr}))};
 function tpl(id){return document.querySelector('template[data-screen="'+id+'"]')}
 class Proto{
  constructor(root,flow,opts){opts=opts||{};this.root=root;this.screen=$('.screen',root);this.hist=[];this.cur=null;this.flow=flow;this.static=!!opts.static;this.listeners=[];this.timers=[];
@@ -2635,16 +3513,43 @@ class Proto{
   const gd=$('[data-sum="goal"]',layer);if(gd){let m=0;$$('[data-toggle][data-months]',gd).forEach(s=>{if(!$('.tg',s).classList.contains('off'))m+=+s.dataset.months});const idx=(6-m+24)%12,yr=2027-(6-m<0?1:0);const d=$('[data-id="gd-date"]',layer);if(d)d.textContent=`к ${MONTHS[idx]} ${yr}`;}
   const amt=$('[data-amt].on',layer);if(amt){const a=+amt.dataset.amt;const inc=Math.round(a*0.122*0.5);const v=$('[data-id="amt-v"]',layer);if(v)v.textContent=fmt(a)+' ₽';const i=$('[data-id="inc-v"]',layer);if(i)i.textContent='+'+fmt(inc)+' ₽';const b=$('[data-id="amt-cta"]',layer);if(b)b.textContent=`Открыть на ${fmt(a+100000)} ₽`;}
   const p2=$('[data-sum="plan2"]',layer);if(p2){let sum=0;const a=$('[data-select="amt"].on',p2);if(a)sum+=+(a.dataset.val||0);$$('[data-toggle][data-gain]',p2).forEach(s=>{if(!$('.tg',s).classList.contains('off'))sum+=+s.dataset.gain});const goal=+(p2.dataset.goal||60000);$$('[data-id="p2-sum"]',layer).forEach(el=>el.textContent=sum?`≈ ${fmt(sum)} ₽ в месяц`:'Пока ничего');const d=$('[data-id="p2-date"]',layer);if(d){if(sum){const m=Math.ceil(goal/sum);const idx=(10+m)%12,yr=2026+Math.floor((10+m)/12);d.textContent=`Подушка ${fmt(goal)} ₽ будет к ${MONTHS[idx]} ${yr}`;}else d.textContent='Выберите сумму или правило';}}
-  const tx=$('[data-sum="tax"]',layer);if(tx){const base=+(tx.dataset.baseIncome||225000),free=+(tx.dataset.free||160000);let other=0,n=0;$$('[data-toggle][data-tax]',tx).forEach(s=>{if(!$('.tg',s).classList.contains('off')){other+=+s.dataset.tax;n++}});const inc=base+other,tax=Math.max(0,inc-free)*0.13;const v=$('[data-id="tax-v"]',layer);if(v)v.textContent='≈ '+fmt(tax)+' ₽';const st=$('[data-id="tax-s"]',layer);if(st)st.textContent=`Доход по вкладам ${fmt(inc)} ₽${n?' в '+(n+1)+' банках':''}, первые ${fmt(free)} ₽ без налога`;}}
+  const tx=$('[data-sum="tax"]',layer);if(tx){const base=+(tx.dataset.baseIncome||225000),free=+(tx.dataset.free||160000);let other=0,n=0;$$('[data-toggle][data-tax]',tx).forEach(s=>{if(!$('.tg',s).classList.contains('off')){other+=+s.dataset.tax;n++}});const inc=base+other,tax=Math.max(0,inc-free)*0.13;const v=$('[data-id="tax-v"]',layer);if(v)v.textContent='≈ '+fmt(tax)+' ₽';const st=$('[data-id="tax-s"]',layer);if(st)st.textContent=`Доход по вкладам ${fmt(inc)} ₽${n?' в '+(n+1)+' банках':''}, первые ${fmt(free)} ₽ без налога`;}
+
+  /* v4: rebalancing process and value screens */
+  const set=(id,t)=>{const el=$(`[data-id="${id}"]`,layer);if(el)el.textContent=t};
+  const wd=$('[data-sum="words"]',layer);if(wd){const on=$$('[data-multi].on',wd).map(c=>c.dataset.multi);$$('[data-rule]',wd).forEach(r=>{const k=r.dataset.rule;r.hidden=k==='none'?on.length>0:!on.includes(k)});const n=on.length;set('words-cta',n?`Собрать план по ${n} ${n===1?'правилу':'правилам'}`:'Собрать план без правил');}
+  const ed=$('[data-sum="edit"]',layer);if(ed){const a=$('[data-select="ramt"].on',ed);const amt=a?+a.dataset.val:250000;const alt=$('[data-select="ralt"].on',ed);const rate=alt?+alt.dataset.rate:0.1125;const name=alt?alt.dataset.name:'накопительный счёт';
+   const g1=amt*0.1125,g2=amt*0.124,gain=amt*rate,left=400000-amt;set('ed-g1','+'+fmt(g1)+' ₽');set('ed-g2','+'+fmt(g2)+' ₽');const gel=$('[data-id="ed-gain"]',layer);if(gel)gel.innerHTML='+'+fmt(gain)+' ₽ <span class="u">в год</span>';
+   set('ed-sub',`${fmt(amt)} ₽ → ${name} · на карте останется ${fmt(left)} ₽`);
+   const lf=$('[data-id="ed-left"]',layer);if(lf){if(left<150000){lf.textContent=`На карте останется ${fmt(left)} ₽: меньше вашего запаса 150 000 ₽. Можно, но до зарплаты 10 ноября будет впритык`;lf.style.color='#F0B35B';}else if(left>150000){lf.textContent=`На карте останется ${fmt(left)} ₽: больше запаса, ${fmt(left-150000)} ₽ продолжат лежать без дохода`;lf.style.color='';}else{lf.textContent='На карте останется 150 000 ₽: ваш запас';lf.style.color='';}}
+   set('ed-note',`Разница ${fmt(g2-g1)} ₽ в год: столько стоит доступ к деньгам в любой день`);set('ed-cta',`Сохранить: ${fmt(amt)} ₽ на ${name}`);}
+  const rl=$('[data-sum="rule"]',layer);if(rl){const t=$('[data-select="rthr"].on',rl);const thr=t?+t.dataset.val:150000;const w=$('[data-select="rwhen"].on',rl);const when=w?w.dataset.when:'раз в неделю';const now=Math.max(0,400000-thr);
+   set('rl-say',`Всё выше ${fmt(thr)} ₽ на карте → на накопительный, ${when}`);set('rl-now',`Сегодня перевёл бы ${fmt(now)} ₽ · +${fmt(now*0.1125/12)} ₽ в месяц`);
+   const n=$('[data-id="rl-thr"]',layer);if(n){if(thr<150000){n.textContent='Впритык: в октябре минимум на карте был 118 000 ₽. Перед каждым переводом всё равно проверю прогноз до зарплаты';n.style.color='#F0B35B';}else if(thr>150000){n.textContent=`С запасом: переводов будет меньше, около ${fmt((thr-150000)*0.1125)} ₽ в год останутся без дохода`;n.style.color='';}else{n.textContent='По вашим тратам хватит до зарплаты с запасом. Проверяю каждый раз перед переводом';n.style.color='';}}}
+  const rt=$('[data-sum="rate"]',layer);if(rt){const s=$('[data-select="rr"].on',rt);const r=s?+s.dataset.val:13.1;const gain=Math.round(800000*(r/100-0.124)*5/12/100)*100;set('rr-gain','+'+fmt(gain)+' ₽');set('rr-net','−'+fmt(57900-gain)+' ₽');}
+  const mg=$('[data-sum="merge"]',layer);if(mg){let tot=0,n=0;$$('.opt[data-gain]',mg).forEach(o=>{if(!$('.ck',o).classList.contains('off')){tot+=+o.dataset.gain;n++}});const h=$('[data-id="mg-total"]',layer);if(h)h.innerHTML='+'+fmt(tot)+' ₽ <span class="u">за год</span>';set('mg-cnt',n?`Одно сообщение вместо трёх · ${n} ${n===1?'действие':'действия'}`:'Снимите галочку, если что-то не нужно');set('mg-cta',n?`Подтвердить ${n===1?'1 действие':n+' действия'}`:'Выберите хотя бы одно действие');}
+  const vb=$('[data-sum="vbud"]',layer);if(vb){const s=$('[data-select="vb"].on',vb);const n=s?+s.dataset.val:1;const mgt=$('[data-merge] .tg',vb);const merge=mgt?!mgt.classList.contains('off'):true;
+   const T={s1:[72030,10,'В октябре три события: отправлю одно, самое ценное. Перенос из другого банка и надбавка уйдут в журнал без пуша.'],s2:[78990,12,'В октябре отправлю два предложения из трёх, напоминание о надбавке уйдёт в журнал.'],s4:[79550,13,'Отправлю все события с ценностью, каждое отдельным сообщением.'],m1:[79550,10,'Три события октября уложу в одно сообщение с одним решением.'],m2:[79550,10,'Три события октября уложу в одно сообщение с одним решением.'],m4:[79550,10,'Три события октября уложу в одно сообщение с одним решением.']};
+   const r=T[(merge?'m':'s')+n];set('vb-v',r[0]>=79550?'Соберу все 79 550 ₽ в год':`Соберу ≈ ${fmt(r[0])} ₽ из 79 550 в год`);set('vb-d',`${r[1]} сообщений за год, 5 из них обязательные. ${r[2]}`);}
+  const pd=$('[data-sum="pds"]',layer);if(pd){const s=$('[data-select="pdsc"].on',pd);const c=s?+s.dataset.val:72000;const st=Math.min(36000,c/2),tx=Math.min(52000,c*0.13);const h=$('[data-id="pds-state"]',layer);if(h)h.innerHTML=`+${fmt(st)} ₽ <span class="u">в год от государства</span>`;set('pds-sub',`если откладывать ${fmt(c)} ₽ в год · ещё +${fmt(tx)} ₽ вернёт налоговая`);set('pds-s',`+${fmt(st)} ₽ в год`);set('pds-t',`+${fmt(tx)} ₽ в год`);
+   set('pds-note',c>72000?'Доплата уже максимальная: государство добавляет не больше 36 000 ₽ в год. Взносы сверх 72 000 ₽ работают только на доход фонда и возврат налога':c<72000?'При вашем доходе государство добавляет рубль на каждые два ваших. Чтобы получить максимум, нужно откладывать 72 000 ₽ в год':'При вашем доходе государство добавляет рубль на каждые два ваших, но не больше 36 000 ₽ в год');set('pds-cta',`Открыть программу: ${fmt(c/12)} ₽ в месяц`);}
+  const pr=$('[data-sum="prime"]',layer);if(pr){let sum=0;$$('[data-toggle][data-gain]',pr).forEach(s=>{if(!$('.tg',s).classList.contains('off'))sum+=+s.dataset.gain});const net=sum-4788;const card=$('[data-id="pr-card"]',layer);if(card){card.classList.toggle('ok',net>=0);card.classList.toggle('alertc',net<0);const fl=$('.fl',card);if(fl)fl.style.color=net>=0?'#8FD3A4':'#F0B35B';}
+   set('pr-verdict',net>=0?`Подписка окупится: +${fmt(net)} ₽ в год`:`Подписка не окупится: −${fmt(-net)} ₽ в год`);set('pr-sub',net>=0?`Надбавка к счёту и бонусы дают ${fmt(sum)} ₽, подписка стоит 4 788 ₽`:`Выгода ${fmt(sum)} ₽ меньше стоимости 4 788 ₽. Не предлагаю. Скажу, если цифры изменятся`);set('pr-cta',net>=0?'Подключить подписку':'Не подключать');}
+  const kd=$('[data-sum="kids"]',layer);if(kd){let sum=0;$$('[data-toggle][data-gain]',kd).forEach(s=>{if(!$('.tg',s).classList.contains('off'))sum+=+s.dataset.gain});const goal=+(kd.dataset.goal||250000);set('kd-sum',sum?`≈ ${fmt(sum)} ₽ в месяц`:'Пополнений нет');const d=$('[data-id="kd-date"]',layer);if(d){if(sum){const m=Math.ceil(goal/sum);const idx=(10+m)%12,yr=2026+Math.floor((10+m)/12);d.textContent=`Соберём к ${MONTHS[idx]} ${yr}${(yr<2031||(yr===2031&&idx<8))?', раньше плана':', позже плана'}`;}else d.textContent='Без пополнений цель не вырастет сама';}}
+ }
  onClick(e){const layer=$$('.layer',this.screen).pop();
+  const go0=e.target.closest('[data-go]'),ctl0=e.target.closest('[data-toggle],[data-check],[data-select],[data-amt],[data-multi]');
+  if(go0&&ctl0&&this.root.contains(go0)&&ctl0.contains(go0)&&go0!==ctl0){this.nav(go0);return;}
+  const mu=e.target.closest('[data-multi]');if(mu&&this.root.contains(mu)){mu.classList.toggle('on');mu.classList.toggle('d',!mu.classList.contains('on'));this.recalc(layer);return;}
   const tg=e.target.closest('[data-toggle]');if(tg&&this.root.contains(tg)){const t=tg.matches('.tg')?tg:$('.tg',tg);if(t&&!tg.hasAttribute('data-locked')){t.classList.toggle('off');this.recalc(layer);}return;}
   const ck=e.target.closest('[data-check]');if(ck&&this.root.contains(ck)){const c=$('.ck',ck);c.classList.toggle('off');ck.classList.toggle('sel',!c.classList.contains('off'));this.recalc(layer);return;}
   const sel=e.target.closest('[data-select]');if(sel&&this.root.contains(sel)){const g=sel.dataset.select;$$(`[data-select="${g}"]`,layer).forEach(x=>{const on=x===sel;if(x.classList.contains('chip')){x.classList.toggle('on',on);x.classList.toggle('d',!on);}else{x.classList.toggle('on',on);x.classList.toggle('sel',on);}const c=$('.ck',x);if(c)c.classList.toggle('off',!on);});
    if(sel.dataset.set){const [q,txt]=sel.dataset.set.split('|');const t=$(`[data-id="${q}"]`,layer);if(t)t.textContent=txt;}this.recalc(layer);return;}
   const am=e.target.closest('[data-amt]');if(am&&this.root.contains(am)){$$('[data-amt]',layer).forEach(x=>{x.classList.toggle('on',x===am);x.classList.toggle('d',x!==am)});this.recalc(layer);return;}
   const go=e.target.closest('[data-go]');const back=e.target.closest('[data-back]');
-  if(go&&this.root.contains(go)){const id=go.dataset.go;if(go.hasAttribute('data-faceid'))this.faceId(()=>this.go(id));else this.go(id);return;}
+  if(go&&this.root.contains(go)){this.nav(go);return;}
   if(back&&this.root.contains(back))this.back();}
+ nav(go){const id=go.dataset.go;if(go.hasAttribute('data-faceid'))this.faceId(()=>this.go(id));else this.go(id);}
  faceId(cb){const o=document.createElement('div');o.className='faceid';o.innerHTML='<div><svg class="ic"><use href="#i-faceid"/></svg></div>';this.screen.appendChild(o);setTimeout(()=>{const ic=$('use',o);if(ic)ic.setAttribute('href','#i-check');},RM?0:520);setTimeout(()=>{o.remove();cb();},RM?50:900);}
 }
 window.SavingsProto={Proto,FLOWS};
@@ -2747,7 +3652,7 @@ const SKILLS=[
  {id:'ladder',g:'a',ic:'i-layers',name:'Вклады по очереди',short:'Лестница: доступ каждые 4 месяца',status:'new',screen:'sk-ladder',flow:'cap',trig:'Сумма от 500 000 ₽ и запрос «нужен доступ к деньгам».',does:'Делит сумму на три вклада с разными сроками: часть денег освобождается регулярно без потери ставки, закрывшийся вклад переоткрывается на длинный срок. Показывает цену доступа в рублях.',impr:'Доля денег на срочных вкладах без досрочных закрытий, удержание крупных сумм.',tools:['ladder_plan','create_deposit','schedule_action'],stage:'Управляющий · 2028',lvl:'L1'},
  {id:'transfer',g:'a',ic:'i-arrow-rc',name:'Перенести из другого банка',short:'СБП и вклад в ту же минуту',status:'new',screen:'cap-transfer',flow:'cap',proto:'cap:cap-market',trig:'Запрос клиента или дата закрытия вклада в другом банке из календаря.',does:'Планирует перевод через СБП на дату закрытия чужого вклада и открытие продукта в ту же минуту. Ни дня простоя, подтверждение заранее, отмена до дня перевода.',impr:'Приток пассивов из других банков, доля кошелька.',tools:['compare_market','transfer_in','schedule_action'],stage:'Управляющий · 2028',lvl:'L1'},
  {id:'bonus',g:'a',ic:'i-gift',name:'Надбавка к ставке: включить и успеть',short:'Условие под угрозой за 6 дней',status:'new',screen:'sk-bonus',flow:'pro',proto:'pro:sk-bonus',trig:'Надбавка не включена, либо условие не выполнено за 6 дней до конца месяца.',does:'Включает надбавку, показывает прогресс условия в рублях и разницу в доходе. Напоминает один раз и только если условие ещё не выполнено.',impr:'Доля счетов с надбавкой, эффективная ставка клиента, лояльность к карте банка.',tools:['effective_rate','set_policy'],stage:'Консультант · 2027 H1',lvl:'L1'},
- {id:'rebalance',g:'a',ic:'i-sliders',name:'План на неделю и автопилот',short:'Пакет действий по политике клиента',status:'new',screen:'cap-plan',flow:'cap',proto:'cap:cap-plan',trig:'Еженедельно по политике клиента: запас, запреты, минимальная выгода, лимиты.',does:'Движок собирает пакет действий с выгодой в рублях и «почему». Клиент снимает галочки и подтверждает одним Face ID. На L3 исполняет по правилам и отчитывается.',impr:'Доля работающих денег, доля клиентов на L2 и L3, удержание на этапе «Капитал».',tools:['propose_rebalance','move_funds','schedule_action','get_action_log'],stage:'Управляющий · 2028',lvl:'L2–L3'},
+ {id:'rebalance',g:'a',ic:'i-sliders',name:'План на неделю и автопилот',short:'Пакет действий по политике клиента',status:'new',screen:'cap-plan',flow:'cap',proto:'rb:cap-plan',trig:'Еженедельно по политике клиента: запас, запреты, минимальная выгода, лимиты.',does:'Движок собирает пакет действий с выгодой в рублях и «почему». Клиент снимает галочки и подтверждает одним Face ID. На L3 исполняет по правилам и отчитывается.',impr:'Доля работающих денег, доля клиентов на L2 и L3, удержание на этапе «Капитал».',tools:['propose_rebalance','move_funds','schedule_action','get_action_log'],stage:'Управляющий · 2028',lvl:'L2–L3'},
  {id:'rag',g:'s',ic:'i-book',name:'Ответить по продукту',short:'RAG по базе знаний IDP, с источником',status:'now',screen:'sk-rag',flow:'saver',trig:'Вопрос словами или голосом, тап «Что это?» у любого условия.',does:'Отвечает по документам банка: условиям, тарифам, договору клиента. Показывает источник и дату редакции, умеет «проще». Если ответа в документах нет, говорит об этом и передаёт человеку.',impr:'Обращения в 900 по условиям продуктов, доля вопросов, решённых без оператора, доверие к цифрам.',tools:['База знаний IDP','get_products_rates','get_portfolio'],stage:'Консультант · 2027 H1',lvl:'L0'},
  {id:'tax',g:'s',ic:'i-percent',name:'Налог по вкладам',short:'Включая вклады в других банках',status:'now',screen:'sk-tax',flow:'pro',proto:'pro:sk-tax',trig:'Март, когда готов доход за год, запрос клиента, крупная выплата процентов.',does:'Считает налог на процентный доход с учётом необлагаемого лимита, предлагает добавить вклады других банков, показывает законные способы уменьшить и ставит напоминание к 1 декабря.',impr:'Обращения «почему налог», доверие, данные о вкладах в других банках для сценария переноса.',tools:['simulate_income','get_portfolio','Ввод вкладов других банков'],stage:'Планировщик · 2027 H2',lvl:'L0'},
  {id:'why',g:'s',ic:'i-info',name:'Как посчитали',short:'Три строки под каждой цифрой',status:'new',screen:'sv-why',flow:'saver',proto:'saver:sv-why',trig:'Тап «Как посчитали?» или «Почему» рядом с любым предложением.',does:'Показывает источник каждой цифры: тарифы, операции клиента, расчёт движка. Три строки, без прогнозов, с честным случаем, когда лучше другой вариант.',impr:'Доля предложений, принятых после объяснения, отказы «не понял», претензии.',tools:['Трасса расчёта движка','get_action_log'],stage:'Консультант · 2027 H1',lvl:'L0'},
@@ -2758,18 +3663,30 @@ const SKILLS=[
  {id:'simple',g:'s',ic:'i-mic',name:'Проще и голосом',short:'Три предложения, крупно, вслух',status:'new',screen:'care-voice',flow:'care',proto:'care:care-voice',trig:'Тап «Объяснить проще», голосовой вопрос, режим «Осторожный».',does:'Переписывает любое объяснение в три простых предложения без терминов, отвечает голосом и текстом крупно. Кнопка «Нет» всегда того же размера, что «Да».',impr:'Завершённые сценарии в режиме «Осторожный», NPS 60+, звонки в 900 с просьбой объяснить.',tools:['Распознавание и синтез речи','Упрощение текста в харнесе'],stage:'Консультант · 2027 H1',lvl:'L0'},
  {id:'human',g:'s',ic:'i-phone',name:'Передать человеку с контекстом',short:'Оператор видит вопрос и расчёт',status:'new',screen:'care-human',flow:'care',proto:'care:care-human',trig:'Тап «Позвонить» из любого шага, вопрос вне документов, сомнение клиента.',does:'Соединяет с оператором или офисом и передаёт контекст: вопрос, экран, расчёт и журнал. Клиенту не нужно объяснять заново.',impr:'Время решения в 900, повторные обращения, доверие к помощнику как к входу в банк.',tools:['Передача контекста оператору','get_action_log'],stage:'Консультант · 2027 H1',lvl:'L0'},
  {id:'report',g:'s',ic:'i-list',name:'Отчёт за неделю',short:'Что сделано, сколько заработано',status:'new',screen:'cap-report',flow:'cap',proto:'cap:cap-report',trig:'Понедельник, только на уровнях L2 и L3. Выключается одним тапом.',does:'Доход по дням, список действий с источником и статусом, что будет на следующей неделе. Автопилот отчитывается, даже если ничего не делал. Раз в год итог: сколько сервис принёс сверх ставки.',impr:'Удержание на L2 и L3, доля отменённых действий, понимание, за что клиент платит доверием.',tools:['get_action_log','get_portfolio'],stage:'Управляющий · 2028',lvl:'L2–L3'},
- {id:'trusted',g:'s',ic:'i-users',name:'Доверенное лицо',short:'Близкий видит подсказки, решает клиент',status:'new',screen:'seg-cap-care',flow:'care',proto:'care:seg-cap-care',trig:'Клиент включает в настройках или по совету оператора для режима «Осторожный».',does:'Близкий получает «только важное» и видит те же варианты, может помочь разобраться. Подтверждает действия только сам клиент. Доступ отзывается одним тапом.',impr:'Доля 60+ с активным помощником, инциденты и жалобы в сегменте, спокойствие семьи.',tools:['register_agent, семья, только чтение','get_action_log'],stage:'Открытая платформа · 2029',lvl:'L0'}
+ {id:'trusted',g:'s',ic:'i-users',name:'Доверенное лицо',short:'Близкий видит подсказки, решает клиент',status:'new',screen:'seg-cap-care',flow:'care',proto:'care:seg-cap-care',trig:'Клиент включает в настройках или по совету оператора для режима «Осторожный».',does:'Близкий получает «только важное» и видит те же варианты, может помочь разобраться. Подтверждает действия только сам клиент. Доступ отзывается одним тапом.',impr:'Доля 60+ с активным помощником, инциденты и жалобы в сегменте, спокойствие семьи.',tools:['register_agent, семья, только чтение','get_action_log'],stage:'Открытая платформа · 2029',lvl:'L0'},
+ {id:'pds',g:'x',ic:'i-gift',name:'Доплата от государства',short:'Долгие сбережения: до +36 000 ₽ в год',status:'new',screen:'sk-pds',flow:'cap',trig:'Деньги сверх запаса и целей, которые по словам клиента и истории не понадобятся 10 лет и дольше. Или вопрос «как копить на пенсию».',does:'Считает по доходу клиента, сколько добавит государство и вернёт налоговая, предлагает ежемесячный взнос со счёта и честно пишет срок: до 2041 года или до 60 лет. Накопительную пенсию предлагает перевести туда же. Оформление в СберНПФ, помощник только предзаполняет. Взнос кликабелен.',impr:'Длинные пассивы группы, доля клиентов с программой, средний взнос. Для клиента: деньги государства, которые иначе он не получит.',tools:['get_portfolio','forecast_cashflow','Калькулятор программы СберНПФ','Заявление на вычет'],stage:'Управляющий · 2028',lvl:'L1'},
+ {id:'salary',g:'x',ic:'i-wallet',name:'Зарплата и пенсия сюда',short:'+0,6 п.п. к вкладам одним заявлением',status:'new',screen:'sk-salary',flow:'cap',trig:'Регулярные зачисления из другого банка 12-го числа или пенсия в другом банке.',does:'Показывает в рублях, что даст надбавка зарплатного клиента на всех вкладах, заполняет заявление работодателю или в Социальный фонд прямо из приложения. Честно пишет, когда надбавка снимется.',impr:'Доля зарплатных и пенсионных клиентов среди вкладчиков, приток ежемесячных зачислений, удержание.',tools:['get_portfolio','История операций','Заявление работодателю или в СФР'],stage:'Консультант · 2027 H1',lvl:'L1'},
+ {id:'mortgage',g:'x',ic:'i-home',name:'Квартира: от вклада к ипотеке',short:'Взнос копится, одобрение заранее',status:'new',screen:'sk-mortgage',flow:'cap',trig:'Цель «квартира» или вклад с такой пометкой, закрытие которого совпадает со сроком покупки.',does:'Ведёт первый взнос как цель, не продлевает вклад в день сделки, предлагает одобрение ипотеки за месяц со скидкой для вкладчиков, проверяет льготные программы и безопасную сделку. Платёж считает калькулятором и честно пишет, если тесно.',impr:'Конверсия вкладчиков с целью «жильё» в ипотеку банка, доля сделок без простоя денег.',tools:['get_portfolio','ladder_plan','Калькулятор ипотеки Домклик','Проверка льготных программ'],stage:'Управляющий · 2028',lvl:'L1'},
+ {id:'ccard',g:'x',ic:'i-credit',name:'Льготный период вместо потери',short:'Кредитка на 120 дней, а не разбитый вклад',status:'new',screen:'sk-ccard',flow:'cap',trig:'Клиент начинает досрочное закрытие или снятие со вклада ради суммы меньше 10% портфеля, на счёте денег нет.',does:'Сравнивает потери: сгоревшие проценты против 0 ₽ по кредитной карте, если вернуть в льготный период. Предлагает только клиентам с дисциплиной платежей и пишет ставку после льготного периода тем же шрифтом, что и выгоду.',impr:'Досрочные закрытия вкладов, удержание крупных вкладов до срока, кредитные карты, которыми пользуются по делу.',tools:['get_portfolio','forecast_cashflow','Кредитная история клиента'],stage:'Планировщик · 2027 H2',lvl:'L1'},
+ {id:'debt',g:'x',ic:'i-percent',name:'Долг дороже вклада',short:'Погасить или перенести кредит под 24%',status:'new',screen:'sk-debt',flow:'cap',trig:'Регулярный платёж по кредиту в другом банке при спящих деньгах выше запаса. Ставка кредита выше ставки по счёту.',does:'Предлагает погасить часть долга из спящих денег, не трогая запас, или перенести кредит в банк под меньшую ставку, или и то и другое. Разницу показывает в рублях в год и честно пишет, что банк заработает меньше.',impr:'Рефинансирование чужих кредитов, доверие, долговая нагрузка клиентов группы.',tools:['get_portfolio','Кредитная история с согласия','Рефинансирование'],stage:'Планировщик · 2027 H2',lvl:'L1'},
+ {id:'prime',g:'x',ic:'i-star',name:'Подписка, если окупается',short:'Честный расчёт против стоимости',status:'new',screen:'sk-prime',flow:'cap',trig:'Остаток на счёте и траты картой, при которых надбавка и бонусы подписки превышают её цену.',does:'Складывает надбавку к счёту, бонусы по реальным тратам и сервисы, если ими пользуются, вычитает стоимость. Переключатели живые: вердикт меняется на «не окупится», и тогда кнопка превращается в «не подключать». Предупреждает, когда подписка перестаёт окупаться.',impr:'Подписки, которые не отключают через месяц, доверие к предложениям банка.',tools:['get_portfolio','История трат','Тарифы подписки'],stage:'Консультант · 2027 H1',lvl:'L0–L1'},
+ {id:'kids',g:'x',ic:'i-heart',name:'Копить ребёнку',short:'Вклад на его имя, карта, общая цель',status:'new',screen:'sk-kids',flow:'cap',trig:'Детские траты в истории, ребёнку исполнилось 14, запрос «накопить на учёбу».',does:'Собирает цель на имя ребёнка: вклад, пополнения родственников по ссылке, детская карта с лимитом и сдачей на вклад. Дата цели пересчитывается от переключателей. Вклад ребёнка единственный, который помощник никогда не предложит трогать.',impr:'Второе поколение клиентов, срок жизни семьи в банке, детские продукты по делу.',tools:['create_deposit','set_policy','Детская карта'],stage:'Планировщик · 2027 H2',lvl:'L1'},
+ {id:'invest',g:'x',ic:'i-trend',name:'Длинные деньги в СберИнвестиции',short:'Передача с цифрами, без продажи',status:'new',screen:'sk-invest',flow:'cap',trig:'Сумма сверх запаса и целей с горизонтом от 3 лет, не в режиме «Осторожный».',does:'Сравнивает вклады по очереди с передачей части денег брокеру. Бумаги не выбирает и доход не обещает: передаёт в СберИнвестиции сумму, срок и запас клиента, там объясняют риски. Вариант по умолчанию: вклады по очереди.',impr:'Длинные деньги остаются в группе, а не уходят к чужому брокеру, периметр помощника сохранён.',tools:['ladder_plan','Передача контекста в СберИнвестиции'],stage:'Управляющий · 2028',lvl:'L1'},
+ {id:'selfemp',g:'x',ic:'i-user',name:'Налог самозанятого копится сам',short:'4% с поступления на отдельный счёт',status:'new',screen:'sk-selfemp',flow:'cap',trig:'Статус самозанятого и поступления от клиентов на карту.',does:'Откладывает налог с каждого поступления на отдельный накопительный счёт, платит 28-го по уведомлению «Мой налог», остальное выше запаса переводит по правилу. Деньги на налог работают, а не лежат под 0%.',impr:'Остатки самозанятых на счетах банка, регулярность налоговых платежей, сервис «Своё дело» по делу.',tools:['forecast_cashflow','move_funds','Своё дело, уведомления о налоге'],stage:'Планировщик · 2027 H2',lvl:'L1–L2'},
+ {id:'will',g:'x',ic:'i-users',name:'Завещательное распоряжение',short:'Кому достанутся вклады: бесплатно, без нотариуса',status:'new',screen:'sk-will',flow:'care',trig:'Клиенту 60+, крупные вклады, распоряжения нет. Или запрос словами.',does:'Объясняет просто и крупно, предлагает указать доверенное лицо или другого человека, записывает в офис на подпись и готовит документ. Подчёркивает, что пока клиент жив, распоряжается только он. Это не доверенность.',impr:'Вклады остаются в банке у наследников, спокойствие клиента и семьи, визиты в офис по делу.',tools:['Данные клиента','Запись в офис','Шаблон распоряжения'],stage:'Планировщик · 2027 H2',lvl:'L0'},
+ {id:'fx',g:'x',ic:'i-coins',name:'Юани и золото только с причиной',short:'Защита курса с ценой в рублях',status:'new',screen:'sk-fx',flow:'cap',trig:'Вопрос «а если рубль упадёт?», траты в валюте, поездки.',does:'Честно показывает цену защиты: сколько клиент недополучит за год против рублёвого вклада, если курс не изменится. Рекомендует остаться в рублях, если трат в валюте нет и горизонт короткий. Варианты кликабельны.',impr:'Валютные и металлические счета открывают те, кому они нужны, и не закрывают через месяц. Меньше жалоб «не объяснили».',tools:['get_products_rates','compare_market','Курсы и цены металлов'],stage:'Консультант · 2027 H1',lvl:'L0–L1'}
 ];
 const HOW={a:[['Данные банка','Портфель, тарифы, история операций и политика клиента через внутренний MCP.',''],['Расчёт движком','Выгода в рублях, цена альтернативы и «что будет, если не делать». Модель цифры не генерирует.','nat'],['Экран','genUI собирает экран из нативных компонентов: вывод, рекомендация уже выбрана, одна кнопка.','ai'],['Подтверждение','Нативная шторка с суммой и Face ID. Запись в журнале с источником и объяснением.','nat']],
- s:[['Источник','Документы и данные банка: условия, тарифы, операции, события. Внешние цифры помечены как внешние.',''],['Проверка','Харнес проверяет, что ответ опирается на источник и остаётся в периметре сбережений.','nat'],['Ответ','Одна мысль, крупная цифра, «проще» и «спросить человека» рядом.','ai'],['Действие по желанию','Если из ответа следует действие, оно открывается отдельным активным скиллом с подтверждением.','nat']]};
-const skA=$('#sk-active'),skS=$('#sk-service'),skBody=$('#sk-body'),skPhoneRoot=$('#sk-phone');
+ s:[['Источник','Документы и данные банка: условия, тарифы, операции, события. Внешние цифры помечены как внешние.',''],['Проверка','Харнес проверяет, что ответ опирается на источник и остаётся в периметре сбережений.','nat'],['Ответ','Одна мысль, крупная цифра, «проще» и «спросить человека» рядом.','ai'],['Действие по желанию','Если из ответа следует действие, оно открывается отдельным активным скиллом с подтверждением.','nat']],
+ x:[['Повод в данных','Зарплата из другого банка, цель «квартира», платёж по чужому кредиту, самозанятость, возраст. Нет повода, нет предложения.',''],['Расчёт честности','Движок считает выгоду в рублях с учётом цены продукта, срока и ограничений. Отрицательная выгода означает «не предлагаем» и честное «не окупится».','nat'],['Экран','Одна цифра выгоды, честная цена тем же шрифтом, «Не сейчас» того же размера. Никаких «акций» и восклицательных знаков.','ai'],['Оформление в своём флоу','Продукт открывается в его нативном сценарии банка с подтверждением. Помощник предзаполняет и помнит отказ полгода.','nat']]};
+const skA=$('#sk-active'),skS=$('#sk-service'),skX=$('#sk-cross'),skBody=$('#sk-body'),skPhoneRoot=$('#sk-phone');
 if(skA&&skS&&skBody&&skPhoneRoot){
  const skProto=new Proto(skPhoneRoot,'cap');
  const card=s=>`<button class="skb" data-skill="${s.id}"><div class="i"><svg class="ic"><use href="#${s.ic}"/></svg></div><div class="tx"><b>${s.name}</b><span>${s.short}</span></div><em class="st${s.status==='now'?' now':''}">${s.status==='now'?'есть':'новое'}</em></button>`;
- skA.innerHTML=SKILLS.filter(s=>s.g==='a').map(card).join('');skS.innerHTML=SKILLS.filter(s=>s.g==='s').map(card).join('');
+ skA.innerHTML=SKILLS.filter(s=>s.g==='a').map(card).join('');skS.innerHTML=SKILLS.filter(s=>s.g==='s').map(card).join('');if(skX)skX.innerHTML=SKILLS.filter(s=>s.g==='x').map(card).join('');
  function showSkill(id){const s=SKILLS.find(x=>x.id===id);if(!s)return;$$('.skb[data-skill]').forEach(b=>b.classList.toggle('on',b.dataset.skill===id));
   const how=[['Триггер',s.trig,'']].concat(HOW[s.g]).map((h,i)=>`<div class="${h[2]}"><i>${i+1}</i><span><b>${h[0]}.</b> ${h[1]}</span></div>`).join('');
-  skBody.innerHTML=`<div class="tags"><span class="pill ${s.g==='a'?'nat':'ai'}">${s.g==='a'?'Активный':'Сервисный'}</span><span class="pill g">${s.stage}</span><span class="pill trust">${s.lvl}</span><span class="pill g">${s.status==='now'?'уже в работе':'предлагаем'}</span></div><h3>${s.name}</h3><div class="blk"><div class="k">Как работает</div><p>${s.does}</p></div><div class="how">${how}</div><div class="blk"><div class="k">Что улучшает</div><p>${s.impr}</p></div><div class="tools">${s.tools.map(t=>`<span class="code">${t}</span>`).join('')}</div>${s.proto?`<a class="open" href="#proto" data-open-proto="${s.proto}">Открыть в прототипе →</a>`:''}`;
+  skBody.innerHTML=`<div class="tags"><span class="pill ${s.g==='a'?'nat':s.g==='s'?'ai':'trust'}">${s.g==='a'?'Активный':s.g==='s'?'Сервисный':'Рядом со вкладом'}</span><span class="pill g">${s.stage}</span><span class="pill trust">${s.lvl}</span><span class="pill g">${s.status==='now'?'уже в работе':'предлагаем'}</span></div><h3>${s.name}</h3><div class="blk"><div class="k">Как работает</div><p>${s.does}</p></div><div class="how">${how}</div><div class="blk"><div class="k">Что улучшает</div><p>${s.impr}</p></div><div class="tools">${s.tools.map(t=>`<span class="code">${t}</span>`).join('')}</div>${s.proto?`<a class="open" href="#proto" data-open-proto="${s.proto}">Открыть в прототипе →</a>`:''}`;
   skProto.flow=s.flow;skProto.hist=[];skProto.go(s.screen,'none');}
  document.addEventListener('click',e=>{const b=e.target.closest('.skb[data-skill]');if(b)showSkill(b.dataset.skill);});
  showSkill('open');
@@ -2801,6 +3718,55 @@ if(evRoot&&evBody&&evPhoneRoot){
   evProto.flow=e.flow;evProto.hist=[];evProto.go(e.screen,'none');}
  evRoot.addEventListener('click',e=>{const b=e.target.closest('.ev[data-ev]');if(b)showEv(+b.dataset.ev);});
  showEv(4);
+}
+
+/* rebalancing process section: level switch, chain of steps, phone and explanation */
+const rbSteps=$('#rb-steps'),rbBody=$('#rb-body'),rbPhoneRoot=$('#rb-phone'),rbLvls=$('#rb-lvls');
+if(rbSteps&&rbBody&&rbPhoneRoot&&rbLvls){
+ const rbProto=new Proto(rbPhoneRoot,'rb');let lvl='l1';
+ const WHO={cl:'Клиент',eng:'Движок',ai:'genAI',auto:'Автопилот'};
+ function showStep(i){const s=RB[lvl].steps[i];if(!s)return;$$('.ev[data-rb]',rbSteps).forEach(b=>b.classList.toggle('on',+b.dataset.rb===i));
+  rbBody.innerHTML=`<div class="say"><small>Шаг ${i+1} · ${s.t}</small>${s.say}</div><div class="kvs"><div><b>Клиент</b>${s.cl}</div><div><b>Движок банка</b>${s.eng}</div><div><b>genAI</b>${s.ai}</div><div><b>Доверие</b>${s.tr}</div></div><a class="open" href="#proto" data-open-proto="rb:${s.id}">Открыть в прототипе →</a>`;
+  rbProto.hist=[];rbProto.go(s.id,'none');}
+ function renderSteps(){const L=RB[lvl];const lead=$('#rb-lead');if(lead)lead.textContent=L.lead;rbSteps.innerHTML=L.steps.map((s,i)=>`<button class="ev" data-rb="${i}"><span class="n">${i+1}</span><span class="t">${s.t}</span><span class="who ${s.who}"><i></i>${WHO[s.who]}</span></button>`).join('');showStep(0);}
+ rbSteps.addEventListener('click',e=>{const b=e.target.closest('.ev[data-rb]');if(b)showStep(+b.dataset.rb);});
+ rbLvls.addEventListener('click',e=>{const b=e.target.closest('button[data-lvl]');if(!b)return;lvl=b.dataset.lvl;$$('button',rbLvls).forEach(x=>x.classList.toggle('on',x===b));renderSteps();});
+ renderSteps();
+}
+
+/* value of touches: attention budget over a year of events */
+const vcal=$('#val-calc');
+if(vcal){
+ const MON=['окт','ноя','дек','янв','фев','мар','апр','май','июн','июл','авг','сен'];
+ const TOUCH=[
+  {m:0,t:'Спящие 250 000 ₽ → счёт',v:28100},{m:0,t:'Вклад в другом банке закрывается: перенести без простоя',v:6400},{m:0,t:'Надбавка под угрозой',v:560},
+  {m:1,t:'Проценты пришли',v:0},
+  {m:2,t:'Закрытие ••8708: три варианта',v:18800,must:true},{m:2,t:'Автодействие завтра',v:0,must:true,biz:'контроль'},
+  {m:3,t:'Премия: спящие 150 000 ₽ → счёт',v:16900},{m:3,t:'Надбавка под угрозой',v:560},
+  {m:4,t:'Проценты пришли',v:0},
+  {m:5,t:'Налог: перенести выплату',v:3910},{m:5,t:'Закрытие ••5520: три варианта',v:0,must:true,biz:'удержание 800 000 ₽'},
+  {m:6,t:'Надбавка под угрозой',v:560},
+  {m:7,t:'Проценты пришли',v:0},{m:7,t:'Нужны 50 000 ₽: откуда взять без потери',v:3200,must:true},
+  {m:8,t:'Цель достигнута',v:0},
+  {m:9,t:'Закрытие ••1234: три варианта',v:0,must:true,biz:'удержание 400 000 ₽'},{m:9,t:'Надбавка под угрозой',v:560},
+  {m:10,t:'Проценты пришли',v:0}
+ ];
+ const TOTAL=TOUCH.reduce((s,t)=>s+t.v,0);const MUST=TOUCH.filter(t=>t.must).length;
+ function run(){const nb=$('.vb-n.on',vcal);const n=nb?+nb.dataset.n:1;const merge=$('#v-merge').checked,nice=$('#v-nice').checked,thr=+$('#v-thr').value;
+  let got=0,msgs=0;const dropped=[];const byM=MON.map(()=>[]);TOUCH.forEach(t=>byM[t.m].push(t));
+  const html=byM.map((list,mi)=>{const must=list.filter(t=>t.must),disc=list.filter(t=>!t.must).sort((a,b)=>b.v-a.v);const cap=merge?3*n:n;let used=0;const items=[];
+   must.forEach(t=>{got+=t.v;msgs++;items.push([t,true]);});
+   disc.forEach(t=>{const ok=(t.v?t.v>=thr:nice)&&used<cap;if(ok){used++;got+=t.v;}else dropped.push(t);items.push([t,ok]);});
+   msgs+=merge?Math.ceil(used/3):used;
+   return `<div class="ym"><b>${MON[mi]}</b>${items.map(([t,on])=>`<span class="yt${t.must?' must':t.v?'':' zero'}${on?'':' off'}">${t.t}<small>${t.v?'+'+fmt(t.v)+' ₽':(t.biz||'без цифры')}</small></span>`).join('')||'<span class="q">тишина</span>'}</div>`;}).join('');
+  $('#v-grid').innerHTML=html;
+  const pct=Math.round(got/TOTAL*100);$('#v-got').textContent='+'+fmt(got)+' ₽';$('#v-pct').textContent=`${pct}% из ${fmt(TOTAL)} ₽ возможных`;$('#v-msgs').textContent=`${msgs}, из них ${MUST} обязательных`;
+  const dv=dropped.filter(t=>t.v),lost=dv.reduce((s,t)=>s+t.v,0);const v=$('#v-verdict');
+  if(!lost){v.className='verdict';v.textContent=merge?`Собрано всё: ${msgs} сообщений за год, в среднем ${fmt(got/msgs)} ₽ на касание. Объединение событий недели даёт 100% даже при одном предложении в месяц.`:`Собрано всё: ${msgs} сообщений за год, ${fmt(got/msgs)} ₽ на касание. Столько же ценности даёт одно сообщение в месяц, если объединять события недели.`;}
+  else{v.className='verdict warn';v.textContent=`Собрано ${pct}%. Клиент теряет ${fmt(lost)} ₽ в год на событиях, о которых мы промолчали${merge?'':'. Включите объединение событий недели: один план вместо трёх пушей собирает всё'}.`;}
+  $('#v-drop').textContent=dv.length?`Промолчали: ${dv.map(t=>t.t.toLowerCase()+' ('+fmt(t.v)+' ₽)').join(', ')}.`:(dropped.length?`Промолчали только о событиях без цифры: ${dropped.map(t=>t.t.toLowerCase()).filter((x,i,a)=>a.indexOf(x)===i).join(', ')}.`:'Отправлено всё, включая приятное без решения.');}
+ $$('.vb-n',vcal).forEach(b=>b.addEventListener('click',()=>{$$('.vb-n',vcal).forEach(x=>x.classList.toggle('on',x===b));run();}));
+ ['v-merge','v-nice','v-thr'].forEach(id=>$('#'+id).addEventListener('input',run));run();
 }
 
 /* nav highlight + scroll reveal */

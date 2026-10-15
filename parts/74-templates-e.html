@@ -1,0 +1,343 @@
+
+<!-- ===== v4 screens: rebalancing as a process (L1 manual, L2 rules, L3 autopilot) ===== -->
+
+<!-- L1: политика словами -->
+<template data-screen="rb-words" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">План помощника</span></div>
+<div data-sum="words" style="display:contents">
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Перед первым планом</div><div class="t1">Как вам удобно с деньгами?</div><div class="bd" style="color:#D1D1D6">Выберите фразы, которые про вас. Я переведу их в правила, а вы проверите.</div></div>
+<div class="chips" style="padding:0 2px">
+ <span class="chip on" data-multi="reserve"><svg class="ic"><use href="#i-wallet"/></svg>150 тысяч всегда под рукой</span>
+ <span class="chip on" data-multi="flat"><svg class="ic"><use href="#i-lock"/></svg>Вклад на квартиру не трогать</span>
+ <span class="chip d" data-multi="small"><svg class="ic"><use href="#i-eye-off"/></svg>Мелочь не предлагать</span>
+ <span class="chip d" data-multi="ask"><svg class="ic"><use href="#i-hand"/></svg>Спрашивать перед каждым шагом</span>
+ <span class="chip d" data-multi="long"><svg class="ic"><use href="#i-clock"/></svg>Деньги могут понадобиться летом</span>
+</div>
+<div class="card" style="gap:0">
+ <div class="hl" style="padding-bottom:4px">Правила, как я вас понял</div>
+ <div class="sw" data-rule="reserve"><div><div class="st2">Запас на карте 150 000 ₽</div><div class="ss">Никогда не трогаем. Переводим только то, что выше</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="flat"><div><div class="st2">Не трогать вклад ••1234</div><div class="ss">Цель «квартира» · 400 000 ₽ до 2 июля</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="small" hidden><div><div class="st2">Предлагать от 500 ₽ в месяц</div><div class="ss">Меньше не показываем</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="ask" hidden><div><div class="st2">Каждое действие с подтверждением</div><div class="ss">Правил и автопилота не предлагаем</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="long" hidden><div><div class="st2">Горизонт до июня</div><div class="ss">Вклады не длиннее 8 месяцев, часть денег на счёте</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw" data-rule="none" hidden><div><div class="st2">Пока без правил</div><div class="ss">Запас посчитаю по вашим тратам: около 150 000 ₽</div></div></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="sub" style="color:#D1D1D6">Правила можно изменить словами в любой момент. План считает движок банка, я только перевожу.</div></div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="words-cta">Собрать план по 2 правилам</div><div class="btn g" data-go="cap-plan">Собрать без правил</div></div>
+</template>
+
+<!-- L1: правка действия -->
+<template data-screen="rb-edit" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Первое действие</span></div>
+<div data-sum="edit" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">С карты, где лежат 400 000 ₽</div><div class="money m36" data-id="ed-gain">+28 100 ₽ <span class="u">в год</span></div><div class="sub" style="color:#D1D1D6" data-id="ed-sub">250 000 ₽ → накопительный счёт · на карте останется 150 000 ₽</div></div>
+<div class="card" style="gap:10px"><div class="hl">Сколько переложить</div>
+ <div class="seg"><span data-select="ramt" data-val="150000">150 000 ₽</span><span class="on" data-select="ramt" data-val="250000">250 000 ₽</span><span data-select="ramt" data-val="300000">300 000 ₽</span></div>
+ <div class="fn" data-id="ed-left">На карте останется 150 000 ₽: ваш запас</div></div>
+<div class="hl" style="padding:0 4px">Куда</div>
+<div class="opt sel on" data-select="ralt" data-rate="0.1125" data-name="накопительный счёт"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Накопительный счёт · 11,25%</div><div class="os">Доступ в любой день, без комиссии. С надбавкой за покупки 12,75%</div><span class="badge ai" style="margin-top:8px">Рекомендуем</span></div><div class="ov"><b data-id="ed-g1">+28 100 ₽</b><span>в год</span></div></div>
+<div class="opt" data-select="ralt" data-rate="0.124" data-name="вклад на 3 месяца"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вклад на 3 месяца · 12,4%</div><div class="os">Без доступа до 15 января. Если снять раньше, проценты сгорят</div></div><div class="ov"><b data-id="ed-g2">+31 000 ₽</b><span>в год</span></div></div>
+<div class="fnl" data-id="ed-note">Разница 2 900 ₽ в год: столько стоит доступ к деньгам в любой день</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-plan" data-id="ed-cta">Сохранить: 250 000 ₽ на накопительный счёт</div><div class="btn g" data-back>Оставить как было</div></div>
+</template>
+
+<!-- L1: что изменится -->
+<template data-screen="rb-preview" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Что изменится</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">После трёх действий</div><div class="money m36">94% <span class="u">денег работают</span></div><div class="sub" style="color:#D1D1D6">сейчас 67% · +44 000 ₽ в год · запас 150 000 ₽ не трогаем</div></div>
+<div class="card" style="gap:12px">
+ <div><div class="kv" style="margin-bottom:6px"><span class="k">Сейчас</span><span class="v">2 450 000 ₽</span></div><div class="split"><i style="width:16.3%;background:#B8842A"></i><i style="width:18.4%;background:#3590D0"></i><i style="width:65.3%;background:#239A48"></i></div></div>
+ <div><div class="kv" style="margin-bottom:6px"><span class="k">После</span><span class="v">2 450 000 ₽</span></div><div class="split"><i style="width:6.1%;background:#B8842A"></i><i style="width:28.6%;background:#3590D0"></i><i style="width:65.3%;background:#239A48"></i></div></div>
+ <div class="legend2"><span><i style="background:#B8842A"></i>на карте, 0%</span><span><i style="background:#3590D0"></i>накопительный</span><span><i style="background:#239A48"></i>вклады</span></div>
+</div>
+<div class="card" style="gap:0">
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-credit"/></svg></div><div><div class="rt" style="font-size:17px">Карта ••7215</div><div class="rs">400 000 → 150 000 ₽ · ваш запас</div></div><div class="rm">0%</div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-coins"/></svg></div><div><div class="rt" style="font-size:17px">Накопительный ••9106</div><div class="rs">450 000 → 700 000 ₽ · с 1 ноября 12,75%</div></div><div class="rm"><b class="grn">+2 900 ₽/мес</b></div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-safe"/></svg></div><div><div class="rt" style="font-size:17px">Вклад ••8708</div><div class="rs">400 000 ₽ · 15 декабря переоткроем под 12,2%</div></div><div class="rm"><b class="grn">+9 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="rt" style="font-size:17px">Вклады ••5520 и ••1234</div><div class="rs">Не трогаем: ставка выше рынка и цель «квартира»</div></div><div class="rm mut">без изменений</div></div>
+</div>
+<div class="card sm" style="gap:8px"><div class="hl">Когда</div><div class="tline"><div class="on"><b>Сегодня</b><span>250 000 ₽ на счёт</span></div><div class="on"><b>1 ноября</b><span>надбавка +1,5%</span></div><div><b>15 декабря</b><span>вклад под 12,2%</span></div></div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="rb-how"><svg class="ic"><use href="#i-info"/></svg>Как посчитали?</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-confirm">Подтвердить 3 действия</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+<template data-screen="rb-how" data-base="rb-preview">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Как посчитали</div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>250 000 ₽ × 11,25% накопительного = 28 100 ₽ в год. Ставка из тарифов банка на сегодня.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Вклад ••8708: 12,2% вместо 7,5% на 400 000 ₽ за 6 месяцев = 9 400 ₽. Если ставка 15 декабря будет другой, пересчитаем и спросим.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Надбавка +1,5% на 450 000 ₽ = 6 750 ₽ в год при покупках от 15 000 ₽ в месяц. Обычно вы тратите 42 000 ₽.</span></div>
+ <div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Доля работающих денег: было 1 650 000 из 2 450 000 (67%), станет 2 300 000 (94%). Запас 150 000 ₽ работать не должен: он для жизни.</span></div>
+ <div class="btn" data-back>Понятно</div>
+</div>
+</template>
+<template data-screen="rb-confirm" data-base="rb-preview">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">+44 000 ₽ <span class="to">в год</span></div><div class="to">3 действия · два сегодня, одно 15 декабря</div></div>
+ <div class="kv"><span class="k">250 000 ₽ → накопительный</span><span class="v">сегодня</span></div>
+ <div class="kv"><span class="k">+1,5% за покупки картой</span><span class="v">с 1 ноября</span></div>
+ <div class="kv"><span class="k">Вклад ••8708 → 12,2%</span><span class="v">15 декабря</span></div>
+ <div class="kv"><span class="k">Комиссии</span><span class="v">0 ₽</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="cap-done" data-faceid>Подтвердить 3 действия</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+
+<!-- L1: за день до отложенного действия -->
+<template data-screen="rb-tomorrow" data-base="cap-home">
+<div class="push" data-go="rb-pending"><div class="app"><svg class="ic"><use href="#i-safe"/></svg></div><div style="flex:1"><div class="pt">Сбербанк Онлайн <span>14 дек, 10:00</span></div><div class="px">Завтра в 9:00 переоткроем вклад ••8708 под 12,2% вместо 7,5%: +9 400 ₽ за полгода. Отменить можно до 23:59.</div></div></div>
+</template>
+<template data-screen="rb-pending" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Запланировано</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Завтра, 15 декабря в 9:00</div><div class="money m36">400 000 ₽ <span class="u">→ вклад 12,2%</span></div><div class="sub" style="color:#D1D1D6">вместо продления под 7,5% · +9 400 ₽ за 6 месяцев</div></div>
+<div class="card" style="gap:6px">
+ <div class="kv"><span class="k">Вы подтвердили</span><span class="v">8 октября, Face ID</span></div>
+ <div class="kv"><span class="k">Ставка сегодня</span><span class="v grn">12,2%, не изменилась</span></div>
+ <div class="kv"><span class="k">Проценты за старый срок</span><span class="v">+15 000 ₽, придут завтра</span></div>
+ <div class="kv"><span class="k">Отменить можно</span><span class="v">до 23:59 сегодня</span></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Если завтра ставка окажется ниже 12,2%, не переоткрою, а спрошу вас. Так договаривались.</div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Всё верно, оставить</div><div class="btn g" data-go="rb-cancel">Отменить действие</div></div>
+</template>
+<template data-screen="rb-cancel" data-base="rb-pending">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Отменить <span class="to">переоткрытие?</span></div><div class="to">Вклад продлится под 7,5% на тех же условиях. Разница за полгода: 9 400 ₽. Вернуться к плану можно в любой день, пока вклад открыт.</div></div>
+ <div class="opt sel on" data-select="cnl" data-set="cnl-cta|Отменить, напомнить через месяц"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Отменить, напомнить через месяц</div><div class="os">15 января предложу варианты снова</div></div></div>
+ <div class="opt" data-select="cnl" data-set="cnl-cta|Отменить и не предлагать"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Отменить и не предлагать</div><div class="os">Вклад ••8708 попадёт в список «не трогать»</div></div></div>
+ <div class="btn" data-go="rb-cancelled" data-id="cnl-cta">Отменить, напомнить через месяц</div>
+ <div class="btn g" data-back>Оставить план</div>
+</div>
+</template>
+<template data-screen="rb-cancelled">
+<div class="spacer"></div>
+<div class="done-ic" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-x"/></svg></div>
+<div class="t1" style="text-align:center">Отменено. Ничего не изменилось</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Вклад ••8708 продлится 15 декабря под 7,5%. 15 января предложу варианты снова. Запись в журнале: «отменено вами».</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="cap-home">На главный</div></div>
+</template>
+
+<!-- L2: предложение правила -->
+<template data-screen="rb-rule-offer" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Помощник</span></div>
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Три раза подряд вы подтвердили одно и то же</div><div class="t1">Сделать это правилом?</div><div class="bd" style="color:#D1D1D6">Всё, что выше 150 000 ₽ на карте, переводить на накопительный счёт. Предупрежу за день, вы сможете отменить. Вернуть деньги на карту можно всегда.</div></div>
+<div class="card" style="gap:0">
+ <div class="jrn"><div class="jd">8 окт</div><div><div class="jt">250 000 ₽ → накопительный</div><div class="js">Подтверждено вами · Face ID</div></div><div class="jv grn">+2 340 ₽/мес</div></div>
+ <div class="jrn"><div class="jd">12 ноя</div><div><div class="jt">90 000 ₽ → накопительный</div><div class="js">После зарплаты · подтверждено вами</div></div><div class="jv grn">+840 ₽/мес</div></div>
+ <div class="jrn"><div class="jd">11 дек</div><div><div class="jt">110 000 ₽ → накопительный</div><div class="js">После зарплаты · подтверждено вами</div></div><div class="jv grn">+1 030 ₽/мес</div></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="kv"><span class="k">Без правила</span><span class="v">деньги ждут вас 9 дней в среднем</span></div><div class="kv"><span class="k">Цена ожидания за год</span><span class="v" style="color:#F0B35B">≈ 5 000 ₽</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-rule-set">Настроить правило</div><div class="btn g" data-go="cap-home">Не сейчас, спрашивайте</div></div>
+</template>
+
+<!-- L2: правило -->
+<template data-screen="rb-rule-set" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Правило</span></div>
+<div data-sum="rule" style="display:contents">
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">Правило одной фразой</div><div class="t2" data-id="rl-say">Всё выше 150 000 ₽ на карте → на накопительный, раз в неделю</div><div class="sub" style="color:#D1D1D6" data-id="rl-now">Сегодня перевёл бы 250 000 ₽ · +2 340 ₽ в месяц</div></div>
+<div class="card" style="gap:10px"><div class="hl">Запас на карте</div>
+ <div class="seg"><span data-select="rthr" data-val="100000">100 000 ₽</span><span class="on" data-select="rthr" data-val="150000">150 000 ₽</span><span data-select="rthr" data-val="200000">200 000 ₽</span></div>
+ <div class="fn" data-id="rl-thr">По вашим тратам хватит до зарплаты с запасом. Проверяю каждый раз перед переводом</div></div>
+<div class="card" style="gap:10px"><div class="hl">Когда проверять</div>
+ <div class="seg"><span class="on" data-select="rwhen" data-when="раз в неделю">По пятницам</span><span data-select="rwhen" data-when="в день зарплаты">В день зарплаты</span><span data-select="rwhen" data-when="каждый день">Каждый день</span></div></div>
+<div class="card" style="gap:0">
+ <div class="sw"><div><div class="st2">Не больше за раз</div><div class="ss">Крупнее спрошу отдельно</div></div><div class="hl">300 000 ₽</div></div>
+ <div class="sw" data-toggle><div><div class="st2">Предупреждать за день</div><div class="ss">Пуш с кнопкой «Отменить»</div></div><div class="tg"></div></div>
+ <div class="sw"><div><div class="st2">Вернуть на карту</div><div class="ss">Всегда, в один тап, без комиссии. Это не настройка</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+</div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-rule-confirm">Включить правило</div><div class="btn g" data-back>Не сейчас</div></div>
+</template>
+<template data-screen="rb-rule-confirm" data-base="rb-rule-set">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Правило <span class="to">· уровень L2</span></div><div class="fx">Всё выше 150 000 ₽ на карте → накопительный ••9106</div><div class="to">Проверка по пятницам, предупреждение за день, не больше 300 000 ₽ за раз. Остальное по-прежнему спрашиваю.</div></div>
+ <div class="kv"><span class="k">Первый перевод</span><span class="v">в пятницу, 250 000 ₽</span></div>
+ <div class="kv"><span class="k">Выключить</span><span class="v">в один тап, в любой момент</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-rule-on" data-faceid>Включить правило</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+<template data-screen="rb-rule-on">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Правило работает</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Проверю карту в пятницу и предупрежу за день перед переводом. В журнале такие записи отмечены «по правилу». Первый отчёт в понедельник.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
+
+<!-- L2: правило сработало -->
+<template data-screen="rb-rule-push" data-base="cap-home">
+<div class="push" data-go="rb-rule-did"><div class="app ai"><svg class="ic"><use href="#i-sparkle"/></svg></div><div style="flex:1"><div class="pt">Помощник <span>9:00</span></div><div class="px">По вашему правилу: 120 000 ₽ с карты → накопительный, +1 125 ₽ в месяц. На карте 150 000 ₽. Вернуть можно до завтра.</div></div></div>
+</template>
+<template data-screen="rb-rule-did" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">По правилу</span></div>
+<div class="card ok" style="gap:4px"><div class="fl" style="color:#8FD3A4">Сегодня в 9:00 · правило «запас 150 000 ₽»</div><div class="money m36">120 000 ₽ <span class="u">→ накопительный</span></div><div class="bd mut">+1 125 ₽ в месяц. На карте осталось 150 000 ₽, ваш запас.</div></div>
+<div class="card" style="gap:6px">
+ <div class="kv"><span class="k">Почему сейчас</span><span class="v">зарплата 12 января</span></div>
+ <div class="kv"><span class="k">Проверил до зарплаты</span><span class="v grn">хватит, минимум 31 000 ₽</span></div>
+ <div class="kv"><span class="k">Предупреждал</span><span class="v">вчера в 10:00</span></div>
+ <div class="kv"><span class="k">Вернуть на карту</span><span class="v">в любой день, без комиссии</span></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">За три месяца правило перевело 360 000 ₽ и принесло 4 300 ₽. Если переводы мешают, скажите «реже» или «спрашивать».</div></div></div>
+<div style="display:flex;gap:10px;justify-content:center"><span class="chip d" data-go="rb-rule-set"><svg class="ic"><use href="#i-sliders"/></svg>Изменить правило</span><span class="chip d" data-go="cap-log"><svg class="ic"><use href="#i-list"/></svg>Журнал</span></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn g" data-go="rb-undo">Вернуть на карту</div></div>
+</template>
+<template data-screen="rb-undo" data-base="rb-rule-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">120 000 ₽ <span class="to">→ обратно на карту</span></div><div class="to">Придут сразу, без комиссии. Проценты за эти дни останутся вашими.</div></div>
+ <div class="opt sel on" data-select="und" data-set="und-cta|Вернуть, правило оставить"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вернуть, правило оставить</div><div class="os">В следующий раз спрошу перед переводом</div></div></div>
+ <div class="opt" data-select="und" data-set="und-cta|Вернуть и выключить правило"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Вернуть и выключить правило</div><div class="os">Вернёмся к подтверждению каждого действия</div></div></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-undone" data-faceid data-id="und-cta">Вернуть, правило оставить</div>
+ <div class="btn g" data-back>Оставить на счёте</div>
+</div>
+</template>
+<template data-screen="rb-undone">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Деньги снова на карте</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Запись в журнале: «отменено вами». В следующий раз спрошу заранее, а не после.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
+
+<!-- L3: предложение автопилота -->
+<template data-screen="rb-auto-offer" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автопилот</span></div>
+<div class="card ai2" style="gap:6px"><div class="fl" style="color:#C9B8FF">Правило работает 3 месяца без отмен</div><div class="t1">Включить автопилот?</div><div class="bd" style="color:#D1D1D6">Буду сам делать то, что сейчас предлагаю: переводы, переоткрытия, надбавки. По вашим правилам, с отчётом по понедельникам. Крупное и необычное по-прежнему спрашиваю.</div></div>
+<div class="card" style="gap:0">
+ <div class="hl" style="padding-bottom:6px">Ваши правила, уже заполнены</div>
+ <div class="sw"><div><div class="st2">Запас на карте</div><div class="ss">Не трогаем никогда</div></div><div class="hl">150 000 ₽</div></div>
+ <div class="sw"><div><div class="st2">Не трогать</div><div class="ss">Вклад ••1234 · цель «квартира»</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Без вопроса</div><div class="ss">До 300 000 ₽ и не больше 3 действий в неделю</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Спрашивать</div><div class="ss">Новые продукты, суммы крупнее, досрочные закрытия</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Отчёт</div><div class="ss">Понедельник, 10:00 · что сделано и сколько заработано</div></div><span class="vio" data-go="cap-policy">Изменить</span></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Что автопилот не делает никогда</div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не выводит деньги за пределы ваших счетов в банке</span></div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не закрывает вклад раньше срока, если потеря больше выигрыша</span></div><div class="chk"><svg class="ic" style="color:#F0B35B"><use href="#i-x"/></svg><span>Не продолжает после паузы или слова «стоп» голосом и в чате</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="rb-auto-confirm">Включить автопилот</div><div class="btn g" data-go="cap-home">Остаться на правилах</div></div>
+</template>
+<template data-screen="rb-auto-confirm" data-base="rb-auto-offer">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">Автопилот <span class="to">· уровень L3</span></div><div class="fx">Действует по вашим правилам, отчёт по понедельникам</div><div class="to">Запас 150 000 ₽, ••1234 не трогаем, до 300 000 ₽ и 3 действий в неделю без вопроса. Любое действие можно вернуть за 24 часа.</div></div>
+ <div class="kv"><span class="k">Пауза</span><span class="v">в один тап на Главном</span></div>
+ <div class="kv"><span class="k">Первый отчёт</span><span class="v">понедельник, 19 января</span></div>
+ <div class="hr"></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-auto-on" data-faceid>Включить автопилот</div>
+ <div class="btn g" data-back>Отмена</div>
+</div>
+</template>
+<template data-screen="rb-auto-on">
+<div class="spacer"></div>
+<div class="done-ic"><svg class="ic"><use href="#i-check"/></svg></div>
+<div class="t1" style="text-align:center">Автопилот включён</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Первый отчёт в понедельник. Пауза в один тап на Главном. Всё, что сделаю, можно вернуть за 24 часа.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-policy">Посмотреть правила</div></div>
+</template>
+
+<!-- L3: тихая неделя -->
+<template data-screen="rb-quiet" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Эта неделя</span></div>
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Понедельник, 19 января</div><div class="big-ok">Менять ничего не нужно</div><div class="bd mut">94% денег работают по ставке. Проверил четыре вещи, всё в порядке. Следующая проверка 26 января.</div></div>
+<div class="card" style="gap:0">
+ <div class="sw"><div><div class="st2">Остаток на карте</div><div class="ss">162 000 ₽ · выше запаса на 12 000, перевод дал бы 110 ₽ в месяц: меньше порога</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Ставки</div><div class="ss">Не изменились · ваши вклады не ниже рынка</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Закрытия</div><div class="ss">Ближайшее 14 марта, ••5520 · варианты предложу 7 марта</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+ <div class="sw"><div><div class="st2">Условие надбавки</div><div class="ss">Выполнено: 15 400 из 15 000 ₽</div></div><svg class="ic grn"><use href="#i-check"/></svg></div>
+</div>
+<div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="bd">Заработано за неделю: +4 110 ₽. Тишина тоже результат: чем меньше движений, тем меньше поводов для ошибок.</div></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Хорошо</div><div class="btn g" data-go="rb-quiet-off">Не присылать, когда нечего менять</div></div>
+</template>
+<template data-screen="rb-quiet-off" data-base="rb-quiet">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Тихие недели</div>
+ <div class="opt sel on" data-select="qo" data-set="qo-cta|Писать только когда что-то сделал"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Писать только когда что-то сделал</div><div class="os">Тихие недели останутся в журнале, без пуша</div></div></div>
+ <div class="opt" data-select="qo" data-set="qo-cta|Писать раз в месяц"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Раз в месяц</div><div class="os">Один итог: сколько заработано и что проверял</div></div></div>
+ <div class="fnl">О закрытиях, автодействиях и опасности пишу всегда, это не отчёт</div>
+ <div class="btn" data-go="cap-home" data-id="qo-cta">Писать только когда что-то сделал</div>
+ <div class="btn g" data-back>Оставить как есть</div>
+</div>
+</template>
+
+<!-- L3: ставки выросли, честный отказ -->
+<template data-screen="rb-rate" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Ставки выросли</span></div>
+<div data-sum="rate" style="display:contents">
+<div class="card ok" style="gap:6px"><div class="fl" style="color:#8FD3A4">Вывод автопилота</div><div class="big-ok">Вклад ••5520 оставляем как есть</div><div class="bd mut">Переоткрыть под новую ставку сейчас невыгодно: сгорят проценты за 7 месяцев. Переоткрою 14 марта, в день закрытия, если ставка останется выше.</div></div>
+<div class="card" style="gap:10px"><div class="hl">Если ставка по новым вкладам</div>
+ <div class="seg"><span class="on" data-select="rr" data-val="13.1">13,1%</span><span data-select="rr" data-val="14">14,0%</span><span data-select="rr" data-val="15">15,0%</span></div>
+ <div class="kv"><span class="k">Выигрыш до 14 марта</span><span class="v grn" data-id="rr-gain">+2 300 ₽</span></div>
+ <div class="kv"><span class="k">Сгорят проценты за 7 месяцев</span><span class="v" style="color:#F0B35B">−57 900 ₽</span></div>
+ <div class="kv"><span class="k">Итог, если переоткрыть сейчас</span><span class="v" style="color:#F0B35B" data-id="rr-net">−55 600 ₽</span></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Что сделаю вместо этого</div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>14 марта переоткрою 800 000 ₽ под лучшую ставку дня, без простоя</span></div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Новые деньги уже идут на счёт с надбавкой 12,75%, это выше вашего вклада</span></div><div class="chk"><svg class="ic"><use href="#i-check"/></svg><span>Напомню 7 марта с вариантами, решать будете вы</span></div></div>
+</div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">Понятно</div><div class="btn g" data-go="cap-market">Сравнить по всем деньгам</div></div>
+</template>
+
+<!-- L3: автопилот сделал -->
+<template data-screen="rb-auto-push" data-base="cap-home">
+<div class="push" data-go="rb-auto-did"><div class="app ai"><svg class="ic"><use href="#i-sparkle"/></svg></div><div style="flex:1"><div class="pt">Автопилот <span>15 дек, 9:05</span></div><div class="px">Сделал 2 действия по вашим правилам: вклад ••8708 под 12,2% (+9 400 ₽) и 90 000 ₽ на счёт (+840 ₽ в месяц). Вернуть второе можно до завтра.</div></div></div>
+</template>
+<template data-screen="rb-auto-did" data-scroll>
+<div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автопилот</span></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">15 декабря · по вашим правилам</div><div class="money m36">2 действия <span class="u">без вопросов</span></div><div class="sub" style="color:#D1D1D6">+9 400 ₽ за полгода · +840 ₽ в месяц · запас 150 000 ₽ на месте</div></div>
+<div class="card" style="gap:0">
+ <div class="jrn"><div class="jd">9:00</div><div><div class="jt">Вклад ••8708 переоткрыт под 12,2%</div><div class="js">Вместо продления под 7,5% · предупреждал вчера</div></div><div class="jv grn">+9 400 ₽</div></div>
+ <div class="jrn"><div class="jd">9:02</div><div><div class="jt">90 000 ₽ → накопительный ••9106</div><div class="js">Остаток выше запаса после зарплаты · <span class="vio" data-go="rb-undo2">вернуть</span></div></div><div class="jv grn">+840 ₽/мес</div></div>
+</div>
+<div class="card sm" style="gap:6px"><div class="hl">Не стал делать</div><div class="chk"><svg class="ic" style="color:#8E8E93"><use href="#i-minus"/></svg><span>Переоткрывать ••5520 под 13,1%: потеря больше выигрыша</span></div><div class="chk"><svg class="ic" style="color:#8E8E93"><use href="#i-minus"/></svg><span>Трогать ••1234: он в списке «не трогать»</span></div></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-report">Отчёт за неделю</div><div class="btn g" data-go="rb-pause">Пауза автопилота</div></div>
+</template>
+<template data-screen="rb-undo2" data-base="rb-auto-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="shero"><div class="money">90 000 ₽ <span class="to">→ обратно на карту</span></div><div class="to">Придут сразу, без комиссии. Автопилот запомнит: после зарплаты спрашивать.</div></div>
+ <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
+ <div class="btn" data-go="rb-undone" data-faceid>Вернуть 90 000 ₽</div>
+ <div class="btn g" data-back>Оставить на счёте</div>
+</div>
+</template>
+<template data-screen="rb-pause" data-base="rb-auto-did">
+<div class="scrim" data-back></div>
+<div class="sheet">
+ <div class="grab"></div>
+ <div class="t2">Пауза автопилота</div>
+ <div class="opt sel on" data-select="pz" data-set="pz-cta|Пауза на месяц"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">На месяц</div><div class="os">До 15 января. Напомню и спрошу, включать ли снова</div></div></div>
+ <div class="opt" data-select="pz" data-set="pz-cta|Пауза, пока не включу"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Пока сам не включу</div><div class="os">Вернёмся к подтверждению каждого действия</div></div></div>
+ <div class="opt" data-select="pz" data-set="pz-cta|Выключить автопилот"><div class="ck off"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Выключить совсем</div><div class="os">Правила и запас сохраню, предлагать буду как раньше</div></div></div>
+ <div class="sw" data-toggle><div><div class="st2">Оставить напоминания о датах</div><div class="ss">Закрытия вкладов и варианты к ним</div></div><div class="tg"></div></div>
+ <div class="btn" data-go="rb-paused" data-id="pz-cta">Пауза на месяц</div>
+ <div class="btn g" data-back>Не нужно</div>
+</div>
+</template>
+<template data-screen="rb-paused">
+<div class="spacer"></div>
+<div class="done-ic" style="background:#2C2C2E;color:#fff"><svg class="ic"><use href="#i-pause"/></svg></div>
+<div class="t1" style="text-align:center">Автопилот на паузе до 15 января</div>
+<div class="bd mut" style="text-align:center;padding:0 16px">Ничего не делаю сам: только напоминаю о датах и предлагаю варианты. Включить снова можно в один тап на Главном.</div>
+<div class="spacer"></div>
+<div class="cta-wrap nt"><div class="btn" data-go="cap-home">На главный</div><div class="btn ghost" data-go="cap-log">Открыть журнал</div></div>
+</template>
