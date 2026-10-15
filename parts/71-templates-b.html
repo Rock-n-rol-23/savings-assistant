@@ -3,10 +3,10 @@
 <div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
 <div style="text-align:center;padding:30px 0 22px"><div class="money m44"><span data-count="400000"></span><span class="kop">,00</span> ₽</div><div class="badge" style="margin-top:12px;background:rgba(255,255,255,.14)">14 920 <span style="opacity:.7">бонусов</span></div></div>
 <div class="grid3"><div class="tile c"><svg class="ic"><use href="#i-qr"/></svg><span class="tl">QR-код</span></div><div class="tile c"><svg class="ic"><use href="#i-up"/></svg><span class="tl">Перевести</span></div><div class="tile c"><svg class="ic"><use href="#i-sliders"/></svg><span class="tl">Настроить</span></div></div>
-<div class="card ai">
+<div class="card ai" style="gap:6px">
  <div style="display:flex;align-items:center;gap:10px"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><span class="hl">Помощник</span><span class="badge" style="margin-left:auto;background:#15301E;color:#4CD964">Автопилот</span></div>
- <div class="t2" style="margin-top:4px">План на эту неделю: +44 000 ₽ в год</div>
- <div class="sub">250 000 ₽ лежат на карте без дохода, вклад ••8708 закрывается 15 декабря</div>
+ <div class="money m36" style="margin-top:4px">+44 000 ₽ <span class="u">в год</span></div>
+ <div class="bd" style="color:#E5E5EA">если сделать 3 действия на этой неделе</div>
  <div style="display:flex;gap:10px;margin-top:8px"><div class="btn sm" style="flex:1" data-go="cap-plan">Посмотреть план</div><div class="btn sm g" style="flex:1" data-go="cap-market">Ставки на рынке</div></div>
 </div>
 <div class="card"><div style="display:flex;align-items:center"><span class="t2">Вклады и счета</span><svg class="ic mut" style="margin-left:auto"><use href="#i-chev-r"/></svg></div>
@@ -48,11 +48,11 @@
 
 <template data-screen="cap-plan" data-scroll>
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">План помощника</span><div class="ibtn" style="background:#1C1C1E" data-go="cap-policy"><svg class="ic"><use href="#i-gear"/></svg></div></div>
-<div class="card ai2" data-sum-head><div class="fl" style="color:#C9B8FF">Эта неделя · снимите галочку, итог пересчитается</div><div class="money m36" data-id="plan-total">+44 000 ₽ в год</div><div class="sub" style="color:#D1D1D6" data-id="plan-cnt">Эффективность размещения 67% → 94% · 3 действия</div></div>
+<div class="card ai2" data-sum-head><div class="fl" style="color:#C9B8FF">Эта неделя · снимите галочку, итог пересчитается</div><div class="money m36" data-id="plan-total">+44 000 ₽ в год</div><div class="sub" style="color:#D1D1D6" data-id="plan-cnt">Работают по ставке 67% → 94% денег · 3 действия</div></div>
 <div data-sum="plan" style="display:contents"><div class="opt" data-check data-gain="28100" data-eff="10.2"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">250 000 ₽ с карты → накопительный</div><div class="os">Лежат без дохода 3 месяца · доступ в любой день · <span class="vio" data-go="cap-why1">почему</span></div></div><div class="ov"><b>+28 100 ₽</b><span>в год</span></div></div>
-<div class="opt" data-check data-gain="9400" data-eff="16.3"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Переоткрыть вклад ••8708 под 12,2%</div><div class="os">Вместо автопродления под 7,5% · 15 декабря · 6 месяцев</div></div><div class="ov"><b>+9 400 ₽</b><span>за срок</span></div></div>
-<div class="opt" data-check data-gain="6750" data-eff="0.5"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Включить надбавку за покупки</div><div class="os">+1,5% к ставке накопительного при оплате картой от 15 000 ₽ в месяц</div></div><div class="ov"><b>+6 750 ₽</b><span>в год</span></div></div></div>
-<div class="card sm"><div class="rw" style="padding:2px 0"><div class="ico sm"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="rt" style="font-size:17px">Не трогаем: 150 000 ₽ на карте</div><div class="rs">Ваш ликвидный резерв</div></div><span class="vio" style="margin-left:auto;font-size:15px" data-go="cap-policy">Изменить</span></div></div>
+<div class="opt" data-check data-gain="9400" data-eff="16.3"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Переоткрыть вклад ••8708 под 12,2%</div><div class="os">Вместо продления под 7,5% · 15 декабря</div></div><div class="ov"><b>+9 400 ₽</b><span>за срок</span></div></div>
+<div class="opt" data-check data-gain="6750" data-eff="0.5"><div class="ck"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="ot">Включить +1,5% за покупки картой</div><div class="os">К ставке накопительного · покупки от 15 000 ₽ в месяц</div></div><div class="ov"><b>+6 750 ₽</b><span>в год</span></div></div></div>
+<div class="card sm"><div class="rw" style="padding:2px 0"><div class="ico sm"><svg class="ic"><use href="#i-lock"/></svg></div><div><div class="rt" style="font-size:17px">Не трогаем: 150 000 ₽ на карте</div><div class="rs">Ваш запас на карте</div></div><span class="vio" style="margin-left:auto;font-size:15px" data-go="cap-policy">Изменить</span></div></div>
 <div class="cta-wrap nt"><div class="btn" data-go="cap-confirm" data-id="plan-cta">Подтвердить 3 действия</div></div>
 </template>
 
@@ -72,11 +72,11 @@
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Автопилот</span></div>
 <div class="card ai2" style="gap:0"><div class="sw" style="padding:4px 0"><div><div class="st2">Автопилот включён</div><div class="ss" style="color:#C9B8FF">Уровень L3: действует по вашим правилам, отчёт по понедельникам</div></div><div class="tg"></div></div></div>
 <div class="card" style="gap:0">
- <div class="sw"><div><div class="st2">Ликвидный резерв</div><div class="ss">Всегда остаётся на карте</div></div><div class="hl">150 000 ₽</div></div>
+ <div class="sw"><div><div class="st2">Запас на карте</div><div class="ss">Всегда остаётся, не трогаем</div></div><div class="hl">150 000 ₽</div></div>
  <div class="sw"><div><div class="st2">Не трогать</div><div class="ss">Вклад ••1234 · цель «квартира»</div></div><svg class="ic mut"><use href="#i-chev-r"/></svg></div>
- <div class="sw"><div><div class="st2">Минимальная выгода</div><div class="ss">Предложения ниже порога не показываем</div></div><div class="hl">500 ₽/мес</div></div>
- <div class="sw"><div><div class="st2">Горизонт</div><div class="ss">Для лестницы вкладов</div></div><div class="hl">12 мес</div></div>
- <div class="sw"><div><div class="st2">Лимит операций</div><div class="ss">Без подтверждения каждой</div></div><div class="hl">3 в неделю</div></div>
+ <div class="sw"><div><div class="st2">Предлагать, если выгода от</div><div class="ss">Мелочь не показываем</div></div><div class="hl">500 ₽/мес</div></div>
+ <div class="sw"><div><div class="st2">Планировать на</div><div class="ss">Для вкладов по очереди</div></div><div class="hl">12 мес</div></div>
+ <div class="sw"><div><div class="st2">Действий без вопроса</div><div class="ss">Остальные с подтверждением</div></div><div class="hl">3 в неделю</div></div>
  <div class="sw"><div><div class="st2">Отчёт</div><div class="ss">Что сделано и сколько заработано</div></div><div class="hl">Понедельник</div></div>
 </div>
 <div class="card sm"><div style="display:flex;gap:10px;align-items:flex-start"><div class="ai-dot"><svg class="ic"><use href="#i-sparkle"/></svg></div><div class="sub" style="color:#D1D1D6">Любое действие можно отменить в журнале. Пауза автопилота в один тап.</div></div></div>
@@ -87,14 +87,14 @@
 <div class="scrim" data-back></div>
 <div class="sheet">
  <div class="grab"></div>
- <div class="t2">3 действия · +44 000 ₽ в год</div>
+ <div class="shero"><div class="money">+44 000 ₽ <span class="to">в год</span></div><div class="to">3 действия · два сегодня, одно 15 декабря</div></div>
  <div class="kv"><span class="k">250 000 ₽ → накопительный</span><span class="v">сегодня</span></div>
+ <div class="kv"><span class="k">+1,5% за покупки картой</span><span class="v">с 1 ноября</span></div>
  <div class="kv"><span class="k">Вклад ••8708 → 12,2%</span><span class="v">15 декабря</span></div>
- <div class="kv"><span class="k">Надбавка за покупки</span><span class="v">с 1 ноября</span></div>
  <div class="kv"><span class="k">Комиссии</span><span class="v">0 ₽</span></div>
  <div class="hr"></div>
  <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
- <div class="btn" data-go="cap-done" data-faceid>Подтвердить</div>
+ <div class="btn" data-go="cap-done" data-faceid>Подтвердить 3 действия</div>
  <div class="btn g" data-back>Отмена</div>
 </div>
 </template>
@@ -219,14 +219,13 @@
 <div class="scrim" data-back></div>
 <div class="sheet">
  <div class="grab"></div>
- <div class="t2">Подтверждение</div>
- <div class="kv"><span class="k">Сумма</span><span class="v">250 000 ₽</span></div>
+ <div class="shero"><div class="money">250 000 ₽ <span class="to">→ накопительный</span></div><div class="fx">+2 340 ₽ в месяц · доступ в любой день</div></div>
  <div class="kv"><span class="k">Откуда</span><span class="v">Карта ••7215</span></div>
  <div class="kv"><span class="k">Куда</span><span class="v">Накопительный ••9106</span></div>
  <div class="kv"><span class="k">Инициатор</span><span class="v vio">Мой ассистент · MCP</span></div>
  <div class="hr"></div>
  <div class="chk"><svg class="ic"><use href="#i-faceid"/></svg><span>Подтверждение защищено Face ID</span></div>
- <div class="btn" data-go="ext-done" data-faceid>Подтвердить</div>
+ <div class="btn" data-go="ext-done" data-faceid>Перевести 250 000 ₽</div>
  <div class="btn g" data-back>Отмена</div>
 </div>
 </template>
