@@ -732,6 +732,65 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .tline>div::before{content:"";position:absolute;left:0;right:0;top:4px;height:3px;background:#2C2C2E;border-radius:2px}
 .tline>div.on::before{background:#4CD964}
 .tline>div b{display:block;font-size:14px;color:#fff;font-weight:600}
+
+/* ===== v5: Liquid Glass for phone screens. Glass on the control and surface layer (tab bar, sheets, pushes, buttons, chips, cards), ambient colour behind it, text stays on dark. ===== */
+.screen{--g-fill:rgba(255,255,255,.085);--g-fill2:rgba(255,255,255,.035);--g-stroke:rgba(255,255,255,.17);--g-hi:rgba(255,255,255,.36);--g-shadow:0 12px 30px rgba(0,0,0,.34);--g-blur:16px}
+.layer{background:radial-gradient(72% 46% at 10% -6%,rgba(112,84,245,.46) 0%,rgba(112,84,245,0) 62%),radial-gradient(58% 42% at 106% 24%,rgba(38,170,70,.3) 0%,rgba(38,170,70,0) 60%),radial-gradient(64% 44% at 58% 106%,rgba(208,140,52,.24) 0%,rgba(208,140,52,0) 60%),#07080C}
+.layer.care{background:radial-gradient(72% 46% at 10% -6%,rgba(38,170,70,.34) 0%,rgba(38,170,70,0) 62%),radial-gradient(58% 42% at 106% 30%,rgba(112,84,245,.26) 0%,rgba(112,84,245,0) 60%),#07080C}
+.home-bg{background:radial-gradient(55% 45% at 30% 35%,#6B2E56 0%,rgba(107,46,86,0) 70%),radial-gradient(45% 40% at 80% 20%,#4A32A0 0%,rgba(74,50,160,0) 70%),radial-gradient(40% 30% at 70% 70%,#7A5230 0%,rgba(122,82,48,0) 70%),radial-gradient(40% 34% at 15% 92%,#1F6B3A 0%,rgba(31,107,58,0) 70%),#0A0A0E}
+.glow-bg{background:radial-gradient(60% 40% at 50% 0%,#4A2050 0%,rgba(20,10,30,.5) 45%,rgba(7,8,12,0) 80%),radial-gradient(50% 36% at 100% 60%,rgba(38,170,70,.22) 0%,rgba(38,170,70,0) 60%),#07080C}
+.card,.opt,.tile,.pick,.field,.endpoint,.quote,.agent-card,.ico,.ibtn,.back,.srch,.seg,.chip.d,.btn.g,.keys span,.evrow .calb,.src-chip,.mstrip span.on{position:relative;background:linear-gradient(135deg,var(--g-fill),var(--g-fill2));-webkit-backdrop-filter:blur(var(--g-blur)) saturate(170%);backdrop-filter:blur(var(--g-blur)) saturate(170%);border:1px solid var(--g-stroke);box-shadow:inset 0 1px 0 var(--g-hi),inset 0 -1px 0 rgba(255,255,255,.05),var(--g-shadow)}
+.ico,.ibtn,.back,.srch,.seg,.chip.d,.keys span,.evrow .calb,.src-chip,.mstrip span.on,.field,.endpoint{box-shadow:inset 0 1px 0 rgba(255,255,255,.28),inset 0 -1px 0 rgba(255,255,255,.04),0 4px 12px rgba(0,0,0,.22)}
+.card,.opt,.tile,.pick,.agent-card,.sheet,.tabbar,.push,.quote{isolation:isolate}
+.card::before,.opt::before,.tile::before,.pick::before,.agent-card::before,.sheet::before,.tabbar::before,.quote::before{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:-1;background:radial-gradient(90% 56% at 16% -10%,rgba(255,255,255,.17) 0%,rgba(255,255,255,0) 62%),linear-gradient(116deg,rgba(255,255,255,.09) 0%,rgba(255,255,255,0) 34%)}
+.card.ai{background:linear-gradient(135deg,rgba(130,98,255,.5) 0%,rgba(130,98,255,.14) 72%);border-color:rgba(201,184,255,.34);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 14px 36px rgba(70,40,190,.32)}
+.card.ai2{background:linear-gradient(160deg,rgba(146,116,255,.6) 0%,rgba(84,56,200,.28) 100%);border-color:rgba(201,184,255,.38);box-shadow:inset 0 1px 0 rgba(255,255,255,.44),0 14px 36px rgba(70,40,190,.34)}
+.card.ok{background:linear-gradient(135deg,rgba(52,199,89,.28),rgba(52,199,89,.08));border-color:rgba(76,217,100,.32)}
+.card.alertc{background:linear-gradient(160deg,rgba(240,160,70,.32),rgba(240,160,70,.08));border-color:rgba(240,179,91,.34)}
+.card.prem{background:linear-gradient(135deg,#F8CAF4 0%,#E6B5F6 50%,#C8A4F6 100%);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:rgba(255,255,255,.65);box-shadow:inset 0 1px 0 rgba(255,255,255,.85),0 14px 36px rgba(200,150,240,.38)}
+.card.light{background:rgba(244,244,248,.94);-webkit-backdrop-filter:none;backdrop-filter:none;border-color:#fff;box-shadow:inset 0 1px 0 #fff,0 10px 26px rgba(0,0,0,.18)}
+.card.sel,.opt.sel,.pick.on{box-shadow:inset 0 0 0 2px #4CD964,inset 0 1px 0 var(--g-hi),0 12px 30px rgba(52,199,89,.22)}
+.opt.flat{background:transparent;-webkit-backdrop-filter:none;backdrop-filter:none;border:0;box-shadow:none}
+.opt.flat::before{display:none}
+.ico.ai{background:linear-gradient(135deg,#8F6BFF,#5B3BFF);border-color:rgba(255,255,255,.3)}
+.ico.grn,.evrow .calb.on{background:linear-gradient(135deg,rgba(52,199,89,.3),rgba(52,199,89,.12));border-color:rgba(76,217,100,.34);color:#4CD964}
+.quote.me{background:linear-gradient(135deg,rgba(52,199,89,.64),rgba(30,154,58,.5));border-color:rgba(255,255,255,.24)}
+.tabbar{background:rgba(46,46,54,.44);-webkit-backdrop-filter:blur(26px) saturate(180%);backdrop-filter:blur(26px) saturate(180%);border:1px solid rgba(255,255,255,.2);box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 16px 40px rgba(0,0,0,.48)}
+.tab.on{background:rgba(255,255,255,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.38),inset 0 -1px 0 rgba(255,255,255,.06),0 4px 14px rgba(0,0,0,.32)}
+.sheet{background:rgba(32,32,40,.64);-webkit-backdrop-filter:blur(30px) saturate(170%);backdrop-filter:blur(30px) saturate(170%);border-top:1px solid rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.32),0 -20px 50px rgba(0,0,0,.45)}
+.scrim{background:rgba(0,0,0,.36)}
+.push{background:rgba(250,250,255,.64);-webkit-backdrop-filter:blur(24px) saturate(180%);backdrop-filter:blur(24px) saturate(180%);border:1px solid rgba(255,255,255,.78);box-shadow:inset 0 1px 0 #fff,0 14px 34px rgba(0,0,0,.42)}
+.push::before{background:radial-gradient(90% 60% at 16% -10%,rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 60%)}
+.alert .box{background:rgba(242,242,247,.8);-webkit-backdrop-filter:blur(30px) saturate(180%);backdrop-filter:blur(30px) saturate(180%);border:1px solid rgba(255,255,255,.8);box-shadow:inset 0 1px 0 #fff,0 20px 50px rgba(0,0,0,.4)}
+.alert{background:rgba(0,0,0,.3)}
+.faceid{background:rgba(0,0,0,.4)}
+.faceid div{background:rgba(30,30,36,.62);-webkit-backdrop-filter:blur(24px) saturate(170%);backdrop-filter:blur(24px) saturate(170%);border:1px solid rgba(255,255,255,.22);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 20px 50px rgba(0,0,0,.45)}
+.btn{background:linear-gradient(180deg,#FFFFFF 0%,#E8E8EE 100%);box-shadow:inset 0 1px 0 #fff,inset 0 -1px 0 rgba(0,0,0,.08),0 10px 24px rgba(0,0,0,.3)}
+.btn.g{background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.06));color:#fff;box-shadow:inset 0 1px 0 rgba(255,255,255,.3),inset 0 -1px 0 rgba(255,255,255,.04),0 8px 20px rgba(0,0,0,.26)}
+.btn.grn{background:linear-gradient(180deg,#36C95C,#1E9A3A);color:#fff;border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.46),0 10px 24px rgba(33,160,56,.36)}
+.btn.vio{background:linear-gradient(180deg,#8468FF,#5B3BFF);color:#fff;border:1px solid rgba(255,255,255,.24);box-shadow:inset 0 1px 0 rgba(255,255,255,.42),0 10px 24px rgba(91,59,255,.36)}
+.btn.ghost{background:transparent;border:0;box-shadow:none}
+.chip{background:linear-gradient(180deg,#FFFFFF,#ECECF1);box-shadow:inset 0 1px 0 #fff,0 4px 12px rgba(0,0,0,.22)}
+.chip.on{background:linear-gradient(180deg,#36C95C,#1E9A3A);color:#fff;border:1px solid rgba(255,255,255,.26);box-shadow:inset 0 1px 0 rgba(255,255,255,.46),0 6px 16px rgba(33,160,56,.36)}
+.chip.ai{background:linear-gradient(135deg,rgba(146,116,255,.52),rgba(84,56,200,.26));color:#E8DFFF;border:1px solid rgba(201,184,255,.36);-webkit-backdrop-filter:blur(14px) saturate(170%);backdrop-filter:blur(14px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.34),0 6px 16px rgba(70,40,190,.3)}
+.seg span.on{background:rgba(255,255,255,.17);box-shadow:inset 0 1px 0 rgba(255,255,255,.36),inset 0 -1px 0 rgba(255,255,255,.05),0 3px 10px rgba(0,0,0,.3)}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.14);box-shadow:inset 0 1px 0 rgba(255,255,255,.22)}
+.badge.up{background:rgba(52,199,89,.2);border-color:rgba(76,217,100,.3)}
+.badge.ai{background:rgba(130,98,255,.3);border-color:rgba(201,184,255,.32)}
+.badge.warn{background:rgba(240,160,70,.24);border-color:rgba(240,179,91,.32)}
+.tg{box-shadow:inset 0 1px 0 rgba(255,255,255,.32),inset 0 0 0 1px rgba(255,255,255,.06)}
+.tg::after{box-shadow:0 2px 6px rgba(0,0,0,.35),inset 0 1px 0 #fff}
+.ck{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 6px rgba(0,0,0,.25)}
+.ck.off{border-color:rgba(255,255,255,.3);box-shadow:none}
+.pb,.lad .bar,.cmp .bar{background:rgba(255,255,255,.09)}
+.done-ic{background:linear-gradient(135deg,rgba(52,199,89,.3),rgba(52,199,89,.1));border:1px solid rgba(76,217,100,.38);-webkit-backdrop-filter:blur(16px) saturate(170%);backdrop-filter:blur(16px) saturate(170%);box-shadow:inset 0 1px 0 rgba(255,255,255,.36),0 0 0 10px rgba(52,199,89,.08),0 16px 40px rgba(52,199,89,.26)}
+.mic-big{box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 16px 40px rgba(91,59,255,.4)}
+.hr{background:rgba(255,255,255,.12)}
+.rw + .rw,.sw + .sw,.jrn + .jrn,.scope + .scope,.evrow + .evrow{border-top-color:rgba(255,255,255,.11)}
+.xchat .bot,.xchat .inp{-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);background:rgba(255,255,255,.78);border:1px solid rgba(255,255,255,.9)}
+.layer.light{background:radial-gradient(70% 46% at 10% -6%,rgba(112,84,245,.16) 0%,rgba(112,84,245,0) 62%),radial-gradient(58% 42% at 106% 24%,rgba(38,170,70,.14) 0%,rgba(38,170,70,0) 60%),#EEEEF4}
+.xchat{background:transparent}
+@media (prefers-reduced-transparency:reduce){.screen{--g-blur:0px}.layer{background:#0B0B0F}.card,.opt,.tile,.pick,.quote{background:#1C1C1E}.sheet{background:#1C1C1E}.tabbar{background:rgba(38,38,42,.96)}}
 </style>
 </head>
 <body>
@@ -818,7 +877,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <h1 class="h" style="margin-top:14px">Помощник по сбережениям</h1>
    <p class="lead">От подбора вклада к управлению всеми сбережениями клиента. genAI думает и объясняет, нативный Сбербанк Онлайн показывает и исполняет, а о датах и дедлайнах помощник напоминает сам. Ни один рубль не двигается без подтверждения клиента в приложении. Открытый MCP и харнес делают помощника платформой: к нему можно подключить и свою LLM.</p>
    <div class="acts"><a class="btn-p" href="#proto">Открыть кликабельный прототип</a><a class="btn-s" href="#mcp">MCP и харнес</a><a class="btn-s" href="#roadmap">Дорожная карта</a></div>
-   <div class="facts"><div><b>8 путей</b>Старт, Накопитель, Капитал, Осторожный, ребалансировка L1–L3, события, внешний агент, своя LLM</div><div><b>144 экрана</b>под iPhone 18 Pro Max, живые цифры и переключатели</div><div><b>33 скилла</b>активные, сервисные и честные кросс-продажи</div><div><b>3 тапа</b>до результата, без чтения</div><div><b>L0–L3</b>лестница доверия и автономии</div><div><b>MCP + харнес</b>вклады и счета как платформа</div></div>
+   <div class="facts"><div><b>8 путей</b>Старт, Накопитель, Капитал, Осторожный, ребалансировка L1–L3, события, внешний агент, своя LLM</div><div><b>144 экрана</b>под iPhone 18 Pro Max в Liquid Glass, живые цифры и переключатели</div><div><b>33 скилла</b>активные, сервисные и честные кросс-продажи</div><div><b>3 тапа</b>до результата, без чтения</div><div><b>L0–L3</b>лестница доверия и автономии</div><div><b>MCP + харнес</b>вклады и счета как платформа</div></div>
   </div>
   <div class="hero-phone">
    <div style="display:flex;flex-direction:column;align-items:center;gap:12px;width:100%">
@@ -995,7 +1054,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </section>
 <section class="s" id="proto">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Кликабельный прототип</div><h2 class="t">Клиентские пути в Сбербанк Онлайн</h2><p class="lead">Выберите сегмент и пройдите путь: нажимайте кнопки на телефоне или шаги справа. Путь «События» показывает, как помощник сам напоминает и ведёт, путь «Ребалансировка» ведёт от первого плана через правила к автопилоту. Переключатели, чекбоксы и суммы живые: итоги пересчитываются. Каждое движение денег заканчивается одним и тем же нативным экраном подтверждения с Face ID, и это верно для своего помощника, внешнего агента и вашей собственной LLM.</p></div>
+  <div class="hd"><div class="eyebrow">Кликабельный прототип</div><h2 class="t">Клиентские пути в Сбербанк Онлайн</h2><p class="lead">Выберите сегмент и пройдите путь: нажимайте кнопки на телефоне или шаги справа. Путь «События» показывает, как помощник сам напоминает и ведёт, путь «Ребалансировка» ведёт от первого плана через правила к автопилоту. Экраны собраны в Liquid Glass: стекло на слое управления и поверхностей, цветной свет за ним, текст и цифры на тёмной подложке. Переключатели, чекбоксы и суммы живые: итоги пересчитываются. Каждое движение денег заканчивается одним и тем же нативным экраном подтверждения с Face ID, и это верно для своего помощника, внешнего агента и вашей собственной LLM.</p></div>
   <div class="personas" role="tablist">
    <button class="on" data-flow="start"><i></i>Старт: нет накоплений</button>
    <button data-flow="saver"><i></i>Накопитель: есть сумма</button>
