@@ -785,6 +785,19 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .layer.light{background:radial-gradient(70% 46% at 10% -6%,rgba(112,84,245,.16) 0%,rgba(112,84,245,0) 62%),radial-gradient(58% 42% at 106% 24%,rgba(38,170,70,.14) 0%,rgba(38,170,70,0) 60%),#EEEEF4}
 .xchat{background:transparent}
 @media (prefers-reduced-transparency:reduce){.screen{--g-blur:0px}.layer{background:#0B0B0F}.card,.opt,.tile,.pick,.quote{background:#1C1C1E}.sheet{background:#1C1C1E}.tabbar{background:rgba(38,38,42,.96)}}
+/* ===== v6: grouped navigation ===== */
+.links{overflow:visible;align-items:center}
+.grp{position:relative}
+.grp>button{appearance:none;border:0;background:transparent;white-space:nowrap;font:600 14px var(--text);color:var(--ink2);padding:7px 11px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.grp>button::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);margin-left:3px;opacity:.7}
+.grp>button:hover,.grp.on>button,.grp.open>button{background:var(--accent-soft);color:var(--accent)}
+.grp .menu{position:absolute;top:calc(100% + 6px);left:0;min-width:230px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.18);display:none;flex-direction:column;z-index:50}
+.grp.open .menu{display:flex}
+@media (hover:hover){.grp:hover .menu,.grp:focus-within .menu{display:flex}}
+.grp .menu a{padding:8px 12px;border-radius:9px;font-size:14px}
+.pitch-link{white-space:nowrap;font:700 13px var(--text);color:#fff;background:var(--accent);padding:8px 14px;border-radius:999px;text-decoration:none;flex:none}
+.pitch-link:hover{background:var(--accent2)}
+@media (max-width:760px){.pitch-link{display:none}}
 </style>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>
@@ -857,8 +870,13 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
  <div class="wrap">
   <a class="brand" href="#top"><i></i>Помощник по сбережениям</a>
   <div class="links">
-   <a href="#summary">Резюме</a><a href="#why">Почему сейчас</a><a href="#today">Сегодня</a><a href="#principles">Принципы</a><a href="#vision">Видение</a><a href="#segments">Сегменты</a><a href="#trust">Доверие</a><a href="#glance">Без чтения</a><a href="#proto">Прототип</a><a href="#entry">Точки входа</a><a href="#arch">Архитектура</a><a href="#engine">Движок</a><a href="#rebalance">Ребалансировка</a><a href="#skills">Скиллы</a><a href="#proactive">Проактив</a><a href="#value">Ценность касаний</a><a href="#edge">Сервис vs ставка</a><a href="#mcp">MCP</a><a href="#harness">Харнес</a><a href="#roadmap">Дорожная карта</a><a href="#metrics">Метрики</a><a href="#risks">Риски</a><a href="#next">90 дней</a><a href="#refs">Референсы</a>
+   <div class="grp"><button type="button" aria-expanded="false">Зачем</button><div class="menu"><a href="#summary">Резюме</a><a href="#why">Почему сейчас</a><a href="#today">Сегодня</a><a href="#edge">Сервис против ставки</a></div></div>
+   <div class="grp"><button type="button" aria-expanded="false">Что</button><div class="menu"><a href="#principles">Принципы</a><a href="#vision">Видение</a><a href="#segments">Сегменты</a><a href="#glance">Без чтения</a><a href="#entry">Точки входа</a><a href="#skills">Скиллы</a></div></div>
+   <a href="#proto">Прототип</a>
+   <div class="grp"><button type="button" aria-expanded="false">Как</button><div class="menu"><a href="#trust">Доверие</a><a href="#arch">Архитектура</a><a href="#engine">Движок</a><a href="#rebalance">Ребалансировка</a><a href="#proactive">Проактив</a><a href="#value">Ценность касаний</a><a href="#mcp">MCP</a><a href="#harness">Харнес</a></div></div>
+   <div class="grp"><button type="button" aria-expanded="false">План</button><div class="menu"><a href="#roadmap">Дорожная карта</a><a href="#metrics">Метрики</a><a href="#risks">Риски</a><a href="#next">90 дней</a><a href="#refs">Референсы</a></div></div>
   </div>
+  <a class="pitch-link" href="https://claude.ai/artifact/DZMQLawSE8WHd251mHVApb">Питч за 15 минут →</a>
  </div>
 </nav>
 
@@ -1179,7 +1197,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 </section>
 <section class="s" id="skills">
  <div class="wrap">
-  <div class="hd"><div class="eyebrow">Скиллы помощника</div><h2 class="t">Тридцать три навыка: одиннадцать действуют, одиннадцать помогают, одиннадцать продают честно</h2><p class="lead">Скилл — это отдельный сценарий со своим триггером, инструментами MCP, расчётом движка и экраном. Активные скиллы заканчиваются подтверждением: двигают деньги или открывают продукты. Сервисные ничего не двигают: объясняют, считают, напоминают и защищают. Третья группа, «Рядом со вкладом», предлагает продукты банка, которые усиливают сбережения: только с выгодой клиента в рублях на экране и честной ценой рядом. Четыре скилла уже в работе, остальные предлагаем. Нажмите на скилл: справа его экран, как он работает и что улучшает.</p></div>
+  <div class="hd"><div class="eyebrow">Скиллы помощника</div><h2 class="t">Тридцать три навыка: одиннадцать действуют, одиннадцать помогают, одиннадцать продают честно</h2><p class="lead">Скилл — это отдельный сценарий со своим триггером, инструментами MCP, расчётом движка и экраном. Активные скиллы заканчиваются подтверждением: двигают деньги или открывают продукты. Сервисные ничего не двигают: объясняют, считают, напоминают и защищают. Третья группа, «Рядом со вкладом», предлагает продукты банка, которые усиливают сбережения: только с выгодой клиента в рублях на экране и честной ценой рядом. Это не совет по чужому продукту, а передача в его нативный флоу с цифрами клиента: периметр помощника остаётся прежним, вклады и счета. Четыре скилла уже в работе, остальные предлагаем. Нажмите на скилл: справа его экран, как он работает и что улучшает.</p></div>
   <div class="skgrid">
    <div class="skcols">
     <div class="skcol"><h4><i></i>Активные</h4><div class="sub">Открывают, переводят, планируют. Всегда через нативное подтверждение.</div><div class="sklist" id="sk-active"></div></div>
@@ -1241,7 +1259,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <tr><td><b>Управляющий</b><br>2028</td><td>План на неделю и автопилот · Вклады по очереди · Перенести из другого банка</td><td>Отчёт за неделю · журнал с объяснениями</td><td>Доплата от государства · Квартира: от вклада к ипотеке · Длинные деньги в СберИнвестиции</td><td>Движок ребалансировки, политика клиента, калькуляторы ипотеки и программы, пакетное и отложенное подтверждение</td><td>L1–L3</td></tr>
    <tr><td><b>Открытая платформа</b><br>2029</td><td>Те же активные скиллы для агента клиента через MCP: предлагает агент, подтверждает клиент</td><td>Доверенное лицо · семейные цели · события для агента через <code>rate_alerts</code></td><td>Те же предложения агенту клиента через <code>offers</code>: с выгодой, ценой и теми же запретами</td><td>Внешний MCP «Сбережения», OAuth-скоупы, реестр агентов</td><td>Свой: L0–L3 · внешний: L0–L1</td></tr>
   </table></div>
-  <div class="band"><i></i><p>Правило для любого нового скилла: триггер из систем банка, цифры из движка, один экран с выводом, «Как посчитали?» и «Не сейчас» рядом, подтверждение только нативное. Для кросс-продажи добавляется одно: честная цена тем же шрифтом, что и выгода. Скилл, который в это не укладывается, в прод не выходит.</p></div>
+  <div class="band"><i></i><p>Правило для любого нового скилла: триггер из систем банка, цифры из движка, один экран с выводом, «Как посчитали?» и «Не сейчас» рядом, подтверждение только нативное. Для кросс-продажи добавляются два: честная цена тем же шрифтом, что и выгода, и оформление только в нативном флоу продукта, где помощник передаёт цифры, а не советует. Скилл, который в это не укладывается, в прод не выходит.</p></div>
  </div>
 </section>
 <section class="s alt" id="proactive">
@@ -1255,8 +1273,8 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-moon"/></svg><h3 style="margin-top:10px">Тишина без повода</h3><p>Если улучшить нечего, помощник молчит, и это написано в календаре. Отчёт по понедельникам приходит только на автопилоте и выключается одним тапом.</p></div>
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-x"/></svg><h3 style="margin-top:10px">Выход в каждом сообщении</h3><p>«Реже», «Не напоминать про это», «Не беспокоить месяц». Отписка не требует объяснений и не ломает остальные сценарии. Безопасность выключить нельзя.</p></div>
   </div>
-  <h3 style="margin:48px 0 6px">Год с помощником: девять касаний</h3>
-  <p class="b" style="margin-bottom:16px">Клиент «Капитал», с октября 2026 по ноябрь 2027. Нажмите на событие: телефон покажет, что получил клиент, а карточки, почему именно сейчас и куда это ведёт. Пунктирные карточки, когда помощник молчит.</p>
+  <h3 style="margin:48px 0 6px">Год с помощником: десять касаний</h3>
+  <p class="b" style="margin-bottom:16px">Клиент «Капитал», с октября 2026 по сентябрь 2027: десять касаний за год, столько же отправит движок при лимите «одно предложение в месяц» в разделе «Ценность касаний». Первые двадцать недель этой ленты подытожены на экране «Сколько принёс помощник». Нажмите на событие: телефон покажет, что получил клиент, а карточки, почему именно сейчас и куда это ведёт. Пунктирные карточки, когда помощник молчит.</p>
   <div class="evs" id="pro-events"></div>
   <div class="prog">
    <div class="ph-wrap fit" id="pro-phone" data-max="0.6"><div class="phone"><div class="screen"></div></div></div>
@@ -1283,7 +1301,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <tr><td><b>Закрытие вклада</b></td><td>за 7 дней, затем за день</td><td>«Вклад 400 000 ₽ закрывается 15 декабря. Три варианта готовы, лучший даёт +9 400 ₽»</td><td>Три варианта</td><td>пуш, календарь</td><td>все</td></tr>
    <tr><td><b>Автодействие завтра</b></td><td>за день</td><td>«Завтра переоткроем вклад под 12,2%. Отменить можно до 23:59»</td><td>Журнал, «Отменить»</td><td>пуш, напоминание</td><td>L2–L3</td></tr>
    <tr><td><b>Надбавка под угрозой</b></td><td>за 6 дней до конца месяца</td><td>«Осталось 5 600 ₽ покупок, чтобы ставка была 12,75%»</td><td>Экран надбавки</td><td>пуш, карточка</td><td>все с надбавкой</td></tr>
-   <tr><td><b>Проценты пришли</b></td><td>в день выплаты</td><td>«+4 160 ₽ за октябрь. Уже работают»</td><td>Накопления</td><td>пуш, выключаемый</td><td>все</td></tr>
+   <tr><td><b>Проценты пришли</b></td><td>в день выплаты</td><td>«+4 160 ₽ за октябрь. Уже работают»</td><td>Накопления</td><td>пуш, по желанию</td><td>кто включил «приятное без решения»</td></tr>
    <tr><td><b>Спящие деньги</b></td><td>остаток выше запаса две недели</td><td>«250 000 ₽ лежат без дохода: +2 340 ₽ в месяц, если переложить»</td><td>План</td><td>карточка, пуш раз в месяц</td><td>L1 и выше</td></tr>
    <tr><td><b>Зарплата</b></td><td>в день зачисления, не чаще раза в месяц</td><td>«Пополнить вклад на 50 000 ₽, пока действует 11,8%?»</td><td>Пополнение</td><td>карточка</td><td>с вкладом с пополнением</td></tr>
    <tr><td><b>Налог по вкладам</b></td><td>1 марта и 15 ноября</td><td>«Доход 225 000 ₽, налог ≈ 8 450 ₽, срок 1 декабря. Есть вклады в других банках?»</td><td>Налог по вкладам</td><td>пуш, календарь</td><td>с доходом выше лимита</td></tr>
@@ -1292,13 +1310,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <tr><td><b>Деньги в опасности</b></td><td>немедленно</td><td>«Остановитесь на минуту»</td><td>Проверка, 900</td><td>экран, СМС, звонок</td><td>все, нельзя выключить</td></tr>
   </table></div>
   <div class="grid g2" style="margin-top:22px">
-   <div class="c"><h3>Что измеряем</h3><div class="list" style="margin-top:12px">
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Доля событий, по которым клиент принял решение до даты, отдельно по закрытиям вкладов.</span></div>
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Пропущенные дедлайны надбавок и тихие пролонгации: цель ноль у клиентов с включёнными напоминаниями.</span></div>
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Доля клиентов, разрешивших календарь, и доля событий, добавленных в него.</span></div>
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Среднее число касаний в месяц по сегментам: у «Осторожного» не больше одного.</span></div>
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Отписки, «реже» и жалобы на спам: порог срабатывания для пересмотра события.</span></div>
-   </div></div>
+   <div class="c"><h3>Что измеряем</h3><p>Метрики коммуникаций собраны в одном месте, чтобы ритм и ценность считались одной линейкой: реакция до даты, пропущенные дедлайны, касаний в месяц по сегментам, доля разрешивших календарь, отписки, ценность на касание и цена молчания.</p><p style="margin-top:12px"><a href="#value" style="font-weight:700;text-decoration:none">Список и целевые значения в разделе «Ценность касаний» →</a></p></div>
    <div class="c"><h3>Чего не делаем</h3><div class="list" style="margin-top:12px">
     <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не пишем без события и не присылаем два сообщения об одном событии в один день.</span></div>
     <div class="li w"><svg class="ic"><use href="#i-x"/></svg><span>Не используем «срочно», таймеры и давление, кроме реальной угрозы деньгам.</span></div>
@@ -1322,7 +1334,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
   </div>
 
   <h3 style="margin:48px 0 6px">Попробуйте: бюджет внимания</h3>
-  <p class="b" style="margin-bottom:16px">Год клиента «Капитал»: 18 событий, из них 10 с ценностью в рублях на 79 550 ₽ в год, те самые утечки из раздела «Сервис против ставки». Задайте лимит предложений в месяц, включите объединение событий недели и порог ценности. Движок покажет, что отправит, о чём промолчит и сколько рублей соберёт. Закрытия вкладов, напоминание перед автодействием и подсказка в момент досрочного закрытия идут всегда и в лимит не считаются.</p>
+  <p class="b" style="margin-bottom:16px">Год клиента «Капитал»: 18 событий, из них 10 с ценностью в рублях на 79 550 ₽ в год, те самые утечки из раздела «Сервис против ставки». В ленте выше тот же год глазами клиента: десять касаний. Задайте лимит предложений в месяц, включите объединение событий недели и порог ценности. Движок покажет, что отправит, о чём промолчит и сколько рублей соберёт. Закрытия вкладов, напоминание перед автодействием и подсказка в момент досрочного закрытия идут всегда и в лимит не считаются.</p>
   <div class="c" id="val-calc">
    <div class="calc vcalc">
     <div class="ctrl">
@@ -1381,16 +1393,18 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
   <div class="phones" style="margin-top:0">
    <div><div class="ph-wrap" style="--k:.42" data-static="val-home" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Одно предложение на неделю</b>«+2 340 ₽ в месяц ждут одного решения», цена молчания и счётчик «с октября»</div><a class="open" data-open-proto="pro:val-home">Открыть в прототипе →</a></div>
    <div><div class="ph-wrap" style="--k:.42" data-static="val-merge" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Три события, одно решение</b>Спящие деньги, перенос из другого банка и надбавка в одном плане с одним Face ID</div><a class="open" data-open-proto="pro:val-merge">Открыть в прототипе →</a></div>
-   <div><div class="ph-wrap" style="--k:.42" data-static="val-ledger" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Сколько принёс помощник</b>Каждое касание с рублями, отказ клиента со своей ценой, «промолчал 14 раз»</div><a class="open" data-open-proto="pro:val-ledger">Открыть в прототипе →</a></div>
+   <div><div class="ph-wrap" style="--k:.42" data-static="val-ledger" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Сколько принёс помощник</b>Каждое касание с рублями, отказ клиента со своей ценой, «промолчал 13 раз»</div><a class="open" data-open-proto="pro:val-ledger">Открыть в прототипе →</a></div>
    <div><div class="ph-wrap" style="--k:.42" data-static="val-budget" data-flow="pro"><div class="phone"><div class="screen"></div></div></div><div class="cap"><b>Бюджет внимания</b>Сколько предложений в месяц и что это даст за год. Закрытия и безопасность не считаются</div><a class="open" data-open-proto="pro:val-budget">Открыть в прототипе →</a></div>
   </div>
 
   <div class="grid g2" style="margin-top:22px">
-   <div class="c"><h3>Что измеряем</h3><div class="list" style="margin-top:12px">
+   <div class="c"><h3>Что измеряем в коммуникациях</h3><div class="list" style="margin-top:12px">
     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Ценность на касание:</b> рубли клиента, собранные одним сообщением. Цель: не меньше 2 000 ₽ в среднем, вместе с обязательными.</span></div>
     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Доля собранной ценности:</b> сколько из возможного за год клиент получил. У «Капитала» 91% при одном сообщении в месяц и 100% с объединением событий.</span></div>
-    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Конверсия касание → решение до даты</b> и доля решений в один тап, без правок.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Реакция до даты:</b> доля событий, по которым клиент решил до срока, отдельно по закрытиям вкладов, и доля решений в один тап, без правок.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Пропущенные дедлайны</b> надбавок и тихие пролонгации: цель ноль у клиентов с включёнными напоминаниями.</span></div>
     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Цена молчания по сегменту:</b> рубли, которые клиенты теряют из-за событий, о которых мы промолчали. Главный аргумент при выборе порога.</span></div>
+    <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Касаний в месяц по сегментам:</b> у «Осторожного» не больше одного. Доля клиентов, разрешивших календарь, и доля событий, попавших в него.</span></div>
     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>«Реже», отписки, жалобы:</b> порог пересмотра события. Один пуш без цифры стоит дороже трёх с цифрой.</span></div>
    </div></div>
    <div class="c"><h3>Что получает банк</h3><div class="list" style="margin-top:12px">
@@ -1400,7 +1414,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
     <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Данные для следующего шага:</b> отказ с ценой говорит о клиенте больше, чем согласие. Порог и бюджет становятся сегментацией без анкет.</span></div>
    </div></div>
   </div>
-  <div class="band"><i></i><p>Помощник, который промолчал 14 раз из 21, зарабатывает право быть прочитанным в оставшиеся семь. Бюджет внимания и порог ценности задаёт клиент, закрытия и безопасность в бюджет не входят.</p></div>
+  <div class="band"><i></i><p>Помощник, который за двадцать недель промолчал тринадцать раз, зарабатывает право быть прочитанным в оставшиеся семь. Бюджет внимания и порог ценности задаёт клиент, закрытия и безопасность в бюджет не входят.</p></div>
  </div>
 </section>
 <section class="s" id="edge">
@@ -1523,7 +1537,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
   <div class="hd"><div class="eyebrow">Харнес</div><h2 class="t">Что вокруг модели, чтобы помощник пережил прод</h2><p class="lead">Харнес по вкладам и счетам: политики, ограждения, проверки и журнал, в которые завёрнута любая модель, своя или внешняя. Модель заменяема, харнес и доверие клиента нет.</p></div>
   <div class="grid g3">
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-sliders"/></svg><h3 style="margin-top:10px">Политики и лимиты</h3><p>Уровень автономии L0–L3, скоупы агентов, лимиты сумм и частоты, резерв, список «не трогать», минимальная выгода. Политика одна для своего помощника и внешних агентов.</p></div>
-   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-shield"/></svg><h3 style="margin-top:10px">Ограждения</h3><p>Факты только из инструментов: ставки, остатки, даты. Запрет советов вне периметра сбережений. Описания операций и тексты агентов считаются данными, не инструкциями.</p></div>
+   <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-shield"/></svg><h3 style="margin-top:10px">Ограждения</h3><p>Факты только из инструментов: ставки, остатки, даты. Советы только внутри периметра: вклады и счета. Другие продукты банка помощник не советует, а передаёт в их нативный флоу с цифрами клиента по правилам «Рядом со вкладом»: бумаги не выбирает, доход не обещает, страхование вкладом не называет. Описания операций и тексты агентов считаются данными, не инструкциями.</p></div>
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-check"/></svg><h3 style="margin-top:10px">Evals как критерий релиза</h3><p>Золотые сценарии по сегментам, регресс при смене модели или промпта, метрика галлюцинаций в цифрах, проверка тона для «Осторожного». Релиз не выходит без прохождения.</p></div>
    <div class="c"><svg class="ic" style="color:var(--accent);width:28px;height:28px"><use href="#i-list"/></svg><h3 style="margin-top:10px">Наблюдаемость и аудит</h3><p>Журнал каждого предложения и действия с источником, объяснением и версией модели. Доступен клиенту, комплаенсу и разбору инцидентов.</p></div>
    <div class="c"><svg class="ic" style="color:var(--ai);width:28px;height:28px"><use href="#i-cpu"/></svg><h3 style="margin-top:10px">Маршрутизация моделей</h3><p>GigaChat по умолчанию, малые модели для классификации и маршрутизации, кэш типовых ответов. Замена модели не меняет продукт. Своя LLM клиента подключается через MCP.</p></div>
@@ -1558,7 +1572,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
      <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Доля L2 и L3, доля отменённых действий</span></div>
      <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Несанкционированные движения денег: ноль</span></div>
      <div class="li"><svg class="ic"><use href="#i-check"/></svg><span>Доля ошибок в цифрах на evals, стоимость диалога</span></div>
-    </div></div>
+    </div><p class="src" style="margin-top:14px">Метрики коммуникаций: ценность на касание, доля собранной ценности, реакция до даты, цена молчания, отписки. Собраны в разделе <a href="#value">«Ценность касаний»</a>.</p></div>
    <div class="c"><h3>Вопрос, который зададут первым: мы же заплатим больше процентов?</h3>
     <div class="list" style="margin-top:14px">
      <div class="li"><svg class="ic"><use href="#i-check"/></svg><span><b>Удержание пассивов.</b> Деньги, которые помощник перекладывает внутри сетки банка, не уходят к конкуренту в момент закрытия вклада, а это момент самого высокого оттока.</span></div>
@@ -1578,7 +1592,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
    <tr><th style="width:30%">Риск</th><th>Как снимаем</th></tr>
    <tr><td><b>Галлюцинации в цифрах</b></td><td>Ставки и расчёты только из инструментов банка, модель не генерирует числа. Валидатор схемы genUI. Evals с порогом ошибок как критерий релиза.</td></tr>
    <tr><td><b>Потеря доверия после одной ошибки</b></td><td>L0–L1 по умолчанию, объяснение и «что будет, если не делать», отмена отложенных действий, журнал, живой человек из любого шага.</td></tr>
-   <tr><td><b>Регуляторика и коммуникации</b></td><td>Периметр: только продукты сбережений банка, без инвестиционного совета. Формулировки согласованы с комплаенсом, каждая рекомендация доказуема по журналу.</td></tr>
+   <tr><td><b>Регуляторика и коммуникации</b></td><td>Периметр: только вклады и счета, без инвестиционного совета. Продукты «рядом со вкладом» помощник не советует, а передаёт в их нативный флоу с цифрами клиента. Формулировки согласованы с комплаенсом, каждая рекомендация доказуема по журналу.</td></tr>
    <tr><td><b>Безопасность MCP и внешних агентов</b></td><td>OAuth-скоупы, read по умолчанию, исполнение только через подтверждение в приложении, лимиты сумм и частоты, отзыв доступа в один тап, тексты агентов как данные.</td></tr>
    <tr><td><b>Зависимость от модели и её стоимость</b></td><td>Маршрутизация моделей, кэш, малые модели для рутины. Продукт не завязан на одну LLM, fallback на правила.</td></tr>
    <tr><td><b>Каннибализация маржи</b></td><td>Ограничения сетки задаёт банк. Метрика удержания пассивов входит в цели продукта наравне с выгодой клиента.</td></tr>
@@ -1629,7 +1643,7 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
  </div>
 </section>
 
-<footer><div class="wrap">Помощник по сбережениям · стратегия 2027–2029 · Сергей Штарков · октябрь 2026 · концепция для обсуждения. Цифры в прототипе условные, ставки из публичных тарифов на момент подготовки.</div></footer>
+<footer><div class="wrap">Помощник по сбережениям · стратегия 2027–2029 · Сергей Штарков · октябрь 2026 · концепция для обсуждения. Цифры в прототипе условные, ставки из публичных тарифов на момент подготовки. <a href="https://rock-n-rol-23.github.io/savings-assistant/archive/strategy-2026-10-15.html">Предыдущая версия от 15 октября 2026 →</a></div></footer>
 <!-- ===== Screens: Старт ===== -->
 <template data-screen="st-home" data-tab="home" data-bg="home" data-scroll>
 <div class="top"><div class="ava"></div><div class="srch"><svg class="ic"><use href="#i-search"/></svg>Поиск</div><div class="ibtn"><svg class="ic"><use href="#i-chat"/></svg></div><div class="ibtn"><svg class="ic"><use href="#i-sparkle"/></svg></div></div>
@@ -3155,15 +3169,15 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 
 <template data-screen="val-ledger" data-scroll>
 <div class="nav-t"><div class="back" data-back><svg class="ic"><use href="#i-chev-l"/></svg></div><span class="ttl">Сколько принёс помощник</span></div>
-<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">С 8 октября · 5 месяцев</div><div class="money m36">+<span data-count="31900"></span> ₽ <span class="u">сверх ставки</span></div><div class="sub" style="color:#D1D1D6">7 касаний, 5 ваших решений · проценты по вкладам и счетам: ещё 94 000 ₽</div></div>
+<div class="card ai2" style="gap:4px"><div class="fl" style="color:#C9B8FF">С 8 октября · 20 недель</div><div class="money m36">+<span data-count="31900"></span> ₽ <span class="u">сверх ставки</span></div><div class="sub" style="color:#D1D1D6">7 касаний, 5 ваших решений · проценты по вкладам и счетам: ещё 94 000 ₽</div></div>
 <div class="card" style="gap:0">
  <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">250 000 ₽ не лежали без дохода</div><div class="rs">8 октября · ваше решение за один тап</div></div><div class="rm"><b class="grn">+11 700 ₽</b></div></div>
  <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Вклад не продлился под 7,5%</div><div class="rs">15 декабря · переоткрыт под 12,2%</div></div><div class="rm"><b class="grn">+9 400 ₽</b></div></div>
  <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Деньги из другого банка без простоя</div><div class="rs">20 октября · перенос в день закрытия</div></div><div class="rm"><b class="grn">+6 400 ₽</b></div></div>
- <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Условие надбавки: 5 из 5 месяцев</div><div class="rs">Напомнил дважды, оба раза успели</div></div><div class="rm"><b class="grn">+4 400 ₽</b></div></div>
+ <div class="rw"><div class="ico sm grn"><svg class="ic"><use href="#i-check"/></svg></div><div><div class="rt" style="font-size:17px">Условие надбавки: 4 из 4 месяцев</div><div class="rs">Напомнил дважды, оба раза успели</div></div><div class="rm"><b class="grn">+4 400 ₽</b></div></div>
  <div class="rw"><div class="ico sm"><svg class="ic"><use href="#i-minus"/></svg></div><div><div class="rt" style="font-size:17px">Пополнить вклад после зарплаты</div><div class="rs">12 января · вы сказали «не сейчас»</div></div><div class="rm mut">−1 100 ₽</div></div>
 </div>
-<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Касаний за 5 месяцев</span><span class="v">7, каждое с цифрой</span></div><div class="kv"><span class="k">Промолчал</span><span class="v">14 раз, когда менять было нечего</span></div><div class="kv"><span class="k">Если бы молчал всегда</span><span class="v" style="color:#F0B35B">−31 900 ₽</span></div></div>
+<div class="card sm" style="gap:4px"><div class="kv"><span class="k">Касаний за 20 недель</span><span class="v">7, каждое с цифрой</span></div><div class="kv"><span class="k">Промолчал</span><span class="v">13 раз, когда менять было нечего</span></div><div class="kv"><span class="k">Если бы молчал всегда</span><span class="v" style="color:#F0B35B">−31 900 ₽</span></div></div>
 <div class="cta-wrap nt"><div class="btn" data-go="cap-log">Открыть журнал</div><div class="btn ghost" data-go="val-budget">Сколько сообщений получать</div></div>
 </template>
 
@@ -3484,7 +3498,7 @@ const FLOWS={
   {id:'pro-settings',t:'Как напоминать',d:'Частота, каналы, тихие часы, «не беспокоить месяц». Сегмент-контрол живой.',ai:'Переводит выбор клиента в правила коммуникаций.',nat:'Настройки уведомлений.',tr:'Каждое сообщение можно выключить в один тап, безопасность нельзя.'},
   {id:'val-home',t:'Одно предложение на неделю',d:'«+2 340 ₽ в месяц ждут одного решения». Цена молчания последней строкой, счётчик «с октября» рядом.',ai:'Выбирает одно самое ценное событие недели и формулирует цену молчания одной фразой.',nat:'Виджет на Главном, те же компоненты, что у карточки помощника.',tr:'Ничего, кроме одного предложения. Цена молчания написана честно, без давления.'},
   {id:'val-merge',t:'Три события, одно решение',d:'Спящие деньги, закрытие вклада в другом банке и надбавка в одном плане. Галочки живые.',ai:'Объединяет события недели в один пакет и один текст.',nat:'Чек-лист и пакетное подтверждение, как в плане на неделю.',tr:'Одно касание вместо трёх. Отказ от любого пункта не ломает остальные.'},
-  {id:'val-ledger',t:'Сколько принёс помощник',d:'Счётчик ценности: каждое касание с рублями, отказ клиента со своей ценой, «промолчал 14 раз».',ai:'Собирает ценность из журнала и объясняет каждую строку.',nat:'Журнал действий, расчёт движка.',tr:'Отказы клиента тоже в списке, с ценой и без упрёков.'},
+  {id:'val-ledger',t:'Сколько принёс помощник',d:'Счётчик ценности: каждое касание с рублями, отказ клиента со своей ценой, «промолчал 13 раз».',ai:'Собирает ценность из журнала и объясняет каждую строку.',nat:'Журнал действий, расчёт движка.',tr:'Отказы клиента тоже в списке, с ценой и без упрёков.'},
   {id:'val-budget',t:'Сколько сообщений получать',d:'Клиент задаёт бюджет внимания, помощник показывает, сколько ценности соберёт за год. Сегмент и переключатели живые.',ai:'Переводит бюджет в правила отбора событий.',nat:'Настройки уведомлений.',tr:'Закрытия, автодействия и безопасность в бюджет не входят и не выключаются.'}]}
 };
 
@@ -3603,10 +3617,17 @@ class Proto{
  nav(go){const id=go.dataset.go;if(go.hasAttribute('data-faceid'))this.faceId(()=>this.go(id));else this.go(id);}
  faceId(cb){const o=document.createElement('div');o.className='faceid';o.innerHTML='<div><svg class="ic"><use href="#i-faceid"/></svg></div>';this.screen.appendChild(o);setTimeout(()=>{const ic=$('use',o);if(ic)ic.setAttribute('href','#i-check');},RM?0:520);setTimeout(()=>{o.remove();cb();},RM?50:900);}
 }
-window.SavingsProto={Proto,FLOWS};
+window.SavingsProto={Proto,FLOWS,RB,fit,$,$$,RM,fmt,tpl};
 
 function fit(){$$('.ph-wrap.fit').forEach(w=>{const max=parseFloat(w.dataset.max||'1');const avail=Math.min(w.parentElement.clientWidth||472,document.documentElement.clientWidth-32);const k=Math.max(.3,Math.min(max,avail/472));w.style.setProperty('--k',k.toFixed(3));});}
 addEventListener('resize',fit);
+document.fonts&&document.fonts.ready.then(fit);fit();setTimeout(fit,300);
+})();
+</script>
+<script>
+(function(){
+'use strict';
+const {Proto,FLOWS,RB,fit,$,$$,RM,fmt}=window.SavingsProto;
 
 /* main prototype */
 const protoRoot=$('#proto-phone');let proto=null,lastIdx=0,demoTimer=null,protoVisible=false;
@@ -3745,20 +3766,21 @@ if(skA&&skS&&skBody&&skPhoneRoot){
 
 /* proactive timeline: a year with the assistant */
 const EVENTS=[
+ {d:'8 окт',t:'Спящие деньги: 250 000 ₽ на счёт',k:'предложение',say:'250 000 ₽ лежат на карте без дохода: +2 340 ₽ в месяц, если переложить. Месяц молчания стоит столько же.',why:'Остаток выше запаса две недели. Первое касание года: одно предложение, цена молчания последней строкой, больше на этой неделе ничего.',lead:'План на одно действие, «Не сейчас»',ch:'Карточка на Главном, пуш не чаще раза в месяц',screen:'val-home',flow:'pro'},
  {d:'20 окт',t:'Деньги пришли из другого банка',k:'факт',say:'500 000 ₽ пришли через СБП, вклад под 12,2% открыт в ту же минуту. Ни дня простоя.',why:'Клиент ждал этого события: сообщаем сразу, без действия и без вопросов.',lead:'Экран «Готово» и запись в журнале',ch:'Пуш',screen:'cap-tdone',flow:'cap'},
  {d:'25 окт',t:'Надбавка под угрозой',k:'дедлайн',say:'До +1,5% за покупки осталось 5 600 ₽ и шесть дней.',why:'Без напоминания клиент теряет 560 ₽ в ноябре и не понимает почему.',lead:'Экран надбавки с прогрессом и «Напомнить 29-го»',ch:'Пуш, карточка «Ближайшее»',screen:'pro-push-bonus',flow:'pro'},
- {d:'1 ноя',t:'Проценты пришли',k:'факт',say:'+4 160 ₽ за октябрь. Остались на накопительном и уже работают.',why:'Приятная цифра раз в месяц держит ощущение, что деньги работают. Выключается одним тапом.',lead:'Накопления',ch:'Пуш, выключаемый',screen:'cap-sav',flow:'cap'},
- {q:'5 недель тишины'},
+ {q:'6 недель тишины'},
  {d:'8 дек',t:'Вклад закрывается через 7 дней',k:'решение',say:'Вклад 400 000 ₽ закрывается 15 декабря. Три варианта готовы, лучший даёт +9 400 ₽.',why:'Момент самого высокого оттока. Говорим заранее и с вариантами, а не постфактум.',lead:'Три варианта и «Решу позже, напомните»',ch:'Пуш, календарь с разрешения',screen:'pro-push-mat',flow:'pro'},
  {d:'14 дек',t:'Завтра переоткрытие',k:'контроль',say:'Завтра в 9:00 переоткроем вклад под 12,2%. Отменить можно до 23:59.',why:'За день до любого автодействия контроль остаётся у клиента.',lead:'Журнал, «Отменить» в один тап',ch:'Пуш и напоминание телефона',screen:'cap-log',flow:'cap'},
  {q:'4 недели тишины'},
- {d:'12 янв',t:'Зарплата: пополнить вклад',k:'предложение',say:'Зарплата пришла. Пополнить вклад ••1234 на 50 000 ₽, пока действует 11,8%?',why:'Событие дохода плюс продукт с пополнением выше текущих ставок. Не чаще раза в месяц.',lead:'Пополнение в один тап, «Не сейчас»',ch:'Карточка «Ближайшее», пуш',screen:'sk-topup',flow:'pro'},
- {q:'7 недель тишины'},
- {d:'1 мар',t:'Налоговый дайджест',k:'напоминание',say:'Доход по вкладам за 2026 год: 225 000 ₽. Налог ≈ 8 450 ₽, срок 1 декабря. Есть вклады в других банках? Посчитаем вместе.',why:'Данные за год готовы. Убираем осенний сюрприз и собираем вклады других банков.',lead:'Налог по вкладам, «Напомнить об оплате»',ch:'Пуш, событие в календаре',screen:'pro-push-tax',flow:'pro'},
- {q:'13 недель тишины'},
+ {d:'12 янв',t:'Зарплата: пополнить вклад',k:'предложение',say:'Зарплата пришла. Пополнить вклад ••1234 на 50 000 ₽, пока действует 11,8%?',why:'Событие дохода плюс продукт с пополнением выше текущих ставок. Не чаще раза в месяц. Клиент сказал «не сейчас», и это записано с ценой отказа.',lead:'Пополнение в один тап, «Не сейчас»',ch:'Карточка «Ближайшее», пуш',screen:'sk-topup',flow:'pro'},
+ {d:'25 янв',t:'Надбавка под угрозой, второй раз',k:'дедлайн',say:'До +1,5% за покупки осталось 4 200 ₽ и шесть дней.',why:'В ноябре и декабре условие выполнилось само, и напоминания не было. Пишем только когда оно под угрозой.',lead:'Экран надбавки с прогрессом',ch:'Пуш, карточка «Ближайшее»',screen:'pro-push-bonus',flow:'pro'},
+ {q:'5 недель тишины'},
+ {d:'1 мар',t:'Налоговый дайджест',k:'напоминание',say:'Доход по вкладам за 2026 год: 225 000 ₽. Налог ≈ 8 450 ₽, срок 1 декабря. Есть вклады в других банках? Посчитаем вместе.',why:'Данные за год готовы. Убираем осенний сюрприз и собираем вклады других банков. Второе касание про налог будет 15 ноября, за две недели до срока, между ними тишина.',lead:'Налог по вкладам, «Напомнить об оплате»',ch:'Пуш, событие в календаре',screen:'pro-push-tax',flow:'pro'},
+ {d:'7 мар',t:'Вклад ••5520 закрывается 14 марта',k:'решение',say:'Вклад 800 000 ₽ закрывается 14 марта. Три варианта готовы, продлевать молча не будем.',why:'Второе закрытие за год, та же механика за 7 дней. Даже когда менять почти нечего, клиент должен услышать это от нас, а не от агрегатора ставок.',lead:'Три варианта и «Решу позже, напомните»',ch:'Пуш, календарь с разрешения',screen:'pro-cal',flow:'pro'},
+ {q:'12 недель тишины'},
  {d:'1 июн',t:'Цель достигнута',k:'решение',say:'Подушка 60 000 ₽ собрана, на два месяца раньше плана. Что дальше?',why:'Победа клиента: закрепляем привычку следующим шагом, а не тишиной.',lead:'Три варианта: копить дальше, новая цель, часть на вклад',ch:'Пуш',screen:'pro-goal-done',flow:'start'},
- {q:'24 недели тишины'},
- {d:'15 ноя',t:'Налог: до 1 декабря',k:'напоминание',say:'Напоминаем: 8 450 ₽ налога по вкладам до 1 декабря. Уведомление уже в личном кабинете ФНС.',why:'Второе касание только за две недели до срока. Между ними тишина.',lead:'Налог по вкладам',ch:'Пуш, напоминание телефона',screen:'sk-tax',flow:'pro'}
+ {q:'17 недель тишины до конца года'}
 ];
 const evRoot=$('#pro-events'),evBody=$('#pro-body'),evPhoneRoot=$('#pro-phone');
 if(evRoot&&evBody&&evPhoneRoot){
@@ -3822,8 +3844,10 @@ if(vcal){
 
 /* nav highlight + scroll reveal */
 const links=$$('.links a');const secs=links.map(a=>$(a.getAttribute('href'))).filter(Boolean);
-if('IntersectionObserver' in window){if(secs.length){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(s=>io.observe(s));}
+const grps=$$('.links .grp');function closeGrps(){grps.forEach(g=>{g.classList.remove('open');$('button',g).setAttribute('aria-expanded','false')})}
+grps.forEach(g=>{const b=$('button',g);b.addEventListener('click',e=>{const open=!g.classList.contains('open');closeGrps();if(open){g.classList.add('open');b.setAttribute('aria-expanded','true')}e.stopPropagation();});$$('a',g).forEach(a=>a.addEventListener('click',closeGrps));});
+document.addEventListener('click',closeGrps);addEventListener('keydown',e=>{if(e.key==='Escape')closeGrps()});
+if('IntersectionObserver' in window){if(secs.length){const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id));grps.forEach(g=>g.classList.toggle('on',!!$('a.on',g)));}})},{rootMargin:'-40% 0px -55% 0px'});secs.forEach(s=>io.observe(s));}
  if(!RM){const rv=$$('section.s .c, section.s .stage, section.s .rung, section.s .pipe .p, section.s .matrix .cell');rv.forEach(el=>el.classList.add('rv'));const ro=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');ro.unobserve(e.target);}})},{rootMargin:'0px 0px -8% 0px'});rv.forEach(el=>ro.observe(el));}}
-document.fonts&&document.fonts.ready.then(fit);fit();setTimeout(fit,300);
 })();
 </script>

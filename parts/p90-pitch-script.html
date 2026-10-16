@@ -1,0 +1,198 @@
+<script>
+(function(){
+'use strict';
+const {Proto,FLOWS,$,$$,RM,fmt}=window.SavingsProto;
+
+/* ===== Demo scenes. A step either opens a screen (id) or taps a control on the current screen (tap, with id as a fallback when the control is not there), or just holds the caption. Every scene loops. ===== */
+const HERO=[
+ {flow:'cap',id:'cap-plan',cap:'План на неделю: +44 000 ₽ в год, три действия'},
+ {tap:'[data-check][data-gain="9400"]',cap:'Снял галочку: итог и доля работающих денег пересчитались',dur:2300},
+ {tap:'[data-check][data-gain="9400"]',cap:'Вернул',dur:1500},
+ {tap:'[data-go="cap-confirm"]',id:'cap-confirm',cap:'Одна шторка на весь пакет действий'},
+ {tap:'[data-go="cap-done"]',id:'cap-done',cap:'Face ID: ни один рубль не двигается без подтверждения клиента',dur:3400},
+ {flow:'pro',id:'pro-push-mat',cap:'Вклад закрывается через 7 дней: три варианта уже готовы'},
+ {tap:'.push',id:'sv-maturity',cap:'Пуш открывает готовый экран, а не чат. Лучший вариант выбран'},
+ {flow:'start',id:'st-home',cap:'Сегмент «Старт»: «5 000 ₽ в месяц» и одна кнопка'},
+ {flow:'care',id:'care-home',cap:'Режим «Осторожный»: крупно, по одному, «Нет» того же размера'},
+ {flow:'ext',id:'ext-review',cap:'Запрос внешнего агента: проверки защитного контура банка'},
+ {flow:'pro',id:'val-ledger',cap:'Сколько принёс помощник: +31 900 ₽ сверх ставки'},
+ {flow:'cap',id:'edge-year',cap:'Итог года: +79 550 ₽ сверх ставки, деньги работали 362 дня из 365'}
+];
+const SCENES={
+ hero:HERO,hero2:HERO,
+ edge:[
+  {flow:'cap',id:'edge-ask',cap:'«В другом банке 14%. Перейти?» Ответ в рублях по всем деньгам'},
+  {tap:'[data-set*="Перенести"]',cap:'Честно: перенос тоже возможен, +25 440 ₽ в год',dur:2200},
+  {tap:'[data-set*="Закрыть утечки"]',cap:'Остаться выгоднее: +79 550 ₽ в год',dur:2000},
+  {tap:'[data-go="cap-market"]',id:'cap-market',cap:'Сравнение по всем деньгам: вывод первой строкой'},
+  {tap:'[data-go="cap-market-how"]',id:'cap-market-how',cap:'Таблица в шторке «Как посчитали?»',dur:2600},
+  {id:'edge-year',cap:'Итог года: +79 550 ₽ сверх ставки, по пунктам и с источниками'}
+ ],
+ ask:[
+  {flow:'saver',id:'sv-shop',cap:'Витрина: помощник рядом с продуктами, а не в отдельном чате'},
+  {tap:'.chip.ai[data-go="sv-ask"]',id:'sv-ask',cap:'«300 000 на полгода, но 100 могут понадобиться»'},
+  {hold:true,cap:'Экран собирается на глазах: два варианта с цифрами из тарифов банка',dur:3200},
+  {tap:'[data-go="sv-why"]',id:'sv-why',cap:'«Почему так?» рядом с каждым выводом',dur:2400},
+  {id:'sv-open',cap:'Нативный экран открытия уже заполнен. Клиент видит каждое условие'},
+  {tap:'[data-amt="300000"]',cap:'Сумма кликабельна: доход и кнопка пересчитываются',dur:2200},
+  {tap:'[data-go="sv-confirm"]',id:'sv-confirm',cap:'Подтверждение: два продукта, одна кнопка, Face ID'}
+ ],
+ mat:[
+  {flow:'pro',id:'pro-home',cap:'Главный: карточка «Ближайшее», две даты и одна кнопка'},
+  {id:'pro-push-mat',cap:'За 7 дней до закрытия: пуш с лучшим вариантом уже в тексте',dur:3000},
+  {tap:'.push',id:'sv-maturity',cap:'Три варианта с цифрами. Лучший уже выбран'},
+  {tap:'[data-set*="на счёт"]',cap:'Можно выбрать другой: кнопка меняется вместе с выбором',dur:2000},
+  {tap:'[data-set*="новый вклад"]',cap:'Вернул лучший вариант',dur:1500},
+  {tap:'[data-go="sv-confirm2"]',id:'sv-confirm2',cap:'Отложенное действие на дату закрытия'},
+  {tap:'[data-go="sv-done2"]',id:'sv-done2',cap:'Face ID. Отменить можно до последнего дня',dur:3400},
+  {hold:true,cap:'Запланировано: напомним за день, продлевать молча не будем',dur:2400}
+ ],
+ start:[
+  {flow:'start',id:'st-home',cap:'Главный: «5 000 ₽ в месяц» и одна кнопка'},
+  {tap:'[data-go="st-plan"]',id:'st-plan',cap:'План одним экраном: цель, сумма и правила уже выбраны'},
+  {tap:'[data-select="amt"][data-val="7500"]',cap:'Поменял сумму: дата цели пересчиталась',dur:2200},
+  {tap:'[data-toggle][data-gain="6200"]',cap:'Включил правило: подушка соберётся быстрее',dur:2200},
+  {tap:'[data-go="st-confirm"]',id:'st-confirm',cap:'Подтверждение: сколько и куда'},
+  {tap:'[data-go="st-done"]',id:'st-done',cap:'Face ID. Счёт открыт',dur:3400},
+  {hold:true,cap:'Три тапа от первого экрана до счёта, если ничего не менять',dur:2200}
+ ],
+ care:[
+  {flow:'care',id:'care-home',cap:'Одна мысль на экран, крупный шрифт, три кнопки'},
+  {tap:'[data-go="care-confirm"]',id:'care-confirm',cap:'«Да» и «Нет» одного размера'},
+  {tap:'[data-go="care-done"]',id:'care-done',cap:'Face ID. Готово',dur:3400},
+  {hold:true,cap:'Следующая подсказка не раньше чем через месяц. Живой человек в один тап',dur:2400}
+ ],
+ plan:[
+  {flow:'cap',id:'cap-sav',cap:'Портфель: работают 67% денег, можно +44 000 ₽ в год'},
+  {id:'cap-plan',cap:'План на неделю: три действия с выгодой в рублях и «почему»'},
+  {tap:'[data-check][data-gain="28100"]',cap:'Снял галочку: итог и доля работающих денег пересчитались',dur:2400},
+  {tap:'[data-check][data-gain="28100"]',cap:'Вернул',dur:1500},
+  {tap:'[data-go="cap-confirm"]',id:'cap-confirm',cap:'Одна шторка на три действия: сумма, откуда → куда, даты'},
+  {tap:'[data-go="cap-done"]',id:'cap-done',cap:'Face ID один раз на весь пакет',dur:3400},
+  {id:'cap-report',cap:'Понедельник: отчёт, даже если помощник ничего не делал'}
+ ],
+ trust:[
+  {flow:'rb',id:'rb-rule-offer',cap:'Три одинаковых подтверждения подряд: помощник предлагает правило'},
+  {tap:'[data-go="rb-rule-set"]',id:'rb-rule-set',cap:'Порог, когда проверять, не больше за раз. Фраза правила пересчитывается'},
+  {tap:'[data-select="rthr"][data-val="200000"]',cap:'Поднял порог: переводов будет меньше, помощник честно пишет цену',dur:2400},
+  {id:'rb-auto-offer',cap:'Три месяца без отмен: предложить автопилот. Правила уже заполнены'},
+  {id:'rb-quiet',cap:'Неделя без изменений: «менять ничего не нужно». Тишина тоже отчёт'},
+  {id:'rb-pause',cap:'Пауза в один тап: на месяц, пока не включу, или совсем'},
+  {tap:'[data-set*="Пока сам"]',cap:'Понижение уровня мгновенное и без вопросов',dur:2200}
+ ],
+ pro:[
+  {flow:'pro',id:'val-home',cap:'Одно предложение на неделю: +2 340 ₽ в месяц и цена молчания'},
+  {tap:'.badge[data-go="val-ledger"]',id:'val-ledger',cap:'Счётчик на Главном: сколько принёс помощник'},
+  {hold:true,cap:'Каждое касание в рублях, отказ клиента со своей ценой, молчание тоже посчитано',dur:2800},
+  {id:'pro-cal',cap:'Календарь сбережений: закрытия, выплаты, дедлайны, налог'},
+  {id:'pro-settings',cap:'Как напоминать: частоту и каналы выбирает клиент'},
+  {id:'rb-quiet',cap:'Когда менять нечего, помощник так и пишет и молчит до следующей недели'}
+ ],
+ bank:[
+  {flow:'cap',id:'cap-market',cap:'Сравнение с рынком по всем деньгам и за год, честно'},
+  {tap:'[data-go="cap-transfer"]',id:'cap-transfer',cap:'Перенос из другого банка в день закрытия чужого вклада'},
+  {tap:'[data-go="cap-tdone"]',id:'cap-tdone',cap:'Face ID: СБП и вклад в ту же минуту, ни дня простоя',dur:3400},
+  {id:'edge-year',cap:'Итог года: сервис в рублях сверх ставки, деньги работали 362 дня из 365'},
+  {id:'cap-log',cap:'Журнал: кто, что, когда и почему. Источник каждого действия'}
+ ],
+ ext:[
+  {flow:'ext',id:'ext-push',cap:'Ассистент клиента предлагает действие через протокол банка',at:0},
+  {tap:'.push',id:'ext-review',cap:'Проверки контура: периметр, политика, лимиты, источник цифр',at:1},
+  {tap:'[data-go="ext-confirm"]',id:'ext-confirm',cap:'Та же кнопка, что у своего помощника. Инициатор указан',at:2},
+  {tap:'[data-go="ext-done"]',id:'ext-done',cap:'Face ID в приложении банка. Сам агент подтвердить не может',dur:3400,at:3},
+  {id:'ext-access',cap:'Доступ агентов: права по каждому, отзыв в один тап',at:3}
+ ]
+};
+const STEP=2600;
+
+/* ===== Reel: plays a scene on one phone, loops, pauses when the viewer taps the phone or leaves the slide ===== */
+class Reel{
+ constructor(root,steps,bar,opts){this.root=root;this.screen=$('.screen',root);this.steps=steps;this.bar=bar;this.opts=opts||{};this.i=0;this.t=[];this.on=false;this.slide=root.closest('.sl');
+  this.proto=new Proto(root,steps[0].flow||'cap');
+  root.addEventListener('click',e=>{if(e.isTrusted&&this.on)this.pause(true);},true);
+  if(bar){bar.innerHTML=`<div class="rcap"><small></small><b></b></div><div class="rprog"><i></i></div><div class="rdots">${steps.map(()=>'<i></i>').join('')}</div><div class="rctl"><button class="rplay" type="button"><svg class="ic"><use href="#i-pause"/></svg><span>Пауза</span></button><button class="rreset" type="button"><svg class="ic"><use href="#i-repeat"/></svg><span>Сначала</span></button></div>`;
+   $('.rplay',bar).addEventListener('click',()=>this.on?this.pause(true):this.play());$('.rreset',bar).addEventListener('click',()=>this.restart());}
+  this.proto.go(steps[0].id,'none');this.show(0,false);}
+ k(){return parseFloat(getComputedStyle(this.root).getPropertyValue('--k'))||1}
+ wait(ms,fn){this.t.push(setTimeout(fn,ms))}
+ clear(){this.t.forEach(clearTimeout);this.t=[]}
+ top(){return $$('.layer',this.screen).pop()}
+ ui(){if(!this.bar)return;const b=$('.rplay',this.bar);b.classList.toggle('on',!this.on);$('use',b).setAttribute('href',this.on?'#i-pause':'#i-play');$('span',b).textContent=this.on?'Пауза':'Демо';}
+ show(i,run){const s=this.steps[i];if(!this.bar)return;$('.rcap small',this.bar).textContent=`Демо · ${i+1} из ${this.steps.length}`;$('.rcap b',this.bar).textContent=s.cap;
+  $$('.rdots i',this.bar).forEach((d,j)=>{d.classList.toggle('on',j===i);d.classList.toggle('done',j<i)});
+  const p=$('.rprog i',this.bar);p.style.transition='none';p.style.width='0';if(run){const dur=s.dur||STEP;requestAnimationFrame(()=>requestAnimationFrame(()=>{p.style.transition=`width ${dur}ms linear`;p.style.width='100%'}));}}
+ play(){if(this.on)return;this.on=true;this.ui();this.run();}
+ pause(byUser){this.clear();this.on=false;this.ui();if(this.bar&&byUser){$('.rcap small',this.bar).textContent='Демо на паузе · экран можно листать самим';const p=$('.rprog i',this.bar);p.style.transition='none';p.style.width='0';}}
+ restart(){this.clear();this.i=0;this.proto.hist=[];this.on=true;this.ui();this.run(true);}
+ enter(){this.restart()}
+ leave(){this.pause(false)}
+ /* scroll the phone's own content so the control is visible; never scrolls the page */
+ reveal(el){const sc=el.closest('.content.scroll');if(!sc)return false;const k=this.k();const r=el.getBoundingClientRect(),rc=sc.getBoundingClientRect();const top=(r.top-rc.top)/k,h=r.height/k,H=rc.height/k;if(top>=70&&top+h<=H-150)return false;sc.scrollTo({top:sc.scrollTop+top-(H-h)/2,behavior:RM?'instant':'smooth'});return true;}
+ ring(el){const k=this.k();const r=el.getBoundingClientRect(),sr=this.screen.getBoundingClientRect();const i=document.createElement('i');i.className='tapring';i.style.left=((r.left+r.width/2-sr.left)/k)+'px';i.style.top=((r.top+r.height/2-sr.top)/k)+'px';this.screen.appendChild(i);setTimeout(()=>i.remove(),700);}
+ run(first){const s=this.steps[this.i];if(!s||!this.on)return;const dur=s.dur||STEP;
+  if(s.flow)this.proto.flow=s.flow;
+  if(this.opts.onstep)this.opts.onstep(s,this.i);
+  this.show(this.i,true);
+  const next=()=>{this.i=(this.i+1)%this.steps.length;if(this.i===0)this.proto.hist=[];this.run(this.i===0);};
+  if(s.tap){const layer=this.top();const el=layer&&layer.querySelector(s.tap);
+   if(el){const moved=this.reveal(el);this.wait(moved&&!RM?420:120,()=>{this.ring(el);this.wait(RM?80:320,()=>{el.click();this.wait(dur,next);});});return;}
+   if(s.id){this.proto.go(s.id,'push');this.wait(dur,next);return;}
+   this.wait(10,next);return;}
+  if(s.id){this.proto.go(s.id,first?'none':'push');this.wait(dur,next);return;}
+  this.wait(dur,next);}
+}
+
+/* ===== phones ===== */
+$$('[data-static]').forEach(r=>{const p=new Proto(r,r.dataset.flow||'cap',{static:true});p.go(r.dataset.static,'none');});
+const trace=$('#ptrace');
+const traceAt=at=>{if(trace)$$('.l',trace).forEach(l=>l.classList.toggle('in',+l.dataset.at<=at));};
+const reels=$$('[data-reel]').map(root=>{const key=root.dataset.reel;const bar=$(`[data-reelbar="${key}"]`);const opts={};if(key==='ext')opts.onstep=s=>{if(s.at!=null)traceAt(s.at)};return new Reel(root,SCENES[key],bar,opts);});
+
+/* size every phone to its column: by width, and by the height left under the headline when the phone sits in a phone column */
+function fitAll(){const vh=innerHeight;$$('.ph-wrap.pfit').forEach(w=>{const max=parseFloat(w.dataset.max||'1');const box=w.parentElement;const col=box.classList.contains('pcol')?box:(box.parentElement&&box.parentElement.classList.contains('pcol')?box.parentElement:null);
+  let availW=box.clientWidth||472,availH=Infinity;
+  if(col){const sl=col.closest('.sl'),cs=getComputedStyle(sl),gap=parseFloat(cs.rowGap)||0;let h=vh-parseFloat(cs.paddingTop)-parseFloat(cs.paddingBottom);const shd=$('.shd',sl),sft=$('.sft',sl);if(shd)h-=shd.offsetHeight+gap;if(sft)h-=sft.offsetHeight+gap;
+   const sib=[...box.children].filter(c=>c!==w);availH=h-sib.reduce((s,c)=>s+c.offsetHeight+12,0)-6;availW=col.classList.contains('two')?(col.clientWidth-28)/2:col.clientWidth;}
+  const k=Math.max(.2,Math.min(max,availW/472,availH/988));w.style.setProperty('--k',k.toFixed(3));});}
+let fitT=null;addEventListener('resize',()=>{fitAll();clearTimeout(fitT);fitT=setTimeout(fitAll,220);});document.fonts&&document.fonts.ready.then(fitAll);fitAll();setTimeout(fitAll,300);setTimeout(fitAll,900);
+
+/* ===== slides: progress, dots, counter, keyboard ===== */
+const slides=$$('.sl'),n=slides.length,pbar=$('#pbar'),pnav=$('#pnav');let cur=0;
+if(pnav)pnav.innerHTML=slides.map((s,i)=>`<a href="#${s.id}" data-t="${(s.dataset.t||'').replace(/"/g,'')}" class="${i&&s.dataset.act!==slides[i-1].dataset.act?'gap':''}"></a>`).join('');
+$$('[data-counter]').forEach(el=>{const s=el.closest('.sl');el.textContent=`${String(slides.indexOf(s)+1).padStart(2,'0')} / ${n}`;});
+function setCur(i){cur=i;if(pbar)pbar.style.width=((i+1)/n*100)+'%';if(pnav)$$('a',pnav).forEach((a,j)=>a.classList.toggle('on',j===i));}
+if('IntersectionObserver' in window){const io=new IntersectionObserver(es=>{es.forEach(e=>{const i=slides.indexOf(e.target);const rs=reels.filter(r=>r.slide===e.target);if(e.isIntersecting){setCur(i);e.target.classList.add('seen');rs.forEach(r=>r.enter());}else rs.forEach(r=>r.leave());})},{threshold:.4});slides.forEach(s=>io.observe(s));}
+else reels.forEach(r=>r.play());
+/* if the observer has not fired (background tab, old browser), start the slide at the top of the viewport by hand */
+function wakeVisible(){if(slides.some(s=>s.classList.contains('seen')))return;const y=scrollY+innerHeight*.45;const s=slides.find(s=>s.offsetTop<=y&&s.offsetTop+s.offsetHeight>y)||slides[0];const i=slides.indexOf(s);setCur(i);s.classList.add('seen');reels.filter(r=>r.slide===s).forEach(r=>r.enter());}
+setTimeout(wakeVisible,500);document.addEventListener('visibilitychange',()=>{if(!document.hidden)setTimeout(wakeVisible,100);});
+function goTo(i){i=Math.max(0,Math.min(n-1,i));slides[i].scrollIntoView({behavior:RM?'instant':'smooth',block:'start'});}
+const root=document.documentElement;
+function toggleTheme(){if(root.dataset.theme==='light')delete root.dataset.theme;else root.dataset.theme='light';try{localStorage.setItem('pitch-theme',root.dataset.theme||'dark')}catch(e){}}
+try{if(localStorage.getItem('pitch-theme')==='light')root.dataset.theme='light';}catch(e){}
+function toggleFull(){try{if(document.fullscreenElement)document.exitFullscreen();else root.requestFullscreen&&root.requestFullscreen().catch(()=>{});}catch(e){}}
+const tTheme=$('#t-theme'),tFull=$('#t-full');if(tTheme)tTheme.addEventListener('click',toggleTheme);if(tFull)tFull.addEventListener('click',toggleFull);
+addEventListener('keydown',e=>{if(e.metaKey||e.ctrlKey||e.altKey)return;const tag=document.activeElement&&document.activeElement.tagName;if(/input|textarea|select/i.test(tag))return;const k=e.key;
+ if(k==='ArrowRight'||k==='ArrowDown'||k==='PageDown'||k===' '){e.preventDefault();goTo(cur+1);}
+ else if(k==='ArrowLeft'||k==='ArrowUp'||k==='PageUp'){e.preventDefault();goTo(cur-1);}
+ else if(k==='Home'){e.preventDefault();goTo(0);}else if(k==='End'){e.preventDefault();goTo(n-1);}
+ else if(/^[fFаА]$/.test(k))toggleFull();else if(/^[tTеЕ]$/.test(k))toggleTheme();
+ else if(/^[pPзЗ]$/.test(k)){const rs=reels.filter(r=>r.slide===slides[cur]);rs.forEach(r=>r.on?r.pause(true):r.play());}
+ else if(/^[rRкК]$/.test(k)){reels.filter(r=>r.slide===slides[cur]).forEach(r=>r.restart());}});
+
+/* ===== rate against leaks: the best market rate without the assistant vs our rate with the leaks closed ===== */
+const comp=$('#p-comp');
+if(comp){const DEP=1600000,BASE=12.2,SWITCH=3360;const LEAKS=[['спящие деньги',45000,'var(--accent)'],['тихое продление',18800,'#5BD67E'],['простой между вкладами',6400,'var(--c-sav)'],['сгоревшие проценты',3200,'var(--ai)'],['условие надбавки',2250,'#A48BFF'],['налог',3900,'#C9B8FF']];const ours=LEAKS.reduce((s,l)=>s+l[1],0);const pct=v=>v.toFixed(1).replace('.',',')+'%';
+ function run(){const c=+comp.value;const gain=Math.max(0,c-BASE)/100*DEP;const cost=c>BASE?SWITCH:0;const theirs=gain-cost;const mx=Math.max(gain,ours,1);const seg=(w,bg)=>`<i style="width:${Math.max(0,w)/mx*100}%;background:${bg}"></i>`;
+  $('#p-bar-theirs').innerHTML=seg(gain-cost,'#8C9A92')+(cost?seg(cost,'var(--warn)'):'');$('#p-bar-ours').innerHTML=LEAKS.map(l=>seg(l[1],l[2])).join('');
+  $('#p-lg').innerHTML=`<span><i style="background:#8C9A92"></i>ставка выше на ${Math.max(0,c-BASE).toFixed(1).replace('.',',')} п.п.</span>`+(cost?`<span><i style="background:var(--warn)"></i>цена перехода ${fmt(cost)}</span>`:'')+LEAKS.map(l=>`<span><i style="background:${l[2]}"></i>${l[0]} ${fmt(l[1])}</span>`).join('');
+  $$('.p-comp-v').forEach(el=>el.textContent=pct(c));$('#p-theirs').textContent=(theirs<0?'−':'+')+fmt(Math.abs(theirs))+' ₽';$('#p-ours').textContent='+'+fmt(ours)+' ₽';
+  const d=ours-theirs,v=$('#p-verdict'),be=BASE+(ours+SWITCH)/DEP*100;
+  if(d>=0){v.className='verdict';v.textContent=`С помощником на ${fmt(d)} ₽ в год больше при ставке конкурента ${pct(c)}. Чтобы перебить сервис одной ставкой, конкуренту нужно ${pct(be)}.`;}
+  else{v.className='verdict warn';v.textContent=`При ${pct(c)} конкурент выгоднее на ${fmt(-d)} ₽ в год. Помощник так и скажет и перенесёт деньги в день закрытия без простоя.`;}}
+ comp.addEventListener('input',run);run();}
+
+/* deep link to a slide */
+if(location.hash){const s=$(location.hash);if(s&&s.classList.contains('sl'))setTimeout(()=>s.scrollIntoView({behavior:'instant',block:'start'}),50);}
+})();
+</script>

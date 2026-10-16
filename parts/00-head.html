@@ -785,6 +785,19 @@ footer{padding-block:40px;border-top:1px solid var(--line);font-size:14px;color:
 .layer.light{background:radial-gradient(70% 46% at 10% -6%,rgba(112,84,245,.16) 0%,rgba(112,84,245,0) 62%),radial-gradient(58% 42% at 106% 24%,rgba(38,170,70,.14) 0%,rgba(38,170,70,0) 60%),#EEEEF4}
 .xchat{background:transparent}
 @media (prefers-reduced-transparency:reduce){.screen{--g-blur:0px}.layer{background:#0B0B0F}.card,.opt,.tile,.pick,.quote{background:#1C1C1E}.sheet{background:#1C1C1E}.tabbar{background:rgba(38,38,42,.96)}}
+/* ===== v6: grouped navigation ===== */
+.links{overflow:visible;align-items:center}
+.grp{position:relative}
+.grp>button{appearance:none;border:0;background:transparent;white-space:nowrap;font:600 14px var(--text);color:var(--ink2);padding:7px 11px;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:4px}
+.grp>button::after{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:translateY(-2px) rotate(45deg);margin-left:3px;opacity:.7}
+.grp>button:hover,.grp.on>button,.grp.open>button{background:var(--accent-soft);color:var(--accent)}
+.grp .menu{position:absolute;top:calc(100% + 6px);left:0;min-width:230px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:6px;box-shadow:0 14px 34px rgba(0,0,0,.18);display:none;flex-direction:column;z-index:50}
+.grp.open .menu{display:flex}
+@media (hover:hover){.grp:hover .menu,.grp:focus-within .menu{display:flex}}
+.grp .menu a{padding:8px 12px;border-radius:9px;font-size:14px}
+.pitch-link{white-space:nowrap;font:700 13px var(--text);color:#fff;background:var(--accent);padding:8px 14px;border-radius:999px;text-decoration:none;flex:none}
+.pitch-link:hover{background:var(--accent2)}
+@media (max-width:760px){.pitch-link{display:none}}
 </style>
 <svg style="display:none" xmlns="http://www.w3.org/2000/svg">
 <symbol id="i-home" viewBox="0 0 24 24"><path d="M3.5 10.5 12 3.5l8.5 7V20a1 1 0 0 1-1 1h-5v-6h-5v6h-5a1 1 0 0 1-1-1z"/></symbol>

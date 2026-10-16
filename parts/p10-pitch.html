@@ -1,0 +1,422 @@
+<style>
+/* Pitch: full-viewport slides for a leadership presentation. Dark-first for a projector, same tokens and phone as the deck. Each slide: headline, one argument in numbers, one live phone that plays its scene on a loop. */
+:root{--bg:#0E1512;--bg2:#121B17;--surface:#182219;--ink:#EEF3EF;--ink2:#C3CDC6;--ink3:#8C9A92;--line:#26332B;--accent:#5BD67E;--accent2:#8BE5A4;--accent-soft:#163A24;--ai:#A48BFF;--ai-soft:#2A2350;--warn:#E7A24A;--warn-soft:#3A2A12;--dark:#060A08;--on-dark:#F2F5F1;--on-dark2:#A9B8AE;--c-idle:#D99A3A;--c-sav:#4FA3E6;--c-dep:#3DBD68;color-scheme:dark}
+:root[data-theme="light"]{--bg:#F5F7F4;--bg2:#EBEFE9;--surface:#FFFFFF;--ink:#111815;--ink2:#3E4944;--ink3:#6E7A74;--line:#DCE3DE;--accent:#157A36;--accent2:#0E5A28;--accent-soft:#DDF0E3;--ai:#6246EA;--ai-soft:#ECE8FF;--warn:#B45309;--warn-soft:#FBEEDC;--dark:#0F1F17;--on-dark:#F2F5F1;--on-dark2:#A9B8AE;--c-idle:#B45309;--c-sav:#1D6FA5;--c-dep:#157A36;color-scheme:light}
+html{font-size:clamp(12.5px,1.7vh,17px);scroll-snap-type:y proximity}
+@media (max-width:900px),(max-height:560px){html{scroll-snap-type:none}}
+body{margin:0;overflow-x:hidden;background:var(--bg);color:var(--ink)}
+.sl{position:relative;min-height:100vh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;gap:clamp(12px,2vh,26px);padding:clamp(18px,3vh,34px) clamp(16px,5vw,84px) clamp(14px,2.2vh,24px);max-width:1720px;margin:0 auto;width:100%;box-sizing:border-box}
+.sl *{box-sizing:border-box}
+.shd{display:flex;flex-direction:column;gap:.55rem;max-width:1180px;flex:none}
+.sl .eyebrow{display:flex;gap:.7rem;align-items:center;font-size:.78rem}
+.sl .eyebrow .act{color:var(--ink3);font-weight:700;letter-spacing:.1em}
+.sl h2.t{font-size:clamp(1.55rem,3.2vw,3rem);line-height:1.06;max-width:24ch}
+.sl .lead{font-size:clamp(.95rem,1.25vw,1.3rem);line-height:1.45;max-width:74ch}
+.sbd{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(18px,3.5vw,60px);align-items:stretch}
+.sbd.wide{grid-template-columns:minmax(0,1.35fr) minmax(0,.65fr)}
+.sbd.one{grid-template-columns:minmax(0,1fr)}
+@media (max-width:900px){.sbd,.sbd.wide{grid-template-columns:minmax(0,1fr)}}
+.col{min-width:0;display:flex;flex-direction:column;gap:.9rem;justify-content:center}
+.pcol{min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;position:relative}
+.pcol.two{flex-direction:row;align-items:flex-start;justify-content:center;gap:clamp(14px,2vw,28px);flex-wrap:wrap}
+.pcol.two>div{display:flex;flex-direction:column;align-items:center;gap:10px;min-width:0;flex:1 1 0}
+.pcol.two .reelbar{width:100%}
+.pcol::before{content:"";position:absolute;inset:6% 8%;border-radius:50%;background:radial-gradient(closest-side,rgba(112,84,245,.3),rgba(112,84,245,0) 72%),radial-gradient(closest-side at 72% 82%,rgba(38,170,70,.22),rgba(38,170,70,0) 70%);filter:blur(34px);pointer-events:none;z-index:0}
+:root[data-theme="light"] .pcol::before{opacity:.45}
+.pcol>*{position:relative;z-index:1}
+.pcap{font-size:.82rem;color:var(--ink2);text-align:center;max-width:240px;line-height:1.4}
+.pcap b{display:block;color:var(--ink)}
+/* reel bar under a live phone */
+.reelbar{width:min(100%,440px);display:flex;flex-direction:column;gap:7px}
+.rcap{text-align:center;min-height:3.2em;display:flex;flex-direction:column;justify-content:flex-start;gap:3px}
+.rcap small{font:700 .66rem/1.3 var(--text);letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.rcap b{font-family:var(--display);font-weight:700;font-size:clamp(.9rem,1.05vw,1.1rem);line-height:1.3;color:var(--ink);text-wrap:balance}
+.rprog{height:3px;border-radius:2px;background:var(--line);overflow:hidden}
+.rprog i{display:block;height:100%;width:0;background:var(--accent)}
+.rdots{display:flex;gap:5px;justify-content:center;flex-wrap:wrap}
+.rdots i{width:7px;height:7px;border-radius:50%;background:var(--line);transition:transform .2s,background .2s}
+.rdots i.on{background:var(--accent);transform:scale(1.35)}
+.rdots i.done{background:var(--accent2);opacity:.55}
+.rctl{display:flex;gap:8px;justify-content:center}
+.rctl button{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--ink2);font:600 .78rem var(--text);padding:.42rem .8rem;border-radius:999px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.rctl button.on{background:var(--accent-soft);color:var(--accent);border-color:transparent}
+.rctl button .ic{width:14px;height:14px}
+.tapring{position:absolute;width:54px;height:54px;margin:-27px 0 0 -27px;border-radius:50%;background:rgba(255,255,255,.3);box-shadow:0 0 0 2px rgba(255,255,255,.92),0 0 26px rgba(255,255,255,.55);z-index:60;pointer-events:none;animation:tapr .6s ease-out forwards}
+@keyframes tapr{0%{transform:scale(.4);opacity:0}25%{opacity:1}100%{transform:scale(1.45);opacity:0}}
+@media (prefers-reduced-motion:reduce){.tapring{animation-duration:.1s}}
+/* numbers and arguments */
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.7rem}
+.stats.c3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:640px){.stats,.stats.c3{grid-template-columns:minmax(0,1fr)}}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;padding:.9rem 1.05rem;min-width:0}
+.stat b{display:block;font-family:var(--display);font-size:clamp(1.5rem,2.4vw,2.3rem);font-weight:800;letter-spacing:-.02em;line-height:1.05;color:var(--accent);font-variant-numeric:tabular-nums}
+.stat b.w{color:var(--warn)}
+.stat b.i{color:var(--ink);font-size:clamp(1.1rem,1.5vw,1.45rem)}
+.stat span{display:block;font-size:clamp(.82rem,.95vw,.95rem);color:var(--ink2);line-height:1.42;margin-top:.4rem}
+.stat span strong{color:var(--ink)}
+.sl .band{margin-top:0;padding:.95rem 1.25rem;gap:1rem;border-radius:1.1rem}
+.sl .band p{font-size:clamp(.92rem,1.2vw,1.18rem);line-height:1.42}
+.sl .band p b{color:#5BD67E}
+.rules{display:flex;flex-direction:column;gap:.6rem}
+.rule{display:grid;grid-template-columns:2rem minmax(0,1fr);gap:.8rem;align-items:start}
+.rule i{width:2rem;height:2rem;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font:800 .85rem var(--display);font-style:normal}
+.rule b{display:block;font-size:clamp(.95rem,1.15vw,1.12rem);line-height:1.25}
+.rule span{display:block;font-size:clamp(.8rem,.95vw,.95rem);color:var(--ink2);line-height:1.4;margin-top:.15rem}
+.roles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+@media (max-width:900px){.roles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.role{background:var(--surface);border:1px solid var(--line);border-radius:1rem;padding:.85rem .95rem;display:flex;flex-direction:column;gap:.3rem;min-width:0}
+.role.p4{border-style:dashed;border-color:color-mix(in srgb,var(--ai) 50%,var(--line))}
+.role .yr{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.role.p4 .yr{color:var(--ai)}
+.role h3{font-size:clamp(1rem,1.3vw,1.3rem);margin:0}
+.role p{font-size:clamp(.8rem,.92vw,.92rem);color:var(--ink2);line-height:1.4}
+.flow4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+@media (max-width:900px){.flow4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.flow4 .p{display:flex;flex-direction:column;gap:.45rem;padding:.75rem .85rem;border:1px solid var(--line);border-radius:1rem;min-width:0;position:relative}
+.flow4 .p i{width:2.1rem;height:2.1rem;border-radius:.65rem;display:grid;place-items:center;background:var(--bg2);color:var(--ink2)}
+.flow4 .p i .ic{width:1.2rem;height:1.2rem}
+.flow4 .p.ai i{background:var(--ai-soft);color:var(--ai)}
+.flow4 .p.nat i{background:var(--accent-soft);color:var(--accent)}
+.flow4 .p b{display:block;font-size:clamp(.88rem,1.05vw,1rem);line-height:1.25}
+.flow4 .p span{font-size:clamp(.78rem,.9vw,.88rem);color:var(--ink2);line-height:1.38}
+.flow4 .p+.p::before{content:"";position:absolute;left:-.45rem;top:1.45rem;width:.3rem;height:.3rem;border-radius:50%;background:var(--ink3)}
+.sl .ladder{grid-template-columns:repeat(4,minmax(0,1fr));gap:.6rem}
+@media (max-width:640px){.sl .ladder{grid-template-columns:minmax(0,1fr)}}
+.sl .rung{padding:.85rem .9rem 1rem;gap:.3rem;border-radius:1rem}
+.sl .rung .lv{font-size:1.5rem}
+.sl .rung h3{font-size:clamp(.95rem,1.2vw,1.15rem)}
+.sl .rung p{font-size:clamp(.78rem,.9vw,.88rem);line-height:1.4}
+.sl .rung .who{font-size:.72rem;margin-top:.2rem}
+.sl .rung.r2{padding-top:1.6rem}.sl .rung.r3{padding-top:2.35rem}.sl .rung.r4{padding-top:3.1rem}
+@media (max-width:640px){.sl .rung.r2,.sl .rung.r3,.sl .rung.r4{padding-top:.85rem}}
+.cmpb{display:flex;flex-direction:column;gap:.9rem}
+.cmpb .row{display:flex;flex-direction:column;gap:.35rem}
+.cmpb .lab{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:clamp(.82rem,.98vw,.98rem);color:var(--ink2);line-height:1.3}
+.cmpb .lab b{font-family:var(--display);font-size:clamp(1.35rem,2vw,2rem);font-weight:800;color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.02em;white-space:nowrap}
+.cmpb .lab b.g{color:var(--accent)}
+.cmpb .bar{display:flex;height:1.7rem;border-radius:.55rem;overflow:hidden;gap:2px;background:var(--bg2)}
+.cmpb .bar i{display:block;height:100%;transition:width .5s cubic-bezier(.2,.8,.2,1)}
+.lg{display:flex;gap:.3rem .85rem;flex-wrap:wrap;font-size:.76rem;color:var(--ink2)}
+.lg span i{display:inline-block;width:9px;height:9px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+.rng label{display:flex;flex-direction:column;gap:.3rem;font-size:.9rem;color:var(--ink2)}
+.rng label b{color:var(--ink)}
+.rng input[type=range]{width:100%;accent-color:var(--accent)}
+.sl .verdict{font-size:clamp(.92rem,1.2vw,1.15rem);padding:.75rem 1rem;border-radius:.9rem}
+.ptrace{background:#0B1410;color:#D6E3DA;border-radius:1rem;padding:.85rem 1rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:clamp(.72rem,.88vw,.84rem);line-height:1.5;display:flex;flex-direction:column;gap:3px}
+.ptrace .l{display:flex;gap:10px;opacity:.22;transition:opacity .35s}
+.ptrace .l.in{opacity:1}
+.ptrace .tt{flex:none;width:4.6em;font-weight:700;color:#8FB8A0}
+.ptrace .l.ok .tt{color:#5BD67E}.ptrace .l.no .tt{color:#F0A868}.ptrace .l.app .tt{color:#C9B8FF}.ptrace .l.llm .tt{color:#8FD3FF}
+.rmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.75rem;align-items:start;align-self:center}
+@media (max-width:900px){.rmap{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.rmap{grid-template-columns:minmax(0,1fr)}}
+.rmap .st{background:var(--surface);border:1px solid var(--line);border-radius:1.1rem;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.4rem;min-width:0}
+.rmap .st .yr{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--accent)}
+.rmap .st h3{font-size:clamp(1rem,1.3vw,1.3rem);margin:0}
+.rmap .st p{font-size:clamp(.8rem,.92vw,.92rem);color:var(--ink2);line-height:1.4}
+.rmap .st .k{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:.3rem}
+.rmap .st .ph-wrap{margin:.5rem auto 0}
+.apx{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;align-self:center;width:100%}
+@media (max-width:900px){.apx{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.apx{grid-template-columns:minmax(0,1fr)}}
+.apx h3{font-size:.78rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin:0 0 .5rem}
+.apx a{display:block;padding:.55rem .8rem;border:1px solid var(--line);border-radius:.75rem;background:var(--surface);color:var(--ink);text-decoration:none;font-size:.9rem;margin-bottom:.4rem}
+.apx a:hover{border-color:var(--accent)}
+.apx a small{display:block;color:var(--ink3);font-size:.75rem;margin-top:.1rem}
+.sl .acts{display:flex;gap:10px;flex-wrap:wrap}
+.sl .btn-p,.sl .btn-s{height:2.8rem;font-size:.9rem;padding:0 1.2rem}
+/* title slide */
+.sl.title{justify-content:center}
+.sl.title .sbd{flex:0 1 auto;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);align-items:center;min-height:min(78vh,900px)}
+@media (max-width:900px){.sl.title .sbd{grid-template-columns:minmax(0,1fr);min-height:0}}
+.sl.title h1.h{font-size:clamp(2.4rem,5.4vw,5.2rem);margin-top:.4rem}
+.sl.title .lead{font-size:clamp(1rem,1.45vw,1.4rem);max-width:58ch;margin-top:.2rem}
+.facts3{display:flex;gap:clamp(16px,2.6vw,44px);flex-wrap:wrap;margin-top:.4rem}
+.facts3 div{min-width:0}
+.facts3 b{display:block;font-family:var(--display);font-size:clamp(1.5rem,2.5vw,2.4rem);font-weight:800;color:var(--accent);letter-spacing:-.02em;line-height:1.05;font-variant-numeric:tabular-nums}
+.facts3 span{display:block;font-size:clamp(.8rem,.95vw,.95rem);color:var(--ink2);max-width:28ch;margin-top:.3rem;line-height:1.4}
+.keys{display:flex;gap:.9rem;flex-wrap:wrap;font-size:.76rem;color:var(--ink3);margin-top:.6rem}
+.keys kbd{font:600 .7rem var(--text);border:1px solid var(--line);border-radius:5px;padding:1px 5px;color:var(--ink2);background:var(--surface);margin-right:2px}
+/* slide foot and fixed chrome */
+.sft{flex:none;display:flex;justify-content:space-between;align-items:center;gap:16px;font-size:.8rem;color:var(--ink3);min-height:1.4rem;flex-wrap:wrap}
+.sft a.more{color:var(--accent);font-weight:700;text-decoration:none}
+.sft a.more:hover{text-decoration:underline}
+.sft .n{font-variant-numeric:tabular-nums;font-weight:700;margin-left:auto}
+.pbar{position:fixed;top:0;left:0;height:3px;background:var(--accent);z-index:60;width:0;transition:width .3s}
+.pnav{position:fixed;right:clamp(8px,1.2vw,18px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:7px;z-index:60}
+.pnav a{width:9px;height:9px;border-radius:50%;background:var(--line);display:block;position:relative;transition:transform .2s,background .2s}
+.pnav a.on{background:var(--accent);transform:scale(1.35)}
+.pnav a.gap{margin-top:9px}
+.pnav a::after{content:attr(data-t);position:absolute;right:18px;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 12px var(--text);color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:4px 8px;border-radius:8px;opacity:0;pointer-events:none;transition:opacity .15s}
+.pnav a:hover::after{opacity:1}
+@media (max-width:900px){.pnav{display:none}}
+.tools{position:fixed;top:calc(8px + env(safe-area-inset-top,0px));right:clamp(12px,1.6vw,24px);display:flex;gap:6px;z-index:61}
+.tools button{appearance:none;border:1px solid var(--line);background:color-mix(in srgb,var(--surface) 80%,transparent);backdrop-filter:blur(10px);color:var(--ink2);font:600 12px var(--text);padding:6px 10px;border-radius:999px;cursor:pointer}
+.tools button:hover{color:var(--ink);border-color:var(--ink3)}
+@media (max-height:740px){html{font-size:11.8px}.sl{padding-top:14px;padding-bottom:10px}}
+@media (max-height:820px){.sl{gap:.75rem}.shd{gap:.4rem}.stat{padding:.7rem .85rem}.stat span{line-height:1.35;margin-top:.3rem}.sl .band{padding:.7rem 1rem}.rules{gap:.45rem}.rcap{min-height:2.8em}}
+@media (prefers-reduced-motion:no-preference){.sl.seen .col>*,.sl.seen .rmap>*,.sl.seen .apx>*{animation:rise .55s cubic-bezier(.2,.8,.2,1) both}.sl.seen .col>*:nth-child(2),.sl.seen .rmap>*:nth-child(2){animation-delay:.07s}.sl.seen .col>*:nth-child(3),.sl.seen .rmap>*:nth-child(3){animation-delay:.14s}.sl.seen .col>*:nth-child(4),.sl.seen .rmap>*:nth-child(4){animation-delay:.21s}}
+</style>
+
+<div class="pbar" id="pbar"></div>
+<nav class="pnav" id="pnav" aria-label="Слайды"></nav>
+<div class="tools"><button type="button" id="t-theme" title="Переключить тему (T)">Тема</button><button type="button" id="t-full" title="Во весь экран (F)">Во весь экран</button></div>
+
+<section class="sl title" id="s0" data-act="" data-t="Титул">
+ <div class="sbd">
+  <div class="col">
+   <div class="eyebrow">Сбербанк Онлайн · Вклады и счета · Для руководства · Октябрь 2026</div>
+   <h1 class="h">Помощник по сбережениям</h1>
+   <p class="lead">Один помощник управляет всеми деньгами клиента между вкладами и счетами, объясняет каждое действие в рублях и ничего не делает без подтверждения.</p>
+   <div class="facts3"><div><b>79 550 ₽ в год</b><span>теряет клиент «Капитал» между продуктами. Лучшая ставка рынка дала бы ему 28 800 ₽</span></div><div><b>3 тапа</b><span>до результата: цифра, строка смысла, кнопка</span></div><div><b>L0–L3</b><span>клиент сам выбирает, сколько решать помощнику</span></div></div>
+   <div class="keys"><span><kbd>←</kbd><kbd>→</kbd> слайды</span><span><kbd>P</kbd> пауза демо</span><span><kbd>R</kbd> демо сначала</span><span><kbd>F</kbd> во весь экран</span><span><kbd>T</kbd> тема</span></div>
+  </div>
+  <div class="pcol">
+   <div class="ph-wrap pfit" data-reel="hero" data-max=".86"><div class="phone"><div class="screen"></div></div></div>
+   <div class="reelbar" data-reelbar="hero"></div>
+  </div>
+ </div>
+ <div class="sft"><span>Телефон живой: нажимайте на экран. Демо идёт само и повторяется по кругу</span><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s1" data-act="Зачем" data-t="Почему сейчас">
+ <div class="shd"><div class="eyebrow"><span class="act">01 · Зачем</span>Почему сейчас</div><h2 class="t">Деньги есть, ставки падают, агенты уже рядом</h2></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats">
+    <div class="stat"><b>67 трлн ₽</b><span>средств населения в банках на 1 января 2026 года, рекорд: +16,2% за год</span></div>
+    <div class="stat"><b>21% → 14%</b><span>ключевая ставка с пика к июлю 2026. Вклады, открытые на пике, закрываются и переоткрываются ниже: момент, когда клиент сравнивает и уходит</span></div>
+    <div class="stat"><b class="w">0%</b><span>ставка на остатках по картам и текущим счетам: первое, что переместит любой агент, управляющий деньгами клиента</span></div>
+    <div class="stat"><b class="i">Баннер и чат</b><span>где сегодня живёт AI в приложении: подбор отделён от открытия, виджеты показывают факты, а не решения</span></div>
+   </div>
+   <div class="band"><i></i><p>Если банк не даст клиенту агента, которому тот доверит сбережения, агент придёт снаружи и будет оптимизировать против банка. Цель: стать агентом клиента первыми, а внешних агентов пустить через свой протокол, а не в обход.</p></div>
+  </div>
+  <div class="pcol two">
+   <div><div class="ph-wrap pfit" data-static="asis-home" data-flow="cap" data-max=".46"><div class="phone"><div class="screen"></div></div></div><div class="pcap"><b>Сегодня: Главный</b>Факты о счетах, ни одного решения</div></div>
+   <div><div class="ph-wrap pfit" data-static="asis-shop" data-flow="cap" data-max=".46"><div class="phone"><div class="screen"></div></div></div><div class="pcap"><b>Сегодня: витрина</b>AI в баннере, подбор отдельно от открытия</div></div>
+  </div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#why">Подробнее в стратегии: Почему сейчас, Сегодня →</a><span>Источники: Банк России, январь и сентябрь 2026</span><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s2" data-act="Зачем" data-t="Где клиент теряет">
+ <div class="shd"><div class="eyebrow"><span class="act">02 · Зачем</span>Где клиент теряет</div><h2 class="t">Клиент теряет не на ставке, а между продуктами</h2><p class="lead">Клиент «Капитал»: 2 450 000 ₽, из них 400 000 ₽ на карте под 0%, вклад 400 000 ₽ продлевается под 7,5%, три закрытия в год. Считаем рубли за год по всем деньгам, а не процент по одному вкладу на полгода.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="cmpb">
+    <div class="row"><div class="lab"><span>Лучшая ставка рынка без помощника, <span class="p-comp-v">14,0%</span> против наших 12,2%, с учётом цены перехода</span><b id="p-theirs">+25 440 ₽</b></div><div class="bar" id="p-bar-theirs"></div></div>
+    <div class="row"><div class="lab"><span>Наши 12,2% с помощником: шесть утечек закрыты</span><b class="g" id="p-ours">+79 550 ₽</b></div><div class="bar" id="p-bar-ours"></div><div class="lg" id="p-lg"></div></div>
+   </div>
+   <div class="rng"><label><b>Ставка конкурента: <span class="p-comp-v">14,0%</span></b><input type="range" id="p-comp" min="10" max="18" step="0.1" value="14"></label></div>
+   <div class="verdict" id="p-verdict"></div>
+  </div>
+  <div class="pcol">
+   <div class="ph-wrap pfit" data-reel="edge" data-max=".8"><div class="phone"><div class="screen"></div></div></div>
+   <div class="reelbar" data-reelbar="edge"></div>
+  </div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#edge">Подробнее в стратегии: Сервис против ставки →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s3" data-act="Что" data-t="Идея">
+ <div class="shd"><div class="eyebrow"><span class="act">03 · Что</span>Идея в одном предложении</div><h2 class="t">genAI думает и объясняет, Сбербанк Онлайн считает и исполняет, клиент подтверждает</h2></div>
+ <div class="sbd wide">
+  <div class="col">
+   <div class="roles">
+    <div class="role"><div class="yr">2027 · H1</div><h3>Консультант</h3><p>Внутри пути открытия вклада: объясняет, сравнивает, считает доход к дате, предзаполняет экран открытия.</p></div>
+    <div class="role"><div class="yr">2027 · H2</div><h3>Планировщик</h3><p>Цели и автонакопления, спящие деньги как упущенная выгода, закрытие вклада по сценарию вместо тихой пролонгации.</p></div>
+    <div class="role"><div class="yr">2028</div><h3>Управляющий</h3><p>Портфель, план на неделю с выгодой в рублях, правила и автопилот по политике клиента.</p></div>
+    <div class="role p4"><div class="yr">2029</div><h3>Открытая платформа</h3><p>Тот же протокол получает ассистент клиента: смотреть и предлагать может, исполнять только с подтверждением в приложении.</p></div>
+   </div>
+   <div class="flow4">
+    <div class="p"><i><svg class="ic"><use href="#i-bell"/></svg></i><div><b>Запрос или событие</b><span>Текст, голос, пуш, тап по карточке, запрос внешнего агента</span></div></div>
+    <div class="p ai"><i><svg class="ic"><use href="#i-sparkle"/></svg></i><div><b>Модель собирает экран и объясняет</b><span>Из каталога нативных компонентов банка. Цифры не генерирует</span></div></div>
+    <div class="p nat"><i><svg class="ic"><use href="#i-cpu"/></svg></i><div><b>Банк считает и рисует</b><span>Ставки, расчёты и движок детерминированы и воспроизводимы</span></div></div>
+    <div class="p nat"><i><svg class="ic"><use href="#i-faceid"/></svg></i><div><b>Клиент подтверждает</b><span>Та же шторка, что у платежа. Ни один рубль без неё</span></div></div>
+   </div>
+   <div class="band"><i></i><p>Три роли одного помощника, не три продукта. Каждая добавляет навыки, данные и уровень автономии, не ломая предыдущую. Без модели всё работает на правилах и нативных экранах.</p></div>
+  </div>
+  <div class="pcol">
+   <div class="ph-wrap pfit" data-reel="ask" data-max=".8"><div class="phone"><div class="screen"></div></div></div>
+   <div class="reelbar" data-reelbar="ask"></div>
+  </div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#vision">Подробнее в стратегии: Видение, Принципы, Архитектура →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s4" data-act="Экран" data-t="Закрытие вклада">
+ <div class="shd"><div class="eyebrow"><span class="act">04 · Экран</span>Закрытие вклада</div><h2 class="t">Один сценарий вместо тихой пролонгации</h2><p class="lead">Момент самого высокого оттока: вклад закрывается, клиент сравнивает ставки и уходит. Помощник приходит за семь дней с тремя вариантами и цифрами. Лучший уже выбран, исполнение в день закрытия, отмена до последнего дня.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats">
+    <div class="stat"><b>За 7 дней</b><span>до закрытия приходит готовое решение, а не просьба прочитать условия</span></div>
+    <div class="stat"><b>Пуш + 2 тапа</b><span>до запланированного действия. Читать нужно цифру и кнопку</span></div>
+    <div class="stat"><b class="w">18 800 ₽ в год</b><span>стоит клиенту «Капитал» тихое продление 400 000 ₽ под 7,5% вместо 12,2%</span></div>
+    <div class="stat"><b class="i">Отмена до дня закрытия</b><span>напоминание за день, контроль остаётся у клиента</span></div>
+   </div>
+   <div class="band"><i></i><p>Первый скилл «Планировщика» и самый понятный аргумент для клиента: банк сам сказал заранее и предложил лучшее, а не продлил молча.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="mat" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="mat"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#proactive">Подробнее в стратегии: Проактивные коммуникации, Скиллы →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s5" data-act="Экран" data-t="Без чтения">
+ <div class="shd"><div class="eyebrow"><span class="act">05 · Экран</span>Для тех, кто не читает</div><h2 class="t">Экран работает, даже если прочитали только цифру и кнопку</h2></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="rules">
+    <div class="rule"><i>1</i><div><b>Цифра крупнее текста</b><span>«5 000 ₽ в месяц», а не абзац про доходы и расходы</span></div></div>
+    <div class="rule"><i>2</i><div><b>Уже выбрано за вас</b><span>Рекомендация стоит первой и отмечена. Менять можно, но не нужно</span></div></div>
+    <div class="rule"><i>3</i><div><b>Кнопка говорит, что произойдёт</b><span>«Перевести 120 000 ₽», «Открыть счёт». Никаких «Далее» и «Ок»</span></div></div>
+    <div class="rule"><i>4</i><div><b>Два выхода всегда рядом</b><span>«Как посчитали?» и «Не сейчас». Отказ ничего не ломает и не требует объяснений</span></div></div>
+    <div class="rule"><i>5</i><div><b>Без терминов</b><span>«Работают 67% денег» вместо «эффективность размещения»</span></div></div>
+   </div>
+   <div class="band"><i></i><p>Режим «Осторожный» показал главное: одна мысль, крупно, с кнопкой «Нет» того же размера работает для всех. Поэтому он стал первым слоем каждого экрана, а не отдельным режимом для 60+.</p></div>
+  </div>
+  <div class="pcol two">
+   <div><div class="ph-wrap pfit" data-reel="start" data-max=".6"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="start"></div></div>
+   <div><div class="ph-wrap pfit" data-reel="care" data-max=".6"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="care"></div></div>
+  </div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#glance">Подробнее в стратегии: Без чтения, Сегменты →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s6" data-act="Экран" data-t="План на неделю">
+ <div class="shd"><div class="eyebrow"><span class="act">06 · Экран</span>Управляющий</div><h2 class="t">«Сделай так, чтобы все деньги работали, но 150 тысяч были под рукой»</h2><p class="lead">Движок банка собирает план на неделю с выгодой в рублях и объяснением каждого действия. Клиент снимает галочки и подтверждает одним Face ID. Запас на карте не трогаем, и это написано на экране.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats">
+    <div class="stat"><b>+44 000 ₽ в год</b><span>три действия: спящие деньги на счёт, переоткрыть вклад под 12,2%, включить надбавку за покупки</span></div>
+    <div class="stat"><b>67% → 94%</b><span>денег работают по ставке после плана. Галочки живые, итог пересчитывается</span></div>
+    <div class="stat"><b class="i">1 Face ID на пакет</b><span>два действия сразу, третье в день закрытия вклада, с напоминанием за день</span></div>
+    <div class="stat"><b class="i">150 000 ₽ не трогаем</b><span>запас клиента на карте остаётся на месте на любом уровне доверия</span></div>
+   </div>
+   <div class="band"><i></i><p>Для клиента это не «ребалансировка», а «план на неделю». Движок один, экраны те же, разница только в том, сколько раз спрашиваем.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="plan" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="plan"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#rebalance">Подробнее в стратегии: Ребалансировка как процесс, Движок →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s7" data-act="Безопасно" data-t="Доверие">
+ <div class="shd"><div class="eyebrow"><span class="act">07 · Почему это безопасно</span>Лестница доверия</div><h2 class="t">Клиент сам выбирает, сколько решать помощнику</h2></div>
+ <div class="sbd wide">
+  <div class="col">
+   <div class="ladder">
+    <div class="rung"><div class="lv">L0</div><h3>Подсказки</h3><p>Объясняет и показывает упущенную выгоду в рублях. Ничего не предлагает сделать сам.</p><div class="who">По умолчанию для осторожных и для внешних агентов</div></div>
+    <div class="rung r2"><div class="lv">L1</div><h3>Предложения</h3><p>Конкретное действие с цифрой и «почему». Каждое подтверждает клиент.</p><div class="who">По умолчанию для всех остальных</div></div>
+    <div class="rung r3"><div class="lv">L2</div><h3>Правила</h3><p>«Всё выше 150 000 ₽ на карте переводить на накопительный». Предупреждение за день, вернуть можно 24 часа.</p><div class="who">После трёх одинаковых подтверждений</div></div>
+    <div class="rung r4"><div class="lv">L3</div><h3>Автопилот</h3><p>Политика клиента: запас, запреты, лимиты. Отчёт по понедельникам, пауза в один тап.</p><div class="who">Только по явному включению. Внешним агентам недоступен</div></div>
+   </div>
+   <div class="stats c3">
+    <div class="stat"><b class="i">Запас не трогаем</b><span>Переводим только то, что выше суммы, которую клиент назвал или которую движок посчитал по тратам</span></div>
+    <div class="stat"><b class="i">Не ломаем вклад</b><span>Досрочное закрытие только если выигрыш больше потери. Ни по чьей просьбе</span></div>
+    <div class="stat"><b class="i">Только свои счета</b><span>Деньги двигаются между вкладами и счетами клиента в банке. Наружу ни рубля</span></div>
+   </div>
+   <div class="band"><i></i><p>Вверх помощник предлагает только после успешных подтверждённых действий, не чаще раза в квартал. Вниз можно в любой момент одним тапом. Журнал всех предложений и действий виден клиенту.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="trust" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="trust"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#trust">Подробнее в стратегии: Лестница доверия, Что нельзя сломать →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s8" data-act="Безопасно" data-t="Проактив">
+ <div class="shd"><div class="eyebrow"><span class="act">08 · Почему это не спам</span>Проактивные коммуникации</div><h2 class="t">Семь касаний за двадцать недель. Каждое в рублях. Остальное время тишина</h2><p class="lead">Событие, а не рассылка: закрытие вклада, дедлайн надбавки, налог, зарплата. Ценность считается до отправки, ниже порога сообщения нет. События одной недели складываются в одно решение.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats">
+    <div class="stat"><b>7 из 20</b><span>недельных проверок закончились сообщением клиенту «Капитал». В остальные 13 помощник промолчал, и это написано у него на экране</span></div>
+    <div class="stat"><b>+31 900 ₽</b><span>«принёс помощник с октября»: счётчик на Главном. Отказы клиента тоже в списке, со своей ценой</span></div>
+    <div class="stat"><b class="i">Один план вместо трёх пушей</b><span>спящие деньги, перенос из другого банка и надбавка в одном решении с одним Face ID</span></div>
+    <div class="stat"><b class="i">Выход в каждом сообщении</b><span>«Реже», «Не напоминать про это», «Не беспокоить месяц». Безопасность выключить нельзя</span></div>
+   </div>
+   <div class="band"><i></i><p>Помощник, который за двадцать недель промолчал тринадцать раз, зарабатывает право быть прочитанным в оставшиеся семь. Маркетинговых пушей у него нет.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="pro" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="pro"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#value">Подробнее в стратегии: Ценность касаний, Проактив →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s9" data-act="Выгодно" data-t="Что получает банк">
+ <div class="shd"><div class="eyebrow"><span class="act">09 · Почему это выгодно банку</span>Экономика</div><h2 class="t">Вопрос, который зададут первым: мы же заплатим больше процентов?</h2><p class="lead">Помощник оптимизирует внутри сетки ставок, которую задаёт банк, и честно показывает цену гибкости. Его деньги появляются не из ставки, а из момента закрытия вклада и из других банков.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats">
+    <div class="stat"><b class="i">Удержание пассивов</b><span>Деньги, которые помощник перекладывает внутри банка, не уходят к конкуренту в день закрытия вклада: момент самого высокого оттока</span></div>
+    <div class="stat"><b class="i">Доля кошелька</b><span>Календарь клиента знает даты закрытия чужих вкладов. Перенос через СБП в день закрытия без простоя выгоден обеим сторонам</span></div>
+    <div class="stat"><b class="i">Стоимость обслуживания</b><span>Самообслуживание вместо 900 и офиса, меньше жалоб на тихую пролонгацию, справки за минуту</span></div>
+    <div class="stat"><b class="i">Внимание как актив</b><span>Голос с цифрой клиента читают. Рассылки это внимание тратят, помощник копит</span></div>
+   </div>
+   <div class="band"><i></i><p>Метрика продукта не «продуктов на клиента», а доля работающих денег, доля переразмещённых при закрытии вместо ухода и ноль несанкционированных движений.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="bank" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="bank"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#metrics">Подробнее в стратегии: Метрики и экономика, Сервис против ставки →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s10" data-act="Платформа" data-t="Открытый протокол">
+ <div class="shd"><div class="eyebrow"><span class="act">10 · Платформа</span>Открытый протокол «Сбережения»</div><h2 class="t">Один протокол для своего помощника и для агента клиента</h2><p class="lead">С первого дня помощник банка работает через открытый протокол (MCP) внутри защитного контура. В 2029 тот же вход получает ассистент клиента: любой внешний агент или своя модель. Смотреть и предлагать он может, исполнять только с подтверждением в приложении.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="ptrace" id="ptrace">
+    <div class="l llm" data-at="0"><span class="tt">агент</span><span>move_funds: 250 000 ₽ с карты → накопительный счёт</span></div>
+    <div class="l ok" data-at="1"><span class="tt">контур</span><span>право execute ✓ · периметр ✓ · запас 150 000 ₽ остаётся ✓ · лимит 1 из 3 операций ✓</span></div>
+    <div class="l ok" data-at="1"><span class="tt">контур</span><span>цифры из тарифов банка, модель их не генерировала ✓</span></div>
+    <div class="l app" data-at="2"><span class="tt">банк</span><span>запрос подтверждения в Сбербанк Онлайн, инициатор «Мой ассистент»</span></div>
+    <div class="l no" data-at="2"><span class="tt">контур</span><span>агент не может подтвердить сам: ждём клиента</span></div>
+    <div class="l ok" data-at="3"><span class="tt">аудит</span><span>#48215 исполнено · источник: внешний агент · подтвердил клиент · объяснение сохранено</span></div>
+   </div>
+   <div class="stats">
+    <div class="stat"><b class="i">Смотреть · предлагать · исполнять</b><span>три уровня доступа. Автопилот без подтверждения внешним агентам недоступен</span></div>
+    <div class="stat"><b class="i">Отзыв в один тап</b><span>токен на 14 дней, лимиты сумм и частоты, каждый запрос в журнале с идентификатором агента</span></div>
+   </div>
+   <div class="band"><i></i><p>Danske Bank и Т-Банк уже пробуют агентские доступы. Для вкладов и счетов массового клиента такого продукта на рынке нет. Агент приходит через нас, а не в обход.</p></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="ext" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="ext"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#mcp">Подробнее в стратегии: MCP «Сбережения», Харнес →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s11" data-act="План" data-t="Дорожная карта">
+ <div class="shd"><div class="eyebrow"><span class="act">11 · План</span>Дорожная карта 2027–2029</div><h2 class="t">Четыре этапа, у каждого своя метрика и свой экран</h2></div>
+ <div class="sbd one">
+  <div class="rmap">
+   <div class="st"><div class="yr">2027 · H1</div><h3>Консультант</h3><p>AI внутри пути открытия: объяснить, сравнить, рассчитать, предзаполнить. Режим «Осторожный» с первого дня.</p><div class="k">Метрика этапа</div><p>Конверсия в открытие из помощника, доля «Как посчитали?» без отказа</p><div class="ph-wrap pfit" data-static="sv-ask" data-flow="saver" data-max=".27"><div class="phone"><div class="screen"></div></div></div></div>
+   <div class="st"><div class="yr">2027 · H2</div><h3>Планировщик</h3><p>Цели, спящие деньги, сценарий закрытия вклада, путь «Старт», события и календарь.</p><div class="k">Метрика этапа</div><p>Активированные спящие деньги в рублях, доля переразмещённых при закрытии</p><div class="ph-wrap pfit" data-static="sv-maturity" data-flow="saver" data-max=".27"><div class="phone"><div class="screen"></div></div></div></div>
+   <div class="st"><div class="yr">2028</div><h3>Управляющий</h3><p>Портфель, план на неделю, правила и автопилот L2–L3, отчёт по понедельникам.</p><div class="k">Метрика этапа</div><p>Доля работающих денег, доля клиентов на L2 и выше</p><div class="ph-wrap pfit" data-static="cap-plan" data-flow="cap" data-max=".27"><div class="phone"><div class="screen"></div></div></div></div>
+   <div class="st"><div class="yr">2029</div><h3>Открытая платформа</h3><p>Внешний протокол, своя модель клиента, доверенное лицо, семейные цели.</p><div class="k">Метрика этапа</div><p>Доля клиентов с подключённым агентом, ноль несанкционированных движений</p><div class="ph-wrap pfit" data-static="ext-review" data-flow="ext" data-max=".27"><div class="phone"><div class="screen"></div></div></div></div>
+  </div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#roadmap">Подробнее в стратегии: Дорожная карта, Скиллы по этапам, Риски →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s12" data-act="План" data-t="Что просим">
+ <div class="shd"><div class="eyebrow"><span class="act">12 · Решение</span>Первые 90 дней</div><h2 class="t">Три месяца до пилота «Консультанта»</h2><p class="lead">Пилот внутри пути открытия вклада: объяснить, сравнить, рассчитать, предзаполнить. Уже в пилоте: режим «Осторожный», «Как посчитали?» у каждой цифры и журнал для комплаенса.</p></div>
+ <div class="sbd">
+  <div class="col">
+   <div class="stats c3">
+    <div class="stat"><b>Месяц 1</b><span><strong>Исследование и каркас.</strong> Интервью по сегментам, включая 60+. Карта разрывов в текущих путях. Каталог компонентов v0. Политика автономии L0–L1 и правила комплаенса для формулировок</span></div>
+    <div class="stat"><b>Месяц 2</b><span><strong>Прототип в коде.</strong> «Консультант» внутри пути открытия вклада на нативных компонентах. Защитный контур v0 с проверкой на 50 золотых сценариях</span></div>
+    <div class="stat"><b>Месяц 3</b><span><strong>Пилот.</strong> Малая доля клиентов, метрики конверсии и доверия, разбор журнала с комплаенсом. Решение о проде и старте «Планировщика»</span></div>
+   </div>
+   <div class="band"><i></i><p><b>Что нужно для старта:</b> один squad: владелец продукта вкладов и счетов, дизайн, mobile, ML-платформа, риск и комплаенс. Проверочные сценарии и защитный контур как критерий релиза с первого дня.</p></div>
+   <div class="acts"><a class="btn-p" href="index.html#proto">Открыть прототип: 8 путей, 144 экрана</a><a class="btn-s" href="index.html">Полная стратегия</a></div>
+  </div>
+  <div class="pcol"><div class="ph-wrap pfit" data-reel="hero2" data-max=".8"><div class="phone"><div class="screen"></div></div></div><div class="reelbar" data-reelbar="hero2"></div></div>
+ </div>
+ <div class="sft"><a class="more" href="index.html#next">Подробнее в стратегии: Первые 90 дней, Риски →</a><span class="n" data-counter></span></div>
+</section>
+
+<section class="sl" id="s13" data-act="План" data-t="Где подробности">
+ <div class="shd"><div class="eyebrow"><span class="act">Приложение</span>Полная стратегия</div><h2 class="t">Где подробности: 24 раздела, 33 скилла, 144 экрана</h2><p class="lead">Питч показывает самое узкое: один сценарий, один экран, одно решение. Всё широкое живёт в стратегии, каждый раздел открывается по ссылке.</p></div>
+ <div class="sbd one">
+  <div class="apx">
+   <div><h3>Зачем</h3><a href="index.html#summary">Резюме<small>один помощник, три роли, одна кнопка</small></a><a href="index.html#why">Почему сейчас<small>67 трлн ₽, ставка, агенты</small></a><a href="index.html#today">Сегодня<small>что есть и где разрывы</small></a><a href="index.html#edge">Сервис против ставки<small>утечки в рублях, калькулятор</small></a></div>
+   <div><h3>Что</h3><a href="index.html#principles">Принципы<small>пять правил</small></a><a href="index.html#vision">Видение<small>от подбора к управлению</small></a><a href="index.html#segments">Сегменты<small>деньги × доверие</small></a><a href="index.html#glance">Без чтения<small>восемь правил, словарь</small></a><a href="index.html#proto">Прототип<small>восемь путей</small></a><a href="index.html#skills">Скиллы<small>33 навыка с экранами</small></a></div>
+   <div><h3>Как</h3><a href="index.html#trust">Лестница доверия<small>L0–L3</small></a><a href="index.html#rebalance">Ребалансировка<small>процесс на трёх уровнях</small></a><a href="index.html#engine">Движок<small>цель, ограничения, калькулятор</small></a><a href="index.html#arch">Архитектура<small>genUI + native</small></a><a href="index.html#proactive">Проактив<small>ритм, календарь, разрешения</small></a><a href="index.html#value">Ценность касаний<small>бюджет внимания</small></a><a href="index.html#mcp">MCP «Сбережения»<small>инструменты и консоль</small></a><a href="index.html#harness">Харнес<small>что вокруг модели</small></a></div>
+   <div><h3>План</h3><a href="index.html#roadmap">Дорожная карта<small>2027–2029</small></a><a href="index.html#metrics">Метрики и экономика<small>северная звезда</small></a><a href="index.html#risks">Риски<small>и как снимаем</small></a><a href="index.html#next">Первые 90 дней<small>до пилота</small></a><a href="index.html#refs">Референсы<small>паттерны экранов</small></a></div>
+  </div>
+ </div>
+ <div class="sft"><span>Помощник по сбережениям · стратегия 2027–2029 · Сергей Штарков · октябрь 2026 · концепция для обсуждения. Цифры в прототипе условные</span><span class="n" data-counter></span></div>
+</section>
